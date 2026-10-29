@@ -187,6 +187,7 @@ export default function Contact() {
                   <option value="">Select a subject...</option>
                   <option value="general">General Inquiry</option>
                   <option value="bespoke">Bespoke Enquiry</option>
+                  <option value="gemologist">Gemologist Concierge Consultation</option>
                   <option value="consultation">Schedule Consultation</option>
                   <option value="support">Customer Support</option>
                   <option value="other">Other</option>
@@ -225,9 +226,9 @@ export default function Contact() {
           }}>
             {[
               { icon: '💍', title: 'Bespoke Enquiry', desc: 'Start your custom jewelry creation journey' },
-              { icon: '🗓', title: 'Schedule Consultation', desc: 'Book a virtual or in-person meeting' },
+              { icon: '👨‍🔬', title: 'Gemologist Concierge', desc: 'Expert consultation on gemstone selection' },
               { icon: '💎', title: 'Gemstone Questions', desc: 'Learn more about our collection' },
-              { icon: '🛍', title: 'Orders & Shipping', desc: 'Track your order or ask about shipping' },
+              { icon: '🗓', title: 'Schedule Consultation', desc: 'Book a virtual or in-person meeting' },
               { icon: '🔧', title: 'Jewelry Care', desc: 'Get advice on caring for your pieces' },
               { icon: '❓', title: 'General Questions', desc: 'Any other questions about AVIORY & CO' }
             ].map((item, idx) => (
