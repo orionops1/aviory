@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
+import LanguageSwitcher from '../components/LanguageSwitcher'
 import HeroBanner from '../components/HeroBanner'
 import ProductCard from '../components/ProductCard'
 import { gemstones, fineJewellery, journalArticles } from '../data/products'
@@ -21,6 +22,13 @@ export default function Home() {
 
   return (
     <>
+      {/* LANGUAGE SELECTOR - TOP OF PAGE */}
+      <section className="language-selector-section">
+        <div className="container">
+          <LanguageSwitcher variant="light" expanded={true} />
+        </div>
+      </section>
+
       {/* ─── TIFFANY-STYLE CINEMATIC HERO (Video + Image fallback + Controls) ─── */}
       <HeroBanner 
         title={t('hero.title')}
