@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import './HeroCarousel.css'
 
@@ -9,10 +9,12 @@ export default function HeroCarousel({
   ctaPrimary = { label: "Shop Gemstones", href: "/gemstones" },
   ctaSecondary = { label: "Engagement Rings", href: "/engagement-rings" },
   autoplayInterval = 5000,
-  transitionDuration = 0.8
+  transitionDuration = 0.8,
+  onSlideChange = null
 }) {
   const [currentIndex, setCurrentIndex] = useState(0)
   const [isTransitioning, setIsTransitioning] = useState(false)
+  const videoRefs = useRef({})
 
   // Auto-rotate slides
   useEffect(() => {
@@ -28,6 +30,24 @@ export default function HeroCarousel({
 
     return () => clearInterval(timer)
   }, [slides.length, autoplayInterval, transitionDuration])
+
+  // Auto-play videos when slide becomes active
+  useEffect(() => {
+    const currentSlide = slides[currentIndex]
+    if (currentSlide?.video && videoRefs.current[currentIndex]) {
+      const video = videoRefs.current[currentIndex]
+      video.play().catch(() => {
+        // Autoplay blocked, user will play manually
+      })
+    }
+
+    // Pause other videos
+    slides.forEach((_, idx) => {
+      if (idx !== currentIndex && videoRefs.current[idx]) {
+        videoRefs.current[idx].pause()
+      }
+    })
+  }, [currentIndex, slides])
 
   const currentSlide = slides[currentIndex] || {
     image: '/images/hero-banner.jpg',
@@ -70,10 +90,27 @@ export default function HeroCarousel({
               index === currentIndex ? 'hero-carousel__slide--active' : ''
             } ${isTransitioning ? 'hero-carousel__slide--transitioning' : ''}`}
             style={{
-              backgroundImage: `url(${slide.image})`,
+              backgroundImage: !slide.video ? `url(${slide.image})` : 'none',
               transitionDuration: `${transitionDuration}s`,
             }}
           >
+            {/* VIDEO BACKGROUND (if video slide) */}
+            {slide.video && (
+              <video
+                ref={(el) => {
+                  if (el) videoRefs.current[index] = el
+                }}
+                className="hero-carousel__video"
+                autoPlay={index === currentIndex}
+                muted
+                loop
+                playsInline
+                poster={slide.poster || slide.image}
+              >
+                <source src={slide.video} type="video/mp4" />
+              </video>
+            )}
+
             {/* Overlay */}
             <div className="hero-carousel__slide-overlay" />
 

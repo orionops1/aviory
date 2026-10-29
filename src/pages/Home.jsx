@@ -18,22 +18,25 @@ export default function Home() {
     setTimeout(() => setSubscribed(false), 3500)
   }
 
-  // Hero carousel slides with lifestyle imagery
+  // Hero carousel slides with looping videos (Tiffany/Harry Winston style)
   const heroSlides = [
     {
-      image: '/images/hero-sapphire-lifestyle.jpg',
+      video: '/videos/hero-sapphire.mp4',
+      poster: '/images/hero-sapphire-lifestyle.jpg',
       title: 'Ceylon Sapphires',
       subtitle: 'Rare gemstones from the Indian Ocean',
       cta: { label: 'Explore Gemstones', href: '/gemstones' }
     },
     {
-      image: '/images/hero-engagement-couple.jpg',
+      video: '/videos/hero-love-collection.mp4',
+      poster: '/images/hero-engagement-couple.jpg',
       title: 'AVIORY Love Collection',
       subtitle: 'We add value to every love story',
       cta: { label: 'Explore the Collection', href: '/engagement-rings' }
     },
     {
-      image: '/images/hero-fine-jewellery.jpg',
+      video: '/videos/hero-jewellery.mp4',
+      poster: '/images/hero-fine-jewellery.jpg',
       title: 'Haute Joaillerie',
       subtitle: 'Exceptional pieces, timeless elegance',
       cta: { label: 'Discover More', href: '/fine-jewellery' }
@@ -47,8 +50,8 @@ export default function Home() {
         slides={heroSlides}
         defaultTitle={t('hero.title')}
         defaultSubtitle={t('hero.subtitle')}
-        autoplayInterval={5000}
-        transitionDuration={0.8}
+        autoplayInterval={8000}
+        transitionDuration={1.0}
       />
 
       {/* SECTION 1: FEATURED GEMSTONES - LIFESTYLE + PRODUCTS (50/50) */}
