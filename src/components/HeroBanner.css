@@ -1,284 +1,154 @@
 /* ============================================================================
-   TIFFANY-INSPIRED LUXURY HERO BANNER WITH VIDEO & IMAGE CONTROLS
+   HERO SECTION - CLEAN & SIMPLE LIKE TIFFANY
    ============================================================================ */
 
-.tiffany-hero {
+.hero {
   position: relative;
   width: 100%;
-  min-height: 85vh;
-  max-height: 900px;
+  height: 600px;
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  background-color: var(--color-black);
 }
 
-.tiffany-hero__media {
+.hero__video {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  overflow: hidden;
+  object-fit: cover;
   z-index: 1;
 }
 
-.tiffany-hero__video {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  min-width: 100%;
-  min-height: 100%;
-  width: auto;
-  height: auto;
-  transform: translate(-50%, -50%);
-  object-fit: cover;
-  opacity: 0;
-  transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1);
-  z-index: 2;
-}
-
-.tiffany-hero__video--loaded {
-  opacity: 0.9;
-}
-
-.tiffany-hero__poster {
+.hero__fallback {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   background-size: cover;
-  background-position: center center;
-  background-repeat: no-repeat;
-  z-index: 1;
-  transform: scale(1.02);
-  transition: transform 8s ease-out;
+  background-position: center;
+  z-index: 0;
 }
 
-.tiffany-hero:hover .tiffany-hero__poster {
-  transform: scale(1.05);
-}
-
-/* Scrim & Cinematic Vignette Overlays */
-.tiffany-hero__scrim {
+.hero__overlay {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: radial-gradient(circle at center, rgba(17, 17, 17, 0.25) 0%, rgba(17, 17, 17, 0.7) 100%);
-  z-index: 3;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 2;
 }
 
-.tiffany-hero__gradient-bottom {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 140px;
-  background: linear-gradient(to top, rgba(17, 17, 17, 0.85) 0%, transparent 100%);
-  z-index: 3;
-}
-
-/* Typography & Content Block */
-.tiffany-hero__content {
+.hero__content {
   position: relative;
-  z-index: 10;
+  z-index: 3;
   text-align: center;
-  padding-top: var(--spacing-3xl);
-  padding-bottom: var(--spacing-3xl);
-}
-
-.tiffany-hero__text-block {
-  max-width: 780px;
-  margin: 0 auto;
-  animation: heroFadeInUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) both;
-}
-
-@keyframes heroFadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.tiffany-hero__tagline {
-  display: inline-block;
-  font-family: var(--font-ui);
-  font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 0.25em;
-  text-transform: uppercase;
-  color: var(--color-champagne);
-  margin-bottom: var(--spacing-md);
-}
-
-.tiffany-hero__title {
-  font-family: var(--font-brand);
-  font-size: clamp(2.8rem, 7vw, 5rem);
-  font-weight: 700;
-  letter-spacing: 0.18em;
   color: var(--color-white);
-  line-height: 1.1;
-  text-transform: uppercase;
-  margin-bottom: var(--spacing-md);
-  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
 }
 
-.tiffany-hero__subtitle {
-  font-family: var(--font-serif);
-  font-size: clamp(1.1rem, 2.5vw, 1.45rem);
-  font-weight: 400;
-  font-style: italic;
-  letter-spacing: 0.04em;
-  color: var(--color-ivory);
-  opacity: 0.95;
-  margin-bottom: var(--spacing-2xl);
-  line-height: 1.5;
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
-}
-
-/* Dual CTAs */
-.tiffany-hero__cta-group {
+.hero__text {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
   gap: var(--spacing-lg);
-  flex-wrap: wrap;
 }
 
-.tiffany-hero__btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  font-family: var(--font-ui);
-  font-size: 0.8rem;
-  font-weight: 600;
-  letter-spacing: 0.16em;
+.hero__title {
+  font-family: var(--font-brand);
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-weight: 700;
+  letter-spacing: 0.15em;
   text-transform: uppercase;
-  text-decoration: none;
-  padding: 1.1rem 2.5rem;
-  border-radius: 0;
-  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-  min-width: 210px;
+  margin: 0;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
 }
 
-.tiffany-hero__btn--primary {
-  background-color: var(--color-champagne);
-  color: var(--color-black);
-  border: 1px solid var(--color-champagne);
+.hero__subtitle {
+  font-size: clamp(1rem, 2.5vw, 1.25rem);
+  font-weight: 300;
+  letter-spacing: 0.08em;
+  margin: 0;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
 }
 
-.tiffany-hero__btn--primary:hover {
-  background-color: var(--color-white);
-  color: var(--color-black);
-  border-color: var(--color-white);
-  transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
-}
-
-.tiffany-hero__btn--secondary {
-  background-color: transparent;
-  color: var(--color-white);
-  border: 1px solid rgba(255, 255, 255, 0.7);
-}
-
-.tiffany-hero__btn--secondary:hover {
-  background-color: var(--color-white);
-  color: var(--color-black);
-  border-color: var(--color-white);
-  transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
-}
-
-/* Media Controls (bottom-right floating) */
-.tiffany-hero__controls {
-  position: absolute;
-  bottom: 2rem;
-  right: 2.5rem;
-  z-index: 20;
+.hero__cta {
   display: flex;
-  align-items: center;
-  gap: 0.6rem;
-}
-
-.tiffany-hero__ctrl-btn {
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  background: rgba(17, 17, 17, 0.6);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  color: var(--color-white);
-  display: flex;
-  align-items: center;
+  gap: var(--spacing-md);
   justify-content: center;
-  cursor: pointer;
-  transition: all 0.25s ease;
-  backdrop-filter: blur(4px);
+  flex-wrap: wrap;
+  margin-top: var(--spacing-lg);
 }
 
-.tiffany-hero__ctrl-btn:hover {
-  background: rgba(212, 175, 127, 0.9);
-  color: var(--color-black);
-  border-color: var(--color-champagne);
-  transform: scale(1.08);
-}
+/* ============================================================================
+   RESPONSIVE
+   ============================================================================ */
 
-/* Scroll indicator */
-.tiffany-hero__scroll-indicator {
-  position: absolute;
-  bottom: 1.5rem;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 10;
-  pointer-events: none;
-}
-
-.tiffany-hero__scroll-line {
-  display: block;
-  width: 1px;
-  height: 32px;
-  background: linear-gradient(to bottom, var(--color-champagne) 0%, transparent 100%);
-  animation: scrollPulse 2s infinite ease-in-out;
-}
-
-@keyframes scrollPulse {
-  0% { transform: scaleY(0); transform-origin: top; opacity: 0.3; }
-  50% { transform: scaleY(1); transform-origin: top; opacity: 1; }
-  100% { transform: scaleY(0); transform-origin: bottom; opacity: 0; }
-}
-
-/* Responsive */
 @media (max-width: 1024px) {
-  .tiffany-hero {
-    min-height: 75vh;
+  .hero {
+    height: 500px;
   }
-  .tiffany-hero__controls {
-    bottom: 1.25rem;
-    right: 1.25rem;
+
+  .hero__title {
+    font-size: clamp(2rem, 5vw, 3rem);
+  }
+
+  .hero__subtitle {
+    font-size: clamp(0.9rem, 2vw, 1.1rem);
   }
 }
 
 @media (max-width: 768px) {
-  .tiffany-hero {
-    min-height: 70vh;
+  .hero {
+    height: 400px;
   }
-  .tiffany-hero__cta-group {
+
+  .hero__title {
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+  }
+
+  .hero__subtitle {
+    font-size: clamp(0.85rem, 1.8vw, 1rem);
+  }
+
+  .hero__cta {
     flex-direction: column;
-    gap: 0.875rem;
+    align-items: center;
   }
-  .tiffany-hero__btn {
-    width: 100%;
-    min-width: unset;
-    padding: 0.95rem 1.75rem;
+
+  .hero__cta .btn {
+    min-width: 200px;
   }
-  .tiffany-hero__scroll-indicator {
-    display: none;
+}
+
+@media (max-width: 480px) {
+  .hero {
+    height: 350px;
+  }
+
+  .hero__title {
+    font-size: clamp(1.5rem, 3.5vw, 2.2rem);
+  }
+
+  .hero__subtitle {
+    font-size: clamp(0.8rem, 1.5vw, 0.95rem);
+  }
+
+  .hero__text {
+    gap: var(--spacing-md);
+  }
+
+  .hero__cta {
+    gap: var(--spacing-sm);
+    margin-top: var(--spacing-md);
+  }
+
+  .hero__cta .btn {
+    min-width: 150px;
+    padding: 0.75rem 1.5rem;
+    font-size: 0.8rem;
   }
 }

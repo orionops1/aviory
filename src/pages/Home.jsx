@@ -25,10 +25,9 @@ export default function Home() {
       <HeroBanner 
         title={t('hero.title')}
         subtitle={t('hero.subtitle')}
-        tagline="MAISON DE HAUTE JOAILLERIE"
         ctaPrimary={{ label: t('hero.exploreGemstones'), href: "/gemstones" }}
-        ctaSecondary={{ label: t('common.bookConsultation'), href: "/private-consultations" }}
-        videoSrc="https://assets.mixkit.co/videos/preview/mixkit-sparkling-diamond-ring-under-spotlight-41875-large.mp4"
+        ctaSecondary={{ label: t('common.engagementRings'), href: "/engagement-rings" }}
+        videoSrc="/videos/hero-loop.mp4"
         fallbackImage="/images/hero-banner.jpg"
       />
 
