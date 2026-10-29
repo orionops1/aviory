@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import HeroBanner from '../components/HeroBanner'
 import ProductCard from '../components/ProductCard'
-import { gemstones, fineJewellery, journalArticles } from '../data/products'
+import { gemstones, journalArticles } from '../data/products'
 import { useLanguage } from '../hooks/useLanguage'
 import './Home.css'
 
@@ -24,103 +24,96 @@ export default function Home() {
       <HeroBanner 
         title={t('hero.title')}
         subtitle={t('hero.subtitle')}
-        ctaPrimary={{ label: t('hero.exploreGemstones'), href: "/gemstones" }}
-        ctaSecondary={{ label: t('common.engagementRings'), href: "/engagement-rings" }}
+        ctaPrimary={{ label: "Discover Gemstones", href: "/gemstones" }}
         videoSrc="/videos/hero-loop.mp4"
         fallbackImage="/images/hero-banner.jpg"
       />
 
-      {/* TRUST BAR */}
-      <section className="provenance-strip">
-        <div className="container provenance-strip__inner">
-          <div className="provenance-item">
-            <span className="provenance-icon">◆</span>
-            <h4>Ceylon Provenance</h4>
-            <p>Ethically sourced from Sri Lankan gem fields</p>
-          </div>
-          <div className="provenance-item">
-            <span className="provenance-icon">◆</span>
-            <h4>GIA Certified</h4>
-            <p>Every stone verified to world standards</p>
-          </div>
-          <div className="provenance-item">
-            <span className="provenance-icon">◆</span>
-            <h4>Natural & Unheated</h4>
-            <p>Untreated natural gemstones</p>
-          </div>
-        </div>
-      </section>
-
-      {/* FEATURED COLLECTION - STORYTELLING FIRST */}
-      <section className="featured-collection">
-        <div className="featured-collection__header">
-          <div className="container">
-            <span className="collection-label">FEATURED COLLECTION</span>
-            <h2 className="collection-title">The Ceylon Sapphire Vault</h2>
-            <p className="collection-description">
-              Revered for over 2,000 years for their unparalleled blue saturation and brilliance, Ceylon sapphires represent the pinnacle of luxury gemstone collecting. Each stone in this vault has been hand-selected for its rarity, clarity, and transformative beauty.
-            </p>
-            <div className="collection-cta">
-              <Link to="/gemstones?category=blue-sapphires" className="btn btn-primary">
-                Explore the Collection
-              </Link>
-            </div>
-          </div>
-        </div>
-        <div className="featured-collection__showcase">
-          <div className="container">
-            <div className="product-grid">
-              {gemstones.filter(g => g.type === 'sapphire').slice(0, 4).map(gem => (
-                <ProductCard key={gem.id} product={gem} type="gemstone" />
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* THE ART OF GIFTING - EDITORIAL SECTION */}
-      <section className="gifting-editorial">
+      {/* FEATURED COLLECTION */}
+      <section className="featured-collection-hero">
         <div className="container">
-          <div style={{ maxWidth: '800px', margin: '0 auto', textAlign: 'center' }}>
-            <span className="editorial-label">TIMELESS MOMENTS</span>
-            <h2 className="editorial-title">The Art of Gifting</h2>
-            <p className="editorial-description">
-              Personalized jewelry and gifts are especially meaningful and become heirlooms over time. Celebrate every facet of the ones you love with iconic designs that transcend moments and endure as symbols of connection, commitment, and care.
+          <div className="collection-story">
+            <span className="collection-label">FEATURED COLLECTION</span>
+            <h2>The Ceylon Sapphire Vault</h2>
+            <p className="collection-narrative">
+              For over 2,000 years, Ceylon sapphires have been revered for their unparalleled blue saturation, 
+              crystalline clarity, and transformative brilliance. Each stone in this vault represents the pinnacle of 
+              gemstone rarity and craftsmanship—hand-selected for collectors who understand that true luxury is measured 
+              in exclusivity, not quantity.
             </p>
-            <p className="editorial-subtext">
-              Whether marking an engagement, anniversary, or milestone, our gemstones and bespoke creations are crafted to tell your story.
+            <Link to="/gemstones?category=blue-sapphires" className="btn btn-primary">
+              Explore the Collection
+            </Link>
+          </div>
+          <div className="collection-showcase">
+            {gemstones.filter(g => g.type === 'sapphire').slice(0, 4).map(gem => (
+              <ProductCard key={gem.id} product={gem} type="gemstone" />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CATEGORY GRID */}
+      <section className="category-browse">
+        <div className="container">
+          <h2 className="category-browse__title">Shop Our Collections</h2>
+          <div className="category-grid">
+            <Link to="/gemstones?category=blue-sapphires" className="category-card">
+              <div className="category-card__image" style={{ background: 'linear-gradient(135deg, #0b1a30 0%, #173361 50%, #29539b 100%)' }}>
+                <span className="category-icon">💎</span>
+              </div>
+              <h3>Royal Blue Sapphires</h3>
+              <p>Cornflower to deep royal blues</p>
+            </Link>
+            <Link to="/gemstones?category=pink-sapphires" className="category-card">
+              <div className="category-card__image" style={{ background: 'linear-gradient(135deg, #421820 0%, #7d3345 50%, #d46b7a 100%)' }}>
+                <span className="category-icon">✨</span>
+              </div>
+              <h3>Pink Sapphires</h3>
+              <p>Vivid to delicate pink hues</p>
+            </Link>
+            <Link to="/engagement-rings" className="category-card">
+              <div className="category-card__image" style={{ background: 'linear-gradient(135deg, #241c14 0%, #3d2f21 50%, #5e4732 100%)' }}>
+                <span className="category-icon">💍</span>
+              </div>
+              <h3>Engagement Rings</h3>
+              <p>Bespoke designs for love stories</p>
+            </Link>
+            <Link to="/fine-jewellery" className="category-card">
+              <div className="category-card__image" style={{ background: 'linear-gradient(135deg, #1a1a1a 0%, #3a3a3a 50%, #5a5a5a 100%)' }}>
+                <span className="category-icon">👑</span>
+              </div>
+              <h3>Haute Joaillerie</h3>
+              <p>Exceptional fine jewelry pieces</p>
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* GIFTING */}
+      <section className="gifting-hero">
+        <div className="gifting-hero__content">
+          <div className="container">
+            <span className="gifting-label">TIMELESS MOMENTS</span>
+            <h2 className="gifting-title">The Art of Gifting</h2>
+            <p className="gifting-description">
+              Personalized jewelry and gifts are especially meaningful and become heirlooms over time. 
+              Celebrate every facet of the ones you love with iconic designs that transcend moments 
+              and endure as symbols of connection, commitment, and care.
             </p>
-            
-            <div className="gifting-options" style={{ marginTop: 'var(--spacing-3xl)', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: 'var(--spacing-xl)' }}>
-              <Link to="/engagement-rings" className="gifting-card" style={{ textDecoration: 'none', padding: 'var(--spacing-xl)', backgroundColor: 'var(--color-ivory)', border: '1px solid var(--color-gray-light)', textAlign: 'center', transition: 'all 0.3s ease' }}>
-                <div style={{ fontSize: '2.5rem', marginBottom: 'var(--spacing-md)' }}>💎</div>
-                <h4>Gifts to Engrave</h4>
-                <p style={{ fontSize: '0.9rem', color: 'var(--color-charcoal)', marginTop: 'var(--spacing-sm)' }}>
-                  Personalized jewelry that becomes a cherished heirloom
-                </p>
+            <div className="gifting-ctas">
+              <Link to="/engagement-rings" className="btn btn-primary">
+                Explore Bridal
               </Link>
-              
-              <Link to="/fine-jewellery" className="gifting-card" style={{ textDecoration: 'none', padding: 'var(--spacing-xl)', backgroundColor: 'var(--color-ivory)', border: '1px solid var(--color-gray-light)', textAlign: 'center', transition: 'all 0.3s ease' }}>
-                <div style={{ fontSize: '2.5rem', marginBottom: 'var(--spacing-md)' }}>✨</div>
-                <h4>Haute Joaillerie</h4>
-                <p style={{ fontSize: '0.9rem', color: 'var(--color-charcoal)', marginTop: 'var(--spacing-sm)' }}>
-                  Extraordinary pieces for extraordinary moments
-                </p>
-              </Link>
-              
-              <Link to="/gemstones" className="gifting-card" style={{ textDecoration: 'none', padding: 'var(--spacing-xl)', backgroundColor: 'var(--color-ivory)', border: '1px solid var(--color-gray-light)', textAlign: 'center', transition: 'all 0.3s ease' }}>
-                <div style={{ fontSize: '2.5rem', marginBottom: 'var(--spacing-md)' }}>🌟</div>
-                <h4>Rare Collector Pieces</h4>
-                <p style={{ fontSize: '0.9rem', color: 'var(--color-charcoal)', marginTop: 'var(--spacing-sm)' }}>
-                  Investment-grade gemstones for connoisseurs
-                </p>
+              <Link to="/bespoke/enquiry" className="btn btn-outline">
+                Bespoke Commission
               </Link>
             </div>
           </div>
         </div>
       </section>
 
-      {/* JOURNAL - BRAND VOICE */}
+      {/* JOURNAL */}
       <section className="journal-preview">
         <div className="container">
           <div className="section-title">
@@ -174,10 +167,10 @@ export default function Home() {
       <section className="cta-section">
         <div className="container">
           <h2>Get in Touch</h2>
-          <p>We're here to help with any questions about our gemstones and jewellery</p>
+          <p>Our gemologist is here to help with consultations, custom inquiries, or any questions</p>
           <div style={{ display: 'flex', gap: 'var(--spacing-md)', justifyContent: 'center', flexWrap: 'wrap' }}>
             <Link to="/contact" className="btn btn-primary">
-              Contact Us
+              Contact Our Gemologist
             </Link>
             <Link to="/our-house" className="btn btn-outline">
               Visit Our Atelier
