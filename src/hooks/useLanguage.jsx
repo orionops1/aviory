@@ -23,6 +23,12 @@ const languages = [
   { code: 'es', name: 'Español', flag: '🇪🇸' }
 ]
 
+const currencies = [
+  { code: 'USD', symbol: '$', name: 'US Dollar' },
+  { code: 'LKR', symbol: '₨', name: 'Sri Lankan Rupee' },
+  { code: 'EUR', symbol: '€', name: 'Euro' }
+]
+
 export const LanguageProvider = ({ children }) => {
   const [language, setLanguage] = useState(() => {
     // Get language from localStorage or default to 'en'
@@ -33,14 +39,34 @@ export const LanguageProvider = ({ children }) => {
     return 'en'
   })
 
+  const [currency, setCurrency] = useState(() => {
+    // Get currency from localStorage or default to 'USD'
+    if (typeof window !== 'undefined') {
+      const stored = localStorage.getItem('preferred-currency')
+      return stored && currencies.find(c => c.code === stored) ? stored : 'USD'
+    }
+    return 'USD'
+  })
+
   useEffect(() => {
     // Save language to localStorage whenever it changes
     localStorage.setItem('preferred-language', language)
   }, [language])
 
+  useEffect(() => {
+    // Save currency to localStorage whenever it changes
+    localStorage.setItem('preferred-currency', currency)
+  }, [currency])
+
   const changeLanguage = (newLanguage) => {
     if (translations[newLanguage]) {
       setLanguage(newLanguage)
+    }
+  }
+
+  const changeCurrency = (newCurrency) => {
+    if (currencies.find(c => c.code === newCurrency)) {
+      setCurrency(newCurrency)
     }
   }
 
@@ -68,7 +94,7 @@ export const LanguageProvider = ({ children }) => {
   }
 
   return (
-    <LanguageContext.Provider value={{ language, changeLanguage, t, languages }}>
+    <LanguageContext.Provider value={{ language, changeLanguage, t, languages, currency, changeCurrency, currencies }}>
       {children}
     </LanguageContext.Provider>
   )

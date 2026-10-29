@@ -3,6 +3,7 @@ import { Link, useLocation } from 'react-router-dom'
 import useCartStore from '../hooks/useCart'
 import { useLanguage } from '../hooks/useLanguage'
 import LanguageSwitcher from './LanguageSwitcher'
+import CurrencySwitcher from './CurrencySwitcher'
 import AvioryLogo from './AvioryLogo'
 import CartDrawer from './CartDrawer'
 import SearchModal from './SearchModal'
@@ -349,6 +350,7 @@ export default function Header({ scrolled }) {
               >
                 {t('common.bookConsultation')}
               </button>
+              <CurrencySwitcher variant="dark" />
               <LanguageSwitcher variant="dark" />
             </div>
           </div>
@@ -571,11 +573,14 @@ export default function Header({ scrolled }) {
           >
             {t('common.bookConsultation')}
           </button>
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '0.5rem' }}>
             <Link to="/contact" className="tiffany-header__utility-link" onClick={() => setMobileMenuOpen(false)}>
               {t('common.contact')}
             </Link>
-            <LanguageSwitcher variant="light" />
+            <div style={{ display: 'flex', gap: '1rem' }}>
+              <CurrencySwitcher variant="light" />
+              <LanguageSwitcher variant="light" />
+            </div>
           </div>
         </div>
       </div>

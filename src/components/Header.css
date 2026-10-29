@@ -315,7 +315,7 @@
 
 .tiffany-mega {
   position: fixed;
-  top: var(--header-height, 140px);
+  top: 0;
   left: 0;
   right: 0;
   z-index: 1999;
@@ -324,7 +324,7 @@
   box-shadow: 0 16px 48px rgba(0, 0, 0, 0.12);
   opacity: 0;
   visibility: hidden;
-  transform: translateY(-8px);
+  transform: translateY(-200px);
   transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
   pointer-events: none;
 }
@@ -334,6 +334,7 @@
   visibility: visible;
   transform: translateY(0);
   pointer-events: auto;
+  margin-top: 140px;
 }
 
 .tiffany-mega__inner {
