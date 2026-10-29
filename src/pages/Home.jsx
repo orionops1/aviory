@@ -124,40 +124,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* SECTION 2: DUAL PRODUCT GRID (2 COLUMNS) */}
-      <section className="dual-product-grid">
-        <div className="container">
-          <div className="grid-2col">
-            <div className="product-group">
-              <div className="product-group__image">
-                <div style={{ background: 'linear-gradient(135deg, #421820 0%, #7d3345 50%, #d46b7a 100%)', height: '400px', borderRadius: '4px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '3rem', opacity: 0.4 }}>
-                  💎
-                </div>
-              </div>
-              <h3 className="product-group__title">Pink Sapphires</h3>
-              <p className="product-group__desc">Vivid and delicate hues</p>
-              <Link to="/gemstones?category=pink-sapphires" className="btn btn-link">
-                SHOP NOW
-              </Link>
-            </div>
-
-            <div className="product-group">
-              <div className="product-group__image">
-                <div style={{ background: 'linear-gradient(135deg, #0c2b18 0%, #1a5732 50%, #2e8b53 100%)', height: '400px', borderRadius: '4px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '3rem', opacity: 0.4 }}>
-                  ✨
-                </div>
-              </div>
-              <h3 className="product-group__title">Emeralds</h3>
-              <p className="product-group__desc">Rich and radiant green</p>
-              <Link to="/gemstones?category=emeralds" className="btn btn-link">
-                SHOP NOW
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* SECTION 3: AVIORY LOVE COLLECTION - LIFESTYLE + PRODUCTS (50/50) */}
+      {/* SECTION 2: AVIORY LOVE COLLECTION - LIFESTYLE + PRODUCTS (50/50) */}
       <section className="lifestyle-section lifestyle-section--rings">
         <div className="lifestyle-grid lifestyle-grid--2col lifestyle-grid--reverse">
           <div className="lifestyle-content">
@@ -176,7 +143,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* SECTION 4: FEATURED PRODUCTS SHOWCASE (4-COLUMN GRID) */}
+      {/* SECTION 3: FEATURED PRODUCTS SHOWCASE (4-COLUMN GRID) */}
       <section className="featured-products">
         <div className="container">
           <h2 className="section-heading">Featured Pieces</h2>
@@ -188,7 +155,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* SECTION 5: FINE JEWELLERY SHOWCASE */}
+      {/* SECTION 4: FINE JEWELLERY SHOWCASE */}
       <section className="jewellery-showcase">
         <div className="container">
           <h2 className="section-heading">Haute Joaillerie</h2>
@@ -200,7 +167,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* SECTION 6: JOURNAL PREVIEW */}
+      {/* SECTION 5: JOURNAL PREVIEW */}
       <section className="journal-preview">
         <div className="container">
           <div className="section-title">
@@ -229,7 +196,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* SECTION 7: NEWSLETTER */}
+      {/* SECTION 6: NEWSLETTER */}
       <section className="newsletter-section">
         <div className="container">
           <div className="newsletter-content">
@@ -250,7 +217,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* SECTION 8: FINAL CTA */}
+      {/* SECTION 7: FINAL CTA */}
       <section className="cta-section">
         <div className="container">
           <h2>Get in Touch</h2>
