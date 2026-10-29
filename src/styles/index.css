@@ -26,7 +26,7 @@
 
   --font-brand: 'BlackGold', serif;
   --font-serif: 'Playfair Display', serif;
-  --font-body: 'Cormorant Garamond', serif;
+  --font-body: 'Montserrat', sans-serif;
   --font-ui: 'Montserrat', sans-serif;
 
   --transition: all 0.3s ease;
@@ -550,10 +550,10 @@ footer {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, var(--color-black) 0%, var(--color-charcoal) 100%);
   color: var(--color-ivory);
   padding: var(--spacing-3xl) 0;
   overflow: hidden;
+  background: linear-gradient(135deg, var(--color-black) 0%, var(--color-charcoal) 100%);
 }
 
 .hero-background {
@@ -562,15 +562,29 @@ footer {
   left: 0;
   right: 0;
   bottom: 0;
-  background-image: url('/images/hero-bg.jpg');
+  background-image: url('/images/hero-banner.jpg');
   background-size: cover;
   background-position: center;
-  opacity: 0.3;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  opacity: 1;
+  z-index: 1;
+}
+
+.hero-background::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(17, 17, 17, 0.4);
+  z-index: 2;
 }
 
 .hero-content {
   position: relative;
-  z-index: 2;
+  z-index: 3;
   text-align: center;
   max-width: 800px;
 }
@@ -579,6 +593,8 @@ footer {
   color: var(--color-ivory);
   margin-bottom: var(--spacing-lg);
   animation: fadeInUp 0.8s ease;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+  font-weight: 700;
 }
 
 .hero-subtitle {
@@ -588,6 +604,7 @@ footer {
   letter-spacing: 0.05em;
   margin-bottom: var(--spacing-2xl);
   animation: fadeInUp 0.8s ease 0.2s both;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
 }
 
 .hero-cta {
