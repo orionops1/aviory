@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
-import HeroCarousel from '../components/HeroCarousel'
+import HeroVideo from '../components/HeroVideo'
 import ProductCard from '../components/ProductCard'
 import { gemstones, journalArticles, engagementRings, fineJewellery } from '../data/products'
 import { useLanguage } from '../hooks/useLanguage'
@@ -18,40 +18,24 @@ export default function Home() {
     setTimeout(() => setSubscribed(false), 3500)
   }
 
-  // Hero carousel slides with looping videos (Tiffany/Harry Winston style)
-  const heroSlides = [
-    {
-      video: '/videos/hero-sapphire.mp4',
-      poster: '/images/hero-sapphire-lifestyle.jpg',
-      title: 'Ceylon Sapphires',
-      subtitle: 'Rare gemstones from the Indian Ocean',
-      cta: { label: 'Explore Gemstones', href: '/gemstones' }
-    },
-    {
-      video: '/videos/hero-love-collection.mp4',
-      poster: '/images/hero-engagement-couple.jpg',
-      title: 'AVIORY Love Collection',
-      subtitle: 'We add value to every love story',
-      cta: { label: 'Explore the Collection', href: '/engagement-rings' }
-    },
-    {
-      video: '/videos/hero-jewellery.mp4',
-      poster: '/images/hero-fine-jewellery.jpg',
-      title: 'Haute Joaillerie',
-      subtitle: 'Exceptional pieces, timeless elegance',
-      cta: { label: 'Discover More', href: '/fine-jewellery' }
-    }
-  ]
+  // Hero section with single looping video (Tiffany/Harry Winston style)
+  const heroVideo = {
+    video: '/videos/hero-luxury.mp4',
+    poster: '/images/hero-banner.jpg',
+    title: t('hero.title'),
+    subtitle: t('hero.subtitle'),
+    cta: { label: 'Discover Gemstones', href: '/gemstones' }
+  }
 
   return (
     <>
-      {/* HERO CAROUSEL */}
-      <HeroCarousel 
-        slides={heroSlides}
-        defaultTitle={t('hero.title')}
-        defaultSubtitle={t('hero.subtitle')}
-        autoplayInterval={8000}
-        transitionDuration={1.0}
+      {/* HERO VIDEO */}
+      <HeroVideo 
+        video={heroVideo.video}
+        poster={heroVideo.poster}
+        title={heroVideo.title}
+        subtitle={heroVideo.subtitle}
+        cta={heroVideo.cta}
       />
 
       {/* SECTION 1: FEATURED GEMSTONES - LIFESTYLE + PRODUCTS (50/50) */}
