@@ -145,11 +145,11 @@ export default function OurHouse() {
           paddingRight: 'var(--spacing-xl)'
         }}>
           {[
-            { year: '1970s', event: 'Founded as a family gemstone trading house in Sri Lanka' },
-            { year: '1980s', event: 'Established relationships with premier gemstone sources' },
-            { year: '1990s', event: 'Expanded into fine jewelry creation and bespoke design' },
-            { year: '2000s', event: 'Became recognized internationally for excellence and authenticity' },
-            { year: '2010s', event: 'Pioneered ethical sourcing and sustainability practices' },
+            { year: '2009', event: 'Founded as a luxury gemstone and jewelry brand' },
+            { year: '2010s', event: 'Established relationships with premier gemstone sources' },
+            { year: '2015', event: 'Expanded into fine jewelry creation and bespoke design' },
+            { year: '2018', event: 'Became recognized internationally for excellence and authenticity' },
+            { year: '2020', event: 'Pioneered ethical sourcing and sustainability practices' },
             { year: '2024', event: 'Continuing the legacy of luxury and craftsmanship' }
           ].map((item, idx) => (
             <div key={idx} style={{ marginBottom: 'var(--spacing-lg)', paddingLeft: 'var(--spacing-lg)' }}>

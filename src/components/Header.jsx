@@ -12,7 +12,7 @@ export default function Header({ scrolled }) {
       <div className="container">
         <div className="header-content">
           <Link to="/" className="logo">
-            AVIORY
+            AVIORY & CO.
           </Link>
 
           <nav className={mobileMenuOpen ? 'mobile-open' : ''}>
