@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
-import HeroBanner from '../components/HeroBanner'
+import HeroCarousel from '../components/HeroCarousel'
 import ProductCard from '../components/ProductCard'
 import { gemstones, journalArticles, engagementRings, fineJewellery } from '../data/products'
 import { useLanguage } from '../hooks/useLanguage'
@@ -18,15 +18,37 @@ export default function Home() {
     setTimeout(() => setSubscribed(false), 3500)
   }
 
+  // Hero carousel slides with lifestyle imagery
+  const heroSlides = [
+    {
+      image: '/images/hero-sapphire-lifestyle.jpg',
+      title: 'Ceylon Sapphires',
+      subtitle: 'Rare gemstones from the Indian Ocean',
+      cta: { label: 'Explore Gemstones', href: '/gemstones' }
+    },
+    {
+      image: '/images/hero-engagement-couple.jpg',
+      title: 'Engagement Rings',
+      subtitle: 'Crafted for a lifetime of love',
+      cta: { label: 'View Collections', href: '/engagement-rings' }
+    },
+    {
+      image: '/images/hero-fine-jewellery.jpg',
+      title: 'Haute Joaillerie',
+      subtitle: 'Exceptional pieces, timeless elegance',
+      cta: { label: 'Discover More', href: '/fine-jewellery' }
+    }
+  ]
+
   return (
     <>
-      {/* HERO */}
-      <HeroBanner 
-        title={t('hero.title')}
-        subtitle={t('hero.subtitle')}
-        ctaPrimary={{ label: "Discover Gemstones", href: "/gemstones" }}
-        videoSrc="/videos/hero-loop.mp4"
-        fallbackImage="/images/hero-banner.jpg"
+      {/* HERO CAROUSEL */}
+      <HeroCarousel 
+        slides={heroSlides}
+        defaultTitle={t('hero.title')}
+        defaultSubtitle={t('hero.subtitle')}
+        autoplayInterval={5000}
+        transitionDuration={0.8}
       />
 
       {/* SECTION 1: FEATURED GEMSTONES - LIFESTYLE + PRODUCTS (50/50) */}
