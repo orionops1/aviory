@@ -140,7 +140,7 @@ export default function PrivateConsultations() {
               <div key={idx} style={{
                 backgroundColor: '#FFFFFF',
                 padding: 'var(--spacing-lg)',
-                border: '1px solid #D0CCBE)'
+                border: '1px solid #D0CCBE'
               }}>
                 <h4 style={{ marginBottom: 'var(--spacing-md)' }}>{item.title}</h4>
                 <p style={{ color: '#2B2B2B' }}>{item.description}</p>
@@ -177,7 +177,7 @@ export default function PrivateConsultations() {
               backgroundColor: '#F8F4EF',
               padding: 'var(--spacing-lg)',
               border: '1px solid #D0CCBE',
-              borderLeft: '4px solid #D4AF7F)'
+              borderLeft: '4px solid #D4AF7F'
             }}>
               <p style={{ fontStyle: 'italic', marginBottom: 'var(--spacing-md)', color: '#2B2B2B' }}>
                 "{testimonial.text}"

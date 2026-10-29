@@ -98,7 +98,7 @@ export default function Bespoke() {
             <div key={idx} style={{
               backgroundColor: '#F8F4EF',
               padding: 'var(--spacing-lg)',
-              border: '1px solid #D0CCBE)'
+              border: '1px solid #D0CCBE'
             }}>
               <h4 style={{ marginBottom: 'var(--spacing-md)' }}>{item.title}</h4>
               <p style={{ color: '#2B2B2B' }}>{item.description}</p>
@@ -153,7 +153,7 @@ export default function Bespoke() {
           {faqs.filter(faq => faq.category === 'Bespoke').map(faq => (
             <div key={faq.id} style={{
               marginBottom: 'var(--spacing-lg)',
-              borderBottom: '1px solid #D0CCBE)',
+              borderBottom: '1px solid #D0CCBE',
               paddingBottom: 'var(--spacing-lg)'
             }}>
               <button

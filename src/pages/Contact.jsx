@@ -66,7 +66,7 @@ export default function Contact() {
               backgroundColor: '#F8F4EF',
               padding: 'var(--spacing-lg)',
               marginBottom: 'var(--spacing-lg)',
-              border: '1px solid #D0CCBE)'
+              border: '1px solid #D0CCBE'
             }}>
               <h4 style={{ marginBottom: 'var(--spacing-md)' }}>Address</h4>
               <p style={{ color: '#2B2B2B', lineHeight: 1.8 }}>
@@ -78,7 +78,7 @@ export default function Contact() {
               backgroundColor: '#F8F4EF',
               padding: 'var(--spacing-lg)',
               marginBottom: 'var(--spacing-lg)',
-              border: '1px solid #D0CCBE)'
+              border: '1px solid #D0CCBE'
             }}>
               <h4 style={{ marginBottom: 'var(--spacing-md)' }}>Phone</h4>
               <p style={{ color: '#2B2B2B' }}>
@@ -92,7 +92,7 @@ export default function Contact() {
               backgroundColor: '#F8F4EF',
               padding: 'var(--spacing-lg)',
               marginBottom: 'var(--spacing-lg)',
-              border: '1px solid #D0CCBE)'
+              border: '1px solid #D0CCBE'
             }}>
               <h4 style={{ marginBottom: 'var(--spacing-md)' }}>Email</h4>
               <p style={{ color: '#2B2B2B' }}>
@@ -106,7 +106,7 @@ export default function Contact() {
               backgroundColor: '#F8F4EF',
               padding: 'var(--spacing-lg)',
               marginBottom: 'var(--spacing-lg)',
-              border: '1px solid #D0CCBE)'
+              border: '1px solid #D0CCBE'
             }}>
               <h4 style={{ marginBottom: 'var(--spacing-md)' }}>Hours</h4>
               <p style={{ color: '#2B2B2B', marginBottom: 'var(--spacing-sm)' }}>
@@ -121,7 +121,7 @@ export default function Contact() {
               backgroundColor: '#111111',
               color: '#F8F4EF',
               padding: 'var(--spacing-lg)',
-              border: '1px solid #D4AF7F)',
+              border: '1px solid #D4AF7F',
               marginTop: 'var(--spacing-xl)'
             }}>
               <h4 style={{ color: '#D4AF7F', marginBottom: 'var(--spacing-md)' }}>Response Time</h4>
@@ -234,7 +234,7 @@ export default function Contact() {
               <div key={idx} style={{
                 backgroundColor: '#FFFFFF',
                 padding: 'var(--spacing-lg)',
-                border: '1px solid #D0CCBE)',
+                border: '1px solid #D0CCBE',
                 textAlign: 'center'
               }}>
                 <div style={{ fontSize: '2.5rem', marginBottom: 'var(--spacing-md)' }}>

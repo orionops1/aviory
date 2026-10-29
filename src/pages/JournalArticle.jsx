@@ -75,7 +75,7 @@ export default function JournalArticle() {
             backgroundColor: '#F8F4EF',
             padding: 'var(--spacing-lg)',
             marginTop: 'var(--spacing-3xl)',
-            borderLeft: '4px solid #D4AF7F)'
+            borderLeft: '4px solid #D4AF7F'
           }}>
             <h4 style={{ marginBottom: 'var(--spacing-md)' }}>About the Author</h4>
             <p style={{ marginBottom: 'var(--spacing-md)', fontStyle: 'italic' }}>
@@ -88,7 +88,7 @@ export default function JournalArticle() {
 
           {/* CTA */}
           <div style={{
-            backgroundColor: 'linear-gradient(135deg, #111111 0%, #2B2B2B 100%)',
+            background: 'linear-gradient(135deg, #111111 0%, #2B2B2B 100%)',
             color: '#F8F4EF',
             padding: 'var(--spacing-2xl)',
             marginTop: 'var(--spacing-3xl)',

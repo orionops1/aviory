@@ -44,8 +44,8 @@ export default function OurHouse() {
               <div key={idx} style={{
                 backgroundColor: '#FFFFFF',
                 padding: 'var(--spacing-lg)',
-                border: '1px solid #D0CCBE)',
-                borderLeft: '4px solid #D4AF7F)'
+                border: '1px solid #D0CCBE',
+                borderLeft: '4px solid #D4AF7F'
               }}>
                 <h4 style={{ marginBottom: 'var(--spacing-md)' }}>{value.title}</h4>
                 <p style={{ color: '#2B2B2B' }}>{value.description}</p>
@@ -67,7 +67,7 @@ export default function OurHouse() {
             <div key={idx} style={{
               backgroundColor: '#F8F4EF',
               padding: 'var(--spacing-lg)',
-              border: '1px solid #D0CCBE)'
+              border: '1px solid #D0CCBE'
             }}>
               <div style={{
                 width: '100%',
@@ -124,7 +124,7 @@ export default function OurHouse() {
               <div key={idx} style={{
                 backgroundColor: '#2B2B2B',
                 padding: 'var(--spacing-lg)',
-                border: '1px solid #D4AF7F)'
+                border: '1px solid #D4AF7F'
               }}>
                 <h4 style={{ color: '#D4AF7F', marginBottom: 'var(--spacing-md)' }}>{section.title}</h4>
                 <p style={{ color: '#E8E3DC', lineHeight: 1.6 }}>{section.content}</p>
