@@ -73,6 +73,11 @@ export default function Home() {
         </div>
       </section>
 
+      {/* SECTION DIVIDER */}
+      <div className="section-divider">
+        <div className="section-divider__icon">💎</div>
+      </div>
+
       {/* FEATURED HERO - FULL WIDTH WITH TEXT OVERLAY (Gifts to Engrave) */}
       <section className="featured-hero-section">
         <div className="featured-hero-grid">
@@ -104,6 +109,11 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* SECTION DIVIDER */}
+      <div className="section-divider">
+        <div className="section-divider__icon">💎</div>
+      </div>
 
       {/* SECTION 1: FEATURED GEMSTONES - LIFESTYLE + PRODUCTS (50/50) */}
       <section className="lifestyle-section lifestyle-section--gemstones">
@@ -155,6 +165,11 @@ export default function Home() {
         </div>
       </section>
 
+      {/* SECTION DIVIDER */}
+      <div className="section-divider">
+        <div className="section-divider__icon">💎</div>
+      </div>
+
       {/* SECTION 4: FINE JEWELLERY SHOWCASE */}
       <section className="jewellery-showcase">
         <div className="container">
@@ -166,6 +181,11 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* SECTION DIVIDER */}
+      <div className="section-divider">
+        <div className="section-divider__icon">💎</div>
+      </div>
 
       {/* SECTION 5: JOURNAL PREVIEW */}
       <section className="journal-preview">
@@ -216,6 +236,11 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* SECTION DIVIDER */}
+      <div className="section-divider">
+        <div className="section-divider__icon">💎</div>
+      </div>
 
       {/* SECTION 7: FINAL CTA */}
       <section className="cta-section">
