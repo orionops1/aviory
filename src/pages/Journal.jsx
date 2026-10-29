@@ -1,0 +1,154 @@
+import React, { useState } from 'react'
+import { Link } from 'react-router-dom'
+import { journalArticles } from '../data/products'
+import './Journal.css'
+
+export default function Journal() {
+  const [selectedCategory, setSelectedCategory] = useState('all')
+
+  const categories = ['all', ...new Set(journalArticles.map(a => a.category))]
+
+  const filtered = journalArticles.filter(article =>
+    selectedCategory === 'all' || article.category === selectedCategory
+  )
+
+  return (
+    <>
+      <section style={{
+        backgroundColor: '#111111',
+        color: '#F8F4EF',
+        padding: 'var(--spacing-3xl) 0',
+        textAlign: 'center'
+      }}>
+        <div className="container">
+          <h1 style={{ color: '#D4AF7F' }}>Journal</h1>
+          <p style={{ fontSize: '1.1rem', marginTop: 'var(--spacing-md)', opacity: 0.9 }}>
+            Insights, education, and inspiration from our experts
+          </p>
+        </div>
+      </section>
+
+      <div className="container" style={{ paddingTop: 'var(--spacing-3xl)', paddingBottom: 'var(--spacing-3xl)' }}>
+        {/* CATEGORY FILTERS */}
+        <div style={{ marginBottom: 'var(--spacing-xl)', display: 'flex', gap: 'var(--spacing-sm)', flexWrap: 'wrap' }}>
+          {categories.map(cat => (
+            <button
+              key={cat}
+              className={`filter-option ${selectedCategory === cat ? 'active' : ''}`}
+              onClick={() => setSelectedCategory(cat)}
+            >
+              {cat.charAt(0).toUpperCase() + cat.slice(1)}
+            </button>
+          ))}
+        </div>
+
+        {/* ARTICLES GRID */}
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))',
+          gap: 'var(--spacing-xl)'
+        }}>
+          {filtered.map(article => (
+            <Link
+              key={article.id}
+              to={`/journal/${article.slug}`}
+              style={{ textDecoration: 'none', color: 'inherit' }}
+            >
+              <article style={{
+                backgroundColor: '#FFFFFF',
+                border: '1px solid #D0CCBE',
+                overflow: 'hidden',
+                transition: 'var(--transition)',
+                cursor: 'pointer',
+                display: 'flex',
+                flexDirection: 'column',
+                height: '100%'
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.borderColor = '#D4AF7F'
+                e.currentTarget.style.boxShadow = '0 8px 24px rgba(212, 175, 127, 0.15)'
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.borderColor = '#D0CCBE'
+                e.currentTarget.style.boxShadow = 'none'
+              }}
+              >
+                <div style={{
+                  width: '100%',
+                  height: '200px',
+                  backgroundColor: '#E8E3DC',
+                  overflow: 'hidden'
+                }}>
+                  <img
+                    src={article.image}
+                    alt={article.title}
+                    style={{
+                      width: '100%',
+                      height: '100%',
+                      objectFit: 'cover',
+                      transition: 'var(--transition-slow)'
+                    }}
+                  />
+                </div>
+
+                <div style={{ padding: 'var(--spacing-lg)', flex: 1, display: 'flex', flexDirection: 'column' }}>
+                  <div style={{
+                    fontSize: '0.75rem',
+                    textTransform: 'uppercase',
+                    letterSpacing: '0.1em',
+                    color: '#A68563',
+                    marginBottom: 'var(--spacing-sm)'
+                  }}>
+                    {article.category}
+                  </div>
+
+                  <h3 style={{
+                    fontSize: '1.2rem',
+                    fontWeight: 600,
+                    marginBottom: 'var(--spacing-md)',
+                    lineHeight: 1.3,
+                    flex: 1
+                  }}>
+                    {article.title}
+                  </h3>
+
+                  <p style={{
+                    color: '#2B2B2B',
+                    fontSize: '0.95rem',
+                    marginBottom: 'var(--spacing-md)',
+                    lineHeight: 1.6
+                  }}>
+                    {article.excerpt}
+                  </p>
+
+                  <div style={{
+                    display: 'flex',
+                    justifyContent: 'space-between',
+                    alignItems: 'center',
+                    fontSize: '0.8rem',
+                    color: '#A68563'
+                  }}>
+                    <span>By {article.author}</span>
+                    <span>{new Date(article.publishDate).toLocaleDateString()}</span>
+                  </div>
+                </div>
+              </article>
+            </Link>
+          ))}
+        </div>
+
+        {filtered.length === 0 && (
+          <div style={{ textAlign: 'center', padding: 'var(--spacing-2xl) 0' }}>
+            <p style={{ color: '#2B2B2B', marginBottom: 'var(--spacing-lg)' }}>No articles in this category.</p>
+            <button
+              className="btn btn-primary"
+              onClick={() => setSelectedCategory('all')}
+            >
+              View All Articles
+            </button>
+          </div>
+        )}
+      </div>
+    </>
+  )
+}
