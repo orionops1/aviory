@@ -4,6 +4,7 @@ import { LanguageProvider } from './hooks/useLanguage'
 import Header from './components/Header'
 import Footer from './components/Footer'
 import WhatsAppConcierge from './components/WhatsAppConcierge'
+import ScrollToTop from './components/ScrollToTop'
 
 // Pages
 import Home from './pages/Home'
@@ -53,6 +54,7 @@ export default function App() {
   return (
     <LanguageProvider>
       <Router>
+        <ScrollToTop />
         <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh', position: 'relative' }}>
           <Header scrolled={scrolled} />
           <main style={{ flex: 1 }}>

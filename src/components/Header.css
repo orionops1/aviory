@@ -20,6 +20,7 @@
 
 /* ──────────────────────────────────────────────────────────
    TIER 1: GLOBAL UTILITY BAR (Topmost thin strip)
+   Note: NO overflow: hidden so language dropdown can overflow freely
    ────────────────────────────────────────────────────────── */
 
 .tiffany-header__utility {
@@ -30,24 +31,22 @@
   letter-spacing: 0.12em;
   text-transform: uppercase;
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  transition: max-height 0.35s ease, opacity 0.35s ease;
-  overflow: hidden;
+  position: relative;
+  z-index: 2100;
 }
 
 .tiffany-header--scrolled .tiffany-header__utility {
-  max-height: 0;
-  opacity: 0;
-  padding: 0;
-  border-bottom: none;
+  display: none;
 }
 
 .tiffany-header__utility-inner {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
+  padding-top: 0.45rem;
+  padding-bottom: 0.45rem;
   gap: 1.5rem;
+  position: relative;
 }
 
 .tiffany-header__utility-left,
@@ -105,37 +104,51 @@
 
 /* ──────────────────────────────────────────────────────────
    TIER 2: CENTERPIECE BRAND LOGO ROW
+   GUARANTEED 100% DEAD CENTER (Same as Tiffany)
    ────────────────────────────────────────────────────────── */
 
 .tiffany-header__brand-row {
   background-color: var(--color-white);
-  padding-top: 1.25rem;
-  padding-bottom: 1.25rem;
+  padding-top: 1.35rem;
+  padding-bottom: 1.35rem;
   border-bottom: 1px solid var(--color-gray-light);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   transition: padding 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .tiffany-header--scrolled .tiffany-header__brand-row {
-  padding-top: 0.65rem;
-  padding-bottom: 0.65rem;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
 }
 
 .tiffany-header__brand-inner {
-  display: grid;
-  grid-template-columns: 1fr auto 1fr;
+  position: relative;
+  width: 100%;
+  display: flex;
   align-items: center;
-  gap: 1rem;
+  justify-content: center;
 }
 
+/* Centered Logo */
 .tiffany-header__logo-link {
   display: flex;
+  align-items: center;
   justify-content: center;
   text-decoration: none;
+  margin: 0 auto;
+  text-align: center;
 }
 
-/* Mobile Hamburger */
+/* Mobile Hamburger (Pinned to left edge) */
 .tiffany-header__hamburger {
   display: none;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
   flex-direction: column;
   justify-content: center;
   gap: 5px;
@@ -145,6 +158,7 @@
   padding: 0;
   width: 26px;
   height: 26px;
+  z-index: 10;
 }
 
 .tiffany-hamburger-bar {
@@ -165,12 +179,16 @@
   transform: translateY(-6.5px) rotate(-45deg);
 }
 
-/* Right-side Action Cluster */
+/* Right-side Action Cluster (Pinned to right edge) */
 .tiffany-header__actions {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
   display: flex;
   align-items: center;
-  justify-content: flex-end;
   gap: 1.5rem;
+  z-index: 10;
 }
 
 .tiffany-header__action-btn {
@@ -225,6 +243,8 @@
 .tiffany-header__nav {
   background-color: var(--color-white);
   border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  position: relative;
+  z-index: 2005;
 }
 
 .tiffany-header__nav-list {
@@ -233,7 +253,7 @@
   margin: 0;
   padding: 0;
   justify-content: center;
-  gap: 3rem;
+  gap: 3.25rem;
 }
 
 .tiffany-header__nav-item {
@@ -244,7 +264,7 @@
   display: flex;
   align-items: center;
   gap: 0.4rem;
-  padding: 0.85rem 0;
+  padding: 0.95rem 0;
   font-family: var(--font-ui);
   font-size: 0.74rem;
   font-weight: 600;
@@ -255,6 +275,7 @@
   white-space: nowrap;
   transition: color 0.25s ease;
   position: relative;
+  cursor: pointer;
 }
 
 .tiffany-header__nav-link::after {

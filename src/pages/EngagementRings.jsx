@@ -1,23 +1,52 @@
-import React, { useState, useMemo } from 'react'
-import { Link } from 'react-router-dom'
+import React, { useState, useMemo, useEffect } from 'react'
+import { Link, useSearchParams } from 'react-router-dom'
 import ProductCard from '../components/ProductCard'
 import { engagementRings } from '../data/products'
 import './EngagementRings.css'
 
 export default function EngagementRings() {
+  const [searchParams, setSearchParams] = useSearchParams()
   const [selectedStyle, setSelectedStyle] = useState('all')
   const [selectedStone, setSelectedStone] = useState('all')
 
   const styles = ['all', ...new Set(engagementRings.map(r => r.style))]
   const stoneTypes = ['all', ...new Set(engagementRings.map(r => r.stoneType))]
 
+  useEffect(() => {
+    const styleParam = searchParams.get('style')
+    const stoneParam = searchParams.get('stone')
+
+    if (styleParam) {
+      const match = styles.find(s => s.toLowerCase() === styleParam.toLowerCase())
+      if (match) setSelectedStyle(match)
+    } else {
+      setSelectedStyle('all')
+    }
+
+    if (stoneParam) {
+      const match = stoneTypes.find(s => s.toLowerCase().includes(stoneParam.toLowerCase()))
+      if (match) setSelectedStone(match)
+    } else {
+      setSelectedStone('all')
+    }
+  }, [searchParams])
+
   const filtered = useMemo(() => {
     return engagementRings.filter(ring => {
-      if (selectedStyle !== 'all' && ring.style !== selectedStyle) return false
-      if (selectedStone !== 'all' && ring.stoneType !== selectedStone) return false
+      if (selectedStyle !== 'all' && ring.style.toLowerCase() !== selectedStyle.toLowerCase()) return false
+      if (selectedStone !== 'all' && ring.stoneType.toLowerCase() !== selectedStone.toLowerCase()) return false
       return true
     })
   }, [selectedStyle, selectedStone])
+
+  const handleStyleChange = (style) => {
+    setSelectedStyle(style)
+    if (style === 'all') {
+      setSearchParams({})
+    } else {
+      setSearchParams({ style })
+    }
+  }
 
   return (
     <>
@@ -28,9 +57,12 @@ export default function EngagementRings() {
         textAlign: 'center'
       }}>
         <div className="container">
-          <h1 style={{ color: '#D4AF7F' }}>Engagement Rings</h1>
-          <p style={{ fontSize: '1.1rem', marginTop: 'var(--spacing-md)', opacity: 0.9 }}>
-            Timeless designs featuring exceptional sapphires and precious gemstones
+          <span style={{ display: 'block', fontSize: '0.72rem', letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--color-champagne)', marginBottom: '0.5rem', fontWeight: 700 }}>
+            CELEBRATE LOVE
+          </span>
+          <h1 style={{ color: '#ffffff', fontFamily: 'var(--font-serif)', fontSize: 'clamp(2.4rem, 5vw, 3.5rem)' }}>Engagement Rings</h1>
+          <p style={{ fontSize: '1.05rem', marginTop: 'var(--spacing-sm)', opacity: 0.9, maxWidth: '600px', margin: '0 auto' }}>
+            Timeless designs featuring exceptional unheated Ceylon sapphires and hand-crafted mountings.
           </p>
         </div>
       </section>
@@ -38,11 +70,11 @@ export default function EngagementRings() {
       <div className="container" style={{ paddingTop: 'var(--spacing-3xl)', paddingBottom: 'var(--spacing-3xl)' }}>
         <div className="filters-section">
           <div className="filters-header">
-            <h3>Filter by Style & Stone</h3>
+            <h3>Filter by Style &amp; Stone</h3>
             <button
               className="btn btn-small"
               onClick={() => {
-                setSelectedStyle('all')
+                handleStyleChange('all')
                 setSelectedStone('all')
               }}
             >
@@ -56,25 +88,10 @@ export default function EngagementRings() {
               {styles.map(style => (
                 <button
                   key={style}
-                  className={`filter-option ${selectedStyle === style ? 'active' : ''}`}
-                  onClick={() => setSelectedStyle(style)}
+                  className={`filter-option ${selectedStyle.toLowerCase() === style.toLowerCase() ? 'active' : ''}`}
+                  onClick={() => handleStyleChange(style)}
                 >
                   {style.charAt(0).toUpperCase() + style.slice(1)}
-                </button>
-              ))}
-            </div>
-          </div>
-
-          <div>
-            <h4 style={{ marginBottom: 'var(--spacing-md)', fontSize: '0.9rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Stone Type</h4>
-            <div className="filter-group">
-              {stoneTypes.map(type => (
-                <button
-                  key={type}
-                  className={`filter-option ${selectedStone === type ? 'active' : ''}`}
-                  onClick={() => setSelectedStone(type)}
-                >
-                  {type}
                 </button>
               ))}
             </div>
@@ -99,7 +116,7 @@ export default function EngagementRings() {
             <button
               className="btn btn-primary"
               onClick={() => {
-                setSelectedStyle('all')
+                handleStyleChange('all')
                 setSelectedStone('all')
               }}
             >
@@ -108,57 +125,6 @@ export default function EngagementRings() {
           </div>
         )}
       </div>
-
-      {/* RING SIZING GUIDE */}
-      <section style={{ backgroundColor: '#F8F4EF', paddingTop: 'var(--spacing-3xl)', paddingBottom: 'var(--spacing-3xl)' }}>
-        <div className="container">
-          <h2 style={{ marginBottom: 'var(--spacing-2xl)', textAlign: 'center' }}>Ring Sizing Guide</h2>
-          <div style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
-            gap: 'var(--spacing-xl)'
-          }}>
-            <div style={{ backgroundColor: '#FFFFFF', padding: 'var(--spacing-lg)', border: '1px solid #D0CCBE' }}>
-              <h4 style={{ marginBottom: 'var(--spacing-md)' }}>Size Chart</h4>
-              <table style={{ width: '100%', borderCollapse: 'collapse' }}>
-                <tbody>
-                  {['4', '5', '6', '7', '8', '9', '10'].map(size => (
-                    <tr key={size} style={{ borderBottom: '1px solid #E8E3DC' }}>
-                      <td style={{ padding: 'var(--spacing-sm)', fontWeight: 600 }}>Size {size}</td>
-                      <td style={{ padding: 'var(--spacing-sm)' }}>Diameter</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-            <div style={{ backgroundColor: '#FFFFFF', padding: 'var(--spacing-lg)', border: '1px solid #D0CCBE' }}>
-              <h4 style={{ marginBottom: 'var(--spacing-md)' }}>How to Measure</h4>
-              <ol style={{ marginLeft: 'var(--spacing-md)', color: '#2B2B2B' }}>
-                <li>Measure an existing ring that fits comfortably</li>
-                <li>Measure the inside diameter in millimeters</li>
-                <li>Use a ring size chart to find your size</li>
-                <li>Contact us for professional sizing</li>
-              </ol>
-            </div>
-            <div style={{ backgroundColor: '#FFFFFF', padding: 'var(--spacing-lg)', border: '1px solid #D0CCBE' }}>
-              <h4 style={{ marginBottom: 'var(--spacing-md)' }}>Professional Sizing</h4>
-              <p style={{ marginBottom: 'var(--spacing-md)', color: '#2B2B2B' }}>
-                We offer professional ring sizing services. Visit our atelier or contact us to arrange a fitting.
-              </p>
-              <Link to="/contact" className="btn btn-primary btn-small">
-                Request Fitting
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA */}
-      <section className="container" style={{ paddingTop: 'var(--spacing-2xl)', paddingBottom: 'var(--spacing-2xl)', textAlign: 'center' }}>
-        <h3 style={{ marginBottom: 'var(--spacing-md)' }}>Design Your Perfect Ring</h3>
-        <p style={{ marginBottom: 'var(--spacing-lg)' }}>Create a bespoke engagement ring that's uniquely yours.</p>
-        <Link to="/bespoke/enquiry" className="btn btn-primary">Start Design Process</Link>
-      </section>
     </>
   )
 }

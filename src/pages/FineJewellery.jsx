@@ -1,23 +1,52 @@
-import React, { useState, useMemo } from 'react'
-import { Link } from 'react-router-dom'
+import React, { useState, useMemo, useEffect } from 'react'
+import { Link, useSearchParams } from 'react-router-dom'
 import ProductCard from '../components/ProductCard'
 import { fineJewellery } from '../data/products'
 import './FineJewellery.css'
 
 export default function FineJewellery() {
+  const [searchParams, setSearchParams] = useSearchParams()
   const [selectedCollection, setSelectedCollection] = useState('all')
   const [selectedType, setSelectedType] = useState('all')
 
   const collections = ['all', ...new Set(fineJewellery.map(j => j.collection))]
   const types = ['all', ...new Set(fineJewellery.map(j => j.type))]
 
+  useEffect(() => {
+    const colParam = searchParams.get('collection')
+    const typeParam = searchParams.get('type')
+
+    if (colParam) {
+      const match = collections.find(c => c.toLowerCase() === colParam.toLowerCase())
+      if (match) setSelectedCollection(match)
+    } else {
+      setSelectedCollection('all')
+    }
+
+    if (typeParam) {
+      const match = types.find(t => t.toLowerCase() === typeParam.toLowerCase())
+      if (match) setSelectedType(match)
+    } else {
+      setSelectedType('all')
+    }
+  }, [searchParams])
+
   const filtered = useMemo(() => {
     return fineJewellery.filter(item => {
-      if (selectedCollection !== 'all' && item.collection !== selectedCollection) return false
-      if (selectedType !== 'all' && item.type !== selectedType) return false
+      if (selectedCollection !== 'all' && item.collection.toLowerCase() !== selectedCollection.toLowerCase()) return false
+      if (selectedType !== 'all' && item.type.toLowerCase() !== selectedType.toLowerCase()) return false
       return true
     })
   }, [selectedCollection, selectedType])
+
+  const handleCollectionChange = (col) => {
+    setSelectedCollection(col)
+    if (col === 'all') {
+      setSearchParams({})
+    } else {
+      setSearchParams({ collection: col })
+    }
+  }
 
   return (
     <>
@@ -28,9 +57,12 @@ export default function FineJewellery() {
         textAlign: 'center'
       }}>
         <div className="container">
-          <h1 style={{ color: '#D4AF7F' }}>Fine Jewellery</h1>
-          <p style={{ fontSize: '1.1rem', marginTop: 'var(--spacing-md)', opacity: 0.9 }}>
-            Exquisite pieces crafted with exceptional gemstones and precious metals
+          <span style={{ display: 'block', fontSize: '0.72rem', letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--color-champagne)', marginBottom: '0.5rem', fontWeight: 700 }}>
+            MAISON ATELIER
+          </span>
+          <h1 style={{ color: '#ffffff', fontFamily: 'var(--font-serif)', fontSize: 'clamp(2.4rem, 5vw, 3.5rem)' }}>Fine Jewellery</h1>
+          <p style={{ fontSize: '1.05rem', marginTop: 'var(--spacing-sm)', opacity: 0.9, maxWidth: '600px', margin: '0 auto' }}>
+            Exquisite pieces crafted with exceptional unheated gemstones and master metalwork.
           </p>
         </div>
       </section>
@@ -42,7 +74,7 @@ export default function FineJewellery() {
             <button
               className="btn btn-small"
               onClick={() => {
-                setSelectedCollection('all')
+                handleCollectionChange('all')
                 setSelectedType('all')
               }}
             >
@@ -56,25 +88,10 @@ export default function FineJewellery() {
               {collections.map(col => (
                 <button
                   key={col}
-                  className={`filter-option ${selectedCollection === col ? 'active' : ''}`}
-                  onClick={() => setSelectedCollection(col)}
+                  className={`filter-option ${selectedCollection.toLowerCase() === col.toLowerCase() ? 'active' : ''}`}
+                  onClick={() => handleCollectionChange(col)}
                 >
                   {col.charAt(0).toUpperCase() + col.slice(1)}
-                </button>
-              ))}
-            </div>
-          </div>
-
-          <div>
-            <h4 style={{ marginBottom: 'var(--spacing-md)', fontSize: '0.9rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Type</h4>
-            <div className="filter-group">
-              {types.map(type => (
-                <button
-                  key={type}
-                  className={`filter-option ${selectedType === type ? 'active' : ''}`}
-                  onClick={() => setSelectedType(type)}
-                >
-                  {type.charAt(0).toUpperCase() + type.slice(1)}
                 </button>
               ))}
             </div>
@@ -83,7 +100,7 @@ export default function FineJewellery() {
 
         <div style={{ marginBottom: 'var(--spacing-lg)' }}>
           <p style={{ color: '#2B2B2B' }}>
-            Showing <strong>{filtered.length}</strong> pieces
+            Showing <strong>{filtered.length}</strong> creations
           </p>
         </div>
 
@@ -95,11 +112,11 @@ export default function FineJewellery() {
           </div>
         ) : (
           <div style={{ textAlign: 'center', padding: 'var(--spacing-2xl) 0' }}>
-            <p style={{ color: '#2B2B2B', marginBottom: 'var(--spacing-lg)' }}>No items match your filters.</p>
+            <p style={{ color: '#2B2B2B', marginBottom: 'var(--spacing-lg)' }}>No fine jewellery pieces match your filters.</p>
             <button
               className="btn btn-primary"
               onClick={() => {
-                setSelectedCollection('all')
+                handleCollectionChange('all')
                 setSelectedType('all')
               }}
             >
@@ -107,15 +124,6 @@ export default function FineJewellery() {
             </button>
           </div>
         )}
-
-        <section style={{ marginTop: 'var(--spacing-3xl)', backgroundColor: '#F8F4EF', padding: 'var(--spacing-2xl)' }}>
-          <h3 style={{ marginBottom: 'var(--spacing-md)' }}>Custom Fine Jewellery</h3>
-          <p style={{ marginBottom: 'var(--spacing-lg)' }}>
-            Don't see exactly what you're looking for? We create custom fine jewellery pieces tailored to your preferences. 
-            Contact us to begin your bespoke journey.
-          </p>
-          <Link to="/bespoke" className="btn btn-primary">Create Custom Piece</Link>
-        </section>
       </div>
     </>
   )

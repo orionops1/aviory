@@ -1,23 +1,25 @@
-import React, { useState, useMemo } from 'react'
+import React, { useState, useMemo, useEffect } from 'react'
+import { useSearchParams } from 'react-router-dom'
 import ProductCard from '../components/ProductCard'
 import { gemstones } from '../data/products'
 import './Gemstones.css'
 
 export default function Gemstones() {
+  const [searchParams, setSearchParams] = useSearchParams()
   const [selectedCategory, setSelectedCategory] = useState('all')
   const [selectedColor, setSelectedColor] = useState('all')
   const [sortBy, setSortBy] = useState('featured')
 
   const categories = [
-    { id: 'all', label: 'All Gemstones' },
-    { id: 'Blue Sapphires', label: 'Blue Sapphires' },
-    { id: 'Pink Sapphires', label: 'Pink Sapphires' },
-    { id: 'Yellow Sapphires', label: 'Yellow Sapphires' },
-    { id: 'Padparadscha', label: 'Padparadscha' },
-    { id: 'Rubies', label: 'Rubies' },
-    { id: 'Spinels', label: 'Spinels' },
-    { id: 'Collector', label: 'Collector Stones' },
-    { id: 'Other', label: 'Other Gems' }
+    { id: 'all', label: 'All Gemstones', slug: 'all' },
+    { id: 'Blue Sapphires', label: 'Blue Sapphires', slug: 'blue-sapphires' },
+    { id: 'Pink Sapphires', label: 'Pink Sapphires', slug: 'pink-sapphires' },
+    { id: 'Yellow Sapphires', label: 'Yellow Sapphires', slug: 'yellow-sapphires' },
+    { id: 'Padparadscha', label: 'Padparadscha', slug: 'padparadscha' },
+    { id: 'Rubies', label: 'Rubies', slug: 'rubies' },
+    { id: 'Spinels', label: 'Spinels', slug: 'spinels' },
+    { id: 'Collector', label: 'Collector Stones', slug: 'collector' },
+    { id: 'Other', label: 'Other Gems', slug: 'other' }
   ]
 
   const colors = [
@@ -30,6 +32,41 @@ export default function Gemstones() {
     { id: 'Pigeon Blood Red', label: 'Ruby Red' },
     { id: 'Cobalt Blue', label: 'Cobalt' }
   ]
+
+  // Synchronize category with URL search parameters
+  useEffect(() => {
+    const catQuery = searchParams.get('category')
+    const typeQuery = searchParams.get('type')
+
+    if (catQuery) {
+      const match = categories.find(c => c.slug === catQuery || c.id.toLowerCase() === catQuery.toLowerCase())
+      if (match) {
+        setSelectedCategory(match.id)
+        return
+      }
+    }
+
+    if (typeQuery) {
+      if (typeQuery.includes('sapphire')) setSelectedCategory('Blue Sapphires')
+      else if (typeQuery.includes('ruby')) setSelectedCategory('Rubies')
+      else if (typeQuery.includes('spinel')) setSelectedCategory('Spinels')
+      return
+    }
+
+    if (!catQuery && !typeQuery) {
+      setSelectedCategory('all')
+    }
+  }, [searchParams])
+
+  const handleCategoryChange = (catId) => {
+    setSelectedCategory(catId)
+    const match = categories.find(c => c.id === catId)
+    if (match && match.slug !== 'all') {
+      setSearchParams({ category: match.slug })
+    } else {
+      setSearchParams({})
+    }
+  }
 
   const filteredGemstones = useMemo(() => {
     let result = gemstones.filter(gem => {
@@ -72,7 +109,7 @@ export default function Gemstones() {
                 key={cat.id}
                 type="button"
                 className={`gemstones-pill ${selectedCategory === cat.id ? 'gemstones-pill--active' : ''}`}
-                onClick={() => setSelectedCategory(cat.id)}
+                onClick={() => handleCategoryChange(cat.id)}
               >
                 {cat.label}
               </button>
@@ -116,7 +153,7 @@ export default function Gemstones() {
                   type="button"
                   className="gemstones-reset-btn"
                   onClick={() => {
-                    setSelectedCategory('all')
+                    handleCategoryChange('all')
                     setSelectedColor('all')
                     setSortBy('featured')
                   }}
@@ -147,7 +184,7 @@ export default function Gemstones() {
               type="button"
               className="btn btn-primary"
               onClick={() => {
-                setSelectedCategory('all')
+                handleCategoryChange('all')
                 setSelectedColor('all')
                 setSortBy('featured')
               }}

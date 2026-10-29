@@ -23,11 +23,11 @@ export default function Home() {
     <>
       {/* ─── TIFFANY-STYLE CINEMATIC HERO (Video + Image fallback + Controls) ─── */}
       <HeroBanner 
-        title="AVIORY & CO."
-        subtitle="Unheated Ceylon Sapphires & Bespoke Masterpieces"
+        title={t('hero.title')}
+        subtitle={t('hero.subtitle')}
         tagline="MAISON DE HAUTE JOAILLERIE"
-        ctaPrimary={{ label: "Discover Gemstones", href: "/gemstones" }}
-        ctaSecondary={{ label: "Book a Consultation", href: "/private-consultations" }}
+        ctaPrimary={{ label: t('hero.exploreGemstones'), href: "/gemstones" }}
+        ctaSecondary={{ label: t('common.bookConsultation'), href: "/private-consultations" }}
         videoSrc="https://assets.mixkit.co/videos/preview/mixkit-sparkling-diamond-ring-under-spotlight-41875-large.mp4"
         fallbackImage="/images/hero-banner.jpg"
       />

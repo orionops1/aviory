@@ -2,12 +2,12 @@ import React, { useState, useRef, useEffect } from 'react'
 import { useLanguage } from '../hooks/useLanguage'
 import './LanguageSwitcher.css'
 
-export default function LanguageSwitcher() {
+export default function LanguageSwitcher({ variant = 'dark' }) {
   const { language, changeLanguage, languages } = useLanguage()
   const [isOpen, setIsOpen] = useState(false)
   const dropdownRef = useRef(null)
 
-  const currentLanguage = languages.find(lang => lang.code === language)
+  const currentLanguage = languages.find(lang => lang.code === language) || languages[0]
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -21,22 +21,26 @@ export default function LanguageSwitcher() {
   }, [])
 
   return (
-    <div className="language-switcher" ref={dropdownRef}>
+    <div className={`language-switcher language-switcher--${variant}`} ref={dropdownRef}>
       <button
+        type="button"
         className="language-toggle"
         onClick={() => setIsOpen(!isOpen)}
         title="Select Language"
+        aria-expanded={isOpen}
       >
         <span className="language-flag">{currentLanguage?.flag}</span>
         <span className="language-code">{language.toUpperCase()}</span>
-        <span className="language-chevron">▼</span>
+        <span className="language-chevron">▾</span>
       </button>
 
       {isOpen && (
         <div className="language-dropdown">
+          <div className="language-dropdown__header">Select Language</div>
           {languages.map(lang => (
             <button
               key={lang.code}
+              type="button"
               className={`language-option ${language === lang.code ? 'active' : ''}`}
               onClick={() => {
                 changeLanguage(lang.code)
@@ -46,7 +50,7 @@ export default function LanguageSwitcher() {
             >
               <span className="option-flag">{lang.flag}</span>
               <span className="option-name">{lang.name}</span>
-              <span className="option-code">({lang.code.toUpperCase()})</span>
+              <span className="option-code">{lang.code.toUpperCase()}</span>
             </button>
           ))}
         </div>

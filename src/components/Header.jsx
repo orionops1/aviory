@@ -63,14 +63,14 @@ const ArrowRight = () => (
 )
 
 /* ──────────────────────────────────────────────────────────
-   Mega-Menu Editorial Structure
+   Mega-Menu Editorial Structure with i18n
    ────────────────────────────────────────────────────────── */
 
 function useMegaMenuData(t) {
   return [
     {
       key: 'gemstones',
-      label: 'Gemstones',
+      label: t('common.gemstones'),
       href: '/gemstones',
       mega: {
         columns: [
@@ -114,7 +114,7 @@ function useMegaMenuData(t) {
     },
     {
       key: 'fine-jewellery',
-      label: 'Fine Jewellery',
+      label: t('common.fineJewellery'),
       href: '/fine-jewellery',
       mega: {
         columns: [
@@ -155,7 +155,7 @@ function useMegaMenuData(t) {
     },
     {
       key: 'engagement',
-      label: 'Engagement & Bridal',
+      label: t('common.engagementRings'),
       href: '/engagement-rings',
       mega: {
         columns: [
@@ -197,7 +197,7 @@ function useMegaMenuData(t) {
     },
     {
       key: 'bespoke',
-      label: 'Bespoke Atelier',
+      label: t('common.bespoke'),
       href: '/bespoke',
       mega: {
         columns: [
@@ -228,12 +228,12 @@ function useMegaMenuData(t) {
     },
     {
       key: 'our-house',
-      label: 'Our House',
+      label: t('common.ourHouse'),
       href: '/our-house',
     },
     {
       key: 'journal',
-      label: 'The Journal',
+      label: t('common.journal'),
       href: '/journal',
     },
   ]
@@ -264,7 +264,7 @@ export default function Header({ scrolled }) {
     setMobileMenuOpen(false)
     setActiveMega(null)
     setMobileAccordion(null)
-  }, [location.pathname])
+  }, [location.pathname, location.search])
 
   // Prevent scroll when mobile menu or modals open
   useEffect(() => {
@@ -302,6 +302,11 @@ export default function Header({ scrolled }) {
     }, 200)
   }, [])
 
+  const handleNavClick = () => {
+    clearTimeout(megaTimeoutRef.current)
+    setActiveMega(null)
+  }
+
   return (
     <>
       <header
@@ -332,24 +337,24 @@ export default function Header({ scrolled }) {
               <span>Complimentary Armoured Delivery &bull; GIA Certified Gemstones</span>
             </div>
 
-            {/* Right: Client Care, Appointments & Language */}
+            {/* Right: Client Care, Appointments & Language Filter */}
             <div className="tiffany-header__utility-right">
               <Link to="/contact" className="tiffany-header__utility-link">
-                Client Care
+                {t('common.contact')}
               </Link>
               <button 
                 type="button" 
                 className="tiffany-header__utility-btn tiffany-header__utility-btn--highlight"
                 onClick={() => setAppointmentModalOpen(true)}
               >
-                Book Appointment
+                {t('common.bookConsultation')}
               </button>
-              <LanguageSwitcher />
+              <LanguageSwitcher variant="dark" />
             </div>
           </div>
         </div>
 
-        {/* ─── TIER 2: CENTERPIECE BRAND LOGO ROW ─── */}
+        {/* ─── TIER 2: CENTERPIECE BRAND LOGO ROW (100% Mathematically Centered) ─── */}
         <div className="tiffany-header__brand-row">
           <div className="container tiffany-header__brand-inner">
             {/* Left: Mobile hamburger */}
@@ -364,8 +369,13 @@ export default function Header({ scrolled }) {
               <span className={`tiffany-hamburger-bar ${mobileMenuOpen ? 'open' : ''}`} />
             </button>
 
-            {/* Center: The Monumental AVIORY & CO. Logo */}
-            <Link to="/" className="tiffany-header__logo-link" aria-label="AVIORY & CO. Homepage">
+            {/* Center: The Monumental AVIORY & CO. Logo (Dead Center) */}
+            <Link 
+              to="/" 
+              className="tiffany-header__logo-link" 
+              onClick={handleNavClick}
+              aria-label="AVIORY & CO. Homepage"
+            >
               <AvioryLogo variant={scrolled ? 'compact' : 'standard'} />
             </Link>
 
@@ -412,7 +422,11 @@ export default function Header({ scrolled }) {
                   onMouseEnter={() => item.mega ? handleMegaEnter(item.key) : setActiveMega(null)}
                   onMouseLeave={handleMegaLeave}
                 >
-                  <Link to={item.href} className="tiffany-header__nav-link">
+                  <Link 
+                    to={item.href} 
+                    className="tiffany-header__nav-link"
+                    onClick={handleNavClick}
+                  >
                     <span>{item.label}</span>
                     {item.mega && <ChevronDown className="tiffany-nav-chevron" />}
                   </Link>
@@ -444,7 +458,7 @@ export default function Header({ scrolled }) {
                           <Link
                             to={link.href}
                             className={`tiffany-mega__link ${link.accent ? 'tiffany-mega__link--accent' : ''}`}
-                            onClick={() => setActiveMega(null)}
+                            onClick={handleNavClick}
                           >
                             {link.label}
                             {link.accent && <ArrowRight />}
@@ -463,7 +477,7 @@ export default function Header({ scrolled }) {
                   <Link
                     to={item.mega.feature.cta.href}
                     className="tiffany-mega__feature-cta"
-                    onClick={() => setActiveMega(null)}
+                    onClick={handleNavClick}
                   >
                     {item.mega.feature.cta.label}
                     <ArrowRight />
@@ -503,7 +517,9 @@ export default function Header({ scrolled }) {
                   <Link
                     to={item.href}
                     className="tiffany-mobile-drawer__link"
-                    onClick={() => !item.mega && setMobileMenuOpen(false)}
+                    onClick={() => {
+                      if (!item.mega) setMobileMenuOpen(false)
+                    }}
                   >
                     {item.label}
                   </Link>
@@ -512,6 +528,7 @@ export default function Header({ scrolled }) {
                       type="button"
                       className="tiffany-mobile-drawer__toggle"
                       onClick={() => setMobileAccordion(mobileAccordion === item.key ? null : item.key)}
+                      aria-label="Expand submenu"
                     >
                       <ChevronDown className={mobileAccordion === item.key ? 'open' : ''} />
                     </button>
@@ -552,13 +569,13 @@ export default function Header({ scrolled }) {
               setAppointmentModalOpen(true)
             }}
           >
-            Book Atelier Appointment
+            {t('common.bookConsultation')}
           </button>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
             <Link to="/contact" className="tiffany-header__utility-link" onClick={() => setMobileMenuOpen(false)}>
-              Client Care
+              {t('common.contact')}
             </Link>
-            <LanguageSwitcher />
+            <LanguageSwitcher variant="light" />
           </div>
         </div>
       </div>
@@ -567,7 +584,7 @@ export default function Header({ scrolled }) {
         <div className="tiffany-mobile-backdrop" onClick={() => setMobileMenuOpen(false)} />
       )}
 
-      {/* ─── INTEGRATED HIGH-VALUE MODALS ─── */}
+      {/* ─── INTEGRATED MODALS ─── */}
       <CartDrawer isOpen={cartDrawerOpen} onClose={() => setCartDrawerOpen(false)} />
       <SearchModal isOpen={searchModalOpen} onClose={() => setSearchModalOpen(false)} />
       <AppointmentModal isOpen={appointmentModalOpen} onClose={() => setAppointmentModalOpen(false)} />
