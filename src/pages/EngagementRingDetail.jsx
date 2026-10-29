@@ -5,6 +5,7 @@ import { useLanguage } from '../hooks/useLanguage'
 import { formatPrice } from '../utils/currencyConverter'
 import { engagementRings } from '../data/products'
 import ProductCard from '../components/ProductCard'
+import StickyConciergeButton from '../components/StickyConciergeButton'
 import './EngagementRingDetail.css'
 
 export default function EngagementRingDetail() {
@@ -289,6 +290,9 @@ export default function EngagementRingDetail() {
           </div>
         </section>
       )}
+
+      {/* Sticky Concierge Button */}
+      <StickyConciergeButton onClickContact={() => setInquiryModalOpen(true)} />
     </div>
   )
 }

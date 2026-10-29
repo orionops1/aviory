@@ -5,6 +5,7 @@ import { useLanguage } from '../hooks/useLanguage'
 import { formatPrice } from '../utils/currencyConverter'
 import { fineJewellery } from '../data/products'
 import ProductCard from '../components/ProductCard'
+import StickyConciergeButton from '../components/StickyConciergeButton'
 import './JewelleryDetail.css'
 
 export default function JewelleryDetail() {
@@ -222,6 +223,9 @@ export default function JewelleryDetail() {
           </div>
         </section>
       )}
+
+      {/* Sticky Concierge Button */}
+      <StickyConciergeButton onClickContact={() => setInquiryModalOpen(true)} />
     </div>
   )
 }

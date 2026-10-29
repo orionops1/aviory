@@ -6,6 +6,7 @@ import { formatPrice } from '../utils/currencyConverter'
 import { gemstones } from '../data/products'
 import ProductCard from '../components/ProductCard'
 import GemstoneLightingViewer from '../components/GemstoneLightingViewer'
+import StickyConciergeButton from '../components/StickyConciergeButton'
 import './GemstoneDetail.css'
 
 export default function GemstoneDetail() {
@@ -389,6 +390,9 @@ export default function GemstoneDetail() {
           </div>
         </section>
       )}
+
+      {/* Sticky Concierge Button */}
+      <StickyConciergeButton onClickContact={() => setInquiryModalOpen(true)} />
     </div>
   )
 }
