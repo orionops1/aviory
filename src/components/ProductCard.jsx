@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
+import { useLanguage } from '../hooks/useLanguage'
+import { formatPrice } from '../utils/currencyConverter'
 import './ProductCard.css'
 
 // Helper to determine gemstone facet gradient based on stone or color
@@ -27,6 +29,7 @@ function getGemGradient(color = '', type = '') {
 export default function ProductCard({ product, type = 'gemstone' }) {
   const [imageError, setImageError] = useState(false)
   const [isHovered, setIsHovered] = useState(false)
+  const { currency } = useLanguage()
 
   const getLink = () => {
     if (type === 'gemstone') return `/gemstones/${product.id}`
@@ -37,7 +40,7 @@ export default function ProductCard({ product, type = 'gemstone' }) {
 
   const categoryLabel = product.category || product.collection || product.style || 'Fine Jewellery'
   const formattedPrice = typeof product.price === 'number' 
-    ? `$${product.price.toLocaleString()}`
+    ? formatPrice(product.price, currency)
     : (product.price || 'Price on Request')
 
   const badgeText = product.treatment === 'Unheated' 

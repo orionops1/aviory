@@ -1,12 +1,15 @@
 import React, { useState } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import useCartStore from '../hooks/useCart'
+import { useLanguage } from '../hooks/useLanguage'
+import { formatPrice } from '../utils/currencyConverter'
 import { engagementRings } from '../data/products'
 import ProductCard from '../components/ProductCard'
 import './EngagementRingDetail.css'
 
 export default function EngagementRingDetail() {
   const { id } = useParams()
+  const { currency } = useLanguage()
   const ring = engagementRings.find(r => r.id === id)
   const addItem = useCartStore((state) => state.addItem)
   
@@ -97,7 +100,7 @@ export default function EngagementRingDetail() {
           <div className="pdp-info__header">
             <span className="pdp-info__subtitle">{ring.style} • REF: {ring.id.toUpperCase()}</span>
             <h1 className="pdp-info__title">{ring.name}</h1>
-            <div className="pdp-info__price">${ring.price.toLocaleString()}</div>
+            <div className="pdp-info__price">{formatPrice(ring.price, currency)}</div>
             <p className="pdp-info__taxes">Mounted in {selectedMetal} • Certified Ceylon Gemstone</p>
           </div>
 
@@ -227,7 +230,7 @@ export default function EngagementRingDetail() {
             </button>
             <span className="pdp-info__subtitle">BRIDAL APPOINTMENT & INQUIRY</span>
             <h3 className="pdp-modal__title">{ring.name}</h3>
-            <p className="pdp-modal__meta">${ring.price.toLocaleString()} • Size {selectedSize} • {selectedMetal}</p>
+            <p className="pdp-modal__meta">{formatPrice(ring.price, currency)} • Size {selectedSize} • {selectedMetal}</p>
 
             {inquirySent ? (
               <div className="alert alert-success">

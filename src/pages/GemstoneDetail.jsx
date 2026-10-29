@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import useCartStore from '../hooks/useCart'
+import { useLanguage } from '../hooks/useLanguage'
+import { formatPrice } from '../utils/currencyConverter'
 import { gemstones } from '../data/products'
 import ProductCard from '../components/ProductCard'
 import GemstoneLightingViewer from '../components/GemstoneLightingViewer'
@@ -8,6 +10,7 @@ import './GemstoneDetail.css'
 
 export default function GemstoneDetail() {
   const { id } = useParams()
+  const { currency } = useLanguage()
   const gem = gemstones.find(g => g.id === id)
   const addItem = useCartStore((state) => state.addItem)
   
@@ -149,7 +152,7 @@ export default function GemstoneDetail() {
           <div className="pdp-info__header">
             <span className="pdp-info__subtitle">{gem.category} • REF: {gem.id.toUpperCase()}</span>
             <h1 className="pdp-info__title">{gem.name}</h1>
-            <div className="pdp-info__price">${gem.price.toLocaleString()}</div>
+            <div className="pdp-info__price">{formatPrice(gem.price, currency)}</div>
             <p className="pdp-info__taxes">Complimentary worldwide insured delivery & taxes included</p>
           </div>
 
@@ -327,7 +330,7 @@ export default function GemstoneDetail() {
             </button>
             <span className="pdp-info__subtitle">PRIVATE CONCIERGE INQUIRY</span>
             <h3 className="pdp-modal__title">{gem.name}</h3>
-            <p className="pdp-modal__meta">Ref: {gem.id.toUpperCase()} • ${gem.price.toLocaleString()} • {gem.specs.weight}</p>
+            <p className="pdp-modal__meta">Ref: {gem.id.toUpperCase()} • {formatPrice(gem.price, currency)} • {gem.specs.weight}</p>
 
             {inquirySent ? (
               <div className="alert alert-success" style={{ margin: '2rem 0' }}>

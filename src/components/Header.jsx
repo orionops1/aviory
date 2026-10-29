@@ -437,6 +437,12 @@ export default function Header({ scrolled }) {
             </ul>
           </div>
         </nav>
+
+        {/* ─── MOBILE TOP-LEFT: LANGUAGE & CURRENCY (Mobile Only) ─── */}
+        <div className="tiffany-header__mobile-locale">
+          <CurrencySwitcher variant="light" />
+          <LanguageSwitcher variant="light" />
+        </div>
       </header>
 
       {/* ─── FULL-WIDTH MEGA-MENU PANELS ─── */}

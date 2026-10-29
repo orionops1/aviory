@@ -1,12 +1,15 @@
 import React, { useState } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import useCartStore from '../hooks/useCart'
+import { useLanguage } from '../hooks/useLanguage'
+import { formatPrice } from '../utils/currencyConverter'
 import { fineJewellery } from '../data/products'
 import ProductCard from '../components/ProductCard'
 import './JewelleryDetail.css'
 
 export default function JewelleryDetail() {
   const { id } = useParams()
+  const { currency } = useLanguage()
   const item = fineJewellery.find(j => j.id === id)
   const addItem = useCartStore((state) => state.addItem)
   
@@ -92,7 +95,7 @@ export default function JewelleryDetail() {
             <span className="pdp-info__subtitle">{item.collection} • REF: {item.id.toUpperCase()}</span>
             <h1 className="pdp-info__title">{item.name}</h1>
             <div className="pdp-info__price">
-              {typeof item.price === 'number' ? `$${item.price.toLocaleString()}` : item.price}
+              {typeof item.price === 'number' ? formatPrice(item.price, currency) : item.price}
             </div>
             <p className="pdp-info__taxes">Handcrafted in {item.material} • Worldwide Armoured Courier</p>
           </div>
