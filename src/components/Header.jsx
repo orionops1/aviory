@@ -58,59 +58,15 @@ export default function Header({ scrolled }) {
 
   return (
     <header className={`header ${scrolled ? 'scrolled' : ''}`}>
-      {/* Top Utility Bar */}
-      <div className="header-utility">
+      {/* Logo Section - Top */}
+      <div className="header-logo-section">
         <div className="container">
-          <div className="utility-content">
-            <Link to="/our-house" className="location-link">
-              🏪 Find a Store
-            </Link>
-            <div className="utility-actions">
-              <LanguageSwitcher />
-              <Link to="/contact" className="utility-link">
-                Contact
-              </Link>
-              <Link to="#account" className="utility-link">
-                Account
-              </Link>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Main Header */}
-      <div className="header-main">
-        <div className="container">
-          <div className="header-content">
+          <div className="logo-container">
             <Link to="/" className="logo">
               AVIORY & CO.
             </Link>
-
-            {/* Desktop Navigation */}
-            <nav className="nav-desktop">
-              <ul className="nav-menu">
-                {menuItems.map((item, idx) => (
-                  <li key={idx} className="nav-item" onMouseEnter={() => setOpenDropdown(idx)} onMouseLeave={() => setOpenDropdown(null)}>
-                    <Link to={item.href} className="nav-link">
-                      {item.label}
-                      {item.submenu && <span className="submenu-arrow">▼</span>}
-                    </Link>
-                    {item.submenu && openDropdown === idx && (
-                      <ul className="dropdown-menu">
-                        {item.submenu.map((sub, sidx) => (
-                          <li key={sidx}>
-                            <Link to={sub.href}>{sub.label}</Link>
-                          </li>
-                        ))}
-                      </ul>
-                    )}
-                  </li>
-                ))}
-              </ul>
-            </nav>
-
-            {/* Header Actions */}
             <div className="header-actions">
+              <LanguageSwitcher />
               <Link to="/contact" className="action-icon search-icon" title="Search">
                 🔍
               </Link>
@@ -131,6 +87,31 @@ export default function Header({ scrolled }) {
           </div>
         </div>
       </div>
+
+      {/* Navigation Section - Bottom */}
+      <nav className="header-nav">
+        <div className="container">
+          <ul className="nav-menu">
+            {menuItems.map((item, idx) => (
+              <li key={idx} className="nav-item" onMouseEnter={() => setOpenDropdown(idx)} onMouseLeave={() => setOpenDropdown(null)}>
+                <Link to={item.href} className="nav-link">
+                  {item.label}
+                  {item.submenu && <span className="submenu-arrow">▼</span>}
+                </Link>
+                {item.submenu && openDropdown === idx && (
+                  <ul className="dropdown-menu">
+                    {item.submenu.map((sub, sidx) => (
+                      <li key={sidx}>
+                        <Link to={sub.href}>{sub.label}</Link>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </nav>
 
       {/* Mobile Navigation */}
       {mobileMenuOpen && (
