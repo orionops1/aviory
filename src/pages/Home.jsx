@@ -73,6 +73,38 @@ export default function Home() {
         </div>
       </section>
 
+      {/* FEATURED HERO - FULL WIDTH WITH TEXT OVERLAY (Gifts to Engrave) */}
+      <section className="featured-hero-section">
+        <div className="featured-hero-grid">
+          <div className="featured-hero-image" style={{ backgroundImage: 'url(/images/gifts-to-engrave.jpg)' }}>
+            <div className="featured-hero-overlay" />
+          </div>
+          <div className="featured-hero-content">
+            <h2>Gifts to Engrave</h2>
+            <p>Personalized jewelry represents an especially meaningful moment. Create timeless heirlooms with custom inscriptions that become beloved for a lifetime.</p>
+            <Link to="/bespoke/enquiry" className="btn btn-primary">
+              SHOP NOW
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* FEATURED HERO - SPLIT LAYOUT (The Art of Gifting) */}
+      <section className="featured-hero-split">
+        <div className="featured-hero-split-grid">
+          <div className="featured-hero-split-image" style={{ backgroundImage: 'url(/images/art-of-gifting.jpg)' }}>
+            <div className="featured-hero-overlay" />
+          </div>
+          <div className="featured-hero-split-content">
+            <h2>The Art of Gifting</h2>
+            <p>Celebrate every facet of the ones you love with iconic designs this holiday season. From engagement moments to anniversary milestones, find the perfect piece to express your deepest feelings.</p>
+            <Link to="/engagement-rings" className="btn btn-primary">
+              EXPLORE COLLECTION
+            </Link>
+          </div>
+        </div>
+      </section>
+
       {/* SECTION 1: FEATURED GEMSTONES - LIFESTYLE + PRODUCTS (50/50) */}
       <section className="lifestyle-section lifestyle-section--gemstones">
         <div className="lifestyle-grid lifestyle-grid--2col">

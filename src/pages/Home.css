@@ -82,6 +82,120 @@
   text-transform: uppercase;
 }
 
+/* ─── FEATURED HERO - FULL WIDTH WITH TEXT OVERLAY ─── */
+.featured-hero-section {
+  background-color: var(--color-white);
+  padding: var(--spacing-3xl) 0;
+  border-bottom: 1px solid var(--color-gray-light);
+}
+
+.featured-hero-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  align-items: stretch;
+  max-width: 100%;
+  margin: 0;
+}
+
+.featured-hero-image {
+  position: relative;
+  width: 100%;
+  height: 500px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.featured-hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.featured-hero-content {
+  padding: var(--spacing-3xl);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: var(--color-white);
+}
+
+.featured-hero-content h2 {
+  font-family: var(--font-serif);
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--color-black);
+  margin-bottom: var(--spacing-lg);
+  line-height: 1.2;
+}
+
+.featured-hero-content p {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--color-charcoal);
+  margin-bottom: var(--spacing-xl);
+}
+
+/* ─── FEATURED HERO - SPLIT LAYOUT (Reversed) ─── */
+.featured-hero-split {
+  background-color: var(--color-white);
+  padding: var(--spacing-3xl) 0;
+  border-bottom: 1px solid var(--color-gray-light);
+}
+
+.featured-hero-split-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  align-items: stretch;
+  max-width: 100%;
+  margin: 0;
+  direction: rtl;
+}
+
+.featured-hero-split-grid > * {
+  direction: ltr;
+}
+
+.featured-hero-split-image {
+  position: relative;
+  width: 100%;
+  height: 500px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.featured-hero-split-content {
+  padding: var(--spacing-3xl);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: var(--color-white);
+}
+
+.featured-hero-split-content h2 {
+  font-family: var(--font-serif);
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--color-black);
+  margin-bottom: var(--spacing-lg);
+  line-height: 1.2;
+}
+
+.featured-hero-split-content p {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--color-charcoal);
+  margin-bottom: var(--spacing-xl);
+}
+
 /* ─── LIFESTYLE SECTIONS (50/50 IMAGE + CONTENT) ─── */
 .lifestyle-section {
   background-color: var(--color-white);
@@ -507,6 +621,34 @@
   }
 
   .lifestyle-dual-content p {
+    font-size: 0.9rem;
+  }
+
+  /* Mobile: Featured Hero Sections */
+  .featured-hero-grid,
+  .featured-hero-split-grid {
+    grid-template-columns: 1fr;
+    gap: 0;
+    direction: ltr;
+  }
+
+  .featured-hero-image,
+  .featured-hero-split-image {
+    height: 300px;
+  }
+
+  .featured-hero-content,
+  .featured-hero-split-content {
+    padding: var(--spacing-2xl) var(--spacing-md);
+  }
+
+  .featured-hero-content h2,
+  .featured-hero-split-content h2 {
+    font-size: 1.5rem;
+  }
+
+  .featured-hero-content p,
+  .featured-hero-split-content p {
     font-size: 0.9rem;
   }
 }
