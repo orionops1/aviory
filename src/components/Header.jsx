@@ -580,10 +580,6 @@ export default function Header({ scrolled }) {
             <Link to="/contact" className="tiffany-header__utility-link" onClick={() => setMobileMenuOpen(false)}>
               {t('common.contact')}
             </Link>
-            <div style={{ display: 'flex', gap: '1rem' }}>
-              <CurrencySwitcher variant="light" />
-              <LanguageSwitcher variant="light" />
-            </div>
           </div>
         </div>
       </div>
