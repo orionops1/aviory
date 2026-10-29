@@ -28,9 +28,9 @@ export default function Home() {
     },
     {
       image: '/images/hero-engagement-couple.jpg',
-      title: 'Engagement Rings',
-      subtitle: 'Crafted for a lifetime of love',
-      cta: { label: 'View Collections', href: '/engagement-rings' }
+      title: 'AVIORY Love Collection',
+      subtitle: 'We add value to every love story',
+      cta: { label: 'Explore the Collection', href: '/engagement-rings' }
     },
     {
       image: '/images/hero-fine-jewellery.jpg',
@@ -103,15 +103,15 @@ export default function Home() {
         </div>
       </section>
 
-      {/* SECTION 3: ENGAGEMENT RINGS - LIFESTYLE + PRODUCTS (50/50) */}
+      {/* SECTION 3: AVIORY LOVE COLLECTION - LIFESTYLE + PRODUCTS (50/50) */}
       <section className="lifestyle-section lifestyle-section--rings">
         <div className="lifestyle-grid lifestyle-grid--2col lifestyle-grid--reverse">
           <div className="lifestyle-content">
-            <span className="lifestyle-label">TIMELESS MOMENTS</span>
-            <h2>Engagement Rings</h2>
-            <p>Celebrate love with bespoke engagement rings. Each design is crafted to tell your unique story, combining exceptional gemstones with master artistry.</p>
+            <span className="lifestyle-label">AVIORY LOVE COLLECTION</span>
+            <h2>Rings for Every Love Story</h2>
+            <p>We believe every love story deserves an exceptional beginning. Each piece in the AVIORY Love Collection is handcrafted to celebrate the moments that matter most—from first meetings to lifetime commitments.</p>
             <Link to="/engagement-rings" className="btn btn-primary">
-              Explore Rings
+              Explore the Collection
             </Link>
           </div>
           <div className="lifestyle-image">
@@ -149,12 +149,12 @@ export default function Home() {
           </div>
         </div>
         <div className="lifestyle-content lifestyle-content--overlay">
-          <span className="lifestyle-label">THE ART OF GIFTING</span>
-          <h2>Celebrate Every Moment</h2>
-          <p>Personalized jewelry becomes heirlooms. Gift exceptional pieces that express love, commitment, and lasting connection.</p>
+          <span className="lifestyle-label">CELEBRATE LOVE</span>
+          <h2>Gift from the Heart</h2>
+          <p>The AVIORY Love Collection and our curated gemstone selections make meaningful gifts for every milestone. Each piece carries the essence of your story.</p>
           <div className="gifting-ctas">
             <Link to="/engagement-rings" className="btn btn-primary">
-              Explore Gifts
+              Explore Love Collection
             </Link>
             <Link to="/bespoke/enquiry" className="btn btn-outline">
               Commission a Piece
