@@ -318,7 +318,7 @@ export default function Header({ scrolled }) {
         {/* ─── TIER 1: GLOBAL UTILITY BAR (Tiffany Standard) ─── */}
         <div className="tiffany-header__utility">
           <div className="container tiffany-header__utility-inner">
-            {/* Left: Search Trigger & Atelier Locator */}
+            {/* Left: Search Trigger */}
             <div className="tiffany-header__utility-left">
               <button 
                 type="button" 
@@ -328,10 +328,6 @@ export default function Header({ scrolled }) {
                 <SearchIcon />
                 <span>Search</span>
               </button>
-              <Link to="/our-house" className="tiffany-header__utility-link">
-                <PinIcon />
-                <span>Colombo Atelier</span>
-              </Link>
             </div>
 
             {/* Center: Prestige Trust Tag */}

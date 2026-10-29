@@ -134,36 +134,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* SECTION 5: GIFTING HERO - LIFESTYLE + LIFESTYLE */}
-      <section className="lifestyle-section lifestyle-section--gifting">
-        <div className="lifestyle-grid lifestyle-grid--2col">
-          <div className="lifestyle-image">
-            <div className="lifestyle-placeholder" style={{ background: 'linear-gradient(135deg, #1a5732 0%, #2e8b53 50%, #45b880 100%)' }}>
-              <span style={{ fontSize: '4rem', opacity: 0.3 }}>🎁</span>
-            </div>
-          </div>
-          <div className="lifestyle-image">
-            <div className="lifestyle-placeholder" style={{ background: 'linear-gradient(135deg, #173361 0%, #29539b 50%, #4a7ec1 100%)' }}>
-              <span style={{ fontSize: '4rem', opacity: 0.3 }}>✨</span>
-            </div>
-          </div>
-        </div>
-        <div className="lifestyle-content lifestyle-content--overlay">
-          <span className="lifestyle-label">CELEBRATE LOVE</span>
-          <h2>Gift from the Heart</h2>
-          <p>The AVIORY Love Collection and our curated gemstone selections make meaningful gifts for every milestone. Each piece carries the essence of your story.</p>
-          <div className="gifting-ctas">
-            <Link to="/engagement-rings" className="btn btn-primary">
-              Explore Love Collection
-            </Link>
-            <Link to="/bespoke/enquiry" className="btn btn-outline">
-              Commission a Piece
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* SECTION 6: FINE JEWELLERY SHOWCASE */}
+      {/* SECTION 5: FINE JEWELLERY SHOWCASE */}
       <section className="jewellery-showcase">
         <div className="container">
           <h2 className="section-heading">Haute Joaillerie</h2>
@@ -175,7 +146,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* SECTION 7: JOURNAL PREVIEW */}
+      {/* SECTION 6: JOURNAL PREVIEW */}
       <section className="journal-preview">
         <div className="container">
           <div className="section-title">
@@ -204,7 +175,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* SECTION 8: NEWSLETTER */}
+      {/* SECTION 7: NEWSLETTER */}
       <section className="newsletter-section">
         <div className="container">
           <div className="newsletter-content">
@@ -225,7 +196,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* SECTION 9: FINAL CTA */}
+      {/* SECTION 8: FINAL CTA */}
       <section className="cta-section">
         <div className="container">
           <h2>Get in Touch</h2>
