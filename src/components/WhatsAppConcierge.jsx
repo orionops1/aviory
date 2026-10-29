@@ -19,7 +19,7 @@ export default function WhatsAppConcierge() {
           <div className="concierge-card__header">
             <div className="concierge-card__status">
               <span className="concierge-pulse" />
-              <span>ATELIER DESK &bull; ACTIVE</span>
+              <span>GEMOLOGIST • LIVE</span>
             </div>
             <button 
               type="button" 

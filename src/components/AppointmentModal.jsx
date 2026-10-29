@@ -43,7 +43,7 @@ export default function AppointmentModal({ isOpen, onClose }) {
         <span className="appt-modal__tag">HAUTE JOAILLERIE CONCIERGE</span>
         <h2 className="appt-modal__title">Book a Private Appointment</h2>
         <p className="appt-modal__subtitle">
-          Experience our rare gemstones and bespoke design portfolio with our master gemologist.
+          Connect with our gemologist for private viewings and consultations.
         </p>
 
         {submitted ? (

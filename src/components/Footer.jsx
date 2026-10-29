@@ -65,7 +65,7 @@ export default function Footer() {
                 </li>
                 <li>
                   <a href={`tel:${contactInfo.phone}`} className="contact-link">
-                    +94 11 234 5678 (Direct Atelier Desk)
+                    +94 11 234 5678
                   </a>
                 </li>
                 <li>Atelier: Colombo 03, Sri Lanka</li>

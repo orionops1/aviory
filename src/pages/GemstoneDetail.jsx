@@ -242,14 +242,14 @@ export default function GemstoneDetail() {
                 className={`pdp-tab-btn ${activeTab === 'physical' ? 'pdp-tab-btn--active' : ''}`}
                 onClick={() => setActiveTab('physical')}
               >
-                Physical Properties
+                The Stone
               </button>
               <button
                 type="button"
                 className={`pdp-tab-btn ${activeTab === 'provenance' ? 'pdp-tab-btn--active' : ''}`}
                 onClick={() => setActiveTab('provenance')}
               >
-                Provenance & GIA
+                Certification
               </button>
             </div>
 
@@ -258,8 +258,7 @@ export default function GemstoneDetail() {
                 <div className="pdp-tab-pane">
                   <p className="pdp-story-text">{gem.longDescription || gem.description}</p>
                   <p className="pdp-story-sub">
-                    Every facet has been strategically cut by our master lapidary to maximize natural light return 
-                    and internal fire while maintaining original unheated crystalline integrity.
+                    Hand-cut by master craftsmen to maximize brilliance while preserving natural characteristics.
                   </p>
                 </div>
               )}

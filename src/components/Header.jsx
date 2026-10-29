@@ -97,7 +97,7 @@ function useMegaMenuData(t) {
             ],
           },
           {
-            heading: 'Gemological Excellence',
+            heading: 'Gemstone Quality',
             links: [
               { label: 'Ceylon Provenance Assurance', href: '/journal/the-heritage-of-ceylon-gemstones' },
               { label: 'GIA & Gubelin Certification', href: '/our-house' },
@@ -214,7 +214,7 @@ function useMegaMenuData(t) {
             heading: 'Client Inspiration',
             links: [
               { label: 'Designing Your Dream Ring', href: '/journal/designing-your-dream-ring' },
-              { label: 'Master Lapidary & Setting', href: '/journal/the-art-of-bespoke-jewellery' },
+              { label: 'The Craft', href: '/journal/the-art-of-bespoke-jewellery' },
               { label: 'Ethical Mine-to-Market', href: '/journal/sustainable-luxury-and-ethical-sourcing' },
             ],
           },
