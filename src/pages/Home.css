@@ -515,3 +515,156 @@
   }
 }
 
+
+
+/* ─── FEATURED COLLECTION (STORYTELLING SECTION) ─── */
+.featured-collection {
+  background-color: var(--color-white);
+  padding: 0;
+  margin: var(--spacing-2xl) 0;
+}
+
+.featured-collection__header {
+  background: linear-gradient(135deg, #f5f1e8 0%, #ede6dc 100%);
+  padding: var(--spacing-3xl) 0;
+  border-bottom: 1px solid var(--color-gray-light);
+}
+
+.featured-collection__header .container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.collection-label {
+  display: inline-block;
+  font-family: var(--font-ui);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-champagne);
+  margin-bottom: var(--spacing-lg);
+}
+
+.collection-title {
+  font-family: var(--font-serif);
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: var(--color-black);
+  margin-bottom: var(--spacing-md);
+  line-height: 1.2;
+}
+
+.collection-description {
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: var(--color-charcoal);
+  margin-bottom: var(--spacing-xl);
+  max-width: 700px;
+}
+
+.collection-cta {
+  display: flex;
+  gap: var(--spacing-md);
+}
+
+.featured-collection__showcase {
+  padding: var(--spacing-3xl) 0;
+  background-color: var(--color-white);
+}
+
+.featured-collection__showcase .product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--spacing-xl);
+}
+
+/* ─── GIFTING EDITORIAL SECTION ─── */
+.gifting-editorial {
+  background-color: var(--color-white);
+  padding: var(--spacing-3xl) 0;
+  border-top: 1px solid var(--color-gray-light);
+  border-bottom: 1px solid var(--color-gray-light);
+}
+
+.editorial-label {
+  display: inline-block;
+  font-family: var(--font-ui);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-champagne);
+  margin-bottom: var(--spacing-lg);
+}
+
+.editorial-title {
+  font-family: var(--font-serif);
+  font-size: 2.2rem;
+  font-weight: 600;
+  color: var(--color-black);
+  margin-bottom: var(--spacing-md);
+  line-height: 1.2;
+}
+
+.editorial-description {
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: var(--color-charcoal);
+  margin-bottom: var(--spacing-lg);
+}
+
+.editorial-subtext {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: #666;
+  line-height: 1.6;
+  font-style: italic;
+}
+
+.gifting-card {
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+}
+
+.gifting-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  border-color: var(--color-champagne) !important;
+}
+
+.gifting-card h4 {
+  font-family: var(--font-ui);
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--color-black);
+}
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 768px) {
+  .provenance-strip__inner {
+    grid-template-columns: 1fr;
+  }
+
+  .provenance-item:not(:last-child)::after {
+    display: none;
+  }
+
+  .collection-title,
+  .editorial-title {
+    font-size: 1.8rem;
+  }
+
+  .collection-description,
+  .editorial-description {
+    font-size: 1rem;
+  }
+
+  .gifting-options {
+    grid-template-columns: 1fr !important;
+  }
+}

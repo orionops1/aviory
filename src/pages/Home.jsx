@@ -51,47 +51,76 @@ export default function Home() {
         </div>
       </section>
 
-      {/* GEMSTONES */}
-      <section className="featured-products">
-        <div className="container">
-          <div className="section-title">
-            <h2>Exceptional Gemstones</h2>
-            <p className="section-subtitle">Hand-selected rare stones from Ceylon</p>
+      {/* FEATURED COLLECTION - STORYTELLING FIRST */}
+      <section className="featured-collection">
+        <div className="featured-collection__header">
+          <div className="container">
+            <span className="collection-label">FEATURED COLLECTION</span>
+            <h2 className="collection-title">The Ceylon Sapphire Vault</h2>
+            <p className="collection-description">
+              Revered for over 2,000 years for their unparalleled blue saturation and brilliance, Ceylon sapphires represent the pinnacle of luxury gemstone collecting. Each stone in this vault has been hand-selected for its rarity, clarity, and transformative beauty.
+            </p>
+            <div className="collection-cta">
+              <Link to="/gemstones?category=blue-sapphires" className="btn btn-primary">
+                Explore the Collection
+              </Link>
+            </div>
           </div>
-          <div className="product-grid">
-            {gemstones.slice(0, 6).map(gem => (
-              <ProductCard key={gem.id} product={gem} type="gemstone" />
-            ))}
-          </div>
-          <div style={{ textAlign: 'center', marginTop: 'var(--spacing-2xl)' }}>
-            <Link to="/gemstones" className="btn btn-outline">
-              View All Gemstones
-            </Link>
+        </div>
+        <div className="featured-collection__showcase">
+          <div className="container">
+            <div className="product-grid">
+              {gemstones.filter(g => g.type === 'sapphire').slice(0, 4).map(gem => (
+                <ProductCard key={gem.id} product={gem} type="gemstone" />
+              ))}
+            </div>
           </div>
         </div>
       </section>
 
-      {/* ENGAGEMENT RINGS */}
-      <section className="featured-products" style={{ backgroundColor: 'var(--color-ivory)', borderTop: '1px solid var(--color-gray-light)' }}>
+      {/* THE ART OF GIFTING - EDITORIAL SECTION */}
+      <section className="gifting-editorial">
         <div className="container">
-          <div className="section-title">
-            <h2>Engagement Rings</h2>
-            <p className="section-subtitle">Bespoke designs crafted for your love story</p>
-          </div>
-          <div className="product-grid">
-            {fineJewellery.slice(0, 6).map(item => (
-              <ProductCard key={item.id} product={item} type="jewellery" />
-            ))}
-          </div>
-          <div style={{ textAlign: 'center', marginTop: 'var(--spacing-2xl)' }}>
-            <Link to="/engagement-rings" className="btn btn-outline">
-              View Engagement Rings
-            </Link>
+          <div style={{ maxWidth: '800px', margin: '0 auto', textAlign: 'center' }}>
+            <span className="editorial-label">TIMELESS MOMENTS</span>
+            <h2 className="editorial-title">The Art of Gifting</h2>
+            <p className="editorial-description">
+              Personalized jewelry and gifts are especially meaningful and become heirlooms over time. Celebrate every facet of the ones you love with iconic designs that transcend moments and endure as symbols of connection, commitment, and care.
+            </p>
+            <p className="editorial-subtext">
+              Whether marking an engagement, anniversary, or milestone, our gemstones and bespoke creations are crafted to tell your story.
+            </p>
+            
+            <div className="gifting-options" style={{ marginTop: 'var(--spacing-3xl)', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: 'var(--spacing-xl)' }}>
+              <Link to="/engagement-rings" className="gifting-card" style={{ textDecoration: 'none', padding: 'var(--spacing-xl)', backgroundColor: 'var(--color-ivory)', border: '1px solid var(--color-gray-light)', textAlign: 'center', transition: 'all 0.3s ease' }}>
+                <div style={{ fontSize: '2.5rem', marginBottom: 'var(--spacing-md)' }}>💎</div>
+                <h4>Gifts to Engrave</h4>
+                <p style={{ fontSize: '0.9rem', color: 'var(--color-charcoal)', marginTop: 'var(--spacing-sm)' }}>
+                  Personalized jewelry that becomes a cherished heirloom
+                </p>
+              </Link>
+              
+              <Link to="/fine-jewellery" className="gifting-card" style={{ textDecoration: 'none', padding: 'var(--spacing-xl)', backgroundColor: 'var(--color-ivory)', border: '1px solid var(--color-gray-light)', textAlign: 'center', transition: 'all 0.3s ease' }}>
+                <div style={{ fontSize: '2.5rem', marginBottom: 'var(--spacing-md)' }}>✨</div>
+                <h4>Haute Joaillerie</h4>
+                <p style={{ fontSize: '0.9rem', color: 'var(--color-charcoal)', marginTop: 'var(--spacing-sm)' }}>
+                  Extraordinary pieces for extraordinary moments
+                </p>
+              </Link>
+              
+              <Link to="/gemstones" className="gifting-card" style={{ textDecoration: 'none', padding: 'var(--spacing-xl)', backgroundColor: 'var(--color-ivory)', border: '1px solid var(--color-gray-light)', textAlign: 'center', transition: 'all 0.3s ease' }}>
+                <div style={{ fontSize: '2.5rem', marginBottom: 'var(--spacing-md)' }}>🌟</div>
+                <h4>Rare Collector Pieces</h4>
+                <p style={{ fontSize: '0.9rem', color: 'var(--color-charcoal)', marginTop: 'var(--spacing-sm)' }}>
+                  Investment-grade gemstones for connoisseurs
+                </p>
+              </Link>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* JOURNAL */}
+      {/* JOURNAL - BRAND VOICE */}
       <section className="journal-preview">
         <div className="container">
           <div className="section-title">
