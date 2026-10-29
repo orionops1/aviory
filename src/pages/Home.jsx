@@ -22,7 +22,7 @@ export default function Home() {
       <section className="hero">
         <div className="hero-background"></div>
         <div className="hero-content container">
-          <h1>AVIORY & CO</h1>
+          <h1 style={{ fontFamily: "var(--font-brand)", fontSize: '3.5rem', letterSpacing: '0.12em' }}>AVIORY & CO.</h1>
           <p className="hero-subtitle">Exceptional Gemstones & Fine Jewellery</p>
           <div className="hero-cta">
             <Link to="/gemstones" className="btn btn-primary">Explore Gemstones</Link>

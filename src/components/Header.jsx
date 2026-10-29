@@ -11,7 +11,7 @@ export default function Header({ scrolled }) {
     <header className={scrolled ? 'scrolled' : ''}>
       <div className="container">
         <div className="header-content">
-          <Link to="/" className="logo">
+          <Link to="/" className="logo" style={{ fontFamily: "var(--font-brand)" }}>
             AVIORY & CO.
           </Link>
 
