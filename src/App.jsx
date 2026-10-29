@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useCallback } from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import { LanguageProvider } from './hooks/useLanguage'
 import Header from './components/Header'
@@ -32,6 +32,23 @@ export default function App() {
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
+
+  /* Measure header height and expose as CSS variable for mega-menu positioning */
+  const updateHeaderHeight = useCallback(() => {
+    const header = document.querySelector('.header')
+    if (header) {
+      const height = header.offsetHeight
+      document.documentElement.style.setProperty('--header-height', `${height}px`)
+    }
+  }, [])
+
+  useEffect(() => {
+    updateHeaderHeight()
+    window.addEventListener('resize', updateHeaderHeight)
+    // Re-measure after fonts load
+    document.fonts?.ready?.then(updateHeaderHeight)
+    return () => window.removeEventListener('resize', updateHeaderHeight)
+  }, [updateHeaderHeight])
 
   return (
     <LanguageProvider>
