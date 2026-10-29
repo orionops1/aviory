@@ -1,0 +1,72 @@
+{
+  "common": {
+    "home": "Home",
+    "gemstones": "Gemstones",
+    "fineJewellery": "Fine Jewellery",
+    "engagementRings": "Engagement Rings",
+    "bespoke": "Bespoke",
+    "journal": "Journal",
+    "ourHouse": "Our House",
+    "contact": "Contact",
+    "learnMore": "Learn More",
+    "moreInfo": "More Info",
+    "addToCart": "Add to Cart",
+    "subscribe": "Subscribe",
+    "contactUs": "Contact Us",
+    "bookConsultation": "Book Consultation"
+  },
+  "hero": {
+    "title": "AVIORY & CO.",
+    "subtitle": "Exceptional Gemstones & Fine Jewellery",
+    "exploreGemstones": "Explore Gemstones",
+    "createBespoke": "Create Bespoke"
+  },
+  "categories": {
+    "gemstones": "Gemstones",
+    "gemstonesCount": "9 Categories",
+    "fineJewellery": "Fine Jewellery",
+    "fineJewelleryCount": "8 Collections",
+    "engagementRings": "Engagement Rings",
+    "engagementRingsCount": "8 Styles",
+    "bespoke": "Bespoke",
+    "bespokeDesc": "Custom Creation"
+  },
+  "home": {
+    "featuredGemstones": "Featured Gemstones",
+    "discoverExceptional": "Discover our most exceptional pieces",
+    "viewAllGemstones": "View All Gemstones",
+    "bespokeProcess": "Our 5-Stage Bespoke Process",
+    "fromVisionToMasterpiece": "From vision to masterpiece",
+    "startBespokeJourney": "Start Your Bespoke Journey",
+    "journal": "Journal",
+    "insightsOnGemstones": "Insights on gemstones, craftsmanship, and luxury",
+    "readJournal": "Read Journal",
+    "joinNewsletter": "Join Our Newsletter",
+    "receiveUpdates": "Receive curated updates on new collections, insights from our journal, and exclusive offers.",
+    "emailPlaceholder": "Your email address",
+    "experienceLuxury": "Experience Luxury",
+    "visitAtelier": "Visit our atelier for a private consultation or explore our complete collection online. Every piece represents centuries of expertise and a commitment to uncompromising quality.",
+    "subscribeSuccess": "Thank you for subscribing!"
+  },
+  "bespokeProcess": {
+    "consultation": "Consultation",
+    "consultationDesc": "Discuss your vision with our master craftspeople",
+    "design": "Design",
+    "designDesc": "Create your unique design with our experts",
+    "selection": "Selection",
+    "selectionDesc": "Choose the perfect gemstone",
+    "crafting": "Crafting",
+    "craftingDesc": "Handcraft your bespoke piece",
+    "delivery": "Delivery",
+    "deliveryDesc": "Receive your masterpiece"
+  },
+  "footer": {
+    "about": "About AVIORY & CO",
+    "aboutDesc": "Luxury gemstones and fine jewellery with Ceylon heritage. Over 50 years of expertise in exceptional sapphires, rubies, and bespoke creations.",
+    "collections": "Collections",
+    "resources": "Resources",
+    "contact": "Contact",
+    "privateConsultations": "Private Consultations",
+    "rights": "© 2024 AVIORY & CO. All rights reserved."
+  }
+}

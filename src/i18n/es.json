@@ -1,0 +1,72 @@
+{
+  "common": {
+    "home": "Inicio",
+    "gemstones": "Piedras preciosas",
+    "fineJewellery": "Joyería fina",
+    "engagementRings": "Anillos de compromiso",
+    "bespoke": "Personalizado",
+    "journal": "Journal",
+    "ourHouse": "Nuestro taller",
+    "contact": "Contacto",
+    "learnMore": "Más información",
+    "moreInfo": "Más info",
+    "addToCart": "Agregar al carrito",
+    "subscribe": "Suscribirse",
+    "contactUs": "Contáctenos",
+    "bookConsultation": "Reservar una consulta"
+  },
+  "hero": {
+    "title": "AVIORY & CO.",
+    "subtitle": "Piedras preciosas excepcionales y joyería fina",
+    "exploreGemstones": "Explorar piedras preciosas",
+    "createBespoke": "Crear personalizado"
+  },
+  "categories": {
+    "gemstones": "Piedras preciosas",
+    "gemstonesCount": "9 Categorías",
+    "fineJewellery": "Joyería fina",
+    "fineJewelleryCount": "8 Colecciones",
+    "engagementRings": "Anillos de compromiso",
+    "engagementRingsCount": "8 Estilos",
+    "bespoke": "Personalizado",
+    "bespokeDesc": "Creación personalizada"
+  },
+  "home": {
+    "featuredGemstones": "Piedras preciosas destacadas",
+    "discoverExceptional": "Descubra nuestras piezas más excepcionales",
+    "viewAllGemstones": "Ver todas las piedras preciosas",
+    "bespokeProcess": "Nuestro proceso personalizado de 5 etapas",
+    "fromVisionToMasterpiece": "De la visión a la obra maestra",
+    "startBespokeJourney": "Inicia tu viaje personalizado",
+    "journal": "Journal",
+    "insightsOnGemstones": "Perspectivas sobre piedras preciosas, artesanía y lujo",
+    "readJournal": "Leer journal",
+    "joinNewsletter": "Únase a nuestro boletín",
+    "receiveUpdates": "Reciba actualizaciones seleccionadas sobre nuevas colecciones, perspectivas de nuestro journal y ofertas exclusivas.",
+    "emailPlaceholder": "Tu dirección de correo electrónico",
+    "experienceLuxury": "Experimenta el lujo",
+    "visitAtelier": "Visite nuestro taller para una consulta privada o explore nuestra colección completa en línea. Cada pieza representa siglos de experiencia y un compromiso con la calidad incomparable.",
+    "subscribeSuccess": "¡Gracias por suscribirse!"
+  },
+  "bespokeProcess": {
+    "consultation": "Consulta",
+    "consultationDesc": "Discute tu visión con nuestros maestros artesanos",
+    "design": "Diseño",
+    "designDesc": "Crea tu diseño único con nuestros expertos",
+    "selection": "Selección",
+    "selectionDesc": "Elige la piedra preciosa perfecta",
+    "crafting": "Artesanía",
+    "craftingDesc": "Crea a mano tu pieza personalizada",
+    "delivery": "Entrega",
+    "deliveryDesc": "Recibe tu obra maestra"
+  },
+  "footer": {
+    "about": "Acerca de AVIORY & CO",
+    "aboutDesc": "Piedras preciosas de lujo y joyería fina con herencia de Ceilán. Más de 50 años de experiencia en zafiros, rubíes y creaciones personalizadas excepcionales.",
+    "collections": "Colecciones",
+    "resources": "Recursos",
+    "contact": "Contacto",
+    "privateConsultations": "Consultas privadas",
+    "rights": "© 2024 AVIORY & CO. Todos los derechos reservados."
+  }
+}

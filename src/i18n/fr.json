@@ -1,0 +1,72 @@
+{
+  "common": {
+    "home": "Accueil",
+    "gemstones": "Pierres précieuses",
+    "fineJewellery": "Joaillerie fine",
+    "engagementRings": "Bagues de fiançailles",
+    "bespoke": "Sur mesure",
+    "journal": "Journal",
+    "ourHouse": "Notre atelier",
+    "contact": "Contact",
+    "learnMore": "En savoir plus",
+    "moreInfo": "Plus d'informations",
+    "addToCart": "Ajouter au panier",
+    "subscribe": "S'abonner",
+    "contactUs": "Nous contacter",
+    "bookConsultation": "Réserver une consultation"
+  },
+  "hero": {
+    "title": "AVIORY & CO.",
+    "subtitle": "Pierres précieuses exceptionnelles et joaillerie fine",
+    "exploreGemstones": "Explorer les pierres précieuses",
+    "createBespoke": "Créer sur mesure"
+  },
+  "categories": {
+    "gemstones": "Pierres précieuses",
+    "gemstonesCount": "9 Catégories",
+    "fineJewellery": "Joaillerie fine",
+    "fineJewelleryCount": "8 Collections",
+    "engagementRings": "Bagues de fiançailles",
+    "engagementRingsCount": "8 Styles",
+    "bespoke": "Sur mesure",
+    "bespokeDesc": "Création personnalisée"
+  },
+  "home": {
+    "featuredGemstones": "Pierres précieuses en vedette",
+    "discoverExceptional": "Découvrez nos pièces les plus exceptionnelles",
+    "viewAllGemstones": "Voir toutes les pierres précieuses",
+    "bespokeProcess": "Notre processus sur mesure en 5 étapes",
+    "fromVisionToMasterpiece": "De la vision au chef-d'œuvre",
+    "startBespokeJourney": "Commencez votre parcours sur mesure",
+    "journal": "Journal",
+    "insightsOnGemstones": "Aperçus sur les pierres précieuses, l'artisanat et le luxe",
+    "readJournal": "Lire le journal",
+    "joinNewsletter": "Rejoignez notre newsletter",
+    "receiveUpdates": "Recevez des mises à jour sélectionnées sur les nouvelles collections, des aperçus de notre journal et des offres exclusives.",
+    "emailPlaceholder": "Votre adresse e-mail",
+    "experienceLuxury": "Vivez le luxe",
+    "visitAtelier": "Visitez notre atelier pour une consultation privée ou explorez notre collection complète en ligne. Chaque pièce représente des siècles d'expertise et un engagement envers une qualité inégalée.",
+    "subscribeSuccess": "Merci de votre abonnement !"
+  },
+  "bespokeProcess": {
+    "consultation": "Consultation",
+    "consultationDesc": "Discutez de votre vision avec nos maîtres artisans",
+    "design": "Design",
+    "designDesc": "Créez votre design unique avec nos experts",
+    "selection": "Sélection",
+    "selectionDesc": "Choisissez la pierre précieuse parfaite",
+    "crafting": "Fabrication",
+    "craftingDesc": "Fabriquez à la main votre pièce sur mesure",
+    "delivery": "Livraison",
+    "deliveryDesc": "Recevez votre chef-d'œuvre"
+  },
+  "footer": {
+    "about": "À propos d'AVIORY & CO",
+    "aboutDesc": "Pierres précieuses luxueuses et joaillerie fine avec héritage ceylanais. Plus de 50 ans d'expertise en saphirs, rubis et créations sur mesure exceptionnels.",
+    "collections": "Collections",
+    "resources": "Ressources",
+    "contact": "Contact",
+    "privateConsultations": "Consultations privées",
+    "rights": "© 2024 AVIORY & CO. Tous droits réservés."
+  }
+}

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { LanguageProvider } from './hooks/useLanguage'
 import Header from './components/Header'
 import Footer from './components/Footer'
 
@@ -33,11 +34,12 @@ export default function App() {
   }, [])
 
   return (
-    <Router>
-      <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
-        <Header scrolled={scrolled} />
-        <main style={{ flex: 1 }}>
-          <Routes>
+    <LanguageProvider>
+      <Router>
+        <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
+          <Header scrolled={scrolled} />
+          <main style={{ flex: 1 }}>
+            <Routes>
             {/* Home */}
             <Route path="/" element={<Home />} />
 
@@ -66,10 +68,11 @@ export default function App() {
             <Route path="/our-house" element={<OurHouse />} />
             <Route path="/private-consultations" element={<PrivateConsultations />} />
             <Route path="/contact" element={<Contact />} />
-          </Routes>
-        </main>
-        <Footer />
-      </div>
-    </Router>
+            </Routes>
+          </main>
+          <Footer />
+        </div>
+      </Router>
+    </LanguageProvider>
   )
 }

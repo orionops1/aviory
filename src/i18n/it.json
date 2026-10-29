@@ -1,0 +1,72 @@
+{
+  "common": {
+    "home": "Home",
+    "gemstones": "Pietre preziose",
+    "fineJewellery": "Gioielleria fine",
+    "engagementRings": "Anelli di fidanzamento",
+    "bespoke": "Su misura",
+    "journal": "Journal",
+    "ourHouse": "La nostra bottega",
+    "contact": "Contatti",
+    "learnMore": "Ulteriori informazioni",
+    "moreInfo": "Più info",
+    "addToCart": "Aggiungi al carrello",
+    "subscribe": "Iscriviti",
+    "contactUs": "Contattaci",
+    "bookConsultation": "Prenota una consultazione"
+  },
+  "hero": {
+    "title": "AVIORY & CO.",
+    "subtitle": "Pietre preziose eccezionali e gioielleria fine",
+    "exploreGemstones": "Esplora le pietre preziose",
+    "createBespoke": "Crea su misura"
+  },
+  "categories": {
+    "gemstones": "Pietre preziose",
+    "gemstonesCount": "9 Categorie",
+    "fineJewellery": "Gioielleria fine",
+    "fineJewelleryCount": "8 Collezioni",
+    "engagementRings": "Anelli di fidanzamento",
+    "engagementRingsCount": "8 Stili",
+    "bespoke": "Su misura",
+    "bespokeDesc": "Creazione personalizzata"
+  },
+  "home": {
+    "featuredGemstones": "Pietre preziose in evidenza",
+    "discoverExceptional": "Scopri i nostri pezzi più eccezionali",
+    "viewAllGemstones": "Visualizza tutte le pietre preziose",
+    "bespokeProcess": "Il nostro processo su misura in 5 fasi",
+    "fromVisionToMasterpiece": "Dalla visione al capolavoro",
+    "startBespokeJourney": "Inizia il tuo percorso su misura",
+    "journal": "Journal",
+    "insightsOnGemstones": "Approfondimenti su pietre preziose, artigianato e lusso",
+    "readJournal": "Leggi il journal",
+    "joinNewsletter": "Iscriviti alla nostra newsletter",
+    "receiveUpdates": "Ricevi aggiornamenti curati sulle nuove collezioni, approfondimenti dal nostro journal e offerte esclusive.",
+    "emailPlaceholder": "Il tuo indirizzo email",
+    "experienceLuxury": "Sperimenta il lusso",
+    "visitAtelier": "Visita la nostra bottega per una consultazione privata o esplora online la nostra collezione completa. Ogni pezzo rappresenta secoli di competenza e un impegno per la qualità ineguagliabile.",
+    "subscribeSuccess": "Grazie per la tua iscrizione!"
+  },
+  "bespokeProcess": {
+    "consultation": "Consultazione",
+    "consultationDesc": "Discuti la tua visione con i nostri maestri artigiani",
+    "design": "Design",
+    "designDesc": "Crea il tuo design unico con i nostri esperti",
+    "selection": "Selezione",
+    "selectionDesc": "Scegli la pietra preziosa perfetta",
+    "crafting": "Artigianato",
+    "craftingDesc": "Realizza a mano il tuo pezzo su misura",
+    "delivery": "Consegna",
+    "deliveryDesc": "Ricevi il tuo capolavoro"
+  },
+  "footer": {
+    "about": "Su AVIORY & CO",
+    "aboutDesc": "Pietre preziose lussuose e gioielleria fine con eredità ceylanese. Oltre 50 anni di competenza in zaffiri, rubini e creazioni su misura eccezionali.",
+    "collections": "Collezioni",
+    "resources": "Risorse",
+    "contact": "Contatti",
+    "privateConsultations": "Consultazioni private",
+    "rights": "© 2024 AVIORY & CO. Tutti i diritti riservati."
+  }
+}

@@ -1,0 +1,72 @@
+{
+  "common": {
+    "home": "Startseite",
+    "gemstones": "Edelsteine",
+    "fineJewellery": "Feine Schmuckkunst",
+    "engagementRings": "Verlobungsringe",
+    "bespoke": "Maßgefertigt",
+    "journal": "Journal",
+    "ourHouse": "Unser Atelier",
+    "contact": "Kontakt",
+    "learnMore": "Mehr erfahren",
+    "moreInfo": "Weitere Informationen",
+    "addToCart": "In den Warenkorb",
+    "subscribe": "Abonnieren",
+    "contactUs": "Kontaktieren Sie uns",
+    "bookConsultation": "Beratung buchen"
+  },
+  "hero": {
+    "title": "AVIORY & CO.",
+    "subtitle": "Außergewöhnliche Edelsteine und feine Schmuckkunst",
+    "exploreGemstones": "Edelsteine erkunden",
+    "createBespoke": "Maßgefertigtes erstellen"
+  },
+  "categories": {
+    "gemstones": "Edelsteine",
+    "gemstonesCount": "9 Kategorien",
+    "fineJewellery": "Feine Schmuckkunst",
+    "fineJewelleryCount": "8 Kollektionen",
+    "engagementRings": "Verlobungsringe",
+    "engagementRingsCount": "8 Stile",
+    "bespoke": "Maßgefertigt",
+    "bespokeDesc": "Benutzerdefinierte Kreation"
+  },
+  "home": {
+    "featuredGemstones": "Ausgewählte Edelsteine",
+    "discoverExceptional": "Entdecken Sie unsere außergewöhnlichsten Stücke",
+    "viewAllGemstones": "Alle Edelsteine anzeigen",
+    "bespokeProcess": "Unser 5-Stufen-Maßfertigungsprozess",
+    "fromVisionToMasterpiece": "Von der Vision zum Meisterwerk",
+    "startBespokeJourney": "Beginnen Sie Ihre Maßfertigungsreise",
+    "journal": "Journal",
+    "insightsOnGemstones": "Einblicke in Edelsteine, Handwerk und Luxus",
+    "readJournal": "Journal lesen",
+    "joinNewsletter": "Abonnieren Sie unseren Newsletter",
+    "receiveUpdates": "Erhalten Sie kuratierte Updates zu neuen Kollektionen, Erkenntnisse aus unserem Journal und exklusive Angebote.",
+    "emailPlaceholder": "Ihre E-Mail-Adresse",
+    "experienceLuxury": "Erleben Sie Luxus",
+    "visitAtelier": "Besuchen Sie unser Atelier für eine private Beratung oder erkunden Sie online unsere komplette Kollektion. Jedes Stück steht für Jahrhunderte von Fachwissen und das Engagement für unübertroffene Qualität.",
+    "subscribeSuccess": "Vielen Dank für Ihr Abonnement!"
+  },
+  "bespokeProcess": {
+    "consultation": "Beratung",
+    "consultationDesc": "Besprechen Sie Ihre Vision mit unseren Meisterkraftsmännern",
+    "design": "Design",
+    "designDesc": "Erstellen Sie Ihr einzigartiges Design mit unseren Experten",
+    "selection": "Auswahl",
+    "selectionDesc": "Wählen Sie den perfekten Edelstein",
+    "crafting": "Handwerk",
+    "craftingDesc": "Handfertigungsprozess Ihres maßgefertigten Stücks",
+    "delivery": "Lieferung",
+    "deliveryDesc": "Erhalten Sie Ihr Meisterwerk"
+  },
+  "footer": {
+    "about": "Über AVIORY & CO",
+    "aboutDesc": "Luxusedelsteine und feine Schmuckkunst mit Ceylon-Erbe. Über 50 Jahre Fachwissen in außergewöhnlichen Saphiren, Rubinen und maßgefertigten Kreationen.",
+    "collections": "Kollektionen",
+    "resources": "Ressourcen",
+    "contact": "Kontakt",
+    "privateConsultations": "Private Beratungen",
+    "rights": "© 2024 AVIORY & CO. Alle Rechte vorbehalten."
+  }
+}

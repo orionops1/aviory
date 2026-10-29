@@ -3,11 +3,13 @@ import { Link } from 'react-router-dom'
 import ProductCard from '../components/ProductCard'
 import { gemstones, fineJewellery, journalArticles } from '../data/products'
 import { bespokeProcess, shopInfo } from '../data/content'
+import { useLanguage } from '../hooks/useLanguage'
 import './Home.css'
 
 export default function Home() {
   const [email, setEmail] = useState('')
   const [subscribed, setSubscribed] = useState(false)
+  const { t } = useLanguage()
 
   const handleNewsletterSubmit = (e) => {
     e.preventDefault()
@@ -22,11 +24,11 @@ export default function Home() {
       <section className="hero">
         <div className="hero-background"></div>
         <div className="hero-content container">
-          <h1 style={{ fontFamily: "var(--font-brand)", fontSize: 'clamp(2.5rem, 8vw, 3.5rem)', letterSpacing: '0.12em', marginBottom: 'var(--spacing-lg)' }}>AVIORY & CO.</h1>
-          <p className="hero-subtitle">Exceptional Gemstones & Fine Jewellery</p>
+          <h1 style={{ fontFamily: "var(--font-brand)", fontSize: 'clamp(2.5rem, 8vw, 3.5rem)', letterSpacing: '0.12em', marginBottom: 'var(--spacing-lg)' }}>{t('hero.title')}</h1>
+          <p className="hero-subtitle">{t('hero.subtitle')}</p>
           <div className="hero-cta">
-            <Link to="/gemstones" className="btn btn-primary">Explore Gemstones</Link>
-            <Link to="/bespoke" className="btn btn-secondary">Create Bespoke</Link>
+            <Link to="/gemstones" className="btn btn-primary">{t('hero.exploreGemstones')}</Link>
+            <Link to="/bespoke" className="btn btn-secondary">{t('hero.createBespoke')}</Link>
           </div>
         </div>
       </section>
@@ -56,8 +58,8 @@ export default function Home() {
             onMouseLeave={(e) => e.currentTarget.style.background = 'linear-gradient(135deg, #111111 0%, #2B2B2B 100%)'}
             >
               <h3 style={{ color: '#D4AF7F', marginBottom: 'var(--spacing-md)', fontSize: '1.5rem' }}>💎</h3>
-              <h3 style={{ color: '#F8F4EF', fontSize: '1.5rem' }}>Gemstones</h3>
-              <p style={{ color: '#E8E3DC', fontSize: '0.875rem', marginTop: 'var(--spacing-md)' }}>9 Categories</p>
+              <h3 style={{ color: '#F8F4EF', fontSize: '1.5rem' }}>{t('categories.gemstones')}</h3>
+              <p style={{ color: '#E8E3DC', fontSize: '0.875rem', marginTop: 'var(--spacing-md)' }}>{t('categories.gemstonesCount')}</p>
             </div>
           </Link>
 
@@ -79,8 +81,8 @@ export default function Home() {
             onMouseLeave={(e) => e.currentTarget.style.background = 'linear-gradient(135deg, #111111 0%, #2B2B2B 100%)'}
             >
               <h3 style={{ color: '#D4AF7F', marginBottom: 'var(--spacing-md)', fontSize: '1.5rem' }}>👑</h3>
-              <h3 style={{ color: '#F8F4EF', fontSize: '1.5rem' }}>Fine Jewellery</h3>
-              <p style={{ color: '#E8E3DC', fontSize: '0.875rem', marginTop: 'var(--spacing-md)' }}>8 Collections</p>
+              <h3 style={{ color: '#F8F4EF', fontSize: '1.5rem' }}>{t('categories.fineJewellery')}</h3>
+              <p style={{ color: '#E8E3DC', fontSize: '0.875rem', marginTop: 'var(--spacing-md)' }}>{t('categories.fineJewelleryCount')}</p>
             </div>
           </Link>
 
@@ -102,8 +104,8 @@ export default function Home() {
             onMouseLeave={(e) => e.currentTarget.style.background = 'linear-gradient(135deg, #111111 0%, #2B2B2B 100%)'}
             >
               <h3 style={{ color: '#D4AF7F', marginBottom: 'var(--spacing-md)', fontSize: '1.5rem' }}>💍</h3>
-              <h3 style={{ color: '#F8F4EF', fontSize: '1.5rem' }}>Engagement Rings</h3>
-              <p style={{ color: '#E8E3DC', fontSize: '0.875rem', marginTop: 'var(--spacing-md)' }}>8 Styles</p>
+              <h3 style={{ color: '#F8F4EF', fontSize: '1.5rem' }}>{t('categories.engagementRings')}</h3>
+              <p style={{ color: '#E8E3DC', fontSize: '0.875rem', marginTop: 'var(--spacing-md)' }}>{t('categories.engagementRingsCount')}</p>
             </div>
           </Link>
 
@@ -125,8 +127,8 @@ export default function Home() {
             onMouseLeave={(e) => e.currentTarget.style.background = 'linear-gradient(135deg, #111111 0%, #2B2B2B 100%)'}
             >
               <h3 style={{ color: '#D4AF7F', marginBottom: 'var(--spacing-md)', fontSize: '1.5rem' }}>✨</h3>
-              <h3 style={{ color: '#F8F4EF', fontSize: '1.5rem' }}>Bespoke</h3>
-              <p style={{ color: '#E8E3DC', fontSize: '0.875rem', marginTop: 'var(--spacing-md)' }}>Custom Creation</p>
+              <h3 style={{ color: '#F8F4EF', fontSize: '1.5rem' }}>{t('categories.bespoke')}</h3>
+              <p style={{ color: '#E8E3DC', fontSize: '0.875rem', marginTop: 'var(--spacing-md)' }}>{t('categories.bespokeDesc')}</p>
             </div>
           </Link>
         </div>
@@ -136,8 +138,8 @@ export default function Home() {
       <section style={{ backgroundColor: '#F8F4EF', paddingTop: 'var(--spacing-3xl)', paddingBottom: 'var(--spacing-3xl)' }}>
         <div className="container">
           <div className="section-title">
-            <h2>Featured Gemstones</h2>
-            <p className="section-subtitle">Discover our most exceptional pieces</p>
+            <h2>{t('home.featuredGemstones')}</h2>
+            <p className="section-subtitle">{t('home.discoverExceptional')}</p>
           </div>
           <div className="product-grid">
             {gemstones.slice(0, 6).map(gem => (
@@ -145,7 +147,7 @@ export default function Home() {
             ))}
           </div>
           <div style={{ textAlign: 'center', marginTop: 'var(--spacing-2xl)' }}>
-            <Link to="/gemstones" className="btn btn-primary">View All Gemstones</Link>
+            <Link to="/gemstones" className="btn btn-primary">{t('home.viewAllGemstones')}</Link>
           </div>
         </div>
       </section>
@@ -153,8 +155,8 @@ export default function Home() {
       {/* BESPOKE PROCESS */}
       <section className="container" style={{ paddingTop: 'var(--spacing-3xl)', paddingBottom: 'var(--spacing-3xl)' }}>
         <div className="section-title">
-          <h2>Our 5-Stage Bespoke Process</h2>
-          <p className="section-subtitle">From vision to masterpiece</p>
+          <h2>{t('home.bespokeProcess')}</h2>
+          <p className="section-subtitle">{t('home.fromVisionToMasterpiece')}</p>
         </div>
         <div className="process-grid">
           {bespokeProcess.map(stage => (
@@ -168,7 +170,7 @@ export default function Home() {
           ))}
         </div>
         <div style={{ textAlign: 'center', marginTop: 'var(--spacing-2xl)' }}>
-          <Link to="/bespoke" className="btn btn-primary">Start Your Bespoke Journey</Link>
+          <Link to="/bespoke" className="btn btn-primary">{t('home.startBespokeJourney')}</Link>
         </div>
       </section>
 
@@ -176,8 +178,8 @@ export default function Home() {
       <section style={{ backgroundColor: '#F8F4EF', paddingTop: 'var(--spacing-3xl)', paddingBottom: 'var(--spacing-3xl)' }}>
         <div className="container">
           <div className="section-title">
-            <h2>Journal</h2>
-            <p className="section-subtitle">Insights on gemstones, craftsmanship, and luxury</p>
+            <h2>{t('home.journal')}</h2>
+            <p className="section-subtitle">{t('home.insightsOnGemstones')}</p>
           </div>
           <div style={{
             display: 'grid',
@@ -215,7 +217,7 @@ export default function Home() {
             ))}
           </div>
           <div style={{ textAlign: 'center', marginTop: 'var(--spacing-2xl)' }}>
-            <Link to="/journal" className="btn btn-primary">Read Journal</Link>
+            <Link to="/journal" className="btn btn-primary">{t('home.readJournal')}</Link>
           </div>
         </div>
       </section>
@@ -224,18 +226,18 @@ export default function Home() {
       <section className="newsletter-section">
         <div className="container">
           <div className="newsletter-content">
-            <h2>Join Our Newsletter</h2>
-            <p>Receive curated updates on new collections, insights from our journal, and exclusive offers.</p>
-            {subscribed && <div className="alert alert-success">Thank you for subscribing!</div>}
+            <h2>{t('home.joinNewsletter')}</h2>
+            <p>{t('home.receiveUpdates')}</p>
+            {subscribed && <div className="alert alert-success">{t('home.subscribeSuccess')}</div>}
             <form onSubmit={handleNewsletterSubmit} className="newsletter-form">
               <input
                 type="email"
-                placeholder="Your email address"
+                placeholder={t('home.emailPlaceholder')}
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
               />
-              <button type="submit" className="btn btn-primary">Subscribe</button>
+              <button type="submit" className="btn btn-primary">{t('common.subscribe')}</button>
             </form>
           </div>
         </div>
@@ -243,13 +245,13 @@ export default function Home() {
 
       {/* CTA SECTION */}
       <section className="container" style={{ paddingTop: 'var(--spacing-3xl)', paddingBottom: 'var(--spacing-3xl)', textAlign: 'center' }}>
-        <h2 style={{ marginBottom: 'var(--spacing-lg)' }}>Experience Luxury</h2>
+        <h2 style={{ marginBottom: 'var(--spacing-lg)' }}>{t('home.experienceLuxury')}</h2>
         <p style={{ fontSize: '1.1rem', marginBottom: 'var(--spacing-xl)', color: '#2B2B2B', maxWidth: '600px', margin: '0 auto var(--spacing-xl)' }}>
-          Visit our atelier for a private consultation or explore our complete collection online. Every piece represents centuries of expertise and a commitment to uncompromising quality.
+          {t('home.visitAtelier')}
         </p>
         <div style={{ display: 'flex', gap: 'var(--spacing-md)', justifyContent: 'center', flexWrap: 'wrap' }}>
-          <Link to="/private-consultations" className="btn btn-primary">Book Consultation</Link>
-          <Link to="/contact" className="btn btn-outline">Contact Us</Link>
+          <Link to="/private-consultations" className="btn btn-primary">{t('common.bookConsultation')}</Link>
+          <Link to="/contact" className="btn btn-outline">{t('common.contactUs')}</Link>
         </div>
       </section>
     </>
