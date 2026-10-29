@@ -58,11 +58,11 @@ export default function EngagementRings() {
       }}>
         <div className="container">
           <span style={{ display: 'block', fontSize: '0.72rem', letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--color-champagne)', marginBottom: '0.5rem', fontWeight: 700 }}>
-            CELEBRATE LOVE
+            AVIORY LOVE COLLECTION
           </span>
-          <h1 style={{ color: '#ffffff', fontFamily: 'var(--font-serif)', fontSize: 'clamp(2.4rem, 5vw, 3.5rem)' }}>Engagement Rings</h1>
+          <h1 style={{ color: '#ffffff', fontFamily: 'var(--font-serif)', fontSize: 'clamp(2.4rem, 5vw, 3.5rem)' }}>Rings for Every Love Story</h1>
           <p style={{ fontSize: '1.05rem', marginTop: 'var(--spacing-sm)', opacity: 0.9, maxWidth: '600px', margin: '0 auto' }}>
-            Timeless designs featuring exceptional unheated Ceylon sapphires and hand-crafted mountings.
+            We add value to every love story. Hand-crafted rings featuring exceptional unheated Ceylon sapphires and timeless designs.
           </p>
         </div>
       </section>

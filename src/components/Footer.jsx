@@ -37,7 +37,7 @@ export default function Footer() {
                 <li><Link to="/gemstones">Royal Ceylon Sapphires</Link></li>
                 <li><Link to="/gemstones?category=padparadscha">Padparadscha &amp; Spinels</Link></li>
                 <li><Link to="/fine-jewellery">Haute Joaillerie Suites</Link></li>
-                <li><Link to="/engagement-rings">Bespoke Bridal Rings</Link></li>
+                <li><Link to="/engagement-rings">AVIORY Love Collection</Link></li>
                 <li><Link to="/gemstones?category=collector">Collector Vault Pieces</Link></li>
               </ul>
             </div>

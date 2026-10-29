@@ -161,7 +161,7 @@ function useMegaMenuData(t) {
       mega: {
         columns: [
           {
-            heading: 'By Setting Style',
+            heading: 'Love & Commitment',
             links: [
               { label: 'Solitaire Settings', href: '/engagement-rings?style=solitaire' },
               { label: 'Luminous Halo Designs', href: '/engagement-rings?style=halo' },
@@ -180,11 +180,12 @@ function useMegaMenuData(t) {
             ],
           },
           {
-            heading: 'Bridal Concierge',
+            heading: 'Love Collection Guide',
             links: [
               { label: 'Ring Sizing Guide', href: '/engagement-rings' },
-              { label: 'Book a Bridal Consultation', href: '/private-consultations' },
-              { label: 'All Engagement Rings', href: '/engagement-rings', accent: true },
+              { label: 'The Story of Love', href: '/engagement-rings' },
+              { label: 'Book a Love Consultation', href: '/private-consultations' },
+              { label: 'Explore All Rings', href: '/engagement-rings', accent: true },
             ],
           },
         ],

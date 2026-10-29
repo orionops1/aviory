@@ -58,7 +58,7 @@ export default function EngagementRingDetail() {
       <nav className="pdp-breadcrumbs container" aria-label="Breadcrumb">
         <Link to="/" className="pdp-breadcrumb-link">Maison</Link>
         <span className="pdp-breadcrumb-sep">/</span>
-        <Link to="/engagement-rings" className="pdp-breadcrumb-link">Engagement Rings</Link>
+        <Link to="/engagement-rings" className="pdp-breadcrumb-link">Love Collection</Link>
         <span className="pdp-breadcrumb-sep">/</span>
         <span className="pdp-breadcrumb-current">{ring.name}</span>
       </nav>
