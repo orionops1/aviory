@@ -674,3 +674,23 @@
     gap: 1rem;
   }
 }
+
+
+/* ============================================================================
+   MOBILE LANGUAGE SWITCHER FIX
+   ============================================================================ */
+
+@media (max-width: 768px) {
+  .header-actions .language-switcher {
+    z-index: 110;
+  }
+
+  .header-actions .language-switcher .language-dropdown {
+    position: fixed;
+    top: auto;
+    right: auto;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 999999;
+  }
+}
