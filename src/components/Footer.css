@@ -1,1 +1,294 @@
-/* Already defined in main styles/index.css - this file left intentionally minimal */
+/* ============================================================================
+   FOOTER - LUXURY TIFFANY-INSPIRED DESIGN
+   ============================================================================ */
+
+.footer {
+  background-color: var(--color-black);
+  color: var(--color-ivory);
+  margin-top: auto;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Main Footer */
+.footer-main {
+  padding: var(--spacing-3xl) 0 var(--spacing-2xl);
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: var(--spacing-3xl);
+  margin-bottom: var(--spacing-2xl);
+  padding-bottom: var(--spacing-2xl);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Brand Column */
+.footer-brand {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+}
+
+.footer-logo {
+  font-family: var(--font-brand);
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  color: var(--color-champagne);
+  margin: 0;
+  line-height: 1;
+}
+
+.footer-tagline {
+  font-size: 0.9rem;
+  line-height: 1.7;
+  color: var(--color-gray-light);
+  margin: 0;
+  max-width: 300px;
+}
+
+/* Footer Sections */
+.footer-section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.footer-section h4 {
+  font-family: var(--font-ui);
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-champagne);
+  margin: 0;
+}
+
+.footer-section ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.footer-section li {
+  margin: 0;
+  font-size: 0.875rem;
+}
+
+.footer-section a,
+.footer-section p {
+  color: var(--color-gray-light);
+  text-decoration: none;
+  transition: var(--transition);
+  font-size: 0.875rem;
+}
+
+.footer-section a:hover {
+  color: var(--color-champagne);
+}
+
+/* Contact Section */
+.footer-contact {
+  gap: var(--spacing-md);
+}
+
+.contact-link {
+  color: var(--color-champagne) !important;
+  font-weight: 600;
+}
+
+.contact-link:hover {
+  opacity: 0.8;
+}
+
+.contact-hours {
+  font-size: 0.8rem;
+  color: var(--color-gray-medium);
+  font-style: italic;
+}
+
+/* Social Links */
+.social-links {
+  display: flex;
+  gap: var(--spacing-md);
+}
+
+.social-icon {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--color-gray-light);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-gray-light);
+  text-decoration: none;
+  transition: var(--transition);
+  font-size: 0.75rem;
+  text-align: center;
+  padding: 0;
+  background: transparent;
+}
+
+.social-icon:hover {
+  background-color: var(--color-champagne);
+  color: var(--color-black);
+  border-color: var(--color-champagne);
+}
+
+/* Footer Bottom */
+.footer-bottom {
+  background-color: rgba(0, 0, 0, 0.3);
+  padding: var(--spacing-lg) 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-bottom-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--spacing-xl);
+}
+
+.footer-copyright {
+  font-size: 0.8rem;
+  color: var(--color-gray-light);
+}
+
+.footer-copyright p {
+  margin: 0;
+}
+
+.footer-links {
+  display: flex;
+  gap: var(--spacing-xl);
+  flex-wrap: wrap;
+}
+
+.footer-links a {
+  font-size: 0.8rem;
+  color: var(--color-gray-light);
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+.footer-links a:hover {
+  color: var(--color-champagne);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .footer-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-2xl);
+  }
+
+  .footer-brand {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 768px) {
+  .footer-main {
+    padding: var(--spacing-2xl) 0 var(--spacing-xl);
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-xl);
+    margin-bottom: var(--spacing-xl);
+    padding-bottom: var(--spacing-xl);
+  }
+
+  .footer-brand {
+    grid-column: auto;
+  }
+
+  .footer-section h4 {
+    font-size: 0.75rem;
+  }
+
+  .footer-section a,
+  .footer-section p,
+  .footer-section li {
+    font-size: 0.8rem;
+  }
+
+  .footer-bottom-content {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-lg);
+  }
+
+  .footer-links {
+    gap: var(--spacing-md);
+  }
+
+  .social-links {
+    gap: var(--spacing-sm);
+  }
+
+  .social-icon {
+    width: 36px;
+    height: 36px;
+    font-size: 0.7rem;
+  }
+
+  .footer-tagline {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer-main {
+    padding: var(--spacing-xl) 0 var(--spacing-md);
+  }
+
+  .footer-grid {
+    gap: var(--spacing-lg);
+    padding-bottom: var(--spacing-lg);
+    margin-bottom: var(--spacing-lg);
+  }
+
+  .footer-section h4 {
+    font-size: 0.7rem;
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .footer-section ul {
+    gap: var(--spacing-xs);
+  }
+
+  .footer-section a,
+  .footer-section p,
+  .footer-section li {
+    font-size: 0.75rem;
+  }
+
+  .footer-logo {
+    font-size: 1.25rem;
+  }
+
+  .footer-tagline {
+    font-size: 0.8rem;
+  }
+
+  .footer-bottom {
+    padding: var(--spacing-md) 0;
+  }
+
+  .footer-bottom-content {
+    gap: var(--spacing-md);
+  }
+
+  .footer-links {
+    gap: var(--spacing-sm);
+    flex-direction: column;
+  }
+}
