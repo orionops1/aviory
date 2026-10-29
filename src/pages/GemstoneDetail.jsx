@@ -3,6 +3,7 @@ import { useParams, Link } from 'react-router-dom'
 import useCartStore from '../hooks/useCart'
 import { gemstones } from '../data/products'
 import ProductCard from '../components/ProductCard'
+import GemstoneLightingViewer from '../components/GemstoneLightingViewer'
 import './GemstoneDetail.css'
 
 export default function GemstoneDetail() {
@@ -305,6 +306,11 @@ export default function GemstoneDetail() {
             </div>
           </div>
         </div>
+      </div>
+
+      {/* Interactive Gemstone Lighting & Brilliance Simulator */}
+      <div className="container">
+        <GemstoneLightingViewer gem={gem} />
       </div>
 
       {/* Concierge Modal */}

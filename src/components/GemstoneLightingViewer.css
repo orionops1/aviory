@@ -1,0 +1,173 @@
+/* ============================================================================
+   GEMSTONE LIGHTING & BRILLIANCE SIMULATOR
+   ============================================================================ */
+
+.lighting-viewer {
+  background-color: var(--color-white);
+  border: 1px solid var(--color-gray-light);
+  padding: 2rem;
+  margin-top: 3rem;
+}
+
+.lighting-viewer__tag {
+  display: block;
+  font-family: var(--font-ui);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-champagne);
+  margin-bottom: 0.35rem;
+}
+
+.lighting-viewer__title {
+  font-family: var(--font-serif);
+  font-size: 1.35rem;
+  font-weight: 600;
+  margin: 0 0 0.35rem;
+}
+
+.lighting-viewer__desc {
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  line-height: 1.6;
+  color: var(--color-charcoal);
+  margin-bottom: 1.5rem;
+}
+
+/* Stage */
+.lighting-viewer__stage {
+  width: 100%;
+  height: 320px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  transition: background 0.6s ease;
+  box-shadow: inset 0 0 60px rgba(0, 0, 0, 0.4);
+}
+
+.lighting-viewer__gem-wrap {
+  width: 170px;
+  height: 170px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.1s ease-out, filter 0.5s ease;
+  user-select: none;
+}
+
+.lighting-viewer__img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 10px 24px rgba(0, 0, 0, 0.5));
+}
+
+.lighting-viewer__facet-art svg {
+  width: 140px;
+  height: 140px;
+  filter: drop-shadow(0 12px 28px rgba(0, 0, 0, 0.6));
+}
+
+.lighting-viewer__status-pill {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(4px);
+  color: var(--color-champagne);
+  font-family: var(--font-ui);
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.35rem 0.75rem;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+/* Rotation Slider */
+.lighting-viewer__rotation-ctrl {
+  padding: 1.25rem 0 1rem;
+}
+
+.lighting-viewer__rotation-ctrl label {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--font-ui);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-charcoal);
+  margin-bottom: 0.5rem;
+}
+
+.lighting-viewer__slider {
+  width: 100%;
+  accent-color: var(--color-champagne);
+  cursor: pointer;
+}
+
+/* Mode Buttons */
+.lighting-viewer__modes {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem;
+  margin-top: 0.75rem;
+}
+
+.lighting-mode-btn {
+  background-color: var(--color-ivory);
+  border: 1px solid var(--color-gray-light);
+  padding: 0.85rem 0.75rem;
+  text-align: left;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  transition: all 0.25s ease;
+}
+
+.lighting-mode-btn strong {
+  font-family: var(--font-ui);
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--color-black);
+}
+
+.lighting-mode-btn span {
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  color: var(--color-charcoal);
+  opacity: 0.8;
+  line-height: 1.4;
+}
+
+.lighting-mode-btn:hover {
+  border-color: var(--color-black);
+}
+
+.lighting-mode-btn--active {
+  background-color: var(--color-black);
+  border-color: var(--color-black);
+}
+
+.lighting-mode-btn--active strong {
+  color: var(--color-champagne);
+}
+
+.lighting-mode-btn--active span {
+  color: var(--color-ivory);
+  opacity: 0.9;
+}
+
+@media (max-width: 768px) {
+  .lighting-viewer__modes {
+    grid-template-columns: 1fr;
+  }
+  .lighting-viewer {
+    padding: 1.25rem;
+  }
+}

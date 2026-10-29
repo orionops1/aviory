@@ -1,0 +1,201 @@
+/* ============================================================================
+   HAUTE JOAILLERIE FLOATING CONCIERGE WIDGET
+   ============================================================================ */
+
+.concierge-widget {
+  position: fixed;
+  bottom: 2rem;
+  left: 2.5rem;
+  z-index: 3500;
+  font-family: var(--font-ui);
+}
+
+/* Floating Trigger Button */
+.concierge-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  background-color: var(--color-black);
+  color: var(--color-white);
+  border: 1px solid var(--color-champagne);
+  padding: 0.75rem 1.25rem;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.22);
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+}
+
+.concierge-btn:hover {
+  background-color: var(--color-champagne);
+  color: var(--color-black);
+  transform: translateY(-2px);
+  box-shadow: 0 14px 34px rgba(212, 175, 127, 0.3);
+}
+
+.concierge-btn__pulse {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #25D366; /* WhatsApp active green */
+  box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
+  animation: pulseGreen 2s infinite;
+}
+
+@keyframes pulseGreen {
+  0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+  70% { transform: scale(1); box-shadow: 0 0 0 8px rgba(37, 211, 102, 0); }
+  100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+}
+
+.concierge-btn__icon {
+  color: var(--color-champagne);
+  font-size: 0.85rem;
+}
+
+.concierge-btn:hover .concierge-btn__icon {
+  color: var(--color-black);
+}
+
+.concierge-btn__label {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+/* Popover Card */
+.concierge-card {
+  position: absolute;
+  bottom: calc(100% + 1rem);
+  left: 0;
+  width: 360px;
+  background-color: var(--color-white);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
+  border: 1px solid var(--color-gray-light);
+  overflow: hidden;
+  animation: conciergeSlideUp 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes conciergeSlideUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.concierge-card__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.25rem;
+  background-color: var(--color-black);
+  color: var(--color-white);
+}
+
+.concierge-card__status {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--color-champagne);
+}
+
+.concierge-pulse {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: #25D366;
+}
+
+.concierge-card__close {
+  background: none;
+  border: none;
+  color: var(--color-gray-light);
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.concierge-card__close:hover {
+  color: var(--color-white);
+}
+
+.concierge-card__body {
+  padding: 1.5rem 1.25rem;
+}
+
+.concierge-card__title {
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 0 0 0.4rem;
+  color: var(--color-black);
+}
+
+.concierge-card__desc {
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  line-height: 1.55;
+  color: var(--color-charcoal);
+  margin-bottom: 1.25rem;
+  opacity: 0.9;
+}
+
+.concierge-card__options {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.concierge-opt-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+  text-align: left;
+  padding: 0.75rem 0.85rem;
+  background-color: var(--color-ivory);
+  border: 1px solid var(--color-gray-light);
+  font-family: var(--font-ui);
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--color-black);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.concierge-opt-btn span {
+  color: var(--color-champagne);
+  font-size: 0.75rem;
+}
+
+.concierge-opt-btn:hover {
+  background-color: var(--color-black);
+  border-color: var(--color-black);
+  color: var(--color-white);
+}
+
+.concierge-card__footer {
+  padding: 0.75rem 1.25rem;
+  background-color: var(--color-ivory);
+  border-top: 1px solid var(--color-gray-light);
+  text-align: center;
+}
+
+.concierge-card__secure-note {
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-accent);
+}
+
+@media (max-width: 768px) {
+  .concierge-widget {
+    bottom: 1.25rem;
+    left: 1.25rem;
+  }
+  .concierge-card {
+    width: calc(100vw - 2.5rem);
+    max-width: 340px;
+  }
+}

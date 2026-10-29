@@ -1,0 +1,152 @@
+/* ============================================================================
+   AVIORY & CO. – TIFFANY-STANDARD LUXURY WORDMARK
+   High-contrast Didone Roman serif with balanced optical kerning & hallmark
+   ============================================================================ */
+
+.aviory-logo {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  line-height: 1;
+  user-select: none;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.aviory-logo:hover {
+  opacity: 0.88;
+}
+
+/* ─── WORDMARK MAIN ROW ─── */
+.aviory-logo__wordmark {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 0.35em;
+  font-family: 'Playfair Display', 'Cormorant Garamond', 'Didot', 'Bodoni MT', 'Cinzel', serif;
+  font-weight: 600;
+  color: var(--color-black);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.aviory-logo__name {
+  font-size: 2.2rem;
+  letter-spacing: 0.24em;
+  font-feature-settings: "kern" 1, "liga" 1;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+.aviory-logo__ampersand {
+  font-family: 'Cormorant Garamond', 'Playfair Display', serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: 1.85rem;
+  letter-spacing: 0.05em;
+  color: var(--color-champagne);
+  margin: 0 0.05em;
+  position: relative;
+  top: -0.04em;
+}
+
+.aviory-logo__co {
+  font-size: 2.2rem;
+  letter-spacing: 0.2em;
+  font-feature-settings: "kern" 1;
+}
+
+/* ─── HERITAGE HALLMARK SUBTITLE ─── */
+.aviory-logo__hallmark {
+  display: block;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.58rem;
+  font-weight: 600;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin-top: 0.45rem;
+  padding-left: 0.32em; /* optical balance for wide letter spacing */
+  opacity: 0.9;
+  white-space: nowrap;
+  transition: color 0.3s ease;
+}
+
+.aviory-logo:hover .aviory-logo__hallmark {
+  color: var(--color-champagne);
+}
+
+/* ─── VARIANTS ─── */
+
+/* Standard (Header main centerpiece) */
+.aviory-logo--standard .aviory-logo__name,
+.aviory-logo--standard .aviory-logo__co {
+  font-size: clamp(1.8rem, 3.5vw, 2.4rem);
+}
+
+.aviory-logo--standard .aviory-logo__ampersand {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+}
+
+/* Compact (Sticky header when scrolled) */
+.aviory-logo--compact .aviory-logo__name,
+.aviory-logo--compact .aviory-logo__co {
+  font-size: 1.35rem;
+  letter-spacing: 0.18em;
+}
+
+.aviory-logo--compact .aviory-logo__ampersand {
+  font-size: 1.15rem;
+}
+
+.aviory-logo--compact .aviory-logo__hallmark {
+  display: none;
+}
+
+/* Minimal (Mobile or icon badge) */
+.aviory-logo--minimal .aviory-logo__name,
+.aviory-logo--minimal .aviory-logo__co {
+  font-size: 1.2rem;
+  letter-spacing: 0.15em;
+}
+
+.aviory-logo--minimal .aviory-logo__ampersand {
+  font-size: 1rem;
+}
+
+.aviory-logo--minimal .aviory-logo__hallmark {
+  display: none;
+}
+
+/* Footer variant (light colors on dark background) */
+.aviory-logo--footer .aviory-logo__wordmark {
+  color: var(--color-white);
+}
+
+.aviory-logo--footer .aviory-logo__ampersand {
+  color: var(--color-champagne);
+}
+
+.aviory-logo--footer .aviory-logo__hallmark {
+  color: var(--color-champagne);
+  opacity: 0.8;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .aviory-logo--standard .aviory-logo__name,
+  .aviory-logo--standard .aviory-logo__co {
+    font-size: 1.25rem;
+    letter-spacing: 0.15em;
+  }
+  .aviory-logo--standard .aviory-logo__ampersand {
+    font-size: 1.05rem;
+  }
+  .aviory-logo--standard .aviory-logo__hallmark {
+    font-size: 0.48rem;
+    letter-spacing: 0.22em;
+    margin-top: 0.25rem;
+  }
+}

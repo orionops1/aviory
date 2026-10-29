@@ -3,28 +3,39 @@ import { Link, useLocation } from 'react-router-dom'
 import useCartStore from '../hooks/useCart'
 import { useLanguage } from '../hooks/useLanguage'
 import LanguageSwitcher from './LanguageSwitcher'
+import AvioryLogo from './AvioryLogo'
+import CartDrawer from './CartDrawer'
+import SearchModal from './SearchModal'
+import AppointmentModal from './AppointmentModal'
 import './Header.css'
 
 /* ──────────────────────────────────────────────────────────
-   SVG Icon Components – crisp, thin-stroke luxury icons
+   Thin-Stroke Luxury Vector Icons
    ────────────────────────────────────────────────────────── */
 
 const SearchIcon = () => (
-  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
     <circle cx="11" cy="11" r="8" />
     <line x1="21" y1="21" x2="16.65" y2="16.65" />
   </svg>
 )
 
+const PinIcon = () => (
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+    <circle cx="12" cy="10" r="3" />
+  </svg>
+)
+
 const UserIcon = () => (
-  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
     <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
     <circle cx="12" cy="7" r="4" />
   </svg>
 )
 
 const BagIcon = () => (
-  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
     <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z" />
     <line x1="3" y1="6" x2="21" y2="6" />
     <path d="M16 10a4 4 0 0 1-8 0" />
@@ -32,210 +43,214 @@ const BagIcon = () => (
 )
 
 const ChevronDown = ({ className }) => (
-  <svg className={className} width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+  <svg className={className} width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
     <polyline points="6 9 12 15 18 9" />
   </svg>
 )
 
 const CloseIcon = () => (
-  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
     <line x1="18" y1="6" x2="6" y2="18" />
     <line x1="6" y1="6" x2="18" y2="18" />
   </svg>
 )
 
 const ArrowRight = () => (
-  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
     <line x1="5" y1="12" x2="19" y2="12" />
     <polyline points="12 5 19 12 12 19" />
   </svg>
 )
 
 /* ──────────────────────────────────────────────────────────
-   Mega-Menu Data – rich editorial structure per Tiffany style
+   Mega-Menu Editorial Structure
    ────────────────────────────────────────────────────────── */
 
 function useMegaMenuData(t) {
   return [
     {
       key: 'gemstones',
-      label: t('common.gemstones'),
+      label: 'Gemstones',
       href: '/gemstones',
       mega: {
         columns: [
           {
-            heading: 'By Stone',
+            heading: 'By Rare Hue',
             links: [
-              { label: 'Blue Sapphires', href: '/gemstones?category=blue-sapphires' },
-              { label: 'Pink Sapphires', href: '/gemstones?category=pink-sapphires' },
-              { label: 'Yellow Sapphires', href: '/gemstones?category=yellow-sapphires' },
-              { label: 'Padparadscha', href: '/gemstones?category=padparadscha' },
-              { label: 'Rubies', href: '/gemstones?category=rubies' },
-              { label: 'Spinels', href: '/gemstones?category=spinels' },
+              { label: 'Royal Blue Sapphires', href: '/gemstones?category=blue-sapphires' },
+              { label: 'Cornflower Sapphires', href: '/gemstones?category=blue-sapphires' },
+              { label: 'Padparadscha (Sunset)', href: '/gemstones?category=padparadscha' },
+              { label: 'Vivid Pink Sapphires', href: '/gemstones?category=pink-sapphires' },
+              { label: 'Canary Yellow Sapphires', href: '/gemstones?category=yellow-sapphires' },
+              { label: 'Pigeon Blood Rubies', href: '/gemstones?category=rubies' },
+              { label: 'Cobalt Spinels', href: '/gemstones?category=spinels' },
             ],
           },
           {
-            heading: 'Collector\'s Edit',
+            heading: 'Curated Selections',
             links: [
-              { label: 'Collector Stones', href: '/gemstones?category=collector' },
-              { label: 'Other Gemstones', href: '/gemstones?category=other' },
-              { label: 'All Gemstones', href: '/gemstones', accent: true },
+              { label: 'Collector Vault Specimens', href: '/gemstones?category=collector' },
+              { label: 'Unheated Natural Stones', href: '/gemstones' },
+              { label: 'Rare Fancy Colored Gems', href: '/gemstones?category=other' },
+              { label: 'View All Gemstones', href: '/gemstones', accent: true },
             ],
           },
           {
-            heading: 'The Aviory Difference',
+            heading: 'Gemological Excellence',
             links: [
-              { label: 'GIA Certified', href: '/our-house' },
-              { label: 'Unheated & Natural', href: '/journal/the-science-of-sapphire' },
-              { label: 'Ceylon Provenance', href: '/journal/the-heritage-of-ceylon-gemstones' },
+              { label: 'Ceylon Provenance Assurance', href: '/journal/the-heritage-of-ceylon-gemstones' },
+              { label: 'GIA & Gubelin Certification', href: '/our-house' },
+              { label: 'The Science of Sapphires', href: '/journal/the-science-of-sapphire' },
             ],
           },
         ],
         feature: {
-          title: 'The Ceylon Heritage',
-          subtitle: 'Exceptional unheated sapphires from the island that gave the world its finest gemstones.',
-          cta: { label: 'Explore Origins', href: '/our-house' },
+          title: 'The Ceylon Heritage Vault',
+          subtitle: 'Pure, unheated natural sapphires celebrated for over 2,000 years for unparalleled brilliance.',
+          cta: { label: 'Explore Provenance', href: '/our-house' },
           accent: 'sapphire',
         },
       },
     },
     {
       key: 'fine-jewellery',
-      label: t('common.fineJewellery'),
+      label: 'Fine Jewellery',
       href: '/fine-jewellery',
       mega: {
         columns: [
           {
             heading: 'By Category',
             links: [
-              { label: 'Rings', href: '/fine-jewellery?collection=Rings' },
-              { label: 'Earrings', href: '/fine-jewellery?collection=Earrings' },
-              { label: 'Necklaces', href: '/fine-jewellery?collection=Necklaces' },
-              { label: 'Bracelets', href: '/fine-jewellery?collection=Bracelets' },
-              { label: 'Brooches', href: '/fine-jewellery?collection=Brooches' },
+              { label: 'High Jewellery Rings', href: '/fine-jewellery?collection=Rings' },
+              { label: 'Earrings & Pendants', href: '/fine-jewellery?collection=Earrings' },
+              { label: 'Statement Necklaces', href: '/fine-jewellery?collection=Necklaces' },
+              { label: 'Diamond & Gem Bracelets', href: '/fine-jewellery?collection=Bracelets' },
+              { label: 'Brooches & Art Objects', href: '/fine-jewellery?collection=Brooches' },
             ],
           },
           {
-            heading: 'Collections',
+            heading: 'Signature Collections',
             links: [
-              { label: 'Limited Edition', href: '/fine-jewellery?collection=Limited+Edition' },
-              { label: 'Custom Pieces', href: '/fine-jewellery?collection=Custom' },
-              { label: 'All Fine Jewellery', href: '/fine-jewellery', accent: true },
+              { label: 'Limited Edition Masterpieces', href: '/fine-jewellery?collection=Limited+Edition' },
+              { label: 'Atelier Custom Commissions', href: '/fine-jewellery?collection=Custom' },
+              { label: 'View All Fine Jewellery', href: '/fine-jewellery', accent: true },
             ],
           },
           {
-            heading: 'Services',
+            heading: 'Atelier Services',
             links: [
-              { label: 'Bespoke Creation', href: '/bespoke' },
-              { label: 'Private Consultation', href: '/private-consultations' },
-              { label: 'Care & Maintenance', href: '/journal/caring-for-your-sapphires' },
+              { label: 'Bespoke Creation Process', href: '/bespoke' },
+              { label: 'Private Atelier Appointments', href: '/private-consultations' },
+              { label: 'Fine Jewellery Care Guide', href: '/journal/caring-for-your-sapphires' },
             ],
           },
         ],
         feature: {
-          title: 'Artisanal Excellence',
-          subtitle: 'Every piece is handcrafted by master artisans using time-honored techniques passed down through generations.',
-          cta: { label: 'Discover Craftsmanship', href: '/journal/the-art-of-bespoke-jewellery' },
+          title: 'Atelier Craftsmanship',
+          subtitle: 'Hand-wrought in 18K gold and platinum by Ceylon master goldsmiths.',
+          cta: { label: 'Discover The Craft', href: '/journal/the-art-of-bespoke-jewellery' },
           accent: 'gold',
         },
       },
     },
     {
       key: 'engagement',
-      label: t('common.engagementRings'),
+      label: 'Engagement & Bridal',
       href: '/engagement-rings',
       mega: {
         columns: [
           {
-            heading: 'By Style',
+            heading: 'By Setting Style',
             links: [
-              { label: 'Solitaire', href: '/engagement-rings?style=solitaire' },
-              { label: 'Halo', href: '/engagement-rings?style=halo' },
-              { label: 'Three Stone', href: '/engagement-rings?style=three-stone' },
-              { label: 'Cushion', href: '/engagement-rings?style=cushion' },
-              { label: 'Oval', href: '/engagement-rings?style=oval' },
-              { label: 'Emerald Cut', href: '/engagement-rings?style=emerald' },
-              { label: 'Pear', href: '/engagement-rings?style=pear' },
+              { label: 'Solitaire Settings', href: '/engagement-rings?style=solitaire' },
+              { label: 'Luminous Halo Designs', href: '/engagement-rings?style=halo' },
+              { label: 'Three Stone Trilogies', href: '/engagement-rings?style=three-stone' },
+              { label: 'Cushion Cut Mountings', href: '/engagement-rings?style=cushion' },
+              { label: 'Oval & Emerald Cuts', href: '/engagement-rings?style=oval' },
+              { label: 'Pear & Fancy Shapes', href: '/engagement-rings?style=pear' },
             ],
           },
           {
-            heading: 'By Stone',
+            heading: 'By Center Stone',
             links: [
-              { label: 'Blue Sapphire Rings', href: '/engagement-rings?stone=blue-sapphire' },
-              { label: 'Ruby Rings', href: '/engagement-rings?stone=ruby' },
-              { label: 'Pink Sapphire Rings', href: '/engagement-rings?stone=pink-sapphire' },
-              { label: 'Padparadscha Rings', href: '/engagement-rings?stone=padparadscha' },
+              { label: 'Royal Sapphire Rings', href: '/engagement-rings?stone=blue-sapphire' },
+              { label: 'Burma & Ceylon Ruby Rings', href: '/engagement-rings?stone=ruby' },
+              { label: 'Pink & Padparadscha Rings', href: '/engagement-rings?stone=pink-sapphire' },
             ],
           },
           {
-            heading: 'Planning',
+            heading: 'Bridal Concierge',
             links: [
               { label: 'Ring Sizing Guide', href: '/engagement-rings' },
-              { label: 'Book an Appointment', href: '/private-consultations' },
+              { label: 'Book a Bridal Consultation', href: '/private-consultations' },
               { label: 'All Engagement Rings', href: '/engagement-rings', accent: true },
             ],
           },
         ],
         feature: {
-          title: 'Begin Your Story',
-          subtitle: 'A coloured gemstone engagement ring is as unique as your love. Let our gemologists help you find the perfect stone.',
-          cta: { label: 'Start Your Journey', href: '/bespoke/enquiry' },
+          title: 'A Love Beyond Diamonds',
+          subtitle: 'Celebrate timeless commitment with rare unheated sapphires of royal lineage.',
+          cta: { label: 'Begin Custom Ring', href: '/bespoke/enquiry' },
           accent: 'rose',
         },
       },
     },
     {
       key: 'bespoke',
-      label: t('common.bespoke'),
+      label: 'Bespoke Atelier',
       href: '/bespoke',
       mega: {
         columns: [
           {
-            heading: 'Bespoke Services',
+            heading: 'Custom Creation',
             links: [
-              { label: 'Our Process', href: '/bespoke/process' },
-              { label: 'Begin Your Enquiry', href: '/bespoke/enquiry' },
-              { label: 'Private Consultations', href: '/private-consultations' },
+              { label: 'The 5-Stage Process', href: '/bespoke/process' },
+              { label: 'Submit Custom Enquiry', href: '/bespoke/enquiry' },
+              { label: 'Private Showroom Consultation', href: '/private-consultations' },
             ],
           },
           {
-            heading: 'Inspiration',
+            heading: 'Client Inspiration',
             links: [
               { label: 'Designing Your Dream Ring', href: '/journal/designing-your-dream-ring' },
-              { label: 'The Art of Bespoke', href: '/journal/the-art-of-bespoke-jewellery' },
-              { label: 'Sustainable Luxury', href: '/journal/sustainable-luxury-and-ethical-sourcing' },
+              { label: 'Master Lapidary & Setting', href: '/journal/the-art-of-bespoke-jewellery' },
+              { label: 'Ethical Mine-to-Market', href: '/journal/sustainable-luxury-and-ethical-sourcing' },
             ],
           },
         ],
         feature: {
-          title: 'From Vision to Masterpiece',
-          subtitle: 'Our 5-stage bespoke process transforms your vision into an heirloom crafted to last generations.',
-          cta: { label: 'Explore the Process', href: '/bespoke/process' },
+          title: 'Vision to Masterpiece',
+          subtitle: 'From a loose hand-selected gem to an heirloom that transcends generations.',
+          cta: { label: 'Explore Bespoke', href: '/bespoke/process' },
           accent: 'champagne',
         },
       },
     },
     {
-      key: 'journal',
-      label: t('common.journal'),
-      href: '/journal',
+      key: 'our-house',
+      label: 'Our House',
+      href: '/our-house',
     },
     {
-      key: 'our-house',
-      label: t('common.ourHouse'),
-      href: '/our-house',
+      key: 'journal',
+      label: 'The Journal',
+      href: '/journal',
     },
   ]
 }
 
 /* ──────────────────────────────────────────────────────────
-   Header Component
+   Main Header Component
    ────────────────────────────────────────────────────────── */
 
 export default function Header({ scrolled }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [activeMega, setActiveMega] = useState(null)
   const [mobileAccordion, setMobileAccordion] = useState(null)
+  const [cartDrawerOpen, setCartDrawerOpen] = useState(false)
+  const [searchModalOpen, setSearchModalOpen] = useState(false)
+  const [appointmentModalOpen, setAppointmentModalOpen] = useState(false)
+
   const itemCount = useCartStore((state) => state.getItemCount())
   const { t } = useLanguage()
   const location = useLocation()
@@ -244,33 +259,36 @@ export default function Header({ scrolled }) {
 
   const menuItems = useMegaMenuData(t)
 
-  // Close mobile menu on route change
+  // Route change reset
   useEffect(() => {
     setMobileMenuOpen(false)
     setActiveMega(null)
     setMobileAccordion(null)
   }, [location.pathname])
 
-  // Prevent body scroll when mobile menu is open
+  // Prevent scroll when mobile menu or modals open
   useEffect(() => {
-    if (mobileMenuOpen) {
+    if (mobileMenuOpen || cartDrawerOpen || searchModalOpen || appointmentModalOpen) {
       document.body.style.overflow = 'hidden'
     } else {
       document.body.style.overflow = ''
     }
     return () => { document.body.style.overflow = '' }
-  }, [mobileMenuOpen])
+  }, [mobileMenuOpen, cartDrawerOpen, searchModalOpen, appointmentModalOpen])
 
-  // Close mega-menu on Escape key
+  // Keyboard navigation
   useEffect(() => {
-    const handleEsc = (e) => {
+    const handleKeyDown = (e) => {
       if (e.key === 'Escape') {
         setActiveMega(null)
         setMobileMenuOpen(false)
+        setCartDrawerOpen(false)
+        setSearchModalOpen(false)
+        setAppointmentModalOpen(false)
       }
     }
-    window.addEventListener('keydown', handleEsc)
-    return () => window.removeEventListener('keydown', handleEsc)
+    window.addEventListener('keydown', handleKeyDown)
+    return () => window.removeEventListener('keydown', handleKeyDown)
   }, [])
 
   const handleMegaEnter = useCallback((key) => {
@@ -284,84 +302,119 @@ export default function Header({ scrolled }) {
     }, 200)
   }, [])
 
-  const handleMegaPanelEnter = useCallback(() => {
-    clearTimeout(megaTimeoutRef.current)
-  }, [])
-
-  const toggleMobileAccordion = (key) => {
-    setMobileAccordion(prev => prev === key ? null : key)
-  }
-
   return (
     <>
       <header
         ref={headerRef}
-        className={`header ${scrolled ? 'header--scrolled' : ''} ${activeMega ? 'header--mega-open' : ''}`}
+        className={`tiffany-header ${scrolled ? 'tiffany-header--scrolled' : ''} ${activeMega ? 'tiffany-header--mega-open' : ''}`}
       >
-        {/* ─── Utility Bar ─── */}
-        <div className="header__utility">
-          <div className="header__utility-inner container">
-            <span className="header__utility-message">
-              Complimentary Shipping on All Orders &nbsp;|&nbsp; GIA Certified Gemstones
-            </span>
-            <div className="header__utility-actions">
+        {/* ─── TIER 1: GLOBAL UTILITY BAR (Tiffany Standard) ─── */}
+        <div className="tiffany-header__utility">
+          <div className="container tiffany-header__utility-inner">
+            {/* Left: Search Trigger & Atelier Locator */}
+            <div className="tiffany-header__utility-left">
+              <button 
+                type="button" 
+                className="tiffany-header__utility-btn"
+                onClick={() => setSearchModalOpen(true)}
+              >
+                <SearchIcon />
+                <span>Search</span>
+              </button>
+              <Link to="/our-house" className="tiffany-header__utility-link">
+                <PinIcon />
+                <span>Colombo Atelier</span>
+              </Link>
+            </div>
+
+            {/* Center: Prestige Trust Tag */}
+            <div className="tiffany-header__utility-center">
+              <span>Complimentary Armoured Delivery &bull; GIA Certified Gemstones</span>
+            </div>
+
+            {/* Right: Client Care, Appointments & Language */}
+            <div className="tiffany-header__utility-right">
+              <Link to="/contact" className="tiffany-header__utility-link">
+                Client Care
+              </Link>
+              <button 
+                type="button" 
+                className="tiffany-header__utility-btn tiffany-header__utility-btn--highlight"
+                onClick={() => setAppointmentModalOpen(true)}
+              >
+                Book Appointment
+              </button>
               <LanguageSwitcher />
-              <Link to="/contact" className="header__utility-link">Client Care</Link>
-              <Link to="/private-consultations" className="header__utility-link">Book Appointment</Link>
             </div>
           </div>
         </div>
 
-        {/* ─── Main Header ─── */}
-        <div className="header__main">
-          <div className="header__main-inner container">
-            {/* Left: hamburger (mobile) */}
+        {/* ─── TIER 2: CENTERPIECE BRAND LOGO ROW ─── */}
+        <div className="tiffany-header__brand-row">
+          <div className="container tiffany-header__brand-inner">
+            {/* Left: Mobile hamburger */}
             <button
-              className="header__hamburger"
+              type="button"
+              className="tiffany-header__hamburger"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              aria-label={mobileMenuOpen ? 'Close menu' : 'Open menu'}
-              aria-expanded={mobileMenuOpen}
+              aria-label={mobileMenuOpen ? 'Close navigation' : 'Open navigation'}
             >
-              <span className={`header__hamburger-line ${mobileMenuOpen ? 'open' : ''}`} />
-              <span className={`header__hamburger-line ${mobileMenuOpen ? 'open' : ''}`} />
-              <span className={`header__hamburger-line ${mobileMenuOpen ? 'open' : ''}`} />
+              <span className={`tiffany-hamburger-bar ${mobileMenuOpen ? 'open' : ''}`} />
+              <span className={`tiffany-hamburger-bar ${mobileMenuOpen ? 'open' : ''}`} />
+              <span className={`tiffany-hamburger-bar ${mobileMenuOpen ? 'open' : ''}`} />
             </button>
 
-            {/* Center: Logo */}
-            <Link to="/" className="header__logo" aria-label="AVIORY & CO. Home">
-              <span className="header__logo-text">AVIORY & CO.</span>
+            {/* Center: The Monumental AVIORY & CO. Logo */}
+            <Link to="/" className="tiffany-header__logo-link" aria-label="AVIORY & CO. Homepage">
+              <AvioryLogo variant={scrolled ? 'compact' : 'standard'} />
             </Link>
 
-            {/* Right: Icons */}
-            <div className="header__icons">
-              <Link to="/contact" className="header__icon" title="Search" aria-label="Search">
+            {/* Right: User Account & Slide-Out Shopping Bag Trigger */}
+            <div className="tiffany-header__actions">
+              <button
+                type="button"
+                className="tiffany-header__action-btn tiffany-header__action-btn--search-mob"
+                onClick={() => setSearchModalOpen(true)}
+                aria-label="Search"
+                title="Search"
+              >
                 <SearchIcon />
-              </Link>
-              <Link to="/contact" className="header__icon" title="Account" aria-label="Account">
+              </button>
+
+              <Link to="/contact" className="tiffany-header__action-btn" aria-label="Account" title="Account">
                 <UserIcon />
               </Link>
-              <Link to="/contact" className="header__icon header__icon--bag" title="Shopping Bag" aria-label="Shopping Bag">
+
+              <button
+                type="button"
+                className="tiffany-header__action-btn tiffany-header__action-btn--bag"
+                onClick={() => setCartDrawerOpen(true)}
+                aria-label="View Shopping Bag"
+                title="Shopping Bag"
+              >
                 <BagIcon />
-                {itemCount > 0 && <span className="header__bag-count">{itemCount}</span>}
-              </Link>
+                {itemCount > 0 && (
+                  <span className="tiffany-header__bag-badge">{itemCount}</span>
+                )}
+              </button>
             </div>
           </div>
         </div>
 
-        {/* ─── Desktop Navigation ─── */}
-        <nav className="header__nav" role="navigation" aria-label="Main navigation">
-          <div className="header__nav-inner container">
-            <ul className="header__nav-list">
+        {/* ─── TIER 3: REFINED NAVIGATION ROW ─── */}
+        <nav className="tiffany-header__nav" aria-label="Primary Categories">
+          <div className="container">
+            <ul className="tiffany-header__nav-list">
               {menuItems.map((item) => (
                 <li
                   key={item.key}
-                  className={`header__nav-item ${activeMega === item.key ? 'header__nav-item--active' : ''}`}
+                  className={`tiffany-header__nav-item ${activeMega === item.key ? 'tiffany-header__nav-item--active' : ''}`}
                   onMouseEnter={() => item.mega ? handleMegaEnter(item.key) : setActiveMega(null)}
                   onMouseLeave={handleMegaLeave}
                 >
-                  <Link to={item.href} className="header__nav-link">
-                    <span className="header__nav-label">{item.label}</span>
-                    {item.mega && <ChevronDown className="header__nav-chevron" />}
+                  <Link to={item.href} className="tiffany-header__nav-link">
+                    <span>{item.label}</span>
+                    {item.mega && <ChevronDown className="tiffany-nav-chevron" />}
                   </Link>
                 </li>
               ))}
@@ -370,29 +423,27 @@ export default function Header({ scrolled }) {
         </nav>
       </header>
 
-      {/* ─── Mega-Menu Panels (rendered outside header for full-width) ─── */}
+      {/* ─── FULL-WIDTH MEGA-MENU PANELS ─── */}
       {menuItems.map((item) =>
         item.mega ? (
           <div
             key={item.key}
-            className={`mega ${activeMega === item.key ? 'mega--visible' : ''}`}
-            onMouseEnter={handleMegaPanelEnter}
+            className={`tiffany-mega ${activeMega === item.key ? 'tiffany-mega--visible' : ''}`}
+            onMouseEnter={() => clearTimeout(megaTimeoutRef.current)}
             onMouseLeave={handleMegaLeave}
             role="menu"
-            aria-label={`${item.label} menu`}
           >
-            <div className="mega__inner container">
-              {/* Link Columns */}
-              <div className="mega__columns">
+            <div className="container tiffany-mega__inner">
+              <div className="tiffany-mega__columns">
                 {item.mega.columns.map((col, ci) => (
-                  <div key={ci} className="mega__column">
-                    <h3 className="mega__column-heading">{col.heading}</h3>
-                    <ul className="mega__column-links">
+                  <div key={ci} className="tiffany-mega__column">
+                    <h3 className="tiffany-mega__heading">{col.heading}</h3>
+                    <ul className="tiffany-mega__links">
                       {col.links.map((link, li) => (
                         <li key={li}>
                           <Link
                             to={link.href}
-                            className={`mega__link ${link.accent ? 'mega__link--accent' : ''}`}
+                            className={`tiffany-mega__link ${link.accent ? 'tiffany-mega__link--accent' : ''}`}
                             onClick={() => setActiveMega(null)}
                           >
                             {link.label}
@@ -405,21 +456,18 @@ export default function Header({ scrolled }) {
                 ))}
               </div>
 
-              {/* Editorial Feature Tile */}
               {item.mega.feature && (
-                <div className={`mega__feature mega__feature--${item.mega.feature.accent}`}>
-                  <div className="mega__feature-content">
-                    <h4 className="mega__feature-title">{item.mega.feature.title}</h4>
-                    <p className="mega__feature-subtitle">{item.mega.feature.subtitle}</p>
-                    <Link
-                      to={item.mega.feature.cta.href}
-                      className="mega__feature-cta"
-                      onClick={() => setActiveMega(null)}
-                    >
-                      {item.mega.feature.cta.label}
-                      <ArrowRight />
-                    </Link>
-                  </div>
+                <div className={`tiffany-mega__feature tiffany-mega__feature--${item.mega.feature.accent}`}>
+                  <h4 className="tiffany-mega__feature-title">{item.mega.feature.title}</h4>
+                  <p className="tiffany-mega__feature-sub">{item.mega.feature.subtitle}</p>
+                  <Link
+                    to={item.mega.feature.cta.href}
+                    className="tiffany-mega__feature-cta"
+                    onClick={() => setActiveMega(null)}
+                  >
+                    {item.mega.feature.cta.label}
+                    <ArrowRight />
+                  </Link>
                 </div>
               )}
             </div>
@@ -427,61 +475,59 @@ export default function Header({ scrolled }) {
         ) : null
       )}
 
-      {/* ─── Mega-Menu Backdrop ─── */}
+      {/* Mega Backdrop */}
       <div
-        className={`mega-backdrop ${activeMega ? 'mega-backdrop--visible' : ''}`}
+        className={`tiffany-mega-backdrop ${activeMega ? 'tiffany-mega-backdrop--visible' : ''}`}
         onClick={() => setActiveMega(null)}
       />
 
-      {/* ─── Mobile Navigation Overlay ─── */}
-      <div className={`mobile-nav ${mobileMenuOpen ? 'mobile-nav--open' : ''}`}>
-        <div className="mobile-nav__header">
-          <Link to="/" className="mobile-nav__logo" onClick={() => setMobileMenuOpen(false)}>
-            AVIORY & CO.
-          </Link>
+      {/* ─── MOBILE DRAWER NAVIGATION ─── */}
+      <div className={`tiffany-mobile-drawer ${mobileMenuOpen ? 'tiffany-mobile-drawer--open' : ''}`}>
+        <div className="tiffany-mobile-drawer__header">
+          <AvioryLogo variant="minimal" />
           <button
-            className="mobile-nav__close"
+            type="button"
+            className="tiffany-mobile-drawer__close"
             onClick={() => setMobileMenuOpen(false)}
-            aria-label="Close menu"
+            aria-label="Close navigation"
           >
             <CloseIcon />
           </button>
         </div>
 
-        <div className="mobile-nav__body">
-          <ul className="mobile-nav__list">
+        <div className="tiffany-mobile-drawer__body">
+          <ul className="tiffany-mobile-drawer__list">
             {menuItems.map((item) => (
-              <li key={item.key} className="mobile-nav__item">
-                <div className="mobile-nav__item-header">
+              <li key={item.key} className="tiffany-mobile-drawer__item">
+                <div className="tiffany-mobile-drawer__item-bar">
                   <Link
                     to={item.href}
-                    className="mobile-nav__link"
+                    className="tiffany-mobile-drawer__link"
                     onClick={() => !item.mega && setMobileMenuOpen(false)}
                   >
                     {item.label}
                   </Link>
                   {item.mega && (
                     <button
-                      className={`mobile-nav__toggle ${mobileAccordion === item.key ? 'mobile-nav__toggle--open' : ''}`}
-                      onClick={() => toggleMobileAccordion(item.key)}
-                      aria-expanded={mobileAccordion === item.key}
-                      aria-label={`Expand ${item.label}`}
+                      type="button"
+                      className="tiffany-mobile-drawer__toggle"
+                      onClick={() => setMobileAccordion(mobileAccordion === item.key ? null : item.key)}
                     >
-                      <ChevronDown />
+                      <ChevronDown className={mobileAccordion === item.key ? 'open' : ''} />
                     </button>
                   )}
                 </div>
 
                 {item.mega && mobileAccordion === item.key && (
-                  <div className="mobile-nav__submenu">
+                  <div className="tiffany-mobile-drawer__sub">
                     {item.mega.columns.map((col, ci) => (
-                      <div key={ci} className="mobile-nav__group">
-                        <span className="mobile-nav__group-heading">{col.heading}</span>
+                      <div key={ci} className="tiffany-mobile-sub-group">
+                        <span className="tiffany-mobile-sub-heading">{col.heading}</span>
                         {col.links.map((link, li) => (
                           <Link
                             key={li}
                             to={link.href}
-                            className={`mobile-nav__sublink ${link.accent ? 'mobile-nav__sublink--accent' : ''}`}
+                            className="tiffany-mobile-sub-link"
                             onClick={() => setMobileMenuOpen(false)}
                           >
                             {link.label}
@@ -496,24 +542,35 @@ export default function Header({ scrolled }) {
           </ul>
         </div>
 
-        <div className="mobile-nav__footer">
-          <Link to="/contact" className="mobile-nav__footer-link" onClick={() => setMobileMenuOpen(false)}>
-            Client Care
-          </Link>
-          <Link to="/private-consultations" className="mobile-nav__footer-link" onClick={() => setMobileMenuOpen(false)}>
-            Book Appointment
-          </Link>
-          <div className="mobile-nav__footer-lang">
+        <div className="tiffany-mobile-drawer__footer">
+          <button
+            type="button"
+            className="btn btn-primary"
+            style={{ width: '100%', marginBottom: '1rem' }}
+            onClick={() => {
+              setMobileMenuOpen(false)
+              setAppointmentModalOpen(true)
+            }}
+          >
+            Book Atelier Appointment
+          </button>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+            <Link to="/contact" className="tiffany-header__utility-link" onClick={() => setMobileMenuOpen(false)}>
+              Client Care
+            </Link>
             <LanguageSwitcher />
           </div>
         </div>
       </div>
 
-      {/* ─── Mobile Nav Backdrop ─── */}
-      <div
-        className={`mobile-nav-backdrop ${mobileMenuOpen ? 'mobile-nav-backdrop--visible' : ''}`}
-        onClick={() => setMobileMenuOpen(false)}
-      />
+      {mobileMenuOpen && (
+        <div className="tiffany-mobile-backdrop" onClick={() => setMobileMenuOpen(false)} />
+      )}
+
+      {/* ─── INTEGRATED HIGH-VALUE MODALS ─── */}
+      <CartDrawer isOpen={cartDrawerOpen} onClose={() => setCartDrawerOpen(false)} />
+      <SearchModal isOpen={searchModalOpen} onClose={() => setSearchModalOpen(false)} />
+      <AppointmentModal isOpen={appointmentModalOpen} onClose={() => setAppointmentModalOpen(false)} />
     </>
   )
 }

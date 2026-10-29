@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import AvioryLogo from './AvioryLogo'
 import { contactInfo } from '../data/content'
 import { useLanguage } from '../hooks/useLanguage'
 import './Footer.css'
@@ -15,14 +16,17 @@ export default function Footer() {
           <div className="footer-grid">
             {/* Brand Column */}
             <div className="footer-brand">
-              <h3 className="footer-logo">AVIORY & CO.</h3>
+              <Link to="/" style={{ textDecoration: 'none' }}>
+                <AvioryLogo variant="footer" />
+              </Link>
               <p className="footer-tagline">
-                Luxury gemstones and fine jewellery crafted with precision and passion since 2009.
+                Maison de Haute Joaillerie specializing in unheated Ceylon sapphires, natural rubies, and bespoke commissions since 2009.
               </p>
               <div className="social-links">
-                <a href="#" title="Instagram" className="social-icon">Instagram</a>
-                <a href="#" title="Facebook" className="social-icon">Facebook</a>
-                <a href="#" title="Pinterest" className="social-icon">Pinterest</a>
+                <a href="#instagram" title="Instagram" className="social-icon">IG</a>
+                <a href="#facebook" title="Facebook" className="social-icon">FB</a>
+                <a href="#pinterest" title="Pinterest" className="social-icon">PI</a>
+                <a href="#youtube" title="YouTube" className="social-icon">YT</a>
               </div>
             </div>
 
@@ -30,40 +34,42 @@ export default function Footer() {
             <div className="footer-section">
               <h4>{t('footer.collections')}</h4>
               <ul>
-                <li><Link to="/gemstones">{t('common.gemstones')}</Link></li>
-                <li><Link to="/fine-jewellery">{t('common.fineJewellery')}</Link></li>
-                <li><Link to="/engagement-rings">{t('common.engagementRings')}</Link></li>
-                <li><Link to="/bespoke">{t('common.bespoke')}</Link></li>
+                <li><Link to="/gemstones">Royal Ceylon Sapphires</Link></li>
+                <li><Link to="/gemstones?category=padparadscha">Padparadscha &amp; Spinels</Link></li>
+                <li><Link to="/fine-jewellery">Haute Joaillerie Suites</Link></li>
+                <li><Link to="/engagement-rings">Bespoke Bridal Rings</Link></li>
+                <li><Link to="/gemstones?category=collector">Collector Vault Pieces</Link></li>
               </ul>
             </div>
 
-            {/* Experience */}
+            {/* The Maison */}
             <div className="footer-section">
-              <h4>Experience</h4>
+              <h4>The Maison</h4>
               <ul>
-                <li><Link to="/journal">{t('common.journal')}</Link></li>
-                <li><Link to="/our-house">{t('common.ourHouse')}</Link></li>
-                <li><Link to="/private-consultations">Private Consultations</Link></li>
-                <li><Link to="/contact">Book an Appointment</Link></li>
+                <li><Link to="/our-house">Heritage &amp; Artisans</Link></li>
+                <li><Link to="/bespoke/process">The 5-Stage Bespoke Journey</Link></li>
+                <li><Link to="/journal">The Aviory Journal</Link></li>
+                <li><Link to="/journal/sustainable-luxury-and-ethical-sourcing">Mine-to-Market Provenance</Link></li>
+                <li><Link to="/private-consultations">Private Atelier Showing</Link></li>
               </ul>
             </div>
 
-            {/* Contact */}
+            {/* Concierge & Contact */}
             <div className="footer-section">
-              <h4>Contact</h4>
+              <h4>Concierge</h4>
               <ul className="footer-contact">
                 <li>
                   <a href={`mailto:${contactInfo.email}`} className="contact-link">
-                    {contactInfo.email}
+                    concierge@aviory.com
                   </a>
                 </li>
                 <li>
                   <a href={`tel:${contactInfo.phone}`} className="contact-link">
-                    {contactInfo.phone}
+                    +94 11 234 5678 (Direct Atelier Desk)
                   </a>
                 </li>
-                <li>{contactInfo.address}</li>
-                <li className="contact-hours">{contactInfo.hours}</li>
+                <li>Atelier: Colombo 03, Sri Lanka</li>
+                <li className="contact-hours">Private showings by appointment only</li>
               </ul>
             </div>
           </div>
@@ -75,13 +81,13 @@ export default function Footer() {
         <div className="container">
           <div className="footer-bottom-content">
             <div className="footer-copyright">
-              <p>{t('footer.rights')}</p>
+              <p>&copy; {new Date().getFullYear()} AVIORY &amp; CO. All Rights Reserved. GIA&reg; is a registered trademark of Gemological Institute of America.</p>
             </div>
             <div className="footer-links">
-              <Link to="#">Privacy Policy</Link>
-              <Link to="#">Terms of Service</Link>
-              <Link to="#">Shipping Info</Link>
-              <Link to="#">Returns</Link>
+              <Link to="/contact">Privacy Policy</Link>
+              <Link to="/contact">Terms of Guarantee</Link>
+              <Link to="/contact">Armoured Courier Details</Link>
+              <Link to="/contact">Gemological Certification</Link>
             </div>
           </div>
         </div>

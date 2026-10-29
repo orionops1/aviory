@@ -1,0 +1,170 @@
+/* ============================================================================
+   APPOINTMENT MODAL STYLING
+   ============================================================================ */
+
+.appt-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(5px);
+  z-index: 5000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+}
+
+.appt-modal {
+  background-color: var(--color-white);
+  max-width: 620px;
+  width: 100%;
+  padding: 3rem 2.75rem;
+  position: relative;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.3);
+  max-height: 90vh;
+  overflow-y: auto;
+  animation: apptPop 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes apptPop {
+  from { opacity: 0; transform: scale(0.96) translateY(10px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.appt-modal__close {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  background: none;
+  border: none;
+  font-size: 1.25rem;
+  cursor: pointer;
+  color: var(--color-black);
+  transition: color 0.2s ease;
+}
+
+.appt-modal__close:hover {
+  color: var(--color-champagne);
+}
+
+.appt-modal__tag {
+  display: block;
+  font-family: var(--font-ui);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-champagne);
+  margin-bottom: 0.5rem;
+}
+
+.appt-modal__title {
+  font-family: var(--font-serif);
+  font-size: clamp(1.8rem, 4vw, 2.3rem);
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: var(--color-black);
+}
+
+.appt-modal__subtitle {
+  font-family: var(--font-body);
+  font-size: 0.92rem;
+  line-height: 1.6;
+  color: var(--color-charcoal);
+  margin-bottom: 2rem;
+}
+
+.appt-types {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.appt-type-card {
+  border: 1px solid var(--color-gray-light);
+  padding: 1rem 0.75rem;
+  text-align: center;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  background-color: var(--color-ivory);
+  transition: all 0.25s ease;
+}
+
+.appt-type-card input {
+  display: none;
+}
+
+.appt-type-card strong {
+  font-family: var(--font-ui);
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--color-black);
+}
+
+.appt-type-card span {
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  color: var(--color-charcoal);
+  opacity: 0.8;
+}
+
+.appt-type-card--active {
+  background-color: var(--color-white);
+  border-color: var(--color-champagne);
+  box-shadow: 0 4px 12px rgba(212, 175, 127, 0.2);
+}
+
+.appt-type-card--active strong {
+  color: var(--color-champagne);
+}
+
+.appt-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.appt-form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.appt-form input,
+.appt-select,
+.appt-form textarea {
+  width: 100%;
+  padding: 0.9rem 1.15rem;
+  border: 1px solid var(--color-gray-light);
+  font-family: var(--font-ui);
+  font-size: 0.82rem;
+  background-color: var(--color-white);
+  border-radius: 0;
+  outline: none;
+}
+
+.appt-form input:focus,
+.appt-select:focus,
+.appt-form textarea:focus {
+  border-color: var(--color-champagne);
+}
+
+@media (max-width: 600px) {
+  .appt-types {
+    grid-template-columns: 1fr;
+  }
+  .appt-form-row {
+    grid-template-columns: 1fr;
+  }
+  .appt-modal {
+    padding: 2rem 1.5rem;
+  }
+}
