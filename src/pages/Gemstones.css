@@ -1,1 +1,249 @@
-/* Already defined in main styles/index.css - this file left intentionally minimal */
+/* ============================================================================
+   GEMSTONES CATALOG - TIFFANY-INSPIRED LUXURY LAYOUT
+   ============================================================================ */
+
+.gemstones-page {
+  background-color: var(--color-white);
+  min-height: 100vh;
+}
+
+/* Hero */
+.gemstones-hero {
+  background-color: var(--color-black);
+  color: var(--color-white);
+  padding: 4.5rem 0 4rem;
+  text-align: center;
+}
+
+.gemstones-hero__tag {
+  display: inline-block;
+  font-family: var(--font-ui);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-champagne);
+  margin-bottom: 0.75rem;
+}
+
+.gemstones-hero__title {
+  font-family: var(--font-serif);
+  font-size: clamp(2.4rem, 5vw, 3.5rem);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  margin-bottom: 0.75rem;
+  color: var(--color-white);
+}
+
+.gemstones-hero__subtitle {
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  color: var(--color-gray-light);
+  max-width: 620px;
+  margin: 0 auto;
+  line-height: 1.7;
+  opacity: 0.9;
+}
+
+/* Controls & Filter Bar */
+.gemstones-controls {
+  border-bottom: 1px solid var(--color-gray-light);
+  background-color: var(--color-white);
+  position: sticky;
+  top: var(--header-height, 140px);
+  z-index: 50;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+}
+
+.gemstones-controls__inner {
+  padding: 1.25rem 0;
+}
+
+/* Filter pills */
+.gemstones-pills {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  overflow-x: auto;
+  padding-bottom: 0.75rem;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.gemstones-pills::-webkit-scrollbar {
+  display: none;
+}
+
+.gemstones-pill {
+  background: transparent;
+  border: 1px solid var(--color-gray-light);
+  padding: 0.45rem 1rem;
+  font-family: var(--font-ui);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-charcoal);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.25s ease;
+  border-radius: 0;
+}
+
+.gemstones-pill:hover {
+  border-color: var(--color-black);
+  color: var(--color-black);
+}
+
+.gemstones-pill--active {
+  background-color: var(--color-black);
+  border-color: var(--color-black);
+  color: var(--color-white);
+  font-weight: 600;
+}
+
+/* Meta Bar (count + selects) */
+.gemstones-meta-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 0.75rem;
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.gemstones-count {
+  font-family: var(--font-ui);
+  font-size: 0.78rem;
+  color: var(--color-charcoal);
+  letter-spacing: 0.04em;
+}
+
+.gemstones-selects {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.gemstones-select {
+  padding: 0.45rem 0.85rem;
+  font-family: var(--font-ui);
+  font-size: 0.75rem;
+  border: 1px solid var(--color-gray-light);
+  background-color: var(--color-white);
+  color: var(--color-charcoal);
+  cursor: pointer;
+  outline: none;
+  border-radius: 0;
+}
+
+.gemstones-select:focus {
+  border-color: var(--color-champagne);
+}
+
+.gemstones-reset-btn {
+  background: none;
+  border: none;
+  font-family: var(--font-ui);
+  font-size: 0.75rem;
+  color: var(--color-champagne);
+  text-decoration: underline;
+  cursor: pointer;
+  padding: 0.25rem 0;
+}
+
+/* Grid */
+.gemstones-catalog {
+  padding-top: 3rem;
+  padding-bottom: 5rem;
+}
+
+.gemstones-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2.25rem;
+}
+
+/* Empty State */
+.gemstones-empty {
+  text-align: center;
+  padding: 5rem 1rem;
+  max-width: 540px;
+  margin: 0 auto;
+}
+
+.gemstones-empty__title {
+  font-family: var(--font-serif);
+  font-size: 1.6rem;
+  margin-bottom: 0.75rem;
+}
+
+.gemstones-empty__text {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: var(--color-charcoal);
+  margin-bottom: 2rem;
+}
+
+/* Concierge Bottom Banner */
+.gemstones-concierge {
+  background-color: var(--color-ivory);
+  border-top: 1px solid var(--color-gray-light);
+  padding: 4rem 0;
+}
+
+.gemstones-concierge__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+.gemstones-concierge__text h3 {
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+}
+
+.gemstones-concierge__text p {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: var(--color-charcoal);
+  margin: 0;
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+  .gemstones-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 900px) {
+  .gemstones-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+  .gemstones-concierge__inner {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+@media (max-width: 600px) {
+  .gemstones-grid {
+    grid-template-columns: 1fr;
+  }
+  .gemstones-meta-bar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .gemstones-selects {
+    width: 100%;
+    flex-direction: column;
+    align-items: stretch;
+  }
+}

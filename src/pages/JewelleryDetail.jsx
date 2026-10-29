@@ -2,20 +2,24 @@ import React, { useState } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import useCartStore from '../hooks/useCart'
 import { fineJewellery } from '../data/products'
+import ProductCard from '../components/ProductCard'
 import './JewelleryDetail.css'
 
 export default function JewelleryDetail() {
   const { id } = useParams()
   const item = fineJewellery.find(j => j.id === id)
   const addItem = useCartStore((state) => state.addItem)
+  
   const [added, setAdded] = useState(false)
-  const [activeTab, setActiveTab] = useState('description')
+  const [inquiryModalOpen, setInquiryModalOpen] = useState(false)
+  const [inquirySent, setInquirySent] = useState(false)
+  const [inquiryForm, setInquiryForm] = useState({ name: '', email: '', phone: '', message: '' })
 
   if (!item) {
     return (
-      <div className="container" style={{ paddingTop: 'var(--spacing-3xl)', paddingBottom: 'var(--spacing-3xl)', textAlign: 'center' }}>
-        <h2>Item not found</h2>
-        <Link to="/fine-jewellery" className="btn btn-primary" style={{ marginTop: 'var(--spacing-lg)' }}>
+      <div className="container" style={{ padding: '6rem 1rem', textAlign: 'center' }}>
+        <h2 style={{ fontFamily: 'var(--font-serif)', fontSize: '2rem' }}>Creation Not Found</h2>
+        <Link to="/fine-jewellery" className="btn btn-primary" style={{ marginTop: '2rem' }}>
           Back to Fine Jewellery
         </Link>
       </div>
@@ -25,113 +29,196 @@ export default function JewelleryDetail() {
   const handleAddToCart = () => {
     addItem(item)
     setAdded(true)
-    setTimeout(() => setAdded(false), 2000)
+    setTimeout(() => setAdded(false), 2500)
   }
 
+  const handleInquirySubmit = (e) => {
+    e.preventDefault()
+    setInquirySent(true)
+    setTimeout(() => {
+      setInquirySent(false)
+      setInquiryModalOpen(false)
+      setInquiryForm({ name: '', email: '', phone: '', message: '' })
+    }, 2500)
+  }
+
+  const related = fineJewellery.filter(j => j.id !== item.id).slice(0, 3)
+
   return (
-    <>
-      <div className="container" style={{ paddingTop: 'var(--spacing-xl)' }}>
-        <div className="breadcrumbs">
-          <Link to="/fine-jewellery" className="breadcrumb-item">Fine Jewellery</Link>
-          <span className="breadcrumb-separator">/</span>
-          <span className="breadcrumb-item">{item.collection}</span>
-          <span className="breadcrumb-separator">/</span>
-          <span className="breadcrumb-item">{item.name}</span>
-        </div>
-      </div>
+    <div className="pdp">
+      <nav className="pdp-breadcrumbs container" aria-label="Breadcrumb">
+        <Link to="/" className="pdp-breadcrumb-link">Maison</Link>
+        <span className="pdp-breadcrumb-sep">/</span>
+        <Link to="/fine-jewellery" className="pdp-breadcrumb-link">Fine Jewellery</Link>
+        <span className="pdp-breadcrumb-sep">/</span>
+        <span className="pdp-breadcrumb-current">{item.name}</span>
+      </nav>
 
-      <div className="container" style={{ paddingBottom: 'var(--spacing-3xl)' }}>
-        <div className="detail-container">
-          <div className="detail-gallery">
-            <div className="detail-image">
-              <img src={item.image} alt={item.name} />
+      <div className="container pdp-main">
+        {/* Gallery */}
+        <div className="pdp-gallery">
+          <div className="pdp-gallery__featured">
+            <div className="pdp-gallery__badge-strip">
+              <span className="pdp-badge pdp-badge--gold">Atelier Creation</span>
+              <span className="pdp-badge">{item.collection}</span>
+            </div>
+            <div className="pdp-gallery__canvas">
+              {item.image ? (
+                <img src={item.image} alt={item.name} className="pdp-gallery__img" />
+              ) : (
+                <div className="pdp-gallery__fallback" style={{ background: 'linear-gradient(135deg, #1f1b24 0%, #3a3245 50%, #594d6b 100%)' }}>
+                  <svg className="pdp-gallery__facet-icon" viewBox="0 0 140 140" fill="none" stroke="currentColor">
+                    <path d="M70 20 L110 50 L110 90 L70 120 L30 90 L30 50 Z" stroke="rgba(212,175,127,0.8)" strokeWidth="2" />
+                    <circle cx="70" cy="70" r="22" stroke="rgba(255,255,255,0.7)" strokeWidth="1.5" />
+                  </svg>
+                  <span className="pdp-gallery__fallback-caption">{item.name}</span>
+                </div>
+              )}
             </div>
           </div>
 
-          <div className="detail-info">
-            <div className="detail-category">{item.collection}</div>
-            <h1>{item.name}</h1>
-            {item.price !== 'POA' && <div className="detail-price">${typeof item.price === 'number' ? item.price.toLocaleString() : item.price}</div>}
-            {item.price === 'POA' && <div className="detail-price">Price Upon Availability</div>}
+          <div className="pdp-ritual">
+            <h4 className="pdp-ritual__title">Handcrafted in our Ceylon Atelier</h4>
+            <p className="pdp-ritual__text">
+              Each piece represents up to 120 hours of intricate setting, polishing, and fine metalwork by our master artisans. 
+              Delivered in our signature lacquered mahogany case with certified valuation documentation.
+            </p>
+          </div>
+        </div>
 
-            <div className="detail-specs">
-              <div className="spec-group">
-                <h4 style={{ marginBottom: 'var(--spacing-md)', fontSize: '0.9rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
-                  Specifications
-                </h4>
-                <div className="spec-row">
-                  <span className="spec-label">Material:</span>
-                  <span className="spec-value">{item.material}</span>
-                </div>
-                <div className="spec-row">
-                  <span className="spec-label">Main Stone:</span>
-                  <span className="spec-value">{item.mainStone}</span>
-                </div>
-                <div className="spec-row">
-                  <span className="spec-label">Side Stones:</span>
-                  <span className="spec-value">{item.sideStones}</span>
-                </div>
-                <div className="spec-row">
-                  <span className="spec-label">Weight:</span>
-                  <span className="spec-value">{item.weight}</span>
-                </div>
-              </div>
+        {/* Info */}
+        <div className="pdp-info">
+          <div className="pdp-info__header">
+            <span className="pdp-info__subtitle">{item.collection} • REF: {item.id.toUpperCase()}</span>
+            <h1 className="pdp-info__title">{item.name}</h1>
+            <div className="pdp-info__price">
+              {typeof item.price === 'number' ? `$${item.price.toLocaleString()}` : item.price}
             </div>
+            <p className="pdp-info__taxes">Handcrafted in {item.material} • Worldwide Armoured Courier</p>
+          </div>
 
-            <div className="detail-actions">
-              <button className="btn btn-primary" onClick={handleAddToCart}>
-                Add to Cart
-              </button>
-              <Link to="/contact" className="btn btn-outline">
-                Inquire
-              </Link>
+          {/* Action Buttons */}
+          <div className="pdp-actions">
+            <button
+              type="button"
+              className="btn btn-primary pdp-btn--inquire"
+              onClick={() => setInquiryModalOpen(true)}
+            >
+              Inquire with Jewellery Specialist
+            </button>
+            <button
+              type="button"
+              className="btn btn-secondary pdp-btn--cart"
+              onClick={handleAddToCart}
+            >
+              {added ? 'Added to Bag ✓' : 'Add to Shopping Bag'}
+            </button>
+          </div>
+
+          {added && (
+            <div className="alert alert-success" style={{ marginBottom: '1.5rem' }}>
+              Creation added to your shopping bag.
             </div>
+          )}
 
-            {added && <div className="alert alert-success">Added to cart!</div>}
-
-            <div className="detail-tabs">
-              <div className="tabs-nav">
-                <button
-                  className={`tab-button ${activeTab === 'description' ? 'active' : ''}`}
-                  onClick={() => setActiveTab('description')}
-                >
-                  Description
-                </button>
-                <button
-                  className={`tab-button ${activeTab === 'care' ? 'active' : ''}`}
-                  onClick={() => setActiveTab('care')}
-                >
-                  Care
-                </button>
-              </div>
-
-              <div className={`tab-content ${activeTab === 'description' ? 'active' : ''}`}>
-                <p>{item.longDescription}</p>
-              </div>
-
-              <div className={`tab-content ${activeTab === 'care' ? 'active' : ''}`}>
-                <h4>Care Instructions</h4>
-                <ul>
-                  <li>Clean regularly with warm soapy water and a soft brush</li>
-                  <li>Avoid harsh chemicals and extreme temperature changes</li>
-                  <li>Store in a soft cloth or jewelry box when not wearing</li>
-                  <li>Remove during sports, strenuous activities, or bathing</li>
-                  <li>Have settings checked professionally every 2-3 years</li>
-                </ul>
-              </div>
+          {/* Specs */}
+          <div className="pdp-specs-grid">
+            <div className="pdp-spec-box">
+              <span className="pdp-spec-box__label">Precious Metal</span>
+              <span className="pdp-spec-box__value">{item.material}</span>
             </div>
+            <div className="pdp-spec-box">
+              <span className="pdp-spec-box__label">Main Gemstone</span>
+              <span className="pdp-spec-box__value">{item.mainStone}</span>
+            </div>
+            <div className="pdp-spec-box">
+              <span className="pdp-spec-box__label">Side Stones</span>
+              <span className="pdp-spec-box__value">{item.sideStones}</span>
+            </div>
+            <div className="pdp-spec-box">
+              <span className="pdp-spec-box__label">Total Weight</span>
+              <span className="pdp-spec-box__value">{item.weight}</span>
+            </div>
+          </div>
+
+          <div className="pdp-story-text" style={{ marginTop: '1.5rem' }}>
+            <p>{item.description}</p>
           </div>
         </div>
       </div>
 
-      {/* CTA */}
-      <section style={{ backgroundColor: '#F8F4EF', paddingTop: 'var(--spacing-2xl)', paddingBottom: 'var(--spacing-2xl)' }}>
-        <div className="container" style={{ textAlign: 'center' }}>
-          <h3 style={{ marginBottom: 'var(--spacing-md)' }}>Can't find what you're looking for?</h3>
-          <p style={{ marginBottom: 'var(--spacing-lg)' }}>Create a custom fine jewellery piece tailored to your unique vision.</p>
-          <Link to="/bespoke" className="btn btn-primary">Create Bespoke Piece</Link>
+      {/* Inquiry Modal */}
+      {inquiryModalOpen && (
+        <div className="pdp-modal-backdrop" onClick={() => setInquiryModalOpen(false)}>
+          <div className="pdp-modal" onClick={(e) => e.stopPropagation()}>
+            <button 
+              type="button" 
+              className="pdp-modal__close" 
+              onClick={() => setInquiryModalOpen(false)}
+            >
+              ✕
+            </button>
+            <span className="pdp-info__subtitle">PRIVATE ATELIER INQUIRY</span>
+            <h3 className="pdp-modal__title">{item.name}</h3>
+            <p className="pdp-modal__meta">{item.collection} • {item.material}</p>
+
+            {inquirySent ? (
+              <div className="alert alert-success">
+                Thank you. Our jewellery concierge will contact you with high-resolution imagery and consultation options.
+              </div>
+            ) : (
+              <form onSubmit={handleInquirySubmit} className="pdp-modal__form">
+                <div className="pdp-form-row">
+                  <input
+                    type="text"
+                    placeholder="Your Full Name *"
+                    value={inquiryForm.name}
+                    onChange={(e) => setInquiryForm({ ...inquiryForm, name: e.target.value })}
+                    required
+                  />
+                  <input
+                    type="email"
+                    placeholder="Email Address *"
+                    value={inquiryForm.email}
+                    onChange={(e) => setInquiryForm({ ...inquiryForm, email: e.target.value })}
+                    required
+                  />
+                </div>
+                <input
+                  type="tel"
+                  placeholder="Telephone / WhatsApp (Optional)"
+                  value={inquiryForm.phone}
+                  onChange={(e) => setInquiryForm({ ...inquiryForm, phone: e.target.value })}
+                />
+                <textarea
+                  rows="3"
+                  placeholder="Inquire about custom sizing, bespoke modifications, or private showroom viewing..."
+                  value={inquiryForm.message}
+                  onChange={(e) => setInquiryForm({ ...inquiryForm, message: e.target.value })}
+                />
+                <button type="submit" className="btn btn-primary" style={{ width: '100%' }}>
+                  Submit Inquiry
+                </button>
+              </form>
+            )}
+          </div>
         </div>
-      </section>
-    </>
+      )}
+
+      {/* Related */}
+      {related.length > 0 && (
+        <section className="pdp-related container">
+          <div className="section-title">
+            <span className="collection-label">ATELIER HIGHLIGHTS</span>
+            <h2>More Fine Jewellery</h2>
+          </div>
+          <div className="product-grid">
+            {related.map(r => (
+              <ProductCard key={r.id} product={r} type="jewellery" />
+            ))}
+          </div>
+        </section>
+      )}
+    </div>
   )
 }

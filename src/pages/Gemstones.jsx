@@ -1,5 +1,4 @@
 import React, { useState, useMemo } from 'react'
-import { Link } from 'react-router-dom'
 import ProductCard from '../components/ProductCard'
 import { gemstones } from '../data/products'
 import './Gemstones.css'
@@ -7,137 +6,172 @@ import './Gemstones.css'
 export default function Gemstones() {
   const [selectedCategory, setSelectedCategory] = useState('all')
   const [selectedColor, setSelectedColor] = useState('all')
-  const [priceRange, setPriceRange] = useState([0, 10000])
+  const [sortBy, setSortBy] = useState('featured')
 
-  const categories = ['all', ...new Set(gemstones.map(g => g.category))]
-  const colors = ['all', ...new Set(gemstones.map(g => g.color))]
+  const categories = [
+    { id: 'all', label: 'All Gemstones' },
+    { id: 'Blue Sapphires', label: 'Blue Sapphires' },
+    { id: 'Pink Sapphires', label: 'Pink Sapphires' },
+    { id: 'Yellow Sapphires', label: 'Yellow Sapphires' },
+    { id: 'Padparadscha', label: 'Padparadscha' },
+    { id: 'Rubies', label: 'Rubies' },
+    { id: 'Spinels', label: 'Spinels' },
+    { id: 'Collector', label: 'Collector Stones' },
+    { id: 'Other', label: 'Other Gems' }
+  ]
+
+  const colors = [
+    { id: 'all', label: 'All Colors' },
+    { id: 'Royal Blue', label: 'Royal Blue' },
+    { id: 'Cornflower Blue', label: 'Cornflower Blue' },
+    { id: 'Pastel Pink', label: 'Pink' },
+    { id: 'Canary Yellow', label: 'Yellow' },
+    { id: 'Sunset Orange-Pink', label: 'Sunset Padparadscha' },
+    { id: 'Pigeon Blood Red', label: 'Ruby Red' },
+    { id: 'Cobalt Blue', label: 'Cobalt' }
+  ]
 
   const filteredGemstones = useMemo(() => {
-    return gemstones.filter(gem => {
+    let result = gemstones.filter(gem => {
       if (selectedCategory !== 'all' && gem.category !== selectedCategory) return false
-      if (selectedColor !== 'all' && gem.color !== selectedColor) return false
-      if (gem.price < priceRange[0] || gem.price > priceRange[1]) return false
+      if (selectedColor !== 'all' && !gem.color.toLowerCase().includes(selectedColor.toLowerCase())) return false
       return true
     })
-  }, [selectedCategory, selectedColor, priceRange])
+
+    if (sortBy === 'price-low') {
+      result.sort((a, b) => a.price - b.price)
+    } else if (sortBy === 'price-high') {
+      result.sort((a, b) => b.price - a.price)
+    } else if (sortBy === 'carat') {
+      result.sort((a, b) => (b.carat || 0) - (a.carat || 0))
+    }
+
+    return result
+  }, [selectedCategory, selectedColor, sortBy])
 
   return (
-    <>
-      <section style={{
-        backgroundColor: '#111111',
-        color: '#F8F4EF',
-        padding: 'var(--spacing-3xl) 0',
-        textAlign: 'center'
-      }}>
+    <div className="gemstones-page">
+      {/* Luxury Editorial Header */}
+      <section className="gemstones-hero">
         <div className="container">
-          <h1 style={{ color: '#D4AF7F' }}>Gemstones</h1>
-          <p style={{ fontSize: '1.1rem', marginTop: 'var(--spacing-md)', opacity: 0.9 }}>
-            Discover our exceptional collection of natural, unheated gemstones from Ceylon and beyond
+          <span className="gemstones-hero__tag">CEYLON GEMSTONE VAULT</span>
+          <h1 className="gemstones-hero__title">Exceptional Gemstones</h1>
+          <p className="gemstones-hero__subtitle">
+            Unheated Ceylon sapphires, rubies, and collector stones selected for their rare saturation, clarity, and certified provenance.
           </p>
         </div>
       </section>
 
-      <div className="container" style={{ paddingTop: 'var(--spacing-3xl)', paddingBottom: 'var(--spacing-3xl)' }}>
-        {/* FILTERS */}
-        <div className="filters-section">
-          <div className="filters-header">
-            <h3>Filters</h3>
-            <button
-              className="btn btn-small"
-              onClick={() => {
-                setSelectedCategory('all')
-                setSelectedColor('all')
-                setPriceRange([0, 10000])
-              }}
-            >
-              Clear All
-            </button>
+      {/* Tiffany-style Filter Bar */}
+      <section className="gemstones-controls">
+        <div className="container gemstones-controls__inner">
+          {/* Category Tabs */}
+          <div className="gemstones-pills">
+            {categories.map(cat => (
+              <button
+                key={cat.id}
+                type="button"
+                className={`gemstones-pill ${selectedCategory === cat.id ? 'gemstones-pill--active' : ''}`}
+                onClick={() => setSelectedCategory(cat.id)}
+              >
+                {cat.label}
+              </button>
+            ))}
           </div>
 
-          <div style={{ marginBottom: 'var(--spacing-lg)' }}>
-            <h4 style={{ marginBottom: 'var(--spacing-md)', fontSize: '0.9rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Category</h4>
-            <div className="filter-group">
-              {categories.map(cat => (
+          {/* Secondary Filter Dropdowns & Result Count */}
+          <div className="gemstones-meta-bar">
+            <span className="gemstones-count">
+              Showing <strong>{filteredGemstones.length}</strong> creations
+            </span>
+
+            <div className="gemstones-selects">
+              {/* Color filter */}
+              <select 
+                className="gemstones-select"
+                value={selectedColor}
+                onChange={(e) => setSelectedColor(e.target.value)}
+                aria-label="Filter by color"
+              >
+                {colors.map(col => (
+                  <option key={col.id} value={col.id}>{col.label}</option>
+                ))}
+              </select>
+
+              {/* Sort By */}
+              <select
+                className="gemstones-select"
+                value={sortBy}
+                onChange={(e) => setSortBy(e.target.value)}
+                aria-label="Sort gemstones"
+              >
+                <option value="featured">Sort: Curated</option>
+                <option value="price-low">Price: Low to High</option>
+                <option value="price-high">Price: High to Low</option>
+                <option value="carat">Carat: Largest First</option>
+              </select>
+
+              {(selectedCategory !== 'all' || selectedColor !== 'all') && (
                 <button
-                  key={cat}
-                  className={`filter-option ${selectedCategory === cat ? 'active' : ''}`}
-                  onClick={() => setSelectedCategory(cat)}
+                  type="button"
+                  className="gemstones-reset-btn"
+                  onClick={() => {
+                    setSelectedCategory('all')
+                    setSelectedColor('all')
+                    setSortBy('featured')
+                  }}
                 >
-                  {cat.charAt(0).toUpperCase() + cat.slice(1)}
+                  Reset Filters
                 </button>
-              ))}
-            </div>
-          </div>
-
-          <div style={{ marginBottom: 'var(--spacing-lg)' }}>
-            <h4 style={{ marginBottom: 'var(--spacing-md)', fontSize: '0.9rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Color</h4>
-            <div className="filter-group">
-              {colors.map(col => (
-                <button
-                  key={col}
-                  className={`filter-option ${selectedColor === col ? 'active' : ''}`}
-                  onClick={() => setSelectedColor(col)}
-                >
-                  {col.charAt(0).toUpperCase() + col.slice(1)}
-                </button>
-              ))}
-            </div>
-          </div>
-
-          <div>
-            <h4 style={{ marginBottom: 'var(--spacing-md)', fontSize: '0.9rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Price Range</h4>
-            <div style={{ display: 'flex', gap: 'var(--spacing-md)', alignItems: 'center' }}>
-              <input
-                type="number"
-                min="0"
-                max="10000"
-                value={priceRange[0]}
-                onChange={(e) => setPriceRange([parseInt(e.target.value), priceRange[1]])}
-                style={{ width: '100px' }}
-              />
-              <span>-</span>
-              <input
-                type="number"
-                min="0"
-                max="10000"
-                value={priceRange[1]}
-                onChange={(e) => setPriceRange([priceRange[0], parseInt(e.target.value)])}
-                style={{ width: '100px' }}
-              />
+              )}
             </div>
           </div>
         </div>
+      </section>
 
-        {/* RESULTS */}
-        <div style={{ marginBottom: 'var(--spacing-lg)' }}>
-          <p style={{ color: '#2B2B2B' }}>
-            Showing <strong>{filteredGemstones.length}</strong> gemstones
-          </p>
-        </div>
-
-        {/* GRID */}
+      {/* Product Gallery Grid */}
+      <main className="gemstones-catalog container">
         {filteredGemstones.length > 0 ? (
-          <div className="product-grid">
+          <div className="gemstones-grid">
             {filteredGemstones.map(gem => (
               <ProductCard key={gem.id} product={gem} type="gemstone" />
             ))}
           </div>
         ) : (
-          <div style={{ textAlign: 'center', padding: 'var(--spacing-2xl) 0' }}>
-            <p style={{ color: '#2B2B2B', marginBottom: 'var(--spacing-lg)' }}>No gemstones match your filters.</p>
+          <div className="gemstones-empty">
+            <h3 className="gemstones-empty__title">No creations match your current criteria</h3>
+            <p className="gemstones-empty__text">
+              Our gemologists continually acquire unheated stones from Sri Lanka. Contact our concierge to request a private search for your exact desired stone.
+            </p>
             <button
+              type="button"
               className="btn btn-primary"
               onClick={() => {
                 setSelectedCategory('all')
                 setSelectedColor('all')
-                setPriceRange([0, 10000])
+                setSortBy('featured')
               }}
             >
-              Reset Filters
+              View All Gemstones
             </button>
           </div>
         )}
-      </div>
-    </>
+      </main>
+
+      {/* Bottom Concierge Assistance Banner */}
+      <section className="gemstones-concierge">
+        <div className="container gemstones-concierge__inner">
+          <div className="gemstones-concierge__text">
+            <h3>Seeking a specific Ceylon sapphire or rare carat weight?</h3>
+            <p>Our gemological team in Colombo sources exceptional stones directly from verified artisanal mines on request.</p>
+          </div>
+          <div className="gemstones-concierge__action">
+            <a href="/private-consultations" className="btn btn-primary">
+              Request Private Sourcing
+            </a>
+          </div>
+        </div>
+      </section>
+    </div>
   )
 }

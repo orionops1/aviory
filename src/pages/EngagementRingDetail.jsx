@@ -2,21 +2,26 @@ import React, { useState } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import useCartStore from '../hooks/useCart'
 import { engagementRings } from '../data/products'
+import ProductCard from '../components/ProductCard'
 import './EngagementRingDetail.css'
 
 export default function EngagementRingDetail() {
   const { id } = useParams()
   const ring = engagementRings.find(r => r.id === id)
   const addItem = useCartStore((state) => state.addItem)
+  
   const [added, setAdded] = useState(false)
-  const [selectedSize, setSelectedSize] = useState('7')
-  const [activeTab, setActiveTab] = useState('description')
+  const [selectedSize, setSelectedSize] = useState('6.5')
+  const [selectedMetal, setSelectedMetal] = useState('Platinum')
+  const [inquiryModalOpen, setInquiryModalOpen] = useState(false)
+  const [inquirySent, setInquirySent] = useState(false)
+  const [inquiryForm, setInquiryForm] = useState({ name: '', email: '', phone: '', message: '' })
 
   if (!ring) {
     return (
-      <div className="container" style={{ paddingTop: 'var(--spacing-3xl)', paddingBottom: 'var(--spacing-3xl)', textAlign: 'center' }}>
-        <h2>Ring not found</h2>
-        <Link to="/engagement-rings" className="btn btn-primary" style={{ marginTop: 'var(--spacing-lg)' }}>
+      <div className="container" style={{ padding: '6rem 1rem', textAlign: 'center' }}>
+        <h2 style={{ fontFamily: 'var(--font-serif)', fontSize: '2rem' }}>Ring Not Found</h2>
+        <Link to="/engagement-rings" className="btn btn-primary" style={{ marginTop: '2rem' }}>
           Back to Engagement Rings
         </Link>
       </div>
@@ -24,147 +29,263 @@ export default function EngagementRingDetail() {
   }
 
   const handleAddToCart = () => {
-    addItem({ ...ring, selectedSize })
+    addItem({ ...ring, selectedSize, selectedMetal })
     setAdded(true)
-    setTimeout(() => setAdded(false), 2000)
+    setTimeout(() => setAdded(false), 2500)
   }
 
+  const handleInquirySubmit = (e) => {
+    e.preventDefault()
+    setInquirySent(true)
+    setTimeout(() => {
+      setInquirySent(false)
+      setInquiryModalOpen(false)
+      setInquiryForm({ name: '', email: '', phone: '', message: '' })
+    }, 2500)
+  }
+
+  const sizes = ['4.5', '5', '5.5', '6', '6.5', '7', '7.5', '8', '8.5']
+  const metals = ['Platinum', '18K Yellow Gold', '18K Rose Gold', '18K White Gold']
+
+  const related = engagementRings.filter(r => r.id !== ring.id).slice(0, 3)
+
   return (
-    <>
-      <div className="container" style={{ paddingTop: 'var(--spacing-xl)' }}>
-        <div className="breadcrumbs">
-          <Link to="/engagement-rings" className="breadcrumb-item">Engagement Rings</Link>
-          <span className="breadcrumb-separator">/</span>
-          <span className="breadcrumb-item">{ring.style}</span>
-          <span className="breadcrumb-separator">/</span>
-          <span className="breadcrumb-item">{ring.name}</span>
-        </div>
-      </div>
+    <div className="pdp">
+      <nav className="pdp-breadcrumbs container" aria-label="Breadcrumb">
+        <Link to="/" className="pdp-breadcrumb-link">Maison</Link>
+        <span className="pdp-breadcrumb-sep">/</span>
+        <Link to="/engagement-rings" className="pdp-breadcrumb-link">Engagement Rings</Link>
+        <span className="pdp-breadcrumb-sep">/</span>
+        <span className="pdp-breadcrumb-current">{ring.name}</span>
+      </nav>
 
-      <div className="container" style={{ paddingBottom: 'var(--spacing-3xl)' }}>
-        <div className="detail-container">
-          <div className="detail-gallery">
-            <div className="detail-image">
-              <img src={ring.image} alt={ring.name} />
+      <div className="container pdp-main">
+        {/* Gallery */}
+        <div className="pdp-gallery">
+          <div className="pdp-gallery__featured">
+            <div className="pdp-gallery__badge-strip">
+              <span className="pdp-badge pdp-badge--gold">Handcrafted Ring</span>
+              <span className="pdp-badge">Bespoke Fitting</span>
+            </div>
+            <div className="pdp-gallery__canvas">
+              {ring.image ? (
+                <img src={ring.image} alt={ring.name} className="pdp-gallery__img" />
+              ) : (
+                <div className="pdp-gallery__fallback" style={{ background: 'linear-gradient(135deg, #241c19 0%, #453630 50%, #69524a 100%)' }}>
+                  <svg className="pdp-gallery__facet-icon" viewBox="0 0 140 140" fill="none" stroke="currentColor">
+                    <circle cx="70" cy="70" r="44" stroke="rgba(212,175,127,0.8)" strokeWidth="4" />
+                    <circle cx="70" cy="26" r="14" stroke="rgba(255,255,255,0.9)" strokeWidth="2" />
+                    <polygon points="70,16 78,26 70,36 62,26" fill="rgba(212,175,127,0.7)" />
+                  </svg>
+                  <span className="pdp-gallery__fallback-caption">{ring.style} • {ring.stone}</span>
+                </div>
+              )}
             </div>
           </div>
 
-          <div className="detail-info">
-            <div className="detail-category">{ring.style}</div>
-            <h1>{ring.name}</h1>
-            <div className="detail-price">${ring.price.toLocaleString()}</div>
+          <div className="pdp-ritual">
+            <h4 className="pdp-ritual__title">Complimentary Ring Sizing & Lifetime Warranty</h4>
+            <p className="pdp-ritual__text">
+              Every Aviory engagement ring includes complimentary bespoke resizing within 12 months of purchase, 
+              annual professional cleaning and prong inspection, and a lifetime craftsmanship guarantee.
+            </p>
+          </div>
+        </div>
 
-            <div className="detail-specs">
-              <div className="spec-group">
-                <h4 style={{ marginBottom: 'var(--spacing-md)', fontSize: '0.9rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
-                  Ring Details
-                </h4>
-                <div className="spec-row">
-                  <span className="spec-label">Style:</span>
-                  <span className="spec-value">{ring.style}</span>
-                </div>
-                <div className="spec-row">
-                  <span className="spec-label">Material:</span>
-                  <span className="spec-value">{ring.material}</span>
-                </div>
-                <div className="spec-row">
-                  <span className="spec-label">Stone:</span>
-                  <span className="spec-value">{ring.stone}</span>
-                </div>
-                <div className="spec-row">
-                  <span className="spec-label">Weight:</span>
-                  <span className="spec-value">{ring.specs.material_weight}</span>
-                </div>
-                <div className="spec-row">
-                  <span className="spec-label">Warranty:</span>
-                  <span className="spec-value">{ring.specs.warranty}</span>
-                </div>
-              </div>
+        {/* Info */}
+        <div className="pdp-info">
+          <div className="pdp-info__header">
+            <span className="pdp-info__subtitle">{ring.style} • REF: {ring.id.toUpperCase()}</span>
+            <h1 className="pdp-info__title">{ring.name}</h1>
+            <div className="pdp-info__price">${ring.price.toLocaleString()}</div>
+            <p className="pdp-info__taxes">Mounted in {selectedMetal} • Certified Ceylon Gemstone</p>
+          </div>
+
+          {/* Metal Selector */}
+          <div style={{ marginBottom: '1.5rem' }}>
+            <span style={{ display: 'block', fontSize: '0.72rem', textTransform: 'uppercase', letterSpacing: '0.12em', color: 'var(--color-accent)', fontWeight: 600, marginBottom: '0.5rem' }}>
+              Select Precious Metal: <strong>{selectedMetal}</strong>
+            </span>
+            <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
+              {metals.map(metal => (
+                <button
+                  key={metal}
+                  type="button"
+                  onClick={() => setSelectedMetal(metal)}
+                  style={{
+                    padding: '0.45rem 0.85rem',
+                    fontSize: '0.75rem',
+                    fontFamily: 'var(--font-ui)',
+                    textTransform: 'uppercase',
+                    letterSpacing: '0.06em',
+                    border: `1px solid ${selectedMetal === metal ? 'var(--color-black)' : 'var(--color-gray-light)'}`,
+                    backgroundColor: selectedMetal === metal ? 'var(--color-black)' : 'var(--color-white)',
+                    color: selectedMetal === metal ? 'var(--color-white)' : 'var(--color-charcoal)',
+                    cursor: 'pointer'
+                  }}
+                >
+                  {metal}
+                </button>
+              ))}
             </div>
+          </div>
 
-            <div className="form-group">
-              <label htmlFor="size">Ring Size</label>
-              <select
-                id="size"
-                value={selectedSize}
-                onChange={(e) => setSelectedSize(e.target.value)}
+          {/* Ring Sizing */}
+          <div style={{ marginBottom: '2rem' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.5rem' }}>
+              <span style={{ fontSize: '0.72rem', textTransform: 'uppercase', letterSpacing: '0.12em', color: 'var(--color-accent)', fontWeight: 600 }}>
+                US Ring Size: <strong>{selectedSize}</strong>
+              </span>
+              <button 
+                type="button" 
+                onClick={() => setInquiryModalOpen(true)}
+                style={{ background: 'none', border: 'none', fontSize: '0.72rem', textDecoration: 'underline', color: 'var(--color-champagne)', cursor: 'pointer' }}
               >
-                {['4', '5', '6', '7', '8', '9', '10', '11', '12', '13'].map(size => (
-                  <option key={size} value={size}>Size {size}</option>
-                ))}
-              </select>
-            </div>
-
-            <div className="detail-actions">
-              <button className="btn btn-primary" onClick={handleAddToCart}>
-                Add to Cart
+                Complimentary Sizer Tool
               </button>
-              <Link to="/contact" className="btn btn-outline">
-                Request Size Guide
-              </Link>
             </div>
-
-            {added && <div className="alert alert-success">Added to cart!</div>}
-
-            <div className="detail-tabs">
-              <div className="tabs-nav">
+            <div style={{ display: 'flex', gap: '0.4rem', flexWrap: 'wrap' }}>
+              {sizes.map(size => (
                 <button
-                  className={`tab-button ${activeTab === 'description' ? 'active' : ''}`}
-                  onClick={() => setActiveTab('description')}
+                  key={size}
+                  type="button"
+                  onClick={() => setSelectedSize(size)}
+                  style={{
+                    width: '38px',
+                    height: '38px',
+                    fontSize: '0.75rem',
+                    fontFamily: 'var(--font-ui)',
+                    fontWeight: 600,
+                    border: `1px solid ${selectedSize === size ? 'var(--color-champagne)' : 'var(--color-gray-light)'}`,
+                    backgroundColor: selectedSize === size ? 'var(--color-champagne)' : 'var(--color-white)',
+                    color: selectedSize === size ? 'var(--color-black)' : 'var(--color-charcoal)',
+                    cursor: 'pointer'
+                  }}
                 >
-                  Description
+                  {size}
                 </button>
-                <button
-                  className={`tab-button ${activeTab === 'specs' ? 'active' : ''}`}
-                  onClick={() => setActiveTab('specs')}
-                >
-                  Specifications
-                </button>
-                <button
-                  className={`tab-button ${activeTab === 'care' ? 'active' : ''}`}
-                  onClick={() => setActiveTab('care')}
-                >
-                  Care
-                </button>
-              </div>
+              ))}
+            </div>
+          </div>
 
-              <div className={`tab-content ${activeTab === 'description' ? 'active' : ''}`}>
-                <p>{ring.longDescription}</p>
-              </div>
+          {/* Action Buttons */}
+          <div className="pdp-actions">
+            <button
+              type="button"
+              className="btn btn-primary pdp-btn--inquire"
+              onClick={() => setInquiryModalOpen(true)}
+            >
+              Consult with Bridal Specialist
+            </button>
+            <button
+              type="button"
+              className="btn btn-secondary pdp-btn--cart"
+              onClick={handleAddToCart}
+            >
+              {added ? 'Added to Bag ✓' : 'Add to Shopping Bag'}
+            </button>
+          </div>
 
-              <div className={`tab-content ${activeTab === 'specs' ? 'active' : ''}`}>
-                <ul>
-                  <li>Stone Carat: {ring.specs.stone_carat}</li>
-                  <li>Material Weight: {ring.specs.material_weight}</li>
-                  <li>Warranty: {ring.specs.warranty}</li>
-                  <li>Available in all standard sizes</li>
-                  <li>Custom sizing available</li>
-                </ul>
-              </div>
+          {added && (
+            <div className="alert alert-success" style={{ marginBottom: '1.5rem' }}>
+              Ring added to your bag in size {selectedSize} ({selectedMetal}).
+            </div>
+          )}
 
-              <div className={`tab-content ${activeTab === 'care' ? 'active' : ''}`}>
-                <h4>Care Instructions</h4>
-                <ul>
-                  <li>Clean regularly with warm soapy water and a soft brush</li>
-                  <li>Avoid harsh chemicals and extreme temperature changes</li>
-                  <li>Remove during sports and strenuous activities</li>
-                  <li>Have settings checked professionally annually</li>
-                  <li>Store in a soft cloth when not wearing</li>
-                </ul>
-              </div>
+          {/* Specs */}
+          <div className="pdp-specs-grid">
+            <div className="pdp-spec-box">
+              <span className="pdp-spec-box__label">Center Gemstone</span>
+              <span className="pdp-spec-box__value">{ring.stone}</span>
+            </div>
+            <div className="pdp-spec-box">
+              <span className="pdp-spec-box__label">Ring Style</span>
+              <span className="pdp-spec-box__value">{ring.style}</span>
+            </div>
+            <div className="pdp-spec-box">
+              <span className="pdp-spec-box__label">Precious Metal</span>
+              <span className="pdp-spec-box__value">{selectedMetal}</span>
+            </div>
+            <div className="pdp-spec-box">
+              <span className="pdp-spec-box__label">Warranty</span>
+              <span className="pdp-spec-box__value">Lifetime Guarantee</span>
             </div>
           </div>
         </div>
       </div>
 
-      {/* CTA */}
-      <section style={{ backgroundColor: '#F8F4EF', paddingTop: 'var(--spacing-2xl)', paddingBottom: 'var(--spacing-2xl)' }}>
-        <div className="container" style={{ textAlign: 'center' }}>
-          <h3 style={{ marginBottom: 'var(--spacing-md)' }}>Want to customize this ring?</h3>
-          <p style={{ marginBottom: 'var(--spacing-lg)' }}>We can modify any aspect to create your perfect engagement ring.</p>
-          <Link to="/bespoke/enquiry" className="btn btn-primary">Customize This Ring</Link>
+      {/* Concierge Modal */}
+      {inquiryModalOpen && (
+        <div className="pdp-modal-backdrop" onClick={() => setInquiryModalOpen(false)}>
+          <div className="pdp-modal" onClick={(e) => e.stopPropagation()}>
+            <button 
+              type="button" 
+              className="pdp-modal__close" 
+              onClick={() => setInquiryModalOpen(false)}
+            >
+              ✕
+            </button>
+            <span className="pdp-info__subtitle">BRIDAL APPOINTMENT & INQUIRY</span>
+            <h3 className="pdp-modal__title">{ring.name}</h3>
+            <p className="pdp-modal__meta">${ring.price.toLocaleString()} • Size {selectedSize} • {selectedMetal}</p>
+
+            {inquirySent ? (
+              <div className="alert alert-success">
+                Thank you. A bridal consultant will reach out to confirm your virtual or in-atelier showing.
+              </div>
+            ) : (
+              <form onSubmit={handleInquirySubmit} className="pdp-modal__form">
+                <div className="pdp-form-row">
+                  <input
+                    type="text"
+                    placeholder="Your Full Name *"
+                    value={inquiryForm.name}
+                    onChange={(e) => setInquiryForm({ ...inquiryForm, name: e.target.value })}
+                    required
+                  />
+                  <input
+                    type="email"
+                    placeholder="Email Address *"
+                    value={inquiryForm.email}
+                    onChange={(e) => setInquiryForm({ ...inquiryForm, email: e.target.value })}
+                    required
+                  />
+                </div>
+                <input
+                  type="tel"
+                  placeholder="Telephone / WhatsApp (for private consultation)"
+                  value={inquiryForm.phone}
+                  onChange={(e) => setInquiryForm({ ...inquiryForm, phone: e.target.value })}
+                />
+                <textarea
+                  rows="3"
+                  placeholder="Tell us about your timeline, customized center stone preferences, or appointment timing..."
+                  value={inquiryForm.message}
+                  onChange={(e) => setInquiryForm({ ...inquiryForm, message: e.target.value })}
+                />
+                <button type="submit" className="btn btn-primary" style={{ width: '100%' }}>
+                  Submit Bridal Request
+                </button>
+              </form>
+            )}
+          </div>
         </div>
-      </section>
-    </>
+      )}
+
+      {/* Related */}
+      {related.length > 0 && (
+        <section className="pdp-related container">
+          <div className="section-title">
+            <span className="collection-label">BRIDAL COLLECTION</span>
+            <h2>Discover More Ring Styles</h2>
+          </div>
+          <div className="product-grid">
+            {related.map(r => (
+              <ProductCard key={r.id} product={r} type="ring" />
+            ))}
+          </div>
+        </section>
+      )}
+    </div>
   )
 }

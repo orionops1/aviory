@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
+import HeroBanner from '../components/HeroBanner'
 import ProductCard from '../components/ProductCard'
 import { gemstones, fineJewellery, journalArticles } from '../data/products'
-import { bespokeProcess, shopInfo } from '../data/content'
+import { bespokeProcess } from '../data/content'
 import { useLanguage } from '../hooks/useLanguage'
 import './Home.css'
 
@@ -15,169 +16,206 @@ export default function Home() {
     e.preventDefault()
     setSubscribed(true)
     setEmail('')
-    setTimeout(() => setSubscribed(false), 3000)
+    setTimeout(() => setSubscribed(false), 3500)
   }
 
   return (
     <>
-      {/* HERO SECTION - LUXURY TIFFANY STYLE */}
-      <section className="hero">
-        <div className="hero-background"></div>
-        <div className="hero-overlay"></div>
-        <div className="hero-content container">
-          <div className="hero-text-block">
-            <h1 className="hero-title">{t('hero.title')}</h1>
-            <p className="hero-subtitle">{t('hero.subtitle')}</p>
-            <div className="hero-cta">
-              <Link to="/gemstones" className="btn btn-primary">{t('hero.exploreGemstones')}</Link>
-              <Link to="/bespoke" className="btn btn-secondary">{t('hero.createBespoke')}</Link>
-            </div>
+      {/* ─── TIFFANY-STYLE CINEMATIC HERO (Video + Image fallback + Controls) ─── */}
+      <HeroBanner 
+        title="AVIORY & CO."
+        subtitle="Unheated Ceylon Sapphires & Bespoke Masterpieces"
+        tagline="MAISON DE HAUTE JOAILLERIE"
+        ctaPrimary={{ label: "Discover Gemstones", href: "/gemstones" }}
+        ctaSecondary={{ label: "Book a Consultation", href: "/private-consultations" }}
+        videoSrc="https://assets.mixkit.co/videos/preview/mixkit-sparkling-diamond-ring-under-spotlight-41875-large.mp4"
+        fallbackImage="/images/hero-banner.jpg"
+      />
+
+      {/* ─── BRAND PROVENANCE STRIP (Tiffany-inspired Trust Bar) ─── */}
+      <section className="provenance-strip">
+        <div className="container provenance-strip__inner">
+          <div className="provenance-item">
+            <span className="provenance-icon">◆</span>
+            <h4>Ceylon Provenance</h4>
+            <p>100% ethically sourced from ancient Sri Lankan gem fields</p>
+          </div>
+          <div className="provenance-item">
+            <span className="provenance-icon">◆</span>
+            <h4>GIA Certified</h4>
+            <p>Every exceptional stone accompanied by world-standard verification</p>
+          </div>
+          <div className="provenance-item">
+            <span className="provenance-icon">◆</span>
+            <h4>Natural & Unheated</h4>
+            <p>Untreated natural gemstones exhibiting pure crystalline color</p>
+          </div>
+          <div className="provenance-item">
+            <span className="provenance-icon">◆</span>
+            <h4>Atelier Craftsmanship</h4>
+            <p>Hand-wrought bespoke settings by master goldsmiths</p>
           </div>
         </div>
       </section>
 
-      {/* FEATURED COLLECTION 1 - DIAMONDS */}
-      <section className="featured-collection featured-collection-1">
+      {/* ─── FEATURED COLLECTION 1: EXCEPTIONAL CEYLON SAPPHIRES ─── */}
+      <section className="featured-collection featured-collection--editorial">
         <div className="container">
           <div className="collection-split">
             <div className="collection-content">
               <div className="collection-header">
-                <span className="collection-label">FEATURED COLLECTION</span>
-                <h2>Exceptional Diamonds</h2>
+                <span className="collection-label">THE HIGH JEWELLERY EDIT</span>
+                <h2>Royal Ceylon Sapphires</h2>
                 <p className="collection-description">
-                  Hand-selected diamonds of the highest quality, each certified for brilliance, clarity, and color. 
-                  Discover pieces that capture light and admiration in equal measure.
+                  Celebrated for millennia by emperors, royalty, and international collectors. 
+                  Our Ceylon sapphires possess the legendary cornflower and royal blue saturation 
+                  unmatched anywhere in the geological world.
                 </p>
               </div>
               <div className="collection-benefits">
                 <div className="benefit">
                   <span className="benefit-icon">✓</span>
-                  <span>GIA Certified</span>
+                  <span>Direct mine-to-market traceability</span>
                 </div>
                 <div className="benefit">
                   <span className="benefit-icon">✓</span>
-                  <span>Ethically Sourced</span>
+                  <span>Unheated, untreated optical purity</span>
                 </div>
                 <div className="benefit">
                   <span className="benefit-icon">✓</span>
-                  <span>Lifetime Authenticity</span>
+                  <span>Independent GIA & Gubelin documentation</span>
                 </div>
               </div>
-              <Link to="/gemstones?type=diamond" className="btn btn-primary">Explore Diamonds</Link>
+              <div style={{ marginTop: '1rem' }}>
+                <Link to="/gemstones?category=blue-sapphires" className="btn btn-primary">
+                  Explore Sapphire Collection
+                </Link>
+              </div>
             </div>
+            
             <div className="collection-visual">
-              <div className="collection-image">💎 Premium Diamonds</div>
+              <div className="collection-visual__card">
+                <div className="collection-visual__tag">HIGHLIGHT PIECE</div>
+                <h3 className="collection-visual__title">Royal Ceylon Blue</h3>
+                <p className="collection-visual__meta">2.15 ct • VVS1 • GIA Certified</p>
+                <Link to="/gemstones/bs-001" className="collection-visual__link">
+                  View Gemstone Specifications →
+                </Link>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* FEATURED PRODUCTS GRID */}
+      {/* ─── CURATED GALLERY: NEW ARRIVALS ─── */}
       <section className="featured-products">
         <div className="container">
           <div className="section-title">
-            <h2>New Arrivals</h2>
-            <p className="section-subtitle">Discover our latest luxury collections</p>
+            <span className="collection-label">EXQUISITE SELECTIONS</span>
+            <h2>New Gemstone Acquisitions</h2>
+            <p className="section-subtitle">
+              Rare unheated sapphires, vivid rubies, and collector stones newly released from our Ceylon vault.
+            </p>
           </div>
+          
           <div className="product-grid">
             {gemstones.slice(0, 4).map(gem => (
               <ProductCard key={gem.id} product={gem} type="gemstone" />
             ))}
+          </div>
+
+          <div style={{ textAlign: 'center', marginTop: 'var(--spacing-2xl)' }}>
+            <Link to="/gemstones" className="btn btn-outline">
+              View All Rare Gemstones
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* ─── FEATURED COLLECTION 2: BESPOKE ENGAGEMENT RINGS ─── */}
+      <section className="featured-collection featured-collection-2">
+        <div className="container">
+          <div className="collection-split reverse">
+            <div className="collection-visual collection-visual--bridal">
+              <div className="collection-visual__card">
+                <div className="collection-visual__tag">BESPOKE BRIDAL</div>
+                <h3 className="collection-visual__title">The Solitaire Sapphire</h3>
+                <p className="collection-visual__meta">Handcrafted in Platinum & 18K Yellow Gold</p>
+                <Link to="/engagement-rings" className="collection-visual__link">
+                  Explore Engagement Styles →
+                </Link>
+              </div>
+            </div>
+            <div className="collection-content">
+              <div className="collection-header">
+                <span className="collection-label">LOVE & COMMITTMENT</span>
+                <h2>Bespoke Engagement Rings</h2>
+                <p className="collection-description">
+                  Move beyond the ordinary. A coloured gemstone engagement ring tells an authentic story of individuality and lasting devotion, engineered with durability to withstand lifetimes of daily wear.
+                </p>
+              </div>
+              <div className="collection-benefits">
+                <div className="benefit">
+                  <span className="benefit-icon">✓</span>
+                  <span>Personal consultation with master gemologist</span>
+                </div>
+                <div className="benefit">
+                  <span className="benefit-icon">✓</span>
+                  <span>Custom 3D CAD modeling & wax prototypes</span>
+                </div>
+                <div className="benefit">
+                  <span className="benefit-icon">✓</span>
+                  <span>Lifetime warranty & complimentary annual cleaning</span>
+                </div>
+              </div>
+              <div style={{ marginTop: '1rem' }}>
+                <Link to="/engagement-rings" className="btn btn-primary">
+                  Explore Engagement Rings
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ─── FINE JEWELLERY HIGHLIGHTS ─── */}
+      <section className="featured-products" style={{ backgroundColor: 'var(--color-ivory)', borderTop: '1px solid var(--color-gray-light)' }}>
+        <div className="container">
+          <div className="section-title">
+            <span className="collection-label">ATELIER MASTERPIECES</span>
+            <h2>Signature Fine Jewellery</h2>
+            <p className="section-subtitle">
+              Intricately wrought necklaces, bracelets, earrings, and limited edition creations.
+            </p>
           </div>
           <div className="product-grid">
             {fineJewellery.slice(0, 4).map(item => (
               <ProductCard key={item.id} product={item} type="jewellery" />
             ))}
           </div>
-        </div>
-      </section>
-
-      {/* FEATURED COLLECTION 2 - ENGAGEMENT RINGS */}
-      <section className="featured-collection featured-collection-2">
-        <div className="container">
-          <div className="collection-split reverse">
-            <div className="collection-visual">
-              <div className="collection-image">💍 Engagement Rings</div>
-            </div>
-            <div className="collection-content">
-              <div className="collection-header">
-                <span className="collection-label">TIMELESS ELEGANCE</span>
-                <h2>Engagement Rings</h2>
-                <p className="collection-description">
-                  Celebrate your love with an exquisite engagement ring. From classic solitaires to modern designs, 
-                  each piece tells your unique story.
-                </p>
-              </div>
-              <div className="collection-benefits">
-                <div className="benefit">
-                  <span className="benefit-icon">✓</span>
-                  <span>Custom Design Available</span>
-                </div>
-                <div className="benefit">
-                  <span className="benefit-icon">✓</span>
-                  <span>Lifetime Warranty</span>
-                </div>
-                <div className="benefit">
-                  <span className="benefit-icon">✓</span>
-                  <span>Expert Consultation</span>
-                </div>
-              </div>
-              <Link to="/engagement-rings" className="btn btn-primary">View Rings</Link>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* CATEGORIES SHOWCASE - REFINED */}
-      <section className="categories-grid">
-        <div className="container">
-          <div className="section-title">
-            <h2>Collections</h2>
-          </div>
-          <div style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
-            gap: 'var(--spacing-xl)'
-          }}>
-            <Link to="/gemstones" className="category-card">
-              <div className="category-icon">💎</div>
-              <h3>{t('categories.gemstones')}</h3>
-              <p>{t('categories.gemstonesCount')}</p>
-            </Link>
-
-            <Link to="/fine-jewellery" className="category-card">
-              <div className="category-icon">👑</div>
-              <h3>{t('categories.fineJewellery')}</h3>
-              <p>{t('categories.fineJewelleryCount')}</p>
-            </Link>
-
-            <Link to="/engagement-rings" className="category-card">
-              <div className="category-icon">💍</div>
-              <h3>{t('categories.engagementRings')}</h3>
-              <p>{t('categories.engagementRingsCount')}</p>
-            </Link>
-
-            <Link to="/bespoke" className="category-card">
-              <div className="category-icon">✨</div>
-              <h3>{t('categories.bespoke')}</h3>
-              <p>{t('categories.bespokeDesc')}</p>
+          <div style={{ textAlign: 'center', marginTop: 'var(--spacing-2xl)' }}>
+            <Link to="/fine-jewellery" className="btn btn-outline">
+              Explore Fine Jewellery
             </Link>
           </div>
         </div>
       </section>
 
-      {/* BESPOKE PROCESS */}
+      {/* ─── BESPOKE PROCESS SECTION ─── */}
       <section className="bespoke-process">
         <div className="container">
           <div className="section-title">
-            <h2>{t('home.bespokeProcess')}</h2>
-            <p className="section-subtitle">{t('home.fromVisionToMasterpiece')}</p>
+            <span className="collection-label">HOW WE WORK</span>
+            <h2>The 5-Stage Creation Journey</h2>
+            <p className="section-subtitle">
+              From an initial conversation in our private atelier to the unveiling of an enduring heirloom.
+            </p>
           </div>
           <div className="process-grid">
             {bespokeProcess.map(stage => (
               <Link key={stage.id} to="/bespoke/process" style={{ textDecoration: 'none', color: 'inherit' }}>
                 <div className="process-card">
-                  <div className="process-number">{stage.number}</div>
+                  <div className="process-number">0{stage.number}</div>
                   <h4>{stage.title}</h4>
                   <p>{stage.description}</p>
                 </div>
@@ -185,27 +223,27 @@ export default function Home() {
             ))}
           </div>
           <div style={{ textAlign: 'center', marginTop: 'var(--spacing-2xl)' }}>
-            <Link to="/bespoke" className="btn btn-primary">{t('home.startBespokeJourney')}</Link>
+            <Link to="/bespoke/enquiry" className="btn btn-primary">
+              Begin Your Bespoke Enquiry
+            </Link>
           </div>
         </div>
       </section>
 
-      {/* JOURNAL PREVIEW */}
+      {/* ─── JOURNAL & EDUCATION ─── */}
       <section className="journal-preview">
         <div className="container">
           <div className="section-title">
-            <h2>{t('home.journal')}</h2>
-            <p className="section-subtitle">{t('home.insightsOnGemstones')}</p>
+            <span className="collection-label">EDUCATION & HERITAGE</span>
+            <h2>From The Aviory Journal</h2>
+            <p className="section-subtitle">
+              Expert articles on gemstone science, mine-to-market ethics, and luxury craftsmanship.
+            </p>
           </div>
-          <div style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-            gap: 'var(--spacing-xl)'
-          }}>
+          <div className="journal-grid">
             {journalArticles.slice(0, 3).map(article => (
               <Link key={article.id} to={`/journal/${article.slug}`} style={{ textDecoration: 'none', color: 'inherit' }}>
-                <div className="journal-card"
-                >
+                <div className="journal-card">
                   <div className="journal-category">
                     {article.category}
                   </div>
@@ -219,17 +257,22 @@ export default function Home() {
             ))}
           </div>
           <div style={{ textAlign: 'center', marginTop: 'var(--spacing-2xl)' }}>
-            <Link to="/journal" className="btn btn-primary">{t('home.readJournal')}</Link>
+            <Link to="/journal" className="btn btn-outline">
+              Read All Journal Articles
+            </Link>
           </div>
         </div>
       </section>
 
-      {/* NEWSLETTER */}
+      {/* ─── NEWSLETTER ─── */}
       <section className="newsletter-section">
         <div className="container">
           <div className="newsletter-content">
-            <h2>Stay Connected</h2>
-            <p>Receive updates on new collections, exclusive events, and gemstone insights.</p>
+            <span className="collection-label" style={{ color: 'var(--color-champagne)' }}>PRIVATE CIRCLE</span>
+            <h2>Join The Aviory Society</h2>
+            <p>
+              Receive early invitations to rare gemstone releases, atelier exhibitions, and gemological insights.
+            </p>
             {subscribed && <div className="alert alert-success">{t('home.subscribeSuccess')}</div>}
             <form onSubmit={handleNewsletterSubmit} className="newsletter-form">
               <input
@@ -239,20 +282,29 @@ export default function Home() {
                 onChange={(e) => setEmail(e.target.value)}
                 required
               />
-              <button type="submit" className="btn btn-primary">{t('common.subscribe')}</button>
+              <button type="submit" className="btn btn-primary">
+                {t('common.subscribe')}
+              </button>
             </form>
           </div>
         </div>
       </section>
 
-      {/* CTA SECTION */}
+      {/* ─── CONCIERGE / APPOINTMENT CTA ─── */}
       <section className="cta-section">
         <div className="container">
-          <h2>Experience Luxury & Craftsmanship</h2>
-          <p>Visit our atelier for personalized consultations and private appointments</p>
+          <span className="collection-label">PERSONALIZED CONSULTATIONS</span>
+          <h2>Experience Haute Joaillerie in Person</h2>
+          <p>
+            Meet with our chief gemologist and artisans at our Colombo atelier, or arrange a private virtual showcase wherever you are in the world.
+          </p>
           <div style={{ display: 'flex', gap: 'var(--spacing-md)', justifyContent: 'center', flexWrap: 'wrap' }}>
-            <Link to="/our-house" className="btn btn-primary">Book an Appointment</Link>
-            <Link to="/contact" className="btn btn-outline">Contact Us</Link>
+            <Link to="/private-consultations" className="btn btn-primary">
+              Book a Private Showing
+            </Link>
+            <Link to="/contact" className="btn btn-outline">
+              Contact Concierge
+            </Link>
           </div>
         </div>
       </section>
