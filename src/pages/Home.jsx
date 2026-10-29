@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import HeroBanner from '../components/HeroBanner'
 import ProductCard from '../components/ProductCard'
-import { gemstones, journalArticles } from '../data/products'
+import { gemstones, journalArticles, engagementRings, fineJewellery } from '../data/products'
 import { useLanguage } from '../hooks/useLanguage'
 import './Home.css'
 
@@ -29,91 +29,131 @@ export default function Home() {
         fallbackImage="/images/hero-banner.jpg"
       />
 
-      {/* FEATURED COLLECTION */}
-      <section className="featured-collection-hero">
-        <div className="container">
-          <div className="collection-story">
-            <span className="collection-label">FEATURED COLLECTION</span>
-            <h2>The Ceylon Sapphire Vault</h2>
-            <p className="collection-narrative">
-              For over 2,000 years, Ceylon sapphires have been revered for their unparalleled blue saturation, 
-              crystalline clarity, and transformative brilliance. Each stone in this vault represents the pinnacle of 
-              gemstone rarity and craftsmanship—hand-selected for collectors who understand that true luxury is measured 
-              in exclusivity, not quantity.
-            </p>
+      {/* SECTION 1: FEATURED GEMSTONES - LIFESTYLE + PRODUCTS (50/50) */}
+      <section className="lifestyle-section lifestyle-section--gemstones">
+        <div className="lifestyle-grid lifestyle-grid--2col">
+          <div className="lifestyle-image">
+            <div className="lifestyle-placeholder" style={{ background: 'linear-gradient(135deg, #2c1810 0%, #5a3d2a 100%)' }}>
+              <span style={{ fontSize: '4rem', opacity: 0.3 }}>✨</span>
+            </div>
+          </div>
+          <div className="lifestyle-content">
+            <span className="lifestyle-label">RARE GEMSTONES</span>
+            <h2>Ceylon Sapphires</h2>
+            <p>Discover exceptional gemstones hand-selected from Sri Lanka's most prestigious mines. Each stone represents generations of expertise and uncompromising quality standards.</p>
             <Link to="/gemstones?category=blue-sapphires" className="btn btn-primary">
-              Explore the Collection
+              Shop Gemstones
             </Link>
-          </div>
-          <div className="collection-showcase">
-            {gemstones.filter(g => g.type === 'sapphire').slice(0, 4).map(gem => (
-              <ProductCard key={gem.id} product={gem} type="gemstone" />
-            ))}
           </div>
         </div>
       </section>
 
-      {/* CATEGORY GRID */}
-      <section className="category-browse">
+      {/* SECTION 2: DUAL PRODUCT GRID (2 COLUMNS) */}
+      <section className="dual-product-grid">
         <div className="container">
-          <h2 className="category-browse__title">Shop Our Collections</h2>
-          <div className="category-grid">
-            <Link to="/gemstones?category=blue-sapphires" className="category-card">
-              <div className="category-card__image" style={{ background: 'linear-gradient(135deg, #0b1a30 0%, #173361 50%, #29539b 100%)' }}>
-                <span className="category-icon">💎</span>
+          <div className="grid-2col">
+            <div className="product-group">
+              <div className="product-group__image">
+                <div style={{ background: 'linear-gradient(135deg, #421820 0%, #7d3345 50%, #d46b7a 100%)', height: '400px', borderRadius: '4px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '3rem', opacity: 0.4 }}>
+                  💎
+                </div>
               </div>
-              <h3>Royal Blue Sapphires</h3>
-              <p>Cornflower to deep royal blues</p>
-            </Link>
-            <Link to="/gemstones?category=pink-sapphires" className="category-card">
-              <div className="category-card__image" style={{ background: 'linear-gradient(135deg, #421820 0%, #7d3345 50%, #d46b7a 100%)' }}>
-                <span className="category-icon">✨</span>
-              </div>
-              <h3>Pink Sapphires</h3>
-              <p>Vivid to delicate pink hues</p>
-            </Link>
-            <Link to="/engagement-rings" className="category-card">
-              <div className="category-card__image" style={{ background: 'linear-gradient(135deg, #241c14 0%, #3d2f21 50%, #5e4732 100%)' }}>
-                <span className="category-icon">💍</span>
-              </div>
-              <h3>Engagement Rings</h3>
-              <p>Bespoke designs for love stories</p>
-            </Link>
-            <Link to="/fine-jewellery" className="category-card">
-              <div className="category-card__image" style={{ background: 'linear-gradient(135deg, #1a1a1a 0%, #3a3a3a 50%, #5a5a5a 100%)' }}>
-                <span className="category-icon">👑</span>
-              </div>
-              <h3>Haute Joaillerie</h3>
-              <p>Exceptional fine jewelry pieces</p>
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* GIFTING */}
-      <section className="gifting-hero">
-        <div className="gifting-hero__content">
-          <div className="container">
-            <span className="gifting-label">TIMELESS MOMENTS</span>
-            <h2 className="gifting-title">The Art of Gifting</h2>
-            <p className="gifting-description">
-              Personalized jewelry and gifts are especially meaningful and become heirlooms over time. 
-              Celebrate every facet of the ones you love with iconic designs that transcend moments 
-              and endure as symbols of connection, commitment, and care.
-            </p>
-            <div className="gifting-ctas">
-              <Link to="/engagement-rings" className="btn btn-primary">
-                Explore Bridal
+              <h3 className="product-group__title">Pink Sapphires</h3>
+              <p className="product-group__desc">Vivid and delicate hues</p>
+              <Link to="/gemstones?category=pink-sapphires" className="btn btn-link">
+                SHOP NOW
               </Link>
-              <Link to="/bespoke/enquiry" className="btn btn-outline">
-                Bespoke Commission
+            </div>
+
+            <div className="product-group">
+              <div className="product-group__image">
+                <div style={{ background: 'linear-gradient(135deg, #0c2b18 0%, #1a5732 50%, #2e8b53 100%)', height: '400px', borderRadius: '4px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '3rem', opacity: 0.4 }}>
+                  ✨
+                </div>
+              </div>
+              <h3 className="product-group__title">Emeralds</h3>
+              <p className="product-group__desc">Rich and radiant green</p>
+              <Link to="/gemstones?category=emeralds" className="btn btn-link">
+                SHOP NOW
               </Link>
             </div>
           </div>
         </div>
       </section>
 
-      {/* JOURNAL */}
+      {/* SECTION 3: ENGAGEMENT RINGS - LIFESTYLE + PRODUCTS (50/50) */}
+      <section className="lifestyle-section lifestyle-section--rings">
+        <div className="lifestyle-grid lifestyle-grid--2col lifestyle-grid--reverse">
+          <div className="lifestyle-content">
+            <span className="lifestyle-label">TIMELESS MOMENTS</span>
+            <h2>Engagement Rings</h2>
+            <p>Celebrate love with bespoke engagement rings. Each design is crafted to tell your unique story, combining exceptional gemstones with master artistry.</p>
+            <Link to="/engagement-rings" className="btn btn-primary">
+              Explore Rings
+            </Link>
+          </div>
+          <div className="lifestyle-image">
+            <div className="lifestyle-placeholder" style={{ background: 'linear-gradient(135deg, #241c14 0%, #3d2f21 50%, #5e4732 100%)' }}>
+              <span style={{ fontSize: '4rem', opacity: 0.3 }}>💍</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION 4: FEATURED PRODUCTS SHOWCASE (4-COLUMN GRID) */}
+      <section className="featured-products">
+        <div className="container">
+          <h2 className="section-heading">Featured Pieces</h2>
+          <div className="products-showcase">
+            {gemstones.slice(0, 4).map(gem => (
+              <ProductCard key={gem.id} product={gem} type="gemstone" />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION 5: GIFTING HERO - LIFESTYLE + LIFESTYLE */}
+      <section className="lifestyle-section lifestyle-section--gifting">
+        <div className="lifestyle-grid lifestyle-grid--2col">
+          <div className="lifestyle-image">
+            <div className="lifestyle-placeholder" style={{ background: 'linear-gradient(135deg, #1a5732 0%, #2e8b53 50%, #45b880 100%)' }}>
+              <span style={{ fontSize: '4rem', opacity: 0.3 }}>🎁</span>
+            </div>
+          </div>
+          <div className="lifestyle-image">
+            <div className="lifestyle-placeholder" style={{ background: 'linear-gradient(135deg, #173361 0%, #29539b 50%, #4a7ec1 100%)' }}>
+              <span style={{ fontSize: '4rem', opacity: 0.3 }}>✨</span>
+            </div>
+          </div>
+        </div>
+        <div className="lifestyle-content lifestyle-content--overlay">
+          <span className="lifestyle-label">THE ART OF GIFTING</span>
+          <h2>Celebrate Every Moment</h2>
+          <p>Personalized jewelry becomes heirlooms. Gift exceptional pieces that express love, commitment, and lasting connection.</p>
+          <div className="gifting-ctas">
+            <Link to="/engagement-rings" className="btn btn-primary">
+              Explore Gifts
+            </Link>
+            <Link to="/bespoke/enquiry" className="btn btn-outline">
+              Commission a Piece
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION 6: FINE JEWELLERY SHOWCASE */}
+      <section className="jewellery-showcase">
+        <div className="container">
+          <h2 className="section-heading">Haute Joaillerie</h2>
+          <div className="products-showcase">
+            {fineJewellery.slice(0, 4).map(item => (
+              <ProductCard key={item.id} product={item} type="jewellery" />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION 7: JOURNAL PREVIEW */}
       <section className="journal-preview">
         <div className="container">
           <div className="section-title">
@@ -142,7 +182,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* NEWSLETTER */}
+      {/* SECTION 8: NEWSLETTER */}
       <section className="newsletter-section">
         <div className="container">
           <div className="newsletter-content">
@@ -163,7 +203,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* CTA */}
+      {/* SECTION 9: FINAL CTA */}
       <section className="cta-section">
         <div className="container">
           <h2>Get in Touch</h2>

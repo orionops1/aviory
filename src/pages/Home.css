@@ -1,145 +1,68 @@
 /* ============================================================================
-   HOME PAGE - LUXURY BRAND POSITIONING (Like Tiffany/Harry Winston)
+   HOME PAGE - TIFFANY-STYLE LIFESTYLE + PRODUCTS LAYOUT
    ============================================================================ */
 
-/* ─── 1. FEATURED COLLECTION HERO ─── */
-.featured-collection-hero {
+/* ─── LIFESTYLE SECTIONS (50/50 IMAGE + CONTENT) ─── */
+.lifestyle-section {
   background-color: var(--color-white);
   padding: var(--spacing-3xl) 0;
   border-bottom: 1px solid var(--color-gray-light);
 }
 
-.collection-story {
-  max-width: 900px;
-  margin: 0 auto var(--spacing-3xl);
-  text-align: center;
-}
-
-.collection-label {
-  display: inline-block;
-  font-family: var(--font-ui);
-  font-size: 0.65rem;
-  font-weight: 700;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--color-champagne);
-  margin-bottom: var(--spacing-lg);
-}
-
-.collection-story h2 {
-  font-family: var(--font-serif);
-  font-size: 2.5rem;
-  font-weight: 600;
-  color: var(--color-black);
-  margin-bottom: var(--spacing-md);
-  line-height: 1.2;
-}
-
-.collection-narrative {
-  font-family: var(--font-body);
-  font-size: 1.05rem;
-  line-height: 1.8;
-  color: var(--color-charcoal);
-  margin-bottom: var(--spacing-xl);
-}
-
-.collection-showcase {
+.lifestyle-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: var(--spacing-xl);
-  max-width: 1200px;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-3xl);
+  align-items: center;
+  max-width: 1400px;
   margin: 0 auto;
+  padding: 0 var(--spacing-xl);
 }
 
-/* ─── 2. CATEGORY BROWSING GRID ─── */
-.category-browse {
-  background-color: var(--color-white);
-  padding: var(--spacing-3xl) 0;
-  border-bottom: 1px solid var(--color-gray-light);
+.lifestyle-grid--reverse {
+  direction: rtl;
 }
 
-.category-browse__title {
-  font-family: var(--font-serif);
-  font-size: 2rem;
-  font-weight: 600;
-  text-align: center;
-  color: var(--color-black);
-  margin-bottom: var(--spacing-2xl);
+.lifestyle-grid--reverse > * {
+  direction: ltr;
 }
 
-.category-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: var(--spacing-xl);
-}
-
-.category-card {
-  text-decoration: none;
-  color: inherit;
-  border: 1px solid var(--color-gray-light);
-  border-radius: 4px;
+.lifestyle-image {
+  width: 100%;
+  aspect-ratio: 4/5;
   overflow: hidden;
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-  background-color: var(--color-white);
+  border-radius: 4px;
 }
 
-.category-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
-  border-color: var(--color-champagne);
-}
-
-.category-card__image {
-  height: 250px;
+.lifestyle-placeholder {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: var(--color-gray-light);
-  transition: transform 0.3s ease;
 }
 
-.category-card:hover .category-card__image {
-  transform: scale(1.02);
+.lifestyle-content {
+  padding: var(--spacing-xl);
 }
 
-.category-icon {
-  font-size: 3rem;
-  opacity: 0.8;
-}
-
-.category-card h3 {
-  font-family: var(--font-ui);
-  font-size: 1rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  padding: var(--spacing-md) var(--spacing-md) 0;
-  color: var(--color-black);
-}
-
-.category-card p {
-  font-family: var(--font-body);
-  font-size: 0.9rem;
-  color: var(--color-charcoal);
-  padding: var(--spacing-sm) var(--spacing-md) var(--spacing-md);
-  line-height: 1.5;
-}
-
-/* ─── 3. GIFTING HERO ─── */
-.gifting-hero {
-  background: linear-gradient(135deg, #f5f1e8 0%, #ede6dc 100%);
-  padding: var(--spacing-3xl) 0;
-  border-top: 1px solid var(--color-gray-light);
-  border-bottom: 1px solid var(--color-gray-light);
-}
-
-.gifting-hero__content {
-  max-width: 900px;
-  margin: 0 auto;
+.lifestyle-content--overlay {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 800px;
   text-align: center;
+  padding: var(--spacing-3xl) var(--spacing-xl);
+  background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+  color: var(--color-white);
+  z-index: 10;
 }
 
-.gifting-label {
+.lifestyle-label {
   display: inline-block;
   font-family: var(--font-ui);
   font-size: 0.65rem;
@@ -147,10 +70,10 @@
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--color-champagne);
-  margin-bottom: var(--spacing-lg);
+  margin-bottom: var(--spacing-md);
 }
 
-.gifting-title {
+.lifestyle-content h2 {
   font-family: var(--font-serif);
   font-size: 2.2rem;
   font-weight: 600;
@@ -159,12 +82,113 @@
   line-height: 1.2;
 }
 
-.gifting-description {
+.lifestyle-content--overlay h2 {
+  color: var(--color-white);
+}
+
+.lifestyle-content p {
   font-family: var(--font-body);
-  font-size: 1.05rem;
-  line-height: 1.8;
+  font-size: 1rem;
+  line-height: 1.7;
   color: var(--color-charcoal);
   margin-bottom: var(--spacing-xl);
+}
+
+.lifestyle-content--overlay p {
+  color: rgba(255, 255, 255, 0.95);
+}
+
+/* ─── DUAL PRODUCT GRID (2 COLUMNS) ─── */
+.dual-product-grid {
+  background-color: var(--color-white);
+  padding: var(--spacing-3xl) 0;
+  border-bottom: 1px solid var(--color-gray-light);
+}
+
+.grid-2col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-2xl);
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.product-group {
+  text-align: center;
+}
+
+.product-group__image {
+  margin-bottom: var(--spacing-lg);
+  width: 100%;
+}
+
+.product-group__title {
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--color-black);
+  margin-bottom: var(--spacing-sm);
+}
+
+.product-group__desc {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: var(--color-charcoal);
+  margin-bottom: var(--spacing-lg);
+}
+
+/* ─── FEATURED PRODUCTS SHOWCASE (4 COLUMNS) ─── */
+.featured-products,
+.jewellery-showcase {
+  background-color: var(--color-white);
+  padding: var(--spacing-3xl) 0;
+  border-bottom: 1px solid var(--color-gray-light);
+}
+
+.section-heading {
+  font-family: var(--font-serif);
+  font-size: 2rem;
+  font-weight: 600;
+  text-align: center;
+  color: var(--color-black);
+  margin-bottom: var(--spacing-2xl);
+}
+
+.products-showcase {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: var(--spacing-xl);
+}
+
+/* ─── GIFTING SECTION (FULL-WIDTH DUAL IMAGE + OVERLAY CONTENT) ─── */
+.lifestyle-section--gifting {
+  position: relative;
+  padding: 0;
+  border-bottom: none;
+}
+
+.lifestyle-section--gifting .lifestyle-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  padding: 0;
+  margin: 0;
+}
+
+.lifestyle-section--gifting .lifestyle-image {
+  aspect-ratio: auto;
+  height: 500px;
+  border-radius: 0;
+  margin: 0;
+}
+
+.lifestyle-section--gifting .lifestyle-content--overlay {
+  position: absolute;
+  width: 100%;
+  max-width: 100%;
+  bottom: 0;
+  left: 0;
+  transform: none;
 }
 
 .gifting-ctas {
@@ -172,55 +196,241 @@
   gap: var(--spacing-md);
   justify-content: center;
   flex-wrap: wrap;
+  margin-top: var(--spacing-lg);
 }
 
-/* ─── RESPONSIVE ─── */
-@media (max-width: 1024px) {
-  .collection-story h2,
-  .gifting-title,
-  .category-browse__title {
-    font-size: 2rem;
-  }
-
-  .collection-showcase {
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  }
-
-  .category-grid {
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  }
+/* ─── JOURNAL PREVIEW ─── */
+.journal-preview {
+  background-color: var(--color-white);
+  padding: var(--spacing-3xl) 0;
+  border-bottom: 1px solid var(--color-gray-light);
 }
 
+.section-title {
+  text-align: center;
+  margin-bottom: var(--spacing-2xl);
+}
+
+.section-title h2 {
+  font-family: var(--font-serif);
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--color-black);
+  margin-bottom: var(--spacing-sm);
+}
+
+.section-subtitle {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  color: var(--color-charcoal);
+}
+
+.journal-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--spacing-xl);
+  margin-bottom: var(--spacing-xl);
+}
+
+.journal-card {
+  padding: var(--spacing-lg);
+  border: 1px solid var(--color-gray-light);
+  border-radius: 4px;
+  transition: box-shadow 0.3s ease;
+}
+
+.journal-card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.journal-category {
+  display: inline-block;
+  font-family: var(--font-ui);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-champagne);
+  margin-bottom: var(--spacing-md);
+}
+
+.journal-card h3 {
+  font-family: var(--font-serif);
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--color-black);
+  margin-bottom: var(--spacing-md);
+  line-height: 1.3;
+}
+
+.journal-card p {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--color-charcoal);
+  margin-bottom: var(--spacing-md);
+}
+
+.journal-meta {
+  font-family: var(--font-ui);
+  font-size: 0.8rem;
+  color: var(--color-gray-medium);
+}
+
+/* ─── NEWSLETTER SECTION ─── */
+.newsletter-section {
+  background-color: var(--color-black);
+  padding: var(--spacing-3xl) 0;
+  color: var(--color-white);
+}
+
+.newsletter-content {
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.newsletter-content h2 {
+  font-family: var(--font-serif);
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: var(--spacing-md);
+}
+
+.newsletter-content p {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  margin-bottom: var(--spacing-xl);
+  opacity: 0.9;
+}
+
+.newsletter-form {
+  display: flex;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-lg);
+}
+
+.newsletter-form input {
+  flex: 1;
+  padding: var(--spacing-sm) var(--spacing-md);
+  border: 1px solid var(--color-champagne);
+  background-color: transparent;
+  color: var(--color-white);
+  font-family: var(--font-body);
+}
+
+.newsletter-form input::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.newsletter-form button {
+  padding: var(--spacing-sm) var(--spacing-lg);
+}
+
+.alert {
+  padding: var(--spacing-sm) var(--spacing-md);
+  border-radius: 4px;
+  margin-bottom: var(--spacing-md);
+  font-size: 0.9rem;
+}
+
+.alert-success {
+  background-color: rgba(46, 204, 113, 0.1);
+  color: #2ecc71;
+  border: 1px solid rgba(46, 204, 113, 0.3);
+}
+
+/* ─── CTA SECTION ─── */
+.cta-section {
+  background-color: var(--color-white);
+  padding: var(--spacing-3xl) 0;
+  text-align: center;
+  border-top: 1px solid var(--color-gray-light);
+}
+
+.cta-section h2 {
+  font-family: var(--font-serif);
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--color-black);
+  margin-bottom: var(--spacing-md);
+}
+
+.cta-section p {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  color: var(--color-charcoal);
+  margin-bottom: var(--spacing-xl);
+}
+
+/* ─── MOBILE RESPONSIVE ─── */
 @media (max-width: 768px) {
-  .collection-story h2,
-  .gifting-title,
-  .category-browse__title {
-    font-size: 1.6rem;
+  .lifestyle-grid {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-2xl);
+    padding: 0 var(--spacing-md);
   }
 
-  .collection-narrative,
-  .gifting-description {
-    font-size: 0.95rem;
+  .lifestyle-grid--reverse {
+    direction: ltr;
   }
 
-  .collection-showcase {
+  .grid-2col {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-lg);
+  }
+
+  .products-showcase {
     grid-template-columns: repeat(2, 1fr);
-    gap: var(--spacing-md);
   }
 
-  .category-grid {
+  .lifestyle-section--gifting .lifestyle-grid {
     grid-template-columns: 1fr;
   }
 
+  .lifestyle-section--gifting .lifestyle-image {
+    height: 300px;
+  }
+
+  .lifestyle-content h2 {
+    font-size: 1.8rem;
+  }
+
+  .section-heading {
+    font-size: 1.5rem;
+  }
+
   .gifting-ctas {
-    gap: var(--spacing-sm);
+    flex-direction: column;
   }
 
-  .category-card__image {
-    height: 180px;
+  .newsletter-form {
+    flex-direction: column;
   }
 
-  .category-icon {
-    font-size: 2rem;
+  .newsletter-form input {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .lifestyle-section {
+    padding: var(--spacing-2xl) 0;
+  }
+
+  .products-showcase {
+    grid-template-columns: 1fr;
+  }
+
+  .lifecycle-content h2 {
+    font-size: 1.5rem;
+  }
+
+  .section-heading {
+    font-size: 1.3rem;
+  }
+
+  .lifestyle-label {
+    font-size: 0.6rem;
   }
 }
