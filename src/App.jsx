@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import { LanguageProvider } from './hooks/useLanguage'
 import Header from './components/Header'
 import Footer from './components/Footer'
-import WhatsAppConcierge from './components/WhatsAppConcierge'
 import ScrollToTop from './components/ScrollToTop'
 
 // Pages
@@ -90,9 +89,6 @@ export default function App() {
             </Routes>
           </main>
           <Footer />
-
-          {/* Floating Haute Joaillerie Concierge */}
-          <WhatsAppConcierge />
         </div>
       </Router>
     </LanguageProvider>
