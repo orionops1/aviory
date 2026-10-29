@@ -38,6 +38,41 @@ export default function Home() {
         cta={heroVideo.cta}
       />
 
+      {/* DUAL LIFESTYLE IMAGE SECTION (Tiffany Style) */}
+      <section className="lifestyle-dual-section">
+        <div className="container">
+          <div className="lifestyle-dual-grid">
+            {/* LEFT: GIFTS FOR HER */}
+            <div className="lifestyle-dual-card">
+              <div className="lifestyle-dual-image" style={{ backgroundImage: 'url(/images/gifts-for-her.jpg)' }}>
+                <div className="lifestyle-dual-overlay" />
+              </div>
+              <div className="lifestyle-dual-content">
+                <h3>Gifts for Her</h3>
+                <p>Discover curated collections designed for the modern woman</p>
+                <Link to="/gemstones" className="btn btn-primary btn-small">
+                  SHOP NOW
+                </Link>
+              </div>
+            </div>
+
+            {/* RIGHT: MOST POPULAR GIFTS */}
+            <div className="lifestyle-dual-card">
+              <div className="lifestyle-dual-image" style={{ backgroundImage: 'url(/images/most-popular-gifts.jpg)' }}>
+                <div className="lifestyle-dual-overlay" />
+              </div>
+              <div className="lifestyle-dual-content">
+                <h3>Most Popular Gifts</h3>
+                <p>Timeless pieces loved by our most discerning collectors</p>
+                <Link to="/fine-jewellery" className="btn btn-primary btn-small">
+                  SHOP NOW
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* SECTION 1: FEATURED GEMSTONES - LIFESTYLE + PRODUCTS (50/50) */}
       <section className="lifestyle-section lifestyle-section--gemstones">
         <div className="lifestyle-grid lifestyle-grid--2col">

@@ -2,6 +2,86 @@
    HOME PAGE - TIFFANY-STYLE LIFESTYLE + PRODUCTS LAYOUT
    ============================================================================ */
 
+/* ─── DUAL LIFESTYLE IMAGE SECTION (Tiffany Style) ─── */
+.lifestyle-dual-section {
+  background-color: var(--color-white);
+  padding: var(--spacing-3xl) 0;
+  border-bottom: 1px solid var(--color-gray-light);
+}
+
+.lifestyle-dual-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-2xl);
+}
+
+.lifestyle-dual-card {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  overflow: hidden;
+  border-radius: 4px;
+}
+
+.lifestyle-dual-image {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4/5;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  margin-bottom: var(--spacing-lg);
+  border-radius: 4px;
+}
+
+.lifestyle-dual-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.15);
+  transition: background 0.3s ease;
+}
+
+.lifestyle-dual-card:hover .lifestyle-dual-overlay {
+  background: rgba(0, 0, 0, 0.25);
+}
+
+.lifestyle-dual-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: var(--spacing-md);
+}
+
+.lifestyle-dual-content h3 {
+  font-family: var(--font-serif);
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--color-black);
+  margin: 0;
+  line-height: 1.2;
+}
+
+.lifestyle-dual-content p {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: var(--color-charcoal);
+  margin: 0;
+  line-height: 1.6;
+  max-width: 300px;
+}
+
+.btn-small {
+  padding: 0.6rem 1.2rem;
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
 /* ─── LIFESTYLE SECTIONS (50/50 IMAGE + CONTENT) ─── */
 .lifestyle-section {
   background-color: var(--color-white);
@@ -410,6 +490,24 @@
 
   .newsletter-form input {
     width: 100%;
+  }
+
+  /* Mobile: Dual Lifestyle Cards */
+  .lifestyle-dual-grid {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-lg);
+  }
+
+  .lifestyle-dual-image {
+    aspect-ratio: 3/4;
+  }
+
+  .lifestyle-dual-content h3 {
+    font-size: 1.2rem;
+  }
+
+  .lifestyle-dual-content p {
+    font-size: 0.9rem;
   }
 }
 
