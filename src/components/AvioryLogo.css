@@ -24,8 +24,8 @@
   align-items: baseline;
   justify-content: center;
   gap: 0.35em;
-  font-family: 'Playfair Display', 'Cormorant Garamond', 'Didot', 'Bodoni MT', 'Cinzel', serif;
-  font-weight: 600;
+  font-family: 'BlackGold', 'Playfair Display', 'Cormorant Garamond', 'Didot', 'Bodoni MT', 'Cinzel', serif;
+  font-weight: 400;
   color: var(--color-black);
   letter-spacing: 0.22em;
   text-transform: uppercase;
@@ -34,6 +34,8 @@
 
 .aviory-logo__name {
   font-size: 2.2rem;
+  font-family: 'BlackGold', serif;
+  font-weight: 400;
   letter-spacing: 0.24em;
   font-feature-settings: "kern" 1, "liga" 1;
   text-rendering: optimizeLegibility;
@@ -41,8 +43,8 @@
 }
 
 .aviory-logo__ampersand {
-  font-family: 'Cormorant Garamond', 'Playfair Display', serif;
-  font-style: italic;
+  font-family: 'BlackGold', 'Cormorant Garamond', 'Playfair Display', serif;
+  font-style: normal;
   font-weight: 400;
   font-size: 1.85rem;
   letter-spacing: 0.05em;
@@ -54,6 +56,8 @@
 
 .aviory-logo__co {
   font-size: 2.2rem;
+  font-family: 'BlackGold', serif;
+  font-weight: 400;
   letter-spacing: 0.2em;
   font-feature-settings: "kern" 1;
 }
