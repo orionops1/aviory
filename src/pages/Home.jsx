@@ -126,7 +126,7 @@ export default function Home() {
 
       {/* SECTION 2: FEATURED GEMSTONES - LIFESTYLE + PRODUCTS (50/50) */}
       <section className="lifestyle-section lifestyle-section--gemstones">
-        <div className="lifestyle-grid lifestyle-grid--2col">
+        <div className="lifestyle-grid lifestyle-grid--2col lifestyle-grid--reverse">
           <div className="lifestyle-image">
             <div className="lifestyle-placeholder" style={{ background: 'linear-gradient(135deg, #2c1810 0%, #5a3d2a 100%)' }}>
               <span style={{ fontSize: '4rem', opacity: 0.3 }}>✨</span>
