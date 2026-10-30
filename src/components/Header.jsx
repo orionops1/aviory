@@ -155,55 +155,20 @@ function useMegaMenuData(t) {
       },
     },
     {
-      key: 'jewelry',
-      label: 'Jewelry',
+      key: 'engagement',
+      label: t('common.engagementRings'),
       href: '/engagement-rings',
       mega: {
-        // FEATURED COLLECTIONS GRID (Option A: Tiffany-style)
-        featuredCollections: [
-          {
-            title: 'AVIORY Love Collection',
-            description: 'Handcrafted rings for every love story',
-            href: '/love',
-            icon: '💍',
-          },
-          {
-            title: 'Engagement Rings',
-            description: 'Exceptional stones, timeless settings',
-            href: '/engagement-rings',
-            icon: '💎',
-          },
-          {
-            title: 'Wedding Bands',
-            description: 'Matching sets & bridal jewelry',
-            href: '/engagement-rings?type=wedding-bands',
-            icon: '👑',
-          },
-          {
-            title: 'Ceylon Sapphires',
-            description: 'Royal hues from Sri Lanka\'s mines',
-            href: '/gemstones?category=blue-sapphires',
-            icon: '✨',
-          },
-        ],
         columns: [
           {
-            heading: 'Engagement Collections',
+            heading: 'Love & Commitment',
             links: [
               { label: 'Solitaire Settings', href: '/engagement-rings?style=solitaire' },
               { label: 'Luminous Halo Designs', href: '/engagement-rings?style=halo' },
               { label: 'Three Stone Trilogies', href: '/engagement-rings?style=three-stone' },
               { label: 'Cushion Cut Mountings', href: '/engagement-rings?style=cushion' },
               { label: 'Oval & Emerald Cuts', href: '/engagement-rings?style=oval' },
-            ],
-          },
-          {
-            heading: 'Love & Celebration',
-            links: [
-              { label: 'AVIORY Love Collection', href: '/love', accent: true },
-              { label: 'Love Stories', href: '/journal' },
-              { label: 'How to Choose a Ring', href: '/engagement-rings' },
-              { label: 'Schedule Consultation', href: '/private-consultations', accent: true },
+              { label: 'Pear & Fancy Shapes', href: '/engagement-rings?style=pear' },
             ],
           },
           {
@@ -212,6 +177,14 @@ function useMegaMenuData(t) {
               { label: 'Royal Sapphire Rings', href: '/engagement-rings?stone=blue-sapphire' },
               { label: 'Burma & Ceylon Ruby Rings', href: '/engagement-rings?stone=ruby' },
               { label: 'Pink & Padparadscha Rings', href: '/engagement-rings?stone=pink-sapphire' },
+            ],
+          },
+          {
+            heading: 'Love Collection Guide',
+            links: [
+              { label: 'Ring Sizing Guide', href: '/engagement-rings' },
+              { label: 'The Story of Love', href: '/engagement-rings' },
+              { label: 'Book a Love Consultation', href: '/private-consultations' },
               { label: 'Explore All Rings', href: '/engagement-rings', accent: true },
             ],
           },
@@ -219,7 +192,7 @@ function useMegaMenuData(t) {
         feature: {
           title: 'A Love Beyond Diamonds',
           subtitle: 'Celebrate timeless commitment with rare unheated sapphires of royal lineage.',
-          cta: { label: 'Begin Your Love Story', href: '/love' },
+          cta: { label: 'Begin Custom Ring', href: '/bespoke/enquiry' },
           accent: 'rose',
         },
       },
@@ -252,6 +225,49 @@ function useMegaMenuData(t) {
           subtitle: 'From a loose hand-selected gem to an heirloom that transcends generations.',
           cta: { label: 'Explore Bespoke', href: '/bespoke/process' },
           accent: 'champagne',
+        },
+      },
+    },
+    {
+      key: 'love',
+      label: '💝 Love & Celebration',
+      href: '/love',
+      isHighlighted: true,
+      mega: {
+        columns: [
+          {
+            heading: 'Collections',
+            links: [
+              { label: 'AVIORY Love Collection', href: '/love', accent: true },
+              { label: 'Engagement Rings', href: '/engagement-rings' },
+              { label: 'Wedding Bands', href: '/engagement-rings?type=wedding-bands' },
+              { label: 'Anniversary Rings', href: '/engagement-rings?type=anniversary' },
+            ],
+          },
+          {
+            heading: 'Celebrate Your Story',
+            links: [
+              { label: 'Love Milestones', href: '/love' },
+              { label: 'Love Stories', href: '/journal' },
+              { label: 'How to Choose Your Ring', href: '/engagement-rings' },
+              { label: 'Gemstone Guide', href: '/gemstones' },
+            ],
+          },
+          {
+            heading: 'Personal Touch',
+            links: [
+              { label: 'Custom Design', href: '/bespoke/enquiry' },
+              { label: 'Private Consultation', href: '/private-consultations' },
+              { label: 'Gift Wrapping & Engraving', href: '/love' },
+              { label: 'Schedule Your Appointment', href: '/private-consultations', accent: true },
+            ],
+          },
+        ],
+        feature: {
+          title: 'We Add Value to Every Love Story',
+          subtitle: 'Handcrafted in Sri Lanka with rare Ceylon gemstones, each ring celebrates your unique commitment and becomes a cherished heirloom.',
+          cta: { label: 'Explore Love Collection', href: '/love' },
+          accent: 'rose',
         },
       },
     },

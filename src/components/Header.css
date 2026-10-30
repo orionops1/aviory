@@ -787,3 +787,24 @@
   opacity: 1;
   color: var(--color-charcoal);
 }
+
+
+/* ============================================================================
+   LOVE & CELEBRATION TAB - SPECIAL HIGHLIGHTING
+   ============================================================================ */
+
+.tiffany-header__nav-link[href*="/love"] {
+  background: linear-gradient(135deg, #5e4732 0%, #241c14 100%);
+  color: var(--color-champagne);
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  padding: 0.6rem 1rem;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+.tiffany-header__nav-link[href*="/love"]:hover {
+  background: linear-gradient(135deg, #6b5438 0%, #2c1f18 100%);
+  box-shadow: 0 4px 12px rgba(212, 175, 127, 0.25);
+  transform: translateY(-1px);
+}
