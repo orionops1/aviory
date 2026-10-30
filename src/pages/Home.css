@@ -1,43 +1,4 @@
 /* ============================================================================
-   SECTION DIVIDER - GOLD LINE WITH DIAMOND ICON (Harry Winston Style)
-   ============================================================================ */
-
-.section-divider {
-  position: relative;
-  height: 60px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: var(--color-white);
-  border-bottom: 1px solid var(--color-gray-light);
-}
-
-.section-divider::before {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 0;
-  right: 0;
-  height: 1px;
-  background: linear-gradient(to right, transparent, var(--color-champagne) 10%, var(--color-champagne) 90%, transparent);
-  transform: translateY(-50%);
-}
-
-.section-divider__icon {
-  position: relative;
-  z-index: 2;
-  width: 32px;
-  height: 32px;
-  background-color: var(--color-white);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--color-champagne);
-  font-size: 18px;
-}
-
-/* ============================================================================
    HOME PAGE - TIFFANY-STYLE LIFESTYLE + PRODUCTS LAYOUT
    ============================================================================ */
 
