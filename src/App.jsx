@@ -24,15 +24,35 @@ import Contact from './pages/Contact'
 
 export default function App() {
   const [scrolled, setScrolled] = useState(false)
+  const [headerVisible, setHeaderVisible] = useState(true)
+  const [lastScrollY, setLastScrollY] = useState(0)
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 20)
+      const currentScrollY = window.scrollY
+      
+      // Show header if scrolled to top
+      if (currentScrollY < 20) {
+        setHeaderVisible(true)
+        setScrolled(false)
+      } else {
+        // Hide header if scrolling down, show if scrolling up
+        if (currentScrollY > lastScrollY) {
+          // Scrolling down
+          setHeaderVisible(false)
+        } else {
+          // Scrolling up
+          setHeaderVisible(true)
+        }
+        setScrolled(true)
+      }
+      
+      setLastScrollY(currentScrollY)
     }
 
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
+  }, [lastScrollY])
 
   /* Measure header height and expose as CSS variable for mega-menu positioning */
   const updateHeaderHeight = useCallback(() => {
@@ -55,7 +75,7 @@ export default function App() {
       <Router>
         <ScrollToTop />
         <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh', position: 'relative' }}>
-          <Header scrolled={scrolled} />
+          <Header scrolled={scrolled} visible={headerVisible} />
           <main style={{ flex: 1 }}>
             <Routes>
               {/* Home */}

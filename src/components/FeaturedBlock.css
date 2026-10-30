@@ -1,0 +1,125 @@
+/* ============================================================================
+   FEATURED BLOCKS - Harry Winston Style
+   Full-width testimonial-style blocks with imagery and copy
+   ============================================================================ */
+
+.featured-block {
+  display: flex;
+  align-items: stretch;
+  min-height: 600px;
+  background: var(--color-white);
+  overflow: hidden;
+}
+
+.featured-block--left {
+  flex-direction: row;
+}
+
+.featured-block--right {
+  flex-direction: row-reverse;
+}
+
+/* Image Side */
+.featured-block__image {
+  flex: 1;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.featured-block__overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.2);
+}
+
+/* Content Side */
+.featured-block__content {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-3xl) var(--spacing-2xl);
+  background: var(--color-white);
+}
+
+.featured-block__text {
+  max-width: 500px;
+  text-align: left;
+}
+
+.featured-block__title {
+  font-family: var(--font-display);
+  font-size: 2.5rem;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  line-height: 1.1;
+  color: var(--color-charcoal);
+  margin-bottom: var(--spacing-md);
+}
+
+.featured-block__description {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--color-gray-dark);
+  margin-bottom: var(--spacing-lg);
+}
+
+/* CTA Button */
+.featured-block .btn {
+  display: inline-block;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: var(--spacing-sm) var(--spacing-lg);
+  transition: all 0.3s ease;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .featured-block {
+    flex-direction: column;
+    min-height: auto;
+  }
+
+  .featured-block--right {
+    flex-direction: column;
+  }
+
+  .featured-block__image {
+    min-height: 400px;
+  }
+
+  .featured-block__content {
+    padding: var(--spacing-2xl) var(--spacing-lg);
+    min-height: 300px;
+  }
+
+  .featured-block__title {
+    font-size: 1.75rem;
+  }
+
+  .featured-block__description {
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .featured-block__image {
+    min-height: 300px;
+  }
+
+  .featured-block__content {
+    padding: var(--spacing-xl) var(--spacing-md);
+    min-height: 250px;
+  }
+
+  .featured-block__title {
+    font-size: 1.5rem;
+  }
+
+  .featured-block__description {
+    font-size: 0.9rem;
+  }
+}

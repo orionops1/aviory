@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import HeroVideo from '../components/HeroVideo'
 import ProductCard from '../components/ProductCard'
+import FeaturedBlock from '../components/FeaturedBlock'
 import { gemstones, journalArticles, engagementRings, fineJewellery } from '../data/products'
 import { useLanguage } from '../hooks/useLanguage'
 import './Home.css'
@@ -142,6 +143,25 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* FEATURED BLOCKS - HARRY WINSTON STYLE */}
+      <FeaturedBlock 
+        title="We Add Value to Every Love Story"
+        description="Each engagement ring in the AVIORY Love Collection is handcrafted with uncompromising quality and attention to detail. We don't just create jewelry—we craft heirlooms."
+        image="/images/gifts-to-engrave.jpg"
+        ctaLabel="Start Your Story"
+        ctaHref="/engagement-rings"
+        alignment="left"
+      />
+
+      <FeaturedBlock 
+        title="Exceptional Gemstones for Exceptional Moments"
+        description="Sourced directly from the finest mines, each gemstone carries with it a story of rarity and beauty. Discover why discerning collectors choose AVIORY."
+        image="/images/art-of-gifting.jpg"
+        ctaLabel="Explore Gemstones"
+        ctaHref="/gemstones"
+        alignment="right"
+      />
 
       {/* SECTION 3: FEATURED PRODUCTS SHOWCASE (4-COLUMN GRID) */}
       <section className="featured-products">
