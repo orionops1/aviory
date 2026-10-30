@@ -1,0 +1,362 @@
+/* ============================================================================
+   LOVE COLLECTION PAGE
+   ============================================================================ */
+
+/* HERO SECTION */
+.love-hero {
+  background: linear-gradient(135deg, #241c14 0%, #3d2f21 50%, #5e4732 100%);
+  color: var(--color-white);
+  padding: var(--spacing-4xl) var(--spacing-xl);
+  text-align: center;
+  min-height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.love-hero__content {
+  max-width: 800px;
+}
+
+.love-hero h1 {
+  font-family: var(--font-serif);
+  font-size: 3.5rem;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  line-height: 1.2;
+  margin-bottom: var(--spacing-md);
+}
+
+.love-hero p {
+  font-size: 1.3rem;
+  letter-spacing: 0.01em;
+  margin-bottom: var(--spacing-sm);
+  opacity: 0.95;
+}
+
+.love-hero__subtitle {
+  display: block;
+  font-size: 0.95rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  opacity: 0.8;
+  margin-top: var(--spacing-md);
+}
+
+/* MILESTONES SECTION */
+.love-milestones {
+  background-color: var(--color-ivory);
+  padding: var(--spacing-3xl) 0;
+  border-top: 1px solid var(--color-gray-light);
+  border-bottom: 1px solid var(--color-gray-light);
+}
+
+.love-milestones__header {
+  text-align: center;
+  margin-bottom: var(--spacing-2xl);
+}
+
+.love-milestones__header h2 {
+  font-family: var(--font-serif);
+  font-size: 2.2rem;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  color: var(--color-charcoal);
+  margin-bottom: var(--spacing-md);
+}
+
+.love-milestones__header p {
+  font-size: 1rem;
+  color: var(--color-gray-dark);
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.love-milestones__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: var(--spacing-lg);
+}
+
+.love-milestone-card {
+  background: var(--color-white);
+  padding: var(--spacing-xl);
+  border-radius: 4px;
+  text-align: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.love-milestone-card:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
+  transform: translateY(-2px);
+}
+
+.love-milestone-card__icon {
+  font-size: 2.5rem;
+  margin-bottom: var(--spacing-md);
+  display: block;
+}
+
+.love-milestone-card h3 {
+  font-family: var(--font-serif);
+  font-size: 1.3rem;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  color: var(--color-charcoal);
+  margin-bottom: var(--spacing-sm);
+}
+
+.love-milestone-card p {
+  font-size: 0.9rem;
+  color: var(--color-gray-dark);
+  line-height: 1.5;
+  margin-bottom: var(--spacing-md);
+  flex-grow: 1;
+}
+
+.love-milestone-card__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-charcoal);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.love-milestone-card__link:hover {
+  color: var(--color-champagne);
+}
+
+.love-milestone-card__link .arrow {
+  transition: transform 0.3s ease;
+  display: inline-block;
+}
+
+.love-milestone-card:hover .love-milestone-card__link .arrow {
+  transform: translateX(4px);
+}
+
+/* BENEFITS SECTION */
+.love-benefits {
+  background-color: var(--color-white);
+  padding: var(--spacing-3xl) 0;
+}
+
+.love-benefits__header {
+  text-align: center;
+  margin-bottom: var(--spacing-2xl);
+}
+
+.love-benefits__header h2 {
+  font-family: var(--font-serif);
+  font-size: 2rem;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  color: var(--color-charcoal);
+}
+
+.love-benefits__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--spacing-xl);
+}
+
+.love-benefit-card {
+  text-align: center;
+  padding: var(--spacing-lg);
+}
+
+.love-benefit-card__icon {
+  font-size: 2.8rem;
+  margin-bottom: var(--spacing-md);
+  display: block;
+}
+
+.love-benefit-card h3 {
+  font-family: var(--font-serif);
+  font-size: 1.2rem;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  color: var(--color-charcoal);
+  margin-bottom: var(--spacing-sm);
+}
+
+.love-benefit-card p {
+  font-size: 0.95rem;
+  color: var(--color-gray-dark);
+  line-height: 1.6;
+}
+
+/* ENGAGEMENT RINGS SHOWCASE */
+.love-engagement-showcase {
+  padding: var(--spacing-3xl) 0;
+}
+
+.love-engagement-showcase .section-heading {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: var(--spacing-2xl);
+}
+
+/* FINE JEWELLERY SECTION */
+.love-fine-jewellery {
+  background-color: var(--color-ivory);
+  padding: var(--spacing-3xl) 0;
+  border-top: 1px solid var(--color-gray-light);
+}
+
+.love-fine-jewellery .section-heading {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: var(--spacing-2xl);
+}
+
+/* CUSTOMIZATION CTA */
+.love-customization {
+  background: linear-gradient(135deg, #241c14 0%, #3d2f21 50%, #5e4732 100%);
+  color: var(--color-white);
+  padding: var(--spacing-3xl) var(--spacing-xl);
+  text-align: center;
+}
+
+.love-customization h2 {
+  font-family: var(--font-serif);
+  font-size: 2.2rem;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  margin-bottom: var(--spacing-sm);
+}
+
+.love-customization p {
+  font-size: 1rem;
+  max-width: 600px;
+  margin: 0 auto var(--spacing-lg);
+  line-height: 1.6;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .love-hero h1 {
+    font-size: 2.2rem;
+  }
+
+  .love-hero p {
+    font-size: 1rem;
+  }
+
+  .love-milestones {
+    padding: var(--spacing-2xl) 0;
+  }
+
+  .love-milestones__header h2 {
+    font-size: 1.6rem;
+  }
+
+  .love-milestones__header p {
+    font-size: 0.9rem;
+  }
+
+  .love-milestones__grid {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-md);
+  }
+
+  .love-milestone-card {
+    padding: var(--spacing-lg);
+  }
+
+  .love-benefits {
+    padding: var(--spacing-2xl) 0;
+  }
+
+  .love-benefits__header h2 {
+    font-size: 1.5rem;
+  }
+
+  .love-benefits__grid {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-lg);
+  }
+
+  .love-engagement-showcase {
+    padding: var(--spacing-2xl) 0;
+  }
+
+  .love-fine-jewellery {
+    padding: var(--spacing-2xl) 0;
+  }
+
+  .love-customization {
+    padding: var(--spacing-2xl) var(--spacing-lg);
+  }
+
+  .love-customization h2 {
+    font-size: 1.6rem;
+  }
+
+  .love-customization p {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .love-hero {
+    min-height: 300px;
+    padding: var(--spacing-2xl) var(--spacing-lg);
+  }
+
+  .love-hero h1 {
+    font-size: 1.75rem;
+  }
+
+  .love-hero p {
+    font-size: 0.9rem;
+  }
+
+  .love-milestone-card__icon {
+    font-size: 2rem;
+  }
+
+  .love-milestone-card h3 {
+    font-size: 1.1rem;
+  }
+
+  .love-milestone-card p {
+    font-size: 0.85rem;
+  }
+
+  .love-benefit-card__icon {
+    font-size: 2rem;
+  }
+
+  .love-benefit-card h3 {
+    font-size: 1rem;
+  }
+
+  .love-benefit-card p {
+    font-size: 0.85rem;
+  }
+}
+
+.section-heading {
+  font-family: var(--font-serif);
+  font-size: 2rem;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  color: var(--color-charcoal);
+}
+
+.products-showcase {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: var(--spacing-lg);
+}

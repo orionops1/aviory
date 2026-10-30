@@ -13,6 +13,7 @@ import FineJewellery from './pages/FineJewellery'
 import JewelleryDetail from './pages/JewelleryDetail'
 import EngagementRings from './pages/EngagementRings'
 import EngagementRingDetail from './pages/EngagementRingDetail'
+import Love from './pages/Love'
 import Bespoke from './pages/Bespoke'
 import BespokeProcess from './pages/BespokeProcess'
 import BespokeEnquiry from './pages/BespokeEnquiry'
@@ -72,6 +73,9 @@ export default function App() {
               {/* Engagement Rings */}
               <Route path="/engagement-rings" element={<EngagementRings />} />
               <Route path="/engagement-rings/:id" element={<EngagementRingDetail />} />
+
+              {/* Love Collection */}
+              <Route path="/love" element={<Love />} />
 
               {/* Bespoke */}
               <Route path="/bespoke" element={<Bespoke />} />
