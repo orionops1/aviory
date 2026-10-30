@@ -95,45 +95,45 @@ export const megaMenuData = [
     },
   },
   {
-    key: 'engagement-rings',
-    labelKey: 'common.engagementRings',
-    href: '/engagement-rings',
+    key: 'love-and-celebration',
+    labelKey: 'common.loveAndCelebration',
+    href: '/love-and-celebration',
     mega: {
       columns: [
         {
-          heading: 'By Style',
+          heading: 'By Moment',
           links: [
-            { label: 'Solitaire Settings', href: '/engagement-rings?style=solitaire' },
-            { label: 'Luminous Halo Designs', href: '/engagement-rings?style=halo' },
-            { label: 'Three Stone Trilogies', href: '/engagement-rings?style=three-stone' },
-            { label: 'Cushion Cut Mountings', href: '/engagement-rings?style=cushion' },
-            { label: 'Oval & Emerald Cuts', href: '/engagement-rings?style=oval' },
-            { label: 'Pear & Fancy Shapes', href: '/engagement-rings?style=pear' },
+            { label: 'The Proposal', href: '/love-and-celebration?style=solitaire' },
+            { label: 'Say Yes with Halo Designs', href: '/love-and-celebration?style=halo' },
+            { label: 'Three Hearts, One Promise', href: '/love-and-celebration?style=three-stone' },
+            { label: 'Modern Love Stories', href: '/love-and-celebration?style=cushion' },
+            { label: 'Forever Elegance', href: '/love-and-celebration?style=oval' },
+            { label: 'Unique & Distinctive', href: '/love-and-celebration?style=pear' },
           ],
         },
         {
-          heading: 'By Center Stone',
+          heading: 'By Gemstone',
           links: [
-            { label: 'Royal Sapphire Rings', href: '/engagement-rings?stone=blue-sapphire' },
-            { label: 'Burma & Ceylon Ruby Rings', href: '/engagement-rings?stone=ruby' },
-            { label: 'Pink & Padparadscha Rings', href: '/engagement-rings?stone=pink-sapphire' },
-            { label: 'View All Engagement Rings', href: '/engagement-rings', accent: true },
+            { label: 'Royal Sapphire Rings', href: '/love-and-celebration?stone=blue-sapphire' },
+            { label: 'Burma & Ceylon Ruby Rings', href: '/love-and-celebration?stone=ruby' },
+            { label: 'Pink & Padparadscha Rings', href: '/love-and-celebration?stone=pink-sapphire' },
+            { label: 'View Full Collection', href: '/love-and-celebration', accent: true },
           ],
         },
         {
           heading: 'Resources',
           links: [
-            { label: 'Ring Sizing Guide', href: '/engagement-rings' },
-            { label: 'The Story of Love', href: '/engagement-rings' },
+            { label: 'Ring Sizing Guide', href: '/love-and-celebration' },
+            { label: 'The Story of Love', href: '/love-and-celebration' },
             { label: 'Book a Consultation', href: '/private-consultations' },
-            { label: 'Custom Design', href: '/bespoke/enquiry' },
+            { label: 'Design Your Own', href: '/bespoke/enquiry' },
           ],
         },
       ],
       feature: {
-        title: 'A Love Beyond Diamonds',
-        subtitle: 'Celebrate timeless commitment with rare unheated sapphires of royal lineage.',
-        cta: { label: 'Begin Custom Ring', href: '/bespoke/enquiry' },
+        title: 'Love & Celebration',
+        subtitle: 'Timeless rings for life\'s most precious moments. Crafted with rare Ceylon gemstones.',
+        cta: { label: 'Design Your Ring', href: '/bespoke/enquiry' },
         accent: 'rose',
       },
     },
@@ -207,8 +207,8 @@ export const footerLinks = {
       href: '/fine-jewellery',
     },
     {
-      label: 'AVIORY Love Collection',
-      href: '/engagement-rings',
+      label: 'Love & Celebration Collection',
+      href: '/love-and-celebration',
     },
     {
       label: 'Collector Vault Pieces',
@@ -300,9 +300,9 @@ export const primaryNavigation = [
     key: 'fine-jewellery',
   },
   {
-    label: 'Engagement Rings',
-    route: '/engagement-rings',
-    key: 'engagement-rings',
+    label: 'Love & Celebration',
+    route: '/love-and-celebration',
+    key: 'love-and-celebration',
   },
   {
     label: 'Bespoke',
@@ -331,7 +331,7 @@ export const navigationSections = {
     items: [
       { label: 'Gemstones', href: '/gemstones', key: 'gemstones' },
       { label: 'Fine Jewellery', href: '/fine-jewellery', key: 'fine-jewellery' },
-      { label: 'Engagement Rings', href: '/engagement-rings', key: 'engagement-rings' },
+      { label: 'Love & Celebration', href: '/love-and-celebration', key: 'love-and-celebration' },
     ],
   },
   editorial: {

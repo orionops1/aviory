@@ -34,7 +34,7 @@ export default function ProductCard({ product, type = 'gemstone' }) {
   const getLink = () => {
     if (type === 'gemstone') return `/gemstones/${product.id}`
     if (type === 'jewellery') return `/fine-jewellery/${product.id}`
-    if (type === 'ring') return `/engagement-rings/${product.id}`
+    if (type === 'ring') return `/love-and-celebration/${product.id}`
     return '#'
   }
 

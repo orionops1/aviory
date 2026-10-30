@@ -180,7 +180,7 @@ export default function Shop() {
           <span className="shop-hero__tag">COMPLETE COLLECTION</span>
           <h1 className="shop-hero__title">The Complete Shop</h1>
           <p className="shop-hero__subtitle">
-            Discover our unified collection of exceptional Ceylon gemstones, fine jewelry, and bespoke engagement rings—all in one place for seamless exploration.
+            Discover our unified collection of exceptional Ceylon gemstones, fine jewelry, and love & celebration rings—all in one place for seamless exploration.
           </p>
         </div>
       </section>

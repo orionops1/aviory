@@ -10,7 +10,7 @@ export default function SearchModal({ isOpen, onClose }) {
     const list = []
     gemstones.forEach(g => list.push({ ...g, itemType: 'gemstone', link: `/gemstones/${g.id}` }))
     fineJewellery.forEach(j => list.push({ ...j, itemType: 'jewellery', link: `/fine-jewellery/${j.id}` }))
-    engagementRings.forEach(r => list.push({ ...r, itemType: 'ring', link: `/engagement-rings/${r.id}` }))
+    engagementRings.forEach(r => list.push({ ...r, itemType: 'ring', link: `/love-and-celebration/${r.id}` }))
     return list
   }, [])
 

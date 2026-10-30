@@ -40,7 +40,7 @@ export default function ProductDetail() {
         .slice(0, 4)
     }
   }
-  // Try to find in engagement rings (prefix: er-)
+  // Try to find in love & celebration rings (prefix: er-)
   else if (id.startsWith('er-')) {
     product = engagementRings.find(r => r.id === id)
     if (product) {
@@ -74,8 +74,8 @@ export default function ProductDetail() {
           <Link to="/fine-jewellery" className="btn btn-primary">
             Browse Fine Jewellery
           </Link>
-          <Link to="/engagement-rings" className="btn btn-primary">
-            View Engagement Rings
+          <Link to="/love-and-celebration" className="btn btn-primary">
+            View Love & Celebration Collection
           </Link>
         </div>
       </div>
@@ -136,9 +136,9 @@ export default function ProductDetail() {
         <>
           <Link to="/" className="pdp-breadcrumb-link">Maison</Link>
           <span className="pdp-breadcrumb-sep">/</span>
-          <Link to="/engagement-rings" className="pdp-breadcrumb-link">Engagement Rings</Link>
+          <Link to="/love-and-celebration" className="pdp-breadcrumb-link">Love & Celebration</Link>
           <span className="pdp-breadcrumb-sep">/</span>
-          <Link to={`/engagement-rings?style=${product.styleSlug}`} className="pdp-breadcrumb-link">
+          <Link to={`/love-and-celebration?style=${product.styleSlug}`} className="pdp-breadcrumb-link">
             {product.style}
           </Link>
           <span className="pdp-breadcrumb-sep">/</span>

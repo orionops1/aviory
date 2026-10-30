@@ -6,9 +6,9 @@ import { formatPrice } from '../utils/currencyConverter'
 import { engagementRings } from '../data/products'
 import ProductCard from '../components/ProductCard'
 import StickyConciergeButton from '../components/StickyConciergeButton'
-import './EngagementRingDetail.css'
+import './LoveAndCelebrationDetail.css'
 
-export default function EngagementRingDetail() {
+export default function LoveAndCelebrationDetail() {
   const { id } = useParams()
   const { currency } = useLanguage()
   const ring = engagementRings.find(r => r.id === id)
@@ -25,8 +25,8 @@ export default function EngagementRingDetail() {
     return (
       <div className="container" style={{ padding: '6rem 1rem', textAlign: 'center' }}>
         <h2 style={{ fontFamily: 'var(--font-serif)', fontSize: '2rem' }}>Ring Not Found</h2>
-        <Link to="/engagement-rings" className="btn btn-primary" style={{ marginTop: '2rem' }}>
-          Back to Engagement Rings
+        <Link to="/love-and-celebration" className="btn btn-primary" style={{ marginTop: '2rem' }}>
+          Back to Love & Celebration Collection
         </Link>
       </div>
     )

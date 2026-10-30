@@ -13,8 +13,8 @@ import Gemstones from './pages/Gemstones'
 import GemstoneDetail from './pages/GemstoneDetail'
 import FineJewellery from './pages/FineJewellery'
 import JewelleryDetail from './pages/JewelleryDetail'
-import EngagementRings from './pages/EngagementRings'
-import EngagementRingDetail from './pages/EngagementRingDetail'
+import LoveAndCelebration from './pages/LoveAndCelebration'
+import LoveAndCelebrationDetail from './pages/LoveAndCelebrationDetail'
 import ProductDetail from './pages/ProductDetail'
 import Love from './pages/Love'
 import Bespoke from './pages/Bespoke'
@@ -80,9 +80,9 @@ export default function App() {
               <Route path="/fine-jewellery" element={<FineJewellery />} />
               <Route path="/fine-jewellery/:id" element={<JewelleryDetail />} />
 
-              {/* Engagement Rings */}
-              <Route path="/engagement-rings" element={<EngagementRings />} />
-              <Route path="/engagement-rings/:id" element={<EngagementRingDetail />} />
+              {/* Love & Celebration Collection */}
+              <Route path="/love-and-celebration" element={<LoveAndCelebration />} />
+              <Route path="/love-and-celebration/:id" element={<LoveAndCelebrationDetail />} />
 
               {/* Universal Product Detail (fallback for any product type) */}
               <Route path="/products/:id" element={<ProductDetail />} />

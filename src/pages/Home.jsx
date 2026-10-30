@@ -101,8 +101,8 @@ export default function Home() {
           </div>
           <div className="featured-hero-split-content">
             <h2>The Art of Gifting</h2>
-            <p>Celebrate every facet of the ones you love with iconic designs this holiday season. From engagement moments to anniversary milestones, find the perfect piece to express your deepest feelings.</p>
-            <Link to="/engagement-rings" className="btn btn-primary">
+            <p>Celebrate every facet of the ones you love with iconic designs this holiday season. From proposal moments to anniversary milestones, find the perfect piece to express your deepest feelings.</p>
+            <Link to="/love-and-celebration" className="btn btn-primary">
               EXPLORE COLLECTION
             </Link>
           </div>

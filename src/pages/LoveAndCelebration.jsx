@@ -2,9 +2,9 @@ import React, { useState, useMemo, useEffect } from 'react'
 import { Link, useSearchParams } from 'react-router-dom'
 import ProductCard from '../components/ProductCard'
 import { engagementRings } from '../data/products'
-import './EngagementRings.css'
+import './LoveAndCelebration.css'
 
-export default function EngagementRings() {
+export default function LoveAndCelebration() {
   const [searchParams, setSearchParams] = useSearchParams()
   const [selectedStyle, setSelectedStyle] = useState('all')
   const [selectedStone, setSelectedStone] = useState('all')

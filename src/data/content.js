@@ -55,13 +55,13 @@ export const faqs = [
   },
   {
     id: 3,
-    category: 'Engagement Rings',
+    category: 'Love & Celebration',
     question: 'Why choose a sapphire engagement ring instead of a diamond?',
     answer: 'Sapphires offer exceptional durability (9.0 Mohs hardness, second only to diamond), stunning color options, and a more unique and personal aesthetic. They often cost less than comparable diamonds, are more ethical to source, and offer deeper emotional significance. Many celebrities and royalty choose sapphire engagement rings for their individual beauty and meaning.'
   },
   {
     id: 4,
-    category: 'Engagement Rings',
+    category: 'Love & Celebration',
     question: 'Are sapphire engagement rings durable enough for daily wear?',
     answer: 'Yes, absolutely. Sapphires are extremely durable and ideal for engagement rings that will be worn daily. With a hardness of 9.0 on the Mohs scale, they resist scratching and abrasion. Their chemical stability means they won\'t fade or change color. We recommend removing your ring during strenuous activities or exposure to harsh chemicals.'
   },
@@ -334,9 +334,9 @@ export const navigationLinks = [
     icon: '✨'
   },
   {
-    key: 'engagement-rings',
-    label: 'Engagement Rings',
-    href: '/engagement-rings',
+    key: 'love-and-celebration',
+    label: 'Love & Celebration',
+    href: '/love-and-celebration',
     icon: '💍'
   },
   {

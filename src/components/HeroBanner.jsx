@@ -6,7 +6,7 @@ export default function HeroBanner({
   title = "AVIORY & CO.",
   subtitle = "Exceptional Ceylon Gemstones",
   ctaPrimary = { label: "Shop Gemstones", href: "/gemstones" },
-  ctaSecondary = { label: "Engagement Rings", href: "/engagement-rings" },
+  ctaSecondary = { label: "Love & Celebration", href: "/love-and-celebration" },
   videoSrc = "/videos/hero-loop.mp4",
   fallbackImage = "/images/hero-banner.jpg"
 }) {

@@ -7,7 +7,7 @@ export default function HeroCarousel({
   defaultTitle = "AVIORY & CO.",
   defaultSubtitle = "Exceptional Ceylon Gemstones",
   ctaPrimary = { label: "Shop Gemstones", href: "/gemstones" },
-  ctaSecondary = { label: "Engagement Rings", href: "/engagement-rings" },
+  ctaSecondary = { label: "Love & Celebration", href: "/love-and-celebration" },
   autoplayInterval = 5000,
   transitionDuration = 0.8,
   onSlideChange = null

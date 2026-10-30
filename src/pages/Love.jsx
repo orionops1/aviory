@@ -44,8 +44,8 @@ export default function Love() {
               <div className="love-milestone-card__icon">💎</div>
               <h3>The Proposal</h3>
               <p>An AVIORY Love Collection ring marks this eternal commitment—handcrafted with Ceylon gemstones.</p>
-              <Link to="#engagement-showcase" className="love-milestone-card__link">
-                Explore Engagement Rings
+              <Link to="/love-and-celebration" className="love-milestone-card__link">
+                Explore Love & Celebration
                 <span className="arrow">→</span>
               </Link>
             </div>
@@ -55,7 +55,7 @@ export default function Love() {
               <div className="love-milestone-card__icon">👑</div>
               <h3>The Wedding</h3>
               <p>Matching bands and bridal jewelry celebrating your vows. Pieces designed to be worn forever.</p>
-              <Link to="/engagement-rings" className="love-milestone-card__link">
+              <Link to="/love-and-celebration" className="love-milestone-card__link">
                 Shop Wedding Bands
                 <span className="arrow">→</span>
               </Link>
@@ -66,7 +66,7 @@ export default function Love() {
               <div className="love-milestone-card__icon">♾️</div>
               <h3>Forever & Beyond</h3>
               <p>Anniversaries, heirlooms, and the moments that define a life together. Your legacy begins here.</p>
-              <Link to="/engagement-rings" className="love-milestone-card__link">
+              <Link to="/love-and-celebration" className="love-milestone-card__link">
                 Discover Forever Pieces
                 <span className="arrow">→</span>
               </Link>
@@ -104,18 +104,18 @@ export default function Love() {
         </div>
       </section>
 
-      {/* FEATURED ENGAGEMENT RINGS SHOWCASE */}
+      {/* FEATURED LOVE & CELEBRATION SHOWCASE */}
       <section className="love-engagement-showcase" id="engagement-showcase">
         <div className="container">
-          <h2 className="section-heading">Engagement Rings</h2>
+          <h2 className="section-heading">Love & Celebration Collection</h2>
           <div className="products-showcase">
             {engagementRings.slice(0, 4).map(ring => (
               <ProductCard key={ring.id} product={ring} type="engagement" />
             ))}
           </div>
           <div style={{ textAlign: 'center', marginTop: 'var(--spacing-2xl)' }}>
-            <Link to="/engagement-rings" className="btn btn-outline">
-              View All Engagement Rings
+            <Link to="/love-and-celebration" className="btn btn-outline">
+              View All Love & Celebration Rings
             </Link>
           </div>
         </div>
