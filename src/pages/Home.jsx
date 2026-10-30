@@ -1,31 +1,32 @@
-import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
-import HeroVideo from '../components/HeroVideo'
-import ProductCard from '../components/ProductCard'
-import { gemstones, journalArticles, engagementRings, fineJewellery } from '../data/products'
-import { useLanguage } from '../hooks/useLanguage'
-import './Home.css'
+﻿import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import HeroVideo from "../components/HeroVideo";
+import TrustSignals from "../components/TrustSignals";
+import ProductCard from "../components/ProductCard";
+import { gemstones, journalArticles, engagementRings, fineJewellery } from "../data/products";
+import { useLanguage } from "../hooks/useLanguage";
+import "./Home.css";
 
 export default function Home() {
-  const [email, setEmail] = useState('')
-  const [subscribed, setSubscribed] = useState(false)
-  const { t } = useLanguage()
+  const [email, setEmail] = useState("");
+  const [subscribed, setSubscribed] = useState(false);
+  const { t } = useLanguage();
 
   const handleNewsletterSubmit = (e) => {
-    e.preventDefault()
-    setSubscribed(true)
-    setEmail('')
-    setTimeout(() => setSubscribed(false), 3500)
-  }
+    e.preventDefault();
+    setSubscribed(true);
+    setEmail("");
+    setTimeout(() => setSubscribed(false), 3500);
+  };
 
   // Hero section with single looping video (Tiffany/Harry Winston style)
   const heroVideo = {
-    video: '/videos/hero-luxury.mp4',
-    poster: '/images/hero-banner.jpg',
-    title: t('hero.title'),
-    subtitle: t('hero.subtitle'),
-    cta: { label: 'Discover Gemstones', href: '/gemstones' }
-  }
+    video: "/videos/hero-luxury.mp4",
+    poster: "/images/hero-banner.jpg",
+    title: t("hero.title"),
+    subtitle: t("hero.subtitle"),
+    cta: { label: "Discover Gemstones", href: "/gemstones" }
+  };
 
   return (
     <>
@@ -38,13 +39,16 @@ export default function Home() {
         cta={heroVideo.cta}
       />
 
+      {/* TRUST SIGNALS - NEW (Phase 1: Visual Refresh) */}
+      <TrustSignals />
+
       {/* DUAL LIFESTYLE IMAGE SECTION (Tiffany Style) */}
       <section className="lifestyle-dual-section">
         <div className="container">
           <div className="lifestyle-dual-grid">
             {/* LEFT: MOST POPULAR GIFTS (NOW FIRST) */}
             <div className="lifestyle-dual-card">
-              <div className="lifestyle-dual-image" style={{ backgroundImage: 'url(/images/most-popular-gifts.jpg)' }}>
+              <div className="lifestyle-dual-image" style={{ backgroundImage: "url(/images/most-popular-gifts.jpg)" }}>
                 <div className="lifestyle-dual-overlay" />
               </div>
               <div className="lifestyle-dual-content">
@@ -58,7 +62,7 @@ export default function Home() {
 
             {/* RIGHT: GIFTS FOR HER */}
             <div className="lifestyle-dual-card">
-              <div className="lifestyle-dual-image" style={{ backgroundImage: 'url(/images/gifts-for-her.jpg)' }}>
+              <div className="lifestyle-dual-image" style={{ backgroundImage: "url(/images/gifts-for-her.jpg)" }}>
                 <div className="lifestyle-dual-overlay" />
               </div>
               <div className="lifestyle-dual-content">
@@ -76,7 +80,7 @@ export default function Home() {
       {/* FEATURED HERO - FULL WIDTH WITH TEXT OVERLAY (Gifts to Engrave) */}
       <section className="featured-hero-section">
         <div className="featured-hero-grid">
-          <div className="featured-hero-image" style={{ backgroundImage: 'url(/images/gifts-to-engrave.jpg)' }}>
+          <div className="featured-hero-image" style={{ backgroundImage: "url(/images/gifts-to-engrave.jpg)" }}>
             <div className="featured-hero-overlay" />
           </div>
           <div className="featured-hero-content">
@@ -92,7 +96,7 @@ export default function Home() {
       {/* FEATURED HERO - SPLIT LAYOUT (The Art of Gifting) */}
       <section className="featured-hero-split">
         <div className="featured-hero-split-grid">
-          <div className="featured-hero-split-image" style={{ backgroundImage: 'url(/images/art-of-gifting.jpg)' }}>
+          <div className="featured-hero-split-image" style={{ backgroundImage: "url(/images/art-of-gifting.jpg)" }}>
             <div className="featured-hero-overlay" />
           </div>
           <div className="featured-hero-split-content">
@@ -117,8 +121,8 @@ export default function Home() {
             </Link>
           </div>
           <div className="lifestyle-image">
-            <div className="lifestyle-placeholder" style={{ background: 'linear-gradient(135deg, #241c14 0%, #3d2f21 50%, #5e4732 100%)' }}>
-              <span style={{ fontSize: '4rem', opacity: 0.3 }}>💍</span>
+            <div className="lifestyle-placeholder" style={{ background: "linear-gradient(135deg, #241c14 0%, #3d2f21 50%, #5e4732 100%)" }}>
+              <span style={{ fontSize: "4rem", opacity: 0.3 }}>💍</span>
             </div>
           </div>
         </div>
@@ -128,14 +132,14 @@ export default function Home() {
       <section className="lifestyle-section lifestyle-section--gemstones">
         <div className="lifestyle-grid lifestyle-grid--2col lifestyle-grid--reverse">
           <div className="lifestyle-image">
-            <div className="lifestyle-placeholder" style={{ background: 'linear-gradient(135deg, #2c1810 0%, #5a3d2a 100%)' }}>
-              <span style={{ fontSize: '4rem', opacity: 0.3 }}>✨</span>
+            <div className="lifestyle-placeholder" style={{ background: "linear-gradient(135deg, #2c1810 0%, #5a3d2a 100%)" }}>
+              <span style={{ fontSize: "4rem", opacity: 0.3 }}>✨</span>
             </div>
           </div>
           <div className="lifestyle-content">
             <span className="lifestyle-label">RARE GEMSTONES</span>
             <h2>Ceylon Sapphires</h2>
-            <p>Discover exceptional gemstones hand-selected from Sri Lanka's most prestigious mines. Each stone represents generations of expertise and uncompromising quality standards.</p>
+            <p>Discover exceptional gemstones hand-selected from Sri Lanka''s most prestigious mines. Each stone represents generations of expertise and uncompromising quality standards.</p>
             <Link to="/gemstones?category=blue-sapphires" className="btn btn-primary">
               Shop Gemstones
             </Link>
@@ -176,7 +180,7 @@ export default function Home() {
           </div>
           <div className="journal-grid">
             {journalArticles.slice(0, 3).map(article => (
-              <Link key={article.id} to={`/journal/${article.slug}`} style={{ textDecoration: 'none', color: 'inherit' }}>
+              <Link key={article.id} to={`/journal/${article.slug}`} style={{ textDecoration: "none", color: "inherit" }}>
                 <div className="journal-card">
                   <div className="journal-category">{article.category}</div>
                   <h3>{article.title}</h3>
@@ -188,7 +192,7 @@ export default function Home() {
               </Link>
             ))}
           </div>
-          <div style={{ textAlign: 'center', marginTop: 'var(--spacing-2xl)' }}>
+          <div style={{ textAlign: "center", marginTop: "var(--spacing-2xl)" }}>
             <Link to="/journal" className="btn btn-outline">
               Read All Articles
             </Link>
@@ -202,11 +206,11 @@ export default function Home() {
           <div className="newsletter-content">
             <h2>Join Our Circle</h2>
             <p>Exclusive access to rare gemstones and special collections</p>
-            {subscribed && <div className="alert alert-success">{t('home.subscribeSuccess')}</div>}
+            {subscribed && <div className="alert alert-success">{t("home.subscribeSuccess")}</div>}
             <form onSubmit={handleNewsletterSubmit} className="newsletter-form">
               <input
                 type="email"
-                placeholder={t('home.emailPlaceholder')}
+                placeholder={t("home.emailPlaceholder")}
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
@@ -222,7 +226,7 @@ export default function Home() {
         <div className="container">
           <h2>Get in Touch</h2>
           <p>Our gemologist is here to help with consultations, custom inquiries, or any questions</p>
-          <div style={{ display: 'flex', gap: 'var(--spacing-md)', justifyContent: 'center', flexWrap: 'wrap' }}>
+          <div style={{ display: "flex", gap: "var(--spacing-md)", justifyContent: "center", flexWrap: "wrap" }}>
             <Link to="/contact" className="btn btn-primary">
               Contact Our Gemologist
             </Link>
@@ -233,5 +237,5 @@ export default function Home() {
         </div>
       </section>
     </>
-  )
+  );
 }

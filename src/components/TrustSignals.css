@@ -1,0 +1,110 @@
+﻿/* ============================================================================
+   TRUST SIGNALS - LUXURY BRAND CONFIDENCE SECTION
+   ============================================================================ */
+
+.trust-signals {
+  background: linear-gradient(135deg, #faf8f5 0%, #fcfaf8 100%);
+  padding: 3rem 0;
+  border-top: 1px solid rgba(212, 167, 109, 0.2);
+  border-bottom: 1px solid rgba(212, 167, 109, 0.2);
+}
+
+.trust-signals__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  align-items: center;
+}
+
+.trust-signals__item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.5rem;
+  text-align: left;
+  padding: 1rem;
+  border-radius: 0;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.trust-signals__item:hover {
+  background-color: rgba(212, 167, 109, 0.05);
+  transform: translateX(4px);
+}
+
+.trust-signals__icon {
+  font-size: 2rem;
+  color: #d4a76d;
+  font-weight: 300;
+  min-width: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.8;
+}
+
+.trust-signals__content h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  color: #2c1810;
+  margin-bottom: 0.25rem;
+  text-transform: uppercase;
+}
+
+.trust-signals__content p {
+  font-size: 0.875rem;
+  color: #5a4a3a;
+  font-weight: 300;
+  margin-bottom: 0;
+  line-height: 1.6;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .trust-signals {
+    padding: 2rem 0;
+  }
+
+  .trust-signals__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+
+  .trust-signals__item {
+    gap: 1rem;
+    padding: 0.75rem;
+  }
+
+  .trust-signals__icon {
+    font-size: 1.5rem;
+  }
+
+  .trust-signals__content h3 {
+    font-size: 0.9rem;
+  }
+
+  .trust-signals__content p {
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .trust-signals__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .trust-signals__item {
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .trust-signals__content h3 {
+    font-size: 0.875rem;
+  }
+
+  .trust-signals__content p {
+    font-size: 0.75rem;
+  }
+}
