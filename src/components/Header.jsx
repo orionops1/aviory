@@ -230,9 +230,8 @@ function useMegaMenuData(t) {
     },
     {
       key: 'love',
-      label: '💝 Love & Celebration',
+      label: 'Love & Celebration',
       href: '/love',
-      isHighlighted: true,
       mega: {
         columns: [
           {
