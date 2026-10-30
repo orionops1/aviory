@@ -35,7 +35,7 @@
 .aviory-logo__name {
   font-size: 2.2rem;
   font-family: 'BlackGold', serif;
-  font-weight: 400;
+  font-weight: 700;
   letter-spacing: 0.24em;
   font-feature-settings: "kern" 1, "liga" 1;
   text-rendering: optimizeLegibility;
@@ -57,7 +57,7 @@
 .aviory-logo__co {
   font-size: 2.2rem;
   font-family: 'BlackGold', serif;
-  font-weight: 400;
+  font-weight: 700;
   letter-spacing: 0.2em;
   font-feature-settings: "kern" 1;
 }
@@ -80,6 +80,21 @@
 
 .aviory-logo:hover .aviory-logo__hallmark {
   color: var(--color-champagne);
+}
+
+/* ─── SUBTITLE (TAGLINE) ─── */
+.aviory-logo__subtitle {
+  display: block;
+  font-family: 'Playfair Display', serif;
+  font-size: 0.85rem;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  text-transform: none;
+  color: var(--color-text);
+  margin-top: 0.5rem;
+  white-space: nowrap;
+  opacity: 0.95;
+  transition: color 0.3s ease;
 }
 
 /* ─── VARIANTS ─── */

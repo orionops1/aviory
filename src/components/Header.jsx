@@ -417,7 +417,7 @@ export default function Header({ scrolled }) {
               onClick={handleNavClick}
               aria-label="AVIORY & CO. Homepage"
             >
-              <AvioryLogo variant={scrolled ? 'compact' : 'standard'} />
+              <AvioryLogo variant={scrolled ? 'compact' : 'standard'} showSubtitle={!scrolled} />
             </Link>
 
             {/* Right: User Account & Slide-Out Shopping Bag Trigger */}

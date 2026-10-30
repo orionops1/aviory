@@ -70,6 +70,16 @@
   animation: slideDown 0.2s ease;
 }
 
+@media (max-width: 768px) {
+  .currency-dropdown {
+    position: fixed;
+    top: auto;
+    right: 1rem;
+    left: auto;
+    max-width: calc(100vw - 2rem);
+  }
+}
+
 @keyframes slideDown {
   from {
     opacity: 0;
