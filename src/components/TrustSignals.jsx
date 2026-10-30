@@ -6,22 +6,25 @@ export default function TrustSignals() {
     <section className="trust-signals">
       <div className="container">
         <div className="trust-signals__grid">
+          {/* Heritage Craft */}
           <div className="trust-signals__item">
-            <div className="trust-signals__icon">✓</div>
+            <div className="trust-signals__icon">✦</div>
             <div className="trust-signals__content">
               <h3>Heritage Craft</h3>
               <p>Handcrafted in Colombo by master artisans</p>
             </div>
           </div>
 
+          {/* Ethically Sourced */}
           <div className="trust-signals__item">
             <div className="trust-signals__icon">◆</div>
             <div className="trust-signals__content">
               <h3>Ethically Sourced</h3>
-              <p>From Sri Lanka''s most prestigious mines</p>
+              <p>From Sri Lanka's most prestigious mines</p>
             </div>
           </div>
 
+          {/* Certified Excellence */}
           <div className="trust-signals__item">
             <div className="trust-signals__icon">★</div>
             <div className="trust-signals__content">
@@ -30,6 +33,7 @@ export default function TrustSignals() {
             </div>
           </div>
 
+          {/* Lifetime Guarantee */}
           <div className="trust-signals__item">
             <div className="trust-signals__icon">∞</div>
             <div className="trust-signals__content">
