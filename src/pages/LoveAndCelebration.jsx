@@ -8,13 +8,16 @@ export default function LoveAndCelebration() {
   const [searchParams, setSearchParams] = useSearchParams()
   const [selectedStyle, setSelectedStyle] = useState('all')
   const [selectedStone, setSelectedStone] = useState('all')
+  const [selectedShape, setSelectedShape] = useState('all')
 
   const styles = ['all', ...new Set(engagementRings.map(r => r.style))]
   const stoneTypes = ['all', ...new Set(engagementRings.map(r => r.stoneType))]
+  const shapes = ['all', ...new Set(engagementRings.map(r => r.shape))]
 
   useEffect(() => {
     const styleParam = searchParams.get('style')
     const stoneParam = searchParams.get('stone')
+    const shapeParam = searchParams.get('shape')
 
     if (styleParam) {
       const match = styles.find(s => s.toLowerCase() === styleParam.toLowerCase())
@@ -29,23 +32,55 @@ export default function LoveAndCelebration() {
     } else {
       setSelectedStone('all')
     }
+
+    if (shapeParam) {
+      const match = shapes.find(s => s.toLowerCase() === shapeParam.toLowerCase())
+      if (match) setSelectedShape(match)
+    } else {
+      setSelectedShape('all')
+    }
   }, [searchParams])
 
   const filtered = useMemo(() => {
     return engagementRings.filter(ring => {
       if (selectedStyle !== 'all' && ring.style.toLowerCase() !== selectedStyle.toLowerCase()) return false
       if (selectedStone !== 'all' && ring.stoneType.toLowerCase() !== selectedStone.toLowerCase()) return false
+      if (selectedShape !== 'all' && ring.shape.toLowerCase() !== selectedShape.toLowerCase()) return false
       return true
     })
-  }, [selectedStyle, selectedStone])
+  }, [selectedStyle, selectedStone, selectedShape])
 
   const handleStyleChange = (style) => {
     setSelectedStyle(style)
+    const params = new URLSearchParams(searchParams)
     if (style === 'all') {
-      setSearchParams({})
+      params.delete('style')
     } else {
-      setSearchParams({ style })
+      params.set('style', style)
     }
+    setSearchParams(params)
+  }
+
+  const handleStoneChange = (stone) => {
+    setSelectedStone(stone)
+    const params = new URLSearchParams(searchParams)
+    if (stone === 'all') {
+      params.delete('stone')
+    } else {
+      params.set('stone', stone)
+    }
+    setSearchParams(params)
+  }
+
+  const handleShapeChange = (shape) => {
+    setSelectedShape(shape)
+    const params = new URLSearchParams(searchParams)
+    if (shape === 'all') {
+      params.delete('shape')
+    } else {
+      params.set('shape', shape)
+    }
+    setSearchParams(params)
   }
 
   return (
@@ -70,12 +105,13 @@ export default function LoveAndCelebration() {
       <div className="container" style={{ paddingTop: 'var(--spacing-3xl)', paddingBottom: 'var(--spacing-3xl)' }}>
         <div className="filters-section">
           <div className="filters-header">
-            <h3>Filter by Style &amp; Stone</h3>
+            <h3>Filter by Moment, Gemstone & Shape</h3>
             <button
               className="btn btn-small"
               onClick={() => {
                 handleStyleChange('all')
-                setSelectedStone('all')
+                handleStoneChange('all')
+                handleShapeChange('all')
               }}
             >
               Clear All
@@ -83,7 +119,7 @@ export default function LoveAndCelebration() {
           </div>
 
           <div style={{ marginBottom: 'var(--spacing-lg)' }}>
-            <h4 style={{ marginBottom: 'var(--spacing-md)', fontSize: '0.9rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Style</h4>
+            <h4 style={{ marginBottom: 'var(--spacing-md)', fontSize: '0.9rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Moment</h4>
             <div className="filter-group">
               {styles.map(style => (
                 <button
@@ -92,6 +128,36 @@ export default function LoveAndCelebration() {
                   onClick={() => handleStyleChange(style)}
                 >
                   {style.charAt(0).toUpperCase() + style.slice(1)}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <div style={{ marginBottom: 'var(--spacing-lg)' }}>
+            <h4 style={{ marginBottom: 'var(--spacing-md)', fontSize: '0.9rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Gemstone</h4>
+            <div className="filter-group">
+              {stoneTypes.map(stone => (
+                <button
+                  key={stone}
+                  className={`filter-option ${selectedStone.toLowerCase() === stone.toLowerCase() ? 'active' : ''}`}
+                  onClick={() => handleStoneChange(stone)}
+                >
+                  {stone.charAt(0).toUpperCase() + stone.slice(1)}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <div style={{ marginBottom: 'var(--spacing-lg)' }}>
+            <h4 style={{ marginBottom: 'var(--spacing-md)', fontSize: '0.9rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Gemstone Shape</h4>
+            <div className="filter-group">
+              {shapes.map(shape => (
+                <button
+                  key={shape}
+                  className={`filter-option ${selectedShape.toLowerCase() === shape.toLowerCase() ? 'active' : ''}`}
+                  onClick={() => handleShapeChange(shape)}
+                >
+                  {shape.charAt(0).toUpperCase() + shape.slice(1)}
                 </button>
               ))}
             </div>
@@ -117,7 +183,8 @@ export default function LoveAndCelebration() {
               className="btn btn-primary"
               onClick={() => {
                 handleStyleChange('all')
-                setSelectedStone('all')
+                handleStoneChange('all')
+                handleShapeChange('all')
               }}
             >
               Reset Filters
