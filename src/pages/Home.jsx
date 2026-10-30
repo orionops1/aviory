@@ -105,26 +105,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* SECTION 1: FEATURED GEMSTONES - LIFESTYLE + PRODUCTS (50/50) */}
-      <section className="lifestyle-section lifestyle-section--gemstones">
-        <div className="lifestyle-grid lifestyle-grid--2col">
-          <div className="lifestyle-image">
-            <div className="lifestyle-placeholder" style={{ background: 'linear-gradient(135deg, #2c1810 0%, #5a3d2a 100%)' }}>
-              <span style={{ fontSize: '4rem', opacity: 0.3 }}>✨</span>
-            </div>
-          </div>
-          <div className="lifestyle-content">
-            <span className="lifestyle-label">RARE GEMSTONES</span>
-            <h2>Ceylon Sapphires</h2>
-            <p>Discover exceptional gemstones hand-selected from Sri Lanka's most prestigious mines. Each stone represents generations of expertise and uncompromising quality standards.</p>
-            <Link to="/gemstones?category=blue-sapphires" className="btn btn-primary">
-              Shop Gemstones
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* SECTION 2: AVIORY LOVE COLLECTION - LIFESTYLE + PRODUCTS (50/50) */}
+      {/* SECTION 1: AVIORY LOVE COLLECTION - LIFESTYLE + PRODUCTS (50/50) */}
       <section className="lifestyle-section lifestyle-section--rings">
         <div className="lifestyle-grid lifestyle-grid--2col lifestyle-grid--reverse">
           <div className="lifestyle-content">
@@ -139,6 +120,25 @@ export default function Home() {
             <div className="lifestyle-placeholder" style={{ background: 'linear-gradient(135deg, #241c14 0%, #3d2f21 50%, #5e4732 100%)' }}>
               <span style={{ fontSize: '4rem', opacity: 0.3 }}>💍</span>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION 2: FEATURED GEMSTONES - LIFESTYLE + PRODUCTS (50/50) */}
+      <section className="lifestyle-section lifestyle-section--gemstones">
+        <div className="lifestyle-grid lifestyle-grid--2col">
+          <div className="lifestyle-image">
+            <div className="lifestyle-placeholder" style={{ background: 'linear-gradient(135deg, #2c1810 0%, #5a3d2a 100%)' }}>
+              <span style={{ fontSize: '4rem', opacity: 0.3 }}>✨</span>
+            </div>
+          </div>
+          <div className="lifestyle-content">
+            <span className="lifestyle-label">RARE GEMSTONES</span>
+            <h2>Ceylon Sapphires</h2>
+            <p>Discover exceptional gemstones hand-selected from Sri Lanka's most prestigious mines. Each stone represents generations of expertise and uncompromising quality standards.</p>
+            <Link to="/gemstones?category=blue-sapphires" className="btn btn-primary">
+              Shop Gemstones
+            </Link>
           </div>
         </div>
       </section>
