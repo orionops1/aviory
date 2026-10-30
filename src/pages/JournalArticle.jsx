@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useMemo } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import { journalArticles } from '../data/products'
 import './JournalArticle.css'
@@ -7,141 +7,204 @@ export default function JournalArticle() {
   const { slug } = useParams()
   const article = journalArticles.find(a => a.slug === slug)
 
+  // Calculate read time based on content (approximately 200 words per minute)
+  const readTime = useMemo(() => {
+    if (!article) return 0
+    const wordCount = article.content.split(/\s+/).length
+    return Math.ceil(wordCount / 200)
+  }, [article])
+
+  // Find previous and next articles for navigation
+  const currentIndex = journalArticles.findIndex(a => a.slug === slug)
+  const prevArticle = currentIndex > 0 ? journalArticles[currentIndex - 1] : null
+  const nextArticle = currentIndex < journalArticles.length - 1 ? journalArticles[currentIndex + 1] : null
+
   if (!article) {
+    // Article not found: show error with related articles
+    const suggestedArticles = journalArticles.slice(0, 4)
+
     return (
-      <div className="container" style={{ paddingTop: 'var(--spacing-3xl)', paddingBottom: 'var(--spacing-3xl)', textAlign: 'center' }}>
-        <h2>Article not found</h2>
-        <Link to="/journal" className="btn btn-primary" style={{ marginTop: 'var(--spacing-lg)' }}>
-          Back to Journal
-        </Link>
+      <div className="blogpost-error">
+        <section className="blogpost-error-header">
+          <div className="container">
+            <h1>Article Not Found</h1>
+            <p>We couldn't locate the article you're looking for. It may have been archived or the link may be incorrect.</p>
+            <Link to="/journal" className="btn btn-primary" style={{ marginTop: 'var(--spacing-lg)' }}>
+              ← Back to Journal
+            </Link>
+          </div>
+        </section>
+
+        {/* Suggest related articles */}
+        {suggestedArticles.length > 0 && (
+          <section className="container" style={{ paddingTop: 'var(--spacing-3xl)', paddingBottom: 'var(--spacing-3xl)' }}>
+            <h2 className="section-title" style={{ marginBottom: 'var(--spacing-2xl)', textAlign: 'center' }}>
+              You might find these helpful
+            </h2>
+            <div className="related-articles-grid">
+              {suggestedArticles.map(suggested => (
+                <Link
+                  key={suggested.id}
+                  to={`/journal/${suggested.slug}`}
+                  className="related-article-card"
+                >
+                  <div className="related-article-image">
+                    <img src={suggested.image} alt={suggested.title} />
+                  </div>
+                  <div className="related-article-content">
+                    <div className="related-article-category">{suggested.category}</div>
+                    <h4 className="related-article-title">{suggested.title}</h4>
+                    <p className="related-article-excerpt">{suggested.excerpt}</p>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </section>
+        )}
       </div>
     )
   }
 
   const relatedArticles = journalArticles
     .filter(a => a.category === article.category && a.id !== article.id)
-    .slice(0, 3)
+    .slice(0, 4)
 
   return (
-    <>
-      {/* HEADER */}
-      <section style={{
-        backgroundColor: '#111111',
-        color: '#F8F4EF',
-        padding: 'var(--spacing-3xl) 0',
-        textAlign: 'center'
-      }}>
+    <article className="blogpost">
+      {/* NAVIGATION: Back to Blog Link */}
+      <div className="blogpost-breadcrumbs container">
+        <Link to="/journal" className="breadcrumb-link">← Back to Journal</Link>
+      </div>
+
+      {/* ARTICLE HEADER */}
+      <header className="blogpost-header">
         <div className="container">
-          <div style={{ fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.1em', color: '#D4AF7F', marginBottom: 'var(--spacing-md)' }}>
-            {article.category}
+          <div className="blogpost-meta-top">
+            <span className="blogpost-category">{article.category}</span>
+            <span className="blogpost-read-time">{readTime} min read</span>
           </div>
-          <h1 style={{ color: '#F8F4EF' }}>{article.title}</h1>
-          <div style={{ fontSize: '0.9rem', marginTop: 'var(--spacing-lg)', opacity: 0.8 }}>
-            By {article.author} • {new Date(article.publishDate).toLocaleDateString('en-US', { 
-              year: 'numeric', 
-              month: 'long', 
-              day: 'numeric' 
-            })}
+          <h1 className="blogpost-title">{article.title}</h1>
+          <div className="blogpost-byline">
+            <span className="byline-author">{article.author}</span>
+            <span className="byline-sep">•</span>
+            <span className="byline-date">
+              {new Date(article.publishDate).toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+              })}
+            </span>
           </div>
         </div>
-      </section>
+      </header>
 
-      {/* FEATURED IMAGE */}
-      <div style={{ width: '100%', maxHeight: '400px', overflow: 'hidden', backgroundColor: '#E8E3DC' }}>
+      {/* FEATURED IMAGE - Full Width */}
+      <div className="blogpost-featured-image">
         <img
           src={article.image}
           alt={article.title}
-          style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+          onError={(e) => {
+            e.currentTarget.style.display = 'none'
+          }}
         />
       </div>
 
-      {/* CONTENT */}
-      <article className="container" style={{ paddingTop: 'var(--spacing-3xl)', paddingBottom: 'var(--spacing-3xl)' }}>
-        <div style={{
-          maxWidth: '800px',
-          margin: '0 auto'
-        }}>
-          <div
-            style={{
-              color: '#2B2B2B',
-              lineHeight: 1.8,
-              fontSize: '1.05rem'
-            }}
-            dangerouslySetInnerHTML={{ __html: article.content }}
-          />
+      {/* MAIN CONTENT */}
+      <div className="blogpost-content-wrapper">
+        <div className="container">
+          <div className="blogpost-content-inner">
+            {/* Article body with editorial typography */}
+            <div
+              className="blogpost-body"
+              dangerouslySetInnerHTML={{ __html: article.content }}
+            />
 
-          {/* AUTHOR BIO */}
-          <div style={{
-            backgroundColor: '#F8F4EF',
-            padding: 'var(--spacing-lg)',
-            marginTop: 'var(--spacing-3xl)',
-            borderLeft: '4px solid #D4AF7F'
-          }}>
-            <h4 style={{ marginBottom: 'var(--spacing-md)' }}>About the Author</h4>
-            <p style={{ marginBottom: 'var(--spacing-md)', fontStyle: 'italic' }}>
-              {article.author}
-            </p>
-            <p style={{ color: '#2B2B2B' }}>
-              Our expert contributors bring decades of experience in gemstones, jewelry design, and luxury craftsmanship to share their knowledge and insights.
-            </p>
-          </div>
+            {/* AUTHOR BIO BOX */}
+            <aside className="blogpost-author-bio">
+              <div className="author-bio-icon">✦</div>
+              <div className="author-bio-content">
+                <h4 className="author-bio-name">About the Author</h4>
+                <p className="author-bio-title">{article.author}</p>
+                <p className="author-bio-text">
+                  Our expert contributors bring decades of experience in gemstones, jewelry
+                  design, and luxury craftsmanship to share their knowledge and insights with
+                  discerning collectors and enthusiasts.
+                </p>
+              </div>
+            </aside>
 
-          {/* CTA */}
-          <div style={{
-            background: 'linear-gradient(135deg, #111111 0%, #2B2B2B 100%)',
-            color: '#F8F4EF',
-            padding: 'var(--spacing-2xl)',
-            marginTop: 'var(--spacing-3xl)',
-            textAlign: 'center'
-          }}>
-            <h3 style={{ color: '#D4AF7F', marginBottom: 'var(--spacing-md)' }}>Inspired to Create?</h3>
-            <p style={{ marginBottom: 'var(--spacing-lg)' }}>
-              Begin your bespoke journey and bring your vision to life with AVIORY & CO.
-            </p>
-            <Link to="/bespoke" className="btn btn-primary">Start Creating</Link>
+            {/* ARTICLE NAVIGATION - Previous/Next */}
+            <nav className="blogpost-navigation">
+              {prevArticle ? (
+                <Link to={`/journal/${prevArticle.slug}`} className="nav-article nav-prev">
+                  <span className="nav-arrow">←</span>
+                  <div className="nav-article-text">
+                    <span className="nav-label">Previous Article</span>
+                    <span className="nav-title">{prevArticle.title}</span>
+                  </div>
+                </Link>
+              ) : (
+                <div className="nav-placeholder" />
+              )}
+
+              {nextArticle ? (
+                <Link to={`/journal/${nextArticle.slug}`} className="nav-article nav-next">
+                  <div className="nav-article-text">
+                    <span className="nav-label">Next Article</span>
+                    <span className="nav-title">{nextArticle.title}</span>
+                  </div>
+                  <span className="nav-arrow">→</span>
+                </Link>
+              ) : (
+                <div className="nav-placeholder" />
+              )}
+            </nav>
+
+            {/* CTA SECTION */}
+            <section className="blogpost-cta">
+              <h3>Inspired to Create?</h3>
+              <p>
+                Begin your bespoke journey and bring your vision to life with AVIORY & CO.
+              </p>
+              <Link to="/bespoke" className="btn btn-primary">
+                Start Creating
+              </Link>
+            </section>
           </div>
         </div>
-      </article>
+      </div>
 
-      {/* RELATED ARTICLES */}
+      {/* RELATED ARTICLES SECTION */}
       {relatedArticles.length > 0 && (
-        <section style={{ backgroundColor: '#F8F4EF', paddingTop: 'var(--spacing-3xl)', paddingBottom: 'var(--spacing-3xl)' }}>
+        <section className="blogpost-related">
           <div className="container">
-            <h2 style={{ marginBottom: 'var(--spacing-2xl)', textAlign: 'center' }}>Related Articles</h2>
-            <div style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
-              gap: 'var(--spacing-xl)'
-            }}>
+            <div className="related-section-header">
+              <span className="related-label">FURTHER READING</span>
+              <h2>Related Articles</h2>
+            </div>
+            <div className="related-articles-grid">
               {relatedArticles.map(related => (
                 <Link
                   key={related.id}
                   to={`/journal/${related.slug}`}
-                  style={{ textDecoration: 'none', color: 'inherit' }}
+                  className="related-article-card"
                 >
-                  <div style={{
-                    backgroundColor: '#FFFFFF',
-                    border: '1px solid #D0CCBE',
-                    padding: 'var(--spacing-lg)',
-                    cursor: 'pointer',
-                    transition: 'var(--transition)'
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.borderColor = '#D4AF7F'
-                    e.currentTarget.style.boxShadow = '0 8px 24px rgba(212, 175, 127, 0.15)'
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.borderColor = '#D0CCBE'
-                    e.currentTarget.style.boxShadow = 'none'
-                  }}
-                  >
-                    <div style={{ fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.1em', color: '#A68563', marginBottom: 'var(--spacing-sm)' }}>
-                      {related.category}
+                  <div className="related-article-image">
+                    <img src={related.image} alt={related.title} />
+                  </div>
+                  <div className="related-article-content">
+                    <div className="related-article-category">{related.category}</div>
+                    <h4 className="related-article-title">{related.title}</h4>
+                    <p className="related-article-excerpt">{related.excerpt}</p>
+                    <div className="related-article-meta">
+                      <span>{related.author}</span>
+                      <span>
+                        {new Date(related.publishDate).toLocaleDateString('en-US', {
+                          month: 'short',
+                          day: 'numeric'
+                        })}
+                      </span>
                     </div>
-                    <h4 style={{ marginBottom: 'var(--spacing-md)', lineHeight: 1.3 }}>{related.title}</h4>
-                    <p style={{ color: '#2B2B2B', fontSize: '0.9rem' }}>
-                      {related.excerpt}
-                    </p>
                   </div>
                 </Link>
               ))}
@@ -150,10 +213,12 @@ export default function JournalArticle() {
         </section>
       )}
 
-      {/* BACK LINK */}
-      <div className="container" style={{ paddingTop: 'var(--spacing-lg)', paddingBottom: 'var(--spacing-xl)' }}>
-        <Link to="/journal" className="btn btn-outline">← Back to Journal</Link>
+      {/* FOOTER NAVIGATION */}
+      <div className="blogpost-footer-nav container">
+        <Link to="/journal" className="footer-nav-link">
+          ← Explore More Articles
+        </Link>
       </div>
-    </>
+    </article>
   )
 }

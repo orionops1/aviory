@@ -1,50 +1,51 @@
-import React, { useState } from 'react'
+import React, { useEffect } from 'react'
+import { useSearchParams } from 'react-router-dom'
 import { contactInfo } from '../data/content'
+import useContactForm from '../hooks/useContactForm'
+import { CONTACT_FORM_SUBJECTS } from '../constants/forms'
 import './Contact.css'
 
 export default function Contact() {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    subject: '',
-    message: ''
-  })
-  const [submitted, setSubmitted] = useState(false)
+  const [searchParams] = useSearchParams()
+  const { 
+    formData, 
+    errors, 
+    isSubmitting, 
+    success, 
+    successMessage,
+    handleChange, 
+    handleSubmit,
+    resetForm 
+  } = useContactForm()
 
-  const handleChange = (e) => {
-    const { name, value } = e.target
-    setFormData(prev => ({ ...prev, [name]: value }))
-  }
-
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    // In a real app, send to backend
-    console.log('Form submitted:', formData)
-    setSubmitted(true)
-    setTimeout(() => {
-      setFormData({
-        name: '',
-        email: '',
-        phone: '',
-        subject: '',
-        message: ''
-      })
-      setSubmitted(false)
-    }, 3000)
-  }
+  // Handle query parameter for pre-filling subject
+  useEffect(() => {
+    const subjectParam = searchParams.get('subject')
+    if (subjectParam) {
+      // Map query param values to form subject options
+      const subjectMap = {
+        'shipping': 'support',
+        'returns': 'support',
+        'faq': 'support'
+      }
+      const mappedSubject = subjectMap[subjectParam] || subjectParam
+      if (CONTACT_FORM_SUBJECTS.includes(mappedSubject)) {
+        handleChange('subject', mappedSubject)
+      }
+    }
+  }, [searchParams, handleChange])
 
   return (
     <>
       {/* HERO */}
       <section style={{
-        backgroundColor: '#111111',
-        color: '#F8F4EF',
+        backgroundColor: 'var(--color-primary-black)',
+        color: 'var(--color-ivory)',
         padding: 'var(--spacing-3xl) 0',
         textAlign: 'center'
       }}>
         <div className="container">
-          <h1 style={{ color: '#D4AF7F' }}>Contact Us</h1>
+          <h1 style={{ color: 'var(--color-champagne)' }}>Contact Us</h1>
           <p style={{ fontSize: '1.1rem', marginTop: 'var(--spacing-md)', opacity: 0.9 }}>
             We're here to help. Reach out with any questions or to schedule a consultation.
           </p>
@@ -63,68 +64,68 @@ export default function Contact() {
             <h2 style={{ marginBottom: 'var(--spacing-2xl)' }}>Get in Touch</h2>
 
             <div style={{
-              backgroundColor: '#F8F4EF',
+              backgroundColor: 'var(--color-ivory)',
               padding: 'var(--spacing-lg)',
               marginBottom: 'var(--spacing-lg)',
-              border: '1px solid #D0CCBE'
+              border: '1px solid var(--color-medium-gray)'
             }}>
               <h4 style={{ marginBottom: 'var(--spacing-md)' }}>Address</h4>
-              <p style={{ color: '#2B2B2B', lineHeight: 1.8 }}>
+              <p style={{ color: 'var(--color-charcoal)', lineHeight: 1.8 }}>
                 {contactInfo.address}
               </p>
             </div>
 
             <div style={{
-              backgroundColor: '#F8F4EF',
+              backgroundColor: 'var(--color-ivory)',
               padding: 'var(--spacing-lg)',
               marginBottom: 'var(--spacing-lg)',
-              border: '1px solid #D0CCBE'
+              border: '1px solid var(--color-medium-gray)'
             }}>
               <h4 style={{ marginBottom: 'var(--spacing-md)' }}>Phone</h4>
-              <p style={{ color: '#2B2B2B' }}>
-                <a href={`tel:${contactInfo.phone}`} style={{ color: '#D4AF7F', textDecoration: 'none' }}>
+              <p style={{ color: 'var(--color-charcoal)' }}>
+                <a href={`tel:${contactInfo.phone}`} style={{ color: 'var(--color-champagne)', textDecoration: 'none' }}>
                   {contactInfo.phone}
                 </a>
               </p>
             </div>
 
             <div style={{
-              backgroundColor: '#F8F4EF',
+              backgroundColor: 'var(--color-ivory)',
               padding: 'var(--spacing-lg)',
               marginBottom: 'var(--spacing-lg)',
-              border: '1px solid #D0CCBE'
+              border: '1px solid var(--color-medium-gray)'
             }}>
               <h4 style={{ marginBottom: 'var(--spacing-md)' }}>Email</h4>
-              <p style={{ color: '#2B2B2B' }}>
-                <a href={`mailto:${contactInfo.email}`} style={{ color: '#D4AF7F', textDecoration: 'none' }}>
+              <p style={{ color: 'var(--color-charcoal)' }}>
+                <a href={`mailto:${contactInfo.email}`} style={{ color: 'var(--color-champagne)', textDecoration: 'none' }}>
                   {contactInfo.email}
                 </a>
               </p>
             </div>
 
             <div style={{
-              backgroundColor: '#F8F4EF',
+              backgroundColor: 'var(--color-ivory)',
               padding: 'var(--spacing-lg)',
               marginBottom: 'var(--spacing-lg)',
-              border: '1px solid #D0CCBE'
+              border: '1px solid var(--color-medium-gray)'
             }}>
               <h4 style={{ marginBottom: 'var(--spacing-md)' }}>Hours</h4>
-              <p style={{ color: '#2B2B2B', marginBottom: 'var(--spacing-sm)' }}>
+              <p style={{ color: 'var(--color-charcoal)', marginBottom: 'var(--spacing-sm)' }}>
                 {contactInfo.hours}
               </p>
-              <p style={{ color: '#2B2B2B' }}>
+              <p style={{ color: 'var(--color-charcoal)' }}>
                 {contactInfo.weekends}
               </p>
             </div>
 
             <div style={{
-              backgroundColor: '#111111',
-              color: '#F8F4EF',
+              backgroundColor: 'var(--color-primary-black)',
+              color: 'var(--color-ivory)',
               padding: 'var(--spacing-lg)',
-              border: '1px solid #D4AF7F',
+              border: '1px solid var(--color-champagne)',
               marginTop: 'var(--spacing-xl)'
             }}>
-              <h4 style={{ color: '#D4AF7F', marginBottom: 'var(--spacing-md)' }}>Response Time</h4>
+              <h4 style={{ color: 'var(--color-champagne)', marginBottom: 'var(--spacing-md)' }}>Response Time</h4>
               <p>We aim to respond to all inquiries within 24 hours during business hours.</p>
             </div>
           </div>
@@ -133,9 +134,9 @@ export default function Contact() {
           <div>
             <h2 style={{ marginBottom: 'var(--spacing-lg)' }}>Send us a Message</h2>
 
-            {submitted && (
+            {success && (
               <div className="alert alert-success" style={{ marginBottom: 'var(--spacing-lg)' }}>
-                Thank you for your message! We'll be in touch soon.
+                {successMessage || 'Thank you for your message! We\'ll be in touch soon.'}
               </div>
             )}
 
@@ -147,9 +148,14 @@ export default function Contact() {
                   type="text"
                   name="name"
                   value={formData.name}
-                  onChange={handleChange}
+                  onChange={(e) => handleChange('name', e.target.value)}
                   required
                 />
+                {errors.name && (
+                  <span className="form-error" style={{ color: 'var(--color-rose-gold)', fontSize: '0.9rem', marginTop: '0.25rem', display: 'block' }}>
+                    {errors.name}
+                  </span>
+                )}
               </div>
 
               <div className="form-group">
@@ -159,9 +165,14 @@ export default function Contact() {
                   type="email"
                   name="email"
                   value={formData.email}
-                  onChange={handleChange}
+                  onChange={(e) => handleChange('email', e.target.value)}
                   required
                 />
+                {errors.email && (
+                  <span className="form-error" style={{ color: 'var(--color-rose-gold)', fontSize: '0.9rem', marginTop: '0.25rem', display: 'block' }}>
+                    {errors.email}
+                  </span>
+                )}
               </div>
 
               <div className="form-group">
@@ -171,8 +182,13 @@ export default function Contact() {
                   type="tel"
                   name="phone"
                   value={formData.phone}
-                  onChange={handleChange}
+                  onChange={(e) => handleChange('phone', e.target.value)}
                 />
+                {errors.phone && (
+                  <span className="form-error" style={{ color: 'var(--color-rose-gold)', fontSize: '0.9rem', marginTop: '0.25rem', display: 'block' }}>
+                    {errors.phone}
+                  </span>
+                )}
               </div>
 
               <div className="form-group">
@@ -181,7 +197,7 @@ export default function Contact() {
                   id="subject"
                   name="subject"
                   value={formData.subject}
-                  onChange={handleChange}
+                  onChange={(e) => handleChange('subject', e.target.value)}
                   required
                 >
                   <option value="">Select a subject...</option>
@@ -192,6 +208,11 @@ export default function Contact() {
                   <option value="support">Customer Support</option>
                   <option value="other">Other</option>
                 </select>
+                {errors.subject && (
+                  <span className="form-error" style={{ color: 'var(--color-rose-gold)', fontSize: '0.9rem', marginTop: '0.25rem', display: 'block' }}>
+                    {errors.subject}
+                  </span>
+                )}
               </div>
 
               <div className="form-group">
@@ -200,14 +221,24 @@ export default function Contact() {
                   id="message"
                   name="message"
                   value={formData.message}
-                  onChange={handleChange}
+                  onChange={(e) => handleChange('message', e.target.value)}
                   required
                   placeholder="Tell us how we can help..."
                 />
+                {errors.message && (
+                  <span className="form-error" style={{ color: 'var(--color-rose-gold)', fontSize: '0.9rem', marginTop: '0.25rem', display: 'block' }}>
+                    {errors.message}
+                  </span>
+                )}
               </div>
 
-              <button type="submit" className="btn btn-primary" style={{ width: '100%' }}>
-                Send Message
+              <button 
+                type="submit" 
+                className="btn btn-primary" 
+                style={{ width: '100%' }}
+                disabled={isSubmitting || Object.keys(errors).length > 0}
+              >
+                {isSubmitting ? 'Sending...' : 'Send Message'}
               </button>
             </form>
           </div>
@@ -215,7 +246,7 @@ export default function Contact() {
       </div>
 
       {/* FREQUENTLY CONTACTED */}
-      <section style={{ backgroundColor: '#F8F4EF', paddingTop: 'var(--spacing-3xl)', paddingBottom: 'var(--spacing-3xl)' }}>
+      <section style={{ backgroundColor: 'var(--color-ivory)', paddingTop: 'var(--spacing-3xl)', paddingBottom: 'var(--spacing-3xl)' }}>
         <div className="container">
           <h2 style={{ marginBottom: 'var(--spacing-2xl)', textAlign: 'center' }}>Common Reasons to Contact Us</h2>
 
@@ -233,16 +264,16 @@ export default function Contact() {
               { icon: '❓', title: 'General Questions', desc: 'Any other questions about AVIORY & CO' }
             ].map((item, idx) => (
               <div key={idx} style={{
-                backgroundColor: '#FFFFFF',
+                backgroundColor: 'var(--color-white)',
                 padding: 'var(--spacing-lg)',
-                border: '1px solid #D0CCBE',
+                border: '1px solid var(--color-medium-gray)',
                 textAlign: 'center'
               }}>
                 <div style={{ fontSize: '2.5rem', marginBottom: 'var(--spacing-md)' }}>
                   {item.icon}
                 </div>
                 <h4 style={{ marginBottom: 'var(--spacing-sm)' }}>{item.title}</h4>
-                <p style={{ color: '#2B2B2B', fontSize: '0.9rem' }}>{item.desc}</p>
+                <p style={{ color: 'var(--color-charcoal)', fontSize: '0.9rem' }}>{item.desc}</p>
               </div>
             ))}
           </div>
@@ -255,16 +286,16 @@ export default function Contact() {
         <div style={{
           width: '100%',
           height: '400px',
-          backgroundColor: '#D0CCBE',
+          backgroundColor: 'var(--color-medium-gray)',
           borderRadius: '4px',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
           marginBottom: 'var(--spacing-lg)'
         }}>
-          <p style={{ color: '#2B2B2B', fontSize: '1.1rem' }}>Map Coming Soon</p>
+          <p style={{ color: 'var(--color-charcoal)', fontSize: '1.1rem' }}>Map Coming Soon</p>
         </div>
-        <p style={{ textAlign: 'center', color: '#2B2B2B' }}>
+        <p style={{ textAlign: 'center', color: 'var(--color-charcoal)' }}>
           Located in the heart of Colombo, Sri Lanka. Contact us to arrange a visit.
         </p>
       </section>

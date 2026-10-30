@@ -14,53 +14,100 @@
 }
 
 /* ============================================================================
-   ENHANCED CSS CUSTOM PROPERTIES
+   UNIFIED CSS VARIABLE SYSTEM - COMPREHENSIVE DESIGN TOKENS
    ============================================================================ */
 :root {
-  /* PRIMARY COLORS */
-  --color-black: #0d0d0d;
-  --color-ivory: #faf8f5;
-  --color-champagne: #d4a76d;
-  --color-white: #ffffff;
+  /* =========================================================================
+     PRIMARY COLORS (Luxury Palette)
+     ========================================================================= */
+  --color-primary-black: #111111;
+  --color-ivory: #F8F4EF;
+  --color-champagne: #D4AF7F;
+  --color-charcoal: #2B2B2B;
+  --color-light-gray: #E8E3DC;
+  --color-medium-gray: #D0CCBE;
+  --color-accent-brown: #A68563;
+  --color-gold-dark: #8B7355;
+  --color-rose-gold: #B76E79;
 
-  /* SECONDARY COLORS (NEW - Phase 1) */
+  /* SECONDARY COLORS (Legacy compatibility) */
+  --color-black: #0d0d0d;
   --color-dark-brown: #2c1810;
   --color-burgundy: #5e2e1f;
   --color-warm-gold: #d4a574;
   --color-soft-cream: #faf8f5;
   --color-rich-charcoal: #241c14;
   --color-text: #2c1810;
-  --color-light-gray: #e8e5e0;
   --color-accent-gold: #b8860b;
+  --color-white: #ffffff;
 
-  /* FONTS */
-  --font-brand: "BlackGold", serif;
+  /* =========================================================================
+     TYPOGRAPHY SYSTEM
+     ========================================================================= */
+  /* Font Families */
+  --font-serif-display: 'Playfair Display', serif;
+  --font-serif-body: 'Cormorant Garamond', serif;
+  --font-sans: 'Montserrat', sans-serif;
+  --font-brand: 'BlackGold', serif;
+
+  /* Font sizes - Responsive using clamp() */
+  --font-size-h1: clamp(2.75rem, 7vw, 4.5rem);
+  --font-size-h2: clamp(2.25rem, 5.5vw, 3.5rem);
+  --font-size-h3: clamp(1.75rem, 4.5vw, 2.5rem);
+  --font-size-body: 1rem;
+  --font-size-small: 0.875rem;
+
+  /* Legacy font variables */
   --font-serif: "Playfair Display", serif;
   --font-body: "Montserrat", sans-serif;
   --font-ui: "Montserrat", sans-serif;
 
-  /* TRANSITIONS & ANIMATIONS */
+  /* =========================================================================
+     SPACING SYSTEM (Consistent increments: 0.5rem base)
+     ========================================================================= */
+  --spacing-xs: 0.5rem;      /* 8px */
+  --spacing-sm: 1rem;        /* 16px */
+  --spacing-md: 1.5rem;      /* 24px */
+  --spacing-lg: 2rem;        /* 32px */
+  --spacing-xl: 3rem;        /* 48px */
+  --spacing-2xl: 4rem;       /* 64px */
+  --spacing-3xl: 6rem;       /* 96px */
+  --spacing-4xl: 8rem;       /* 128px */
+
+  /* =========================================================================
+     EFFECTS SYSTEM - SHADOWS (Mohs Scale inspired)
+     ========================================================================= */
+  /* Small shadow for subtle depth */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+
+  /* Medium shadow for standard components */
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+  /* Large shadow for elevated cards and modals */
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+
+  /* Extra large shadow for premium floating elements */
+  --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.15);
+
+  /* =========================================================================
+     EFFECTS SYSTEM - BORDERS (Luxury Design)
+     ========================================================================= */
+  /* Luxury border with champagne accent */
+  --border-luxury: 2px solid var(--color-champagne);
+
+  /* Subtle border for minimal contrast */
+  --border-subtle: 1px solid var(--color-light-gray);
+
+  /* =========================================================================
+     TRANSITIONS & ANIMATIONS
+     ========================================================================= */
   --transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   --transition-slow: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
   --transition-fast: all 0.2s ease;
 
-  /* SPACING SYSTEM */
-  --spacing-xs: 0.5rem;
-  --spacing-sm: 1rem;
-  --spacing-md: 1.5rem;
-  --spacing-lg: 2rem;
-  --spacing-xl: 3rem;
-  --spacing-2xl: 4rem;
-  --spacing-3xl: 6rem;
-  --spacing-4xl: 8rem;
-
-  /* SHADOW SYSTEM (NEW - Phase 1) */
-  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
-  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
-  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
-  --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.15);
-
-  /* BREAKPOINTS */
+  /* =========================================================================
+     BREAKPOINTS (Responsive design)
+     ========================================================================= */
   --bp-mobile: 480px;
   --bp-tablet: 768px;
   --bp-small-desktop: 1024px;

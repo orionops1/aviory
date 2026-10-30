@@ -1,9 +1,10 @@
 import React, { useState } from 'react'
+import { contactInfo } from '../data/content'
 import './WhatsAppConcierge.css'
 
 export default function WhatsAppConcierge() {
   const [isOpen, setIsOpen] = useState(false)
-  const phoneNumber = '+94770000000' // Replace with official concierge number
+  const phoneNumber = contactInfo.whatsapp
 
   const sendWhatsApp = (topic) => {
     const text = encodeURIComponent(`Hello Aviory & Co., I am inquiring regarding: ${topic}. Could you please connect me with a Master Gemologist?`)

@@ -46,14 +46,14 @@ export default function BespokeEnquiry() {
   return (
     <>
       <section style={{
-        backgroundColor: '#111111',
-        color: '#F8F4EF',
+        backgroundColor: 'var(--color-primary-black)',
+        color: 'var(--color-ivory)',
         padding: 'var(--spacing-3xl) 0',
         textAlign: 'center'
       }}>
         <div className="container">
-          <h1 style={{ color: '#D4AF7F' }}>Bespoke Enquiry</h1>
-          <p style={{ fontSize: '1.1rem', marginTop: 'var(--spacing-md)', opacity: 0.9 }}>
+          <h1 style={{ color: 'var(--color-champagne)' }}>Bespoke Enquiry</h1>
+          <p style={{ fontSize: 'var(--font-size-body)', marginTop: 'var(--spacing-md)', opacity: 0.9 }}>
             Tell us about your vision, and we'll be in touch within 24 hours
           </p>
         </div>
@@ -70,10 +70,10 @@ export default function BespokeEnquiry() {
           <form onSubmit={handleSubmit} className="contact-form">
             {/* PERSONAL INFORMATION */}
             <fieldset style={{
-              border: '1px solid #D0CCBE',
+              border: '1px solid var(--color-medium-gray)',
               padding: 'var(--spacing-lg)',
               marginBottom: 'var(--spacing-xl)',
-              backgroundColor: '#F8F4EF'
+              backgroundColor: 'var(--color-ivory)'
             }}>
               <legend style={{ paddingLeft: 'var(--spacing-md)' }}>Your Information</legend>
 
@@ -116,10 +116,10 @@ export default function BespokeEnquiry() {
 
             {/* PIECE DETAILS */}
             <fieldset style={{
-              border: '1px solid #D0CCBE',
+              border: '1px solid var(--color-medium-gray)',
               padding: 'var(--spacing-lg)',
               marginBottom: 'var(--spacing-xl)',
-              backgroundColor: '#F8F4EF'
+              backgroundColor: 'var(--color-ivory)'
             }}>
               <legend style={{ paddingLeft: 'var(--spacing-md)' }}>Your Vision</legend>
 
@@ -214,10 +214,10 @@ export default function BespokeEnquiry() {
 
             {/* INSPIRATION */}
             <fieldset style={{
-              border: '1px solid #D0CCBE',
+              border: '1px solid var(--color-medium-gray)',
               padding: 'var(--spacing-lg)',
               marginBottom: 'var(--spacing-xl)',
-              backgroundColor: '#F8F4EF'
+              backgroundColor: 'var(--color-ivory)'
             }}>
               <legend style={{ paddingLeft: 'var(--spacing-md)' }}>Inspiration</legend>
 
@@ -247,11 +247,11 @@ export default function BespokeEnquiry() {
             </fieldset>
 
             <div style={{
-              backgroundColor: '#F8F4EF',
+              backgroundColor: 'var(--color-ivory)',
               padding: 'var(--spacing-lg)',
               marginBottom: 'var(--spacing-lg)',
               borderRadius: '4px',
-              fontSize: '0.875rem'
+              fontSize: 'var(--font-size-small)'
             }}>
               <p style={{ marginBottom: 'var(--spacing-sm)' }}>
                 * Required fields
@@ -276,10 +276,10 @@ export default function BespokeEnquiry() {
           <section style={{
             marginTop: 'var(--spacing-3xl)',
             paddingTop: 'var(--spacing-2xl)',
-            borderTop: '1px solid #D0CCBE'
+            borderTop: '1px solid var(--color-medium-gray)'
           }}>
             <h3 style={{ marginBottom: 'var(--spacing-lg)' }}>What Happens Next?</h3>
-            <ol style={{ color: '#2B2B2B', lineHeight: 1.8 }}>
+            <ol style={{ color: 'var(--color-charcoal)', lineHeight: 1.8 }}>
               <li><strong>We Review:</strong> Our design team carefully considers your enquiry and vision.</li>
               <li><strong>We Contact You:</strong> We'll reach out within 24 hours to discuss details.</li>
               <li><strong>Initial Consultation:</strong> We schedule a call or meeting to dive deeper.</li>

@@ -7,18 +7,22 @@ import ScrollToTop from './components/ScrollToTop'
 
 // Pages
 import Home from './pages/Home'
+import About from './pages/About'
+import Shop from './pages/Shop'
 import Gemstones from './pages/Gemstones'
 import GemstoneDetail from './pages/GemstoneDetail'
 import FineJewellery from './pages/FineJewellery'
 import JewelleryDetail from './pages/JewelleryDetail'
 import EngagementRings from './pages/EngagementRings'
 import EngagementRingDetail from './pages/EngagementRingDetail'
+import ProductDetail from './pages/ProductDetail'
 import Love from './pages/Love'
 import Bespoke from './pages/Bespoke'
 import BespokeProcess from './pages/BespokeProcess'
 import BespokeEnquiry from './pages/BespokeEnquiry'
 import Journal from './pages/Journal'
 import JournalArticle from './pages/JournalArticle'
+import Blog from './pages/Blog'
 import OurHouse from './pages/OurHouse'
 import PrivateConsultations from './pages/PrivateConsultations'
 import Contact from './pages/Contact'
@@ -62,6 +66,12 @@ export default function App() {
               {/* Home */}
               <Route path="/" element={<Home />} />
 
+              {/* About */}
+              <Route path="/about" element={<About />} />
+
+              {/* Shop */}
+              <Route path="/shop" element={<Shop />} />
+
               {/* Gemstones */}
               <Route path="/gemstones" element={<Gemstones />} />
               <Route path="/gemstones/:id" element={<GemstoneDetail />} />
@@ -74,6 +84,9 @@ export default function App() {
               <Route path="/engagement-rings" element={<EngagementRings />} />
               <Route path="/engagement-rings/:id" element={<EngagementRingDetail />} />
 
+              {/* Universal Product Detail (fallback for any product type) */}
+              <Route path="/products/:id" element={<ProductDetail />} />
+
               {/* Love Collection */}
               <Route path="/love" element={<Love />} />
 
@@ -85,6 +98,10 @@ export default function App() {
               {/* Journal */}
               <Route path="/journal" element={<Journal />} />
               <Route path="/journal/:slug" element={<JournalArticle />} />
+
+              {/* Blog */}
+              <Route path="/blog" element={<Blog />} />
+              <Route path="/blog/:slug" element={<JournalArticle />} />
 
               {/* Other Pages */}
               <Route path="/our-house" element={<OurHouse />} />

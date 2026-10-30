@@ -236,10 +236,125 @@ export const shopInfo = {
   ]
 };
 
+/**
+ * CENTRALIZED CONTACT INFORMATION
+ * Single source of truth for all contact details
+ * Used by: Header, Footer, Contact page, WhatsApp Concierge, Bespoke Enquiry
+ */
 export const contactInfo = {
-  email: 'hello@aviorycoin.com',
-  phone: '+94 11 XXX XXXX',
+  email: 'concierge@aviory.com',
+  phone: '+94 11 234 5678',
+  whatsapp: '+94776100099',
+  address: 'Colombo 03',
+  city: 'Colombo',
+  country: 'Sri Lanka',
   hours: 'Monday - Friday: 9:00 AM - 6:00 PM',
   weekends: 'Saturday & Sunday: By Appointment',
-  address: 'Colombo, Sri Lanka'
+  timezone: 'Asia/Colombo'
 };
+
+/**
+ * COMPANY INFORMATION
+ * Core brand, heritage, and organizational details
+ */
+export const companyInfo = {
+  name: 'AVIORY & CO',
+  legalName: 'AVIORY & CO Limited',
+  tagline: 'Maison de Haute Joaillerie',
+  description: 'Specializing in unheated Ceylon sapphires, natural rubies, and bespoke commissions since 2009',
+  foundedYear: 2009,
+  heritage: 'Ceylon Heritage - Gemstones for over 50 years',
+  certifications: ['GIA Certified', 'Ethical Sourcing Verified', 'Luxury Standards Certified']
+};
+
+/**
+ * SOCIAL MEDIA LINKS
+ * External brand presence
+ */
+export const socialMedia = {
+  instagram: 'https://instagram.com/avioryco',
+  facebook: 'https://facebook.com/avioryco',
+  pinterest: 'https://pinterest.com/avioryco',
+  youtube: 'https://youtube.com/avioryco',
+  whatsapp: 'https://wa.me/94776100099'
+};
+
+/**
+ * TRUST SIGNALS
+ * Key messages to build buyer confidence
+ */
+export const trustSignals = [
+  {
+    icon: '✓',
+    title: 'GIA Certified',
+    description: 'Every gemstone independently certified by the Gemological Institute of America'
+  },
+  {
+    icon: '🛡',
+    title: 'Ethical Sourcing',
+    description: 'Direct relationships with select mining operations ensuring fair practices'
+  },
+  {
+    icon: '🚚',
+    title: 'Armoured Delivery',
+    description: 'Complimentary secure courier for all orders over specified amount'
+  },
+  {
+    icon: '♾',
+    title: 'Lifetime Guarantee',
+    description: 'Lifetime warranty on craftsmanship for all bespoke pieces'
+  },
+  {
+    icon: '💎',
+    title: 'Master Craftsmen',
+    description: 'Bespoke creation by award-winning artisans with 35+ years experience'
+  },
+  {
+    icon: '🌍',
+    title: 'Ceylon Heritage',
+    description: 'Unheated natural sapphires sourced directly from Sri Lanka'
+  }
+];
+
+/**
+ * NAVIGATION LINKS
+ * Primary navigation structure (used by Header mega-menu)
+ */
+export const navigationLinks = [
+  {
+    key: 'gemstones',
+    label: 'Gemstones',
+    href: '/gemstones',
+    icon: '💎'
+  },
+  {
+    key: 'fine-jewellery',
+    label: 'Fine Jewellery',
+    href: '/fine-jewellery',
+    icon: '✨'
+  },
+  {
+    key: 'engagement-rings',
+    label: 'Engagement Rings',
+    href: '/engagement-rings',
+    icon: '💍'
+  },
+  {
+    key: 'bespoke',
+    label: 'Bespoke',
+    href: '/bespoke',
+    icon: '🎨'
+  },
+  {
+    key: 'about',
+    label: 'The Maison',
+    href: '/our-house',
+    icon: '🏛'
+  },
+  {
+    key: 'journal',
+    label: 'Journal',
+    href: '/journal',
+    icon: '📖'
+  }
+];

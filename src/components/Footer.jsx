@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import AvioryLogo from './AvioryLogo'
 import { contactInfo } from '../data/content'
+import { footerLinks } from '../data/navigation'
 import { useLanguage } from '../hooks/useLanguage'
 import './Footer.css'
 
@@ -34,42 +35,52 @@ export default function Footer() {
             <div className="footer-section">
               <h4>{t('footer.collections')}</h4>
               <ul>
-                <li><Link to="/gemstones">Royal Ceylon Sapphires</Link></li>
-                <li><Link to="/gemstones?category=padparadscha">Padparadscha &amp; Spinels</Link></li>
-                <li><Link to="/fine-jewellery">Haute Joaillerie Suites</Link></li>
-                <li><Link to="/engagement-rings">AVIORY Love Collection</Link></li>
-                <li><Link to="/gemstones?category=collector">Collector Vault Pieces</Link></li>
+                {footerLinks.collections.map((link, idx) => (
+                  <li key={idx}>
+                    <Link to={link.href}>{link.label}</Link>
+                  </li>
+                ))}
               </ul>
             </div>
 
-            {/* The Maison */}
+            {/* Service Links */}
             <div className="footer-section">
-              <h4>The Maison</h4>
+              <h4>{t('footer.service') || 'Service'}</h4>
               <ul>
-                <li><Link to="/our-house">Heritage &amp; Artisans</Link></li>
-                <li><Link to="/bespoke/process">The 5-Stage Bespoke Journey</Link></li>
-                <li><Link to="/journal">The Aviory Journal</Link></li>
-                <li><Link to="/journal/sustainable-luxury-and-ethical-sourcing">Mine-to-Market Provenance</Link></li>
-                <li><Link to="/private-consultations">Private Atelier Showing</Link></li>
+                {footerLinks.service.map((link, idx) => (
+                  <li key={idx}>
+                    {link.isExternal ? (
+                      <a href={link.href} target="_blank" rel="noopener noreferrer">{link.label}</a>
+                    ) : (
+                      <Link to={link.href}>{link.label}</Link>
+                    )}
+                  </li>
+                ))}
               </ul>
             </div>
 
             {/* Concierge & Contact */}
             <div className="footer-section">
-              <h4>Concierge</h4>
+              <h4>{t('footer.concierge') || 'Concierge'}</h4>
               <ul className="footer-contact">
                 <li>
                   <a href={`mailto:${contactInfo.email}`} className="contact-link">
-                    concierge@aviory.com
+                    {contactInfo.email}
                   </a>
                 </li>
                 <li>
                   <a href={`tel:${contactInfo.phone}`} className="contact-link">
-                    +94 11 234 5678
+                    {contactInfo.phone}
                   </a>
                 </li>
-                <li>Atelier: Colombo 03, Sri Lanka</li>
-                <li className="contact-hours">Private showings by appointment only</li>
+                <li>
+                  <a href={`https://wa.me/${contactInfo.whatsapp.replace(/\D/g, '')}`} target="_blank" rel="noopener noreferrer" className="contact-link">
+                    WhatsApp: {contactInfo.whatsapp}
+                  </a>
+                </li>
+                <li>{contactInfo.address}, {contactInfo.city}, {contactInfo.country}</li>
+                <li className="contact-hours">{contactInfo.hours}</li>
+                <li className="contact-hours">{contactInfo.weekends}</li>
               </ul>
             </div>
           </div>
@@ -84,10 +95,11 @@ export default function Footer() {
               <p>&copy; {new Date().getFullYear()} AVIORY &amp; CO. All Rights Reserved. GIA&reg; is a registered trademark of Gemological Institute of America.</p>
             </div>
             <div className="footer-links">
-              <Link to="/contact">Privacy Policy</Link>
-              <Link to="/contact">Terms of Guarantee</Link>
-              <Link to="/contact">Armoured Courier Details</Link>
-              <Link to="/contact">Gemological Certification</Link>
+              {footerLinks.company.map((link, idx) => (
+                <Link key={idx} to={link.href}>
+                  {link.label}
+                </Link>
+              ))}
             </div>
           </div>
         </div>

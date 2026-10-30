@@ -15,13 +15,13 @@ export default function Journal() {
   return (
     <>
       <section style={{
-        backgroundColor: '#111111',
-        color: '#F8F4EF',
+        backgroundColor: 'var(--color-primary-black)',
+        color: 'var(--color-ivory)',
         padding: 'var(--spacing-3xl) 0',
         textAlign: 'center'
       }}>
         <div className="container">
-          <h1 style={{ color: '#D4AF7F' }}>Journal</h1>
+          <h1 style={{ color: 'var(--color-champagne)' }}>Journal</h1>
           <p style={{ fontSize: '1.1rem', marginTop: 'var(--spacing-md)', opacity: 0.9 }}>
             Insights, education, and inspiration from our experts
           </p>
@@ -55,8 +55,8 @@ export default function Journal() {
               style={{ textDecoration: 'none', color: 'inherit' }}
             >
               <article style={{
-                backgroundColor: '#FFFFFF',
-                border: '1px solid #D0CCBE',
+                backgroundColor: 'var(--color-white)',
+                border: '1px solid var(--color-medium-gray)',
                 overflow: 'hidden',
                 transition: 'var(--transition)',
                 cursor: 'pointer',
@@ -65,18 +65,18 @@ export default function Journal() {
                 height: '100%'
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.borderColor = '#D4AF7F'
+                e.currentTarget.style.borderColor = 'var(--color-champagne)'
                 e.currentTarget.style.boxShadow = '0 8px 24px rgba(212, 175, 127, 0.15)'
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.borderColor = '#D0CCBE'
+                e.currentTarget.style.borderColor = 'var(--color-medium-gray)'
                 e.currentTarget.style.boxShadow = 'none'
               }}
               >
                 <div style={{
                   width: '100%',
                   height: '200px',
-                  backgroundColor: '#E8E3DC',
+                  backgroundColor: 'var(--color-light-gray)',
                   overflow: 'hidden'
                 }}>
                   <img
@@ -96,7 +96,7 @@ export default function Journal() {
                     fontSize: '0.75rem',
                     textTransform: 'uppercase',
                     letterSpacing: '0.1em',
-                    color: '#A68563',
+                    color: 'var(--color-accent-brown)',
                     marginBottom: 'var(--spacing-sm)'
                   }}>
                     {article.category}
@@ -113,7 +113,7 @@ export default function Journal() {
                   </h3>
 
                   <p style={{
-                    color: '#2B2B2B',
+                    color: 'var(--color-charcoal)',
                     fontSize: '0.95rem',
                     marginBottom: 'var(--spacing-md)',
                     lineHeight: 1.6
@@ -126,7 +126,7 @@ export default function Journal() {
                     justifyContent: 'space-between',
                     alignItems: 'center',
                     fontSize: '0.8rem',
-                    color: '#A68563'
+                    color: 'var(--color-accent-brown)'
                   }}>
                     <span>By {article.author}</span>
                     <span>{new Date(article.publishDate).toLocaleDateString()}</span>
@@ -139,7 +139,7 @@ export default function Journal() {
 
         {filtered.length === 0 && (
           <div style={{ textAlign: 'center', padding: 'var(--spacing-2xl) 0' }}>
-            <p style={{ color: '#2B2B2B', marginBottom: 'var(--spacing-lg)' }}>No articles in this category.</p>
+            <p style={{ color: 'var(--color-charcoal)', marginBottom: 'var(--spacing-lg)' }}>No articles in this category.</p>
             <button
               className="btn btn-primary"
               onClick={() => setSelectedCategory('all')}
