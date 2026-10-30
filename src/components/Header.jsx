@@ -245,7 +245,7 @@ function useMegaMenuData(t) {
    Main Header Component
    ────────────────────────────────────────────────────────── */
 
-export default function Header({ scrolled, visible = true }) {
+export default function Header({ scrolled }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [activeMega, setActiveMega] = useState(null)
   const [mobileAccordion, setMobileAccordion] = useState(null)
@@ -313,7 +313,7 @@ export default function Header({ scrolled, visible = true }) {
     <>
       <header
         ref={headerRef}
-        className={`tiffany-header ${scrolled ? 'tiffany-header--scrolled' : ''} ${activeMega ? 'tiffany-header--mega-open' : ''} ${!visible ? 'tiffany-header--hidden' : ''}`}
+        className={`tiffany-header ${scrolled ? 'tiffany-header--scrolled' : ''} ${activeMega ? 'tiffany-header--mega-open' : ''}`}
       >
         {/* ─── TIER 1: GLOBAL UTILITY BAR (Tiffany Standard) ─── */}
         <div className="tiffany-header__utility">
