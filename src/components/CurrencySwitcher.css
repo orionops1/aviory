@@ -139,11 +139,13 @@
 @media (max-width: 768px) {
   .currency-dropdown {
     position: fixed;
-    top: auto;
+    top: 100%;
     right: auto;
     left: 50%;
     transform: translateX(-50%);
     min-width: 180px;
+    margin-top: 0.5rem;
+    z-index: 999999;
   }
 
   .currency-switcher--dark .currency-toggle {

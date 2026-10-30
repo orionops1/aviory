@@ -217,7 +217,7 @@
 
   .language-dropdown {
     position: fixed;
-    top: auto;
+    top: 100%;
     bottom: auto;
     right: auto;
     left: 50%;
@@ -228,6 +228,7 @@
     overflow-y: auto;
     z-index: 999999;
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+    margin-top: 0.5rem;
   }
 
   .language-option {
