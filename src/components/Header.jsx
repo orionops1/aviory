@@ -155,20 +155,55 @@ function useMegaMenuData(t) {
       },
     },
     {
-      key: 'engagement',
-      label: t('common.engagementRings'),
+      key: 'jewelry',
+      label: 'Jewelry',
       href: '/engagement-rings',
       mega: {
+        // FEATURED COLLECTIONS GRID (Option A: Tiffany-style)
+        featuredCollections: [
+          {
+            title: 'AVIORY Love Collection',
+            description: 'Handcrafted rings for every love story',
+            href: '/love',
+            icon: '💍',
+          },
+          {
+            title: 'Engagement Rings',
+            description: 'Exceptional stones, timeless settings',
+            href: '/engagement-rings',
+            icon: '💎',
+          },
+          {
+            title: 'Wedding Bands',
+            description: 'Matching sets & bridal jewelry',
+            href: '/engagement-rings?type=wedding-bands',
+            icon: '👑',
+          },
+          {
+            title: 'Ceylon Sapphires',
+            description: 'Royal hues from Sri Lanka\'s mines',
+            href: '/gemstones?category=blue-sapphires',
+            icon: '✨',
+          },
+        ],
         columns: [
           {
-            heading: 'Love & Commitment',
+            heading: 'Engagement Collections',
             links: [
               { label: 'Solitaire Settings', href: '/engagement-rings?style=solitaire' },
               { label: 'Luminous Halo Designs', href: '/engagement-rings?style=halo' },
               { label: 'Three Stone Trilogies', href: '/engagement-rings?style=three-stone' },
               { label: 'Cushion Cut Mountings', href: '/engagement-rings?style=cushion' },
               { label: 'Oval & Emerald Cuts', href: '/engagement-rings?style=oval' },
-              { label: 'Pear & Fancy Shapes', href: '/engagement-rings?style=pear' },
+            ],
+          },
+          {
+            heading: 'Love & Celebration',
+            links: [
+              { label: 'AVIORY Love Collection', href: '/love', accent: true },
+              { label: 'Love Stories', href: '/journal' },
+              { label: 'How to Choose a Ring', href: '/engagement-rings' },
+              { label: 'Schedule Consultation', href: '/private-consultations', accent: true },
             ],
           },
           {
@@ -177,14 +212,6 @@ function useMegaMenuData(t) {
               { label: 'Royal Sapphire Rings', href: '/engagement-rings?stone=blue-sapphire' },
               { label: 'Burma & Ceylon Ruby Rings', href: '/engagement-rings?stone=ruby' },
               { label: 'Pink & Padparadscha Rings', href: '/engagement-rings?stone=pink-sapphire' },
-            ],
-          },
-          {
-            heading: 'Love Collection Guide',
-            links: [
-              { label: 'Ring Sizing Guide', href: '/engagement-rings' },
-              { label: 'The Story of Love', href: '/engagement-rings' },
-              { label: 'Book a Love Consultation', href: '/private-consultations' },
               { label: 'Explore All Rings', href: '/engagement-rings', accent: true },
             ],
           },
@@ -192,7 +219,7 @@ function useMegaMenuData(t) {
         feature: {
           title: 'A Love Beyond Diamonds',
           subtitle: 'Celebrate timeless commitment with rare unheated sapphires of royal lineage.',
-          cta: { label: 'Begin Custom Ring', href: '/bespoke/enquiry' },
+          cta: { label: 'Begin Your Love Story', href: '/love' },
           accent: 'rose',
         },
       },
@@ -453,6 +480,24 @@ export default function Header({ scrolled }) {
             role="menu"
           >
             <div className="container tiffany-mega__inner">
+              {/* Featured Collections Grid (Option A) */}
+              {item.mega.featuredCollections && (
+                <div className="tiffany-mega__featured-grid">
+                  {item.mega.featuredCollections.map((collection, fc) => (
+                    <Link
+                      key={fc}
+                      to={collection.href}
+                      className="tiffany-mega__featured-card"
+                      onClick={handleNavClick}
+                    >
+                      <div className="tiffany-mega__featured-icon">{collection.icon}</div>
+                      <h4 className="tiffany-mega__featured-title">{collection.title}</h4>
+                      <p className="tiffany-mega__featured-desc">{collection.description}</p>
+                    </Link>
+                  ))}
+                </div>
+              )}
+
               <div className="tiffany-mega__columns">
                 {item.mega.columns.map((col, ci) => (
                   <div key={ci} className="tiffany-mega__column">
