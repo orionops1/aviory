@@ -1,7 +1,6 @@
 ﻿import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import HeroVideo from "../components/HeroVideo";
-import TrustSignals from "../components/TrustSignals";
 import ProductCard from "../components/ProductCard";
 import { gemstones, journalArticles, engagementRings, fineJewellery } from "../data/products";
 import { useLanguage } from "../hooks/useLanguage";
@@ -38,9 +37,6 @@ export default function Home() {
         subtitle={heroVideo.subtitle}
         cta={heroVideo.cta}
       />
-
-      {/* TRUST SIGNALS - NEW (Phase 1: Visual Refresh) */}
-      <TrustSignals />
 
       {/* DUAL LIFESTYLE IMAGE SECTION (Tiffany Style) */}
       <section className="lifestyle-dual-section">
