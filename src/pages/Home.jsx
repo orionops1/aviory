@@ -154,9 +154,25 @@ export default function Home() {
             </div>
             <div className="home-heritage-visual">
               <div className="home-heritage-card">
-                <div className="heritage-badge">100% UNHEATED &amp; CERTIFIED</div>
-                <h4>Ethical Provenance</h4>
-                <p>Direct mine-to-atelier custody ensuring authentic provenance, responsible mining, and master craftsmanship.</p>
+                <div className="heritage-badge">100% UNHEATED &amp; CERTIFIED NATURAL</div>
+                <div className="heritage-gemstone-image-wrap">
+                  <img 
+                    src="/images/editorial/ceylon-sapphire-vault.jpg" 
+                    alt="Royal Ceylon Blue Sapphire" 
+                    className="heritage-gemstone-img"
+                  />
+                  <span className="heritage-gemstone-tag">LOTUS &amp; GRS CERTIFIED</span>
+                </div>
+                <div className="heritage-gemstone-details">
+                  <h4>Royal Ceylon Sapphire</h4>
+                  <p className="heritage-gemstone-meta">7.42 Carats &bull; Cushion Cut &bull; Unheated</p>
+                  <p className="heritage-gemstone-desc">
+                    Direct mine-to-atelier custody from Balangoda, Ceylon. Ethically mined and certified untreated natural crystalline purity.
+                  </p>
+                  <Link to="/gemstones?category=blue-sapphires" className="heritage-card-link">
+                    EXPLORE VAULT SPECIMENS &rarr;
+                  </Link>
+                </div>
               </div>
             </div>
           </div>

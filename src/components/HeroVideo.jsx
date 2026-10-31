@@ -6,8 +6,8 @@ export default function HeroVideo({
   video,
   poster,
   title = "AVIORY & CO.",
-  subtitle = "Exceptional Ceylon Gemstones",
-  cta = { label: "Discover Gemstones", href: "/gemstones" }
+  subtitle = "Exceptional Gemstones & Fine Jewellery",
+  cta = { label: "Explore The House", href: "/gemstones" }
 }) {
   const videoRef = useRef(null)
 
@@ -18,7 +18,7 @@ export default function HeroVideo({
       videoRef.current.autoplay = true
       videoRef.current.playsInline = true
       videoRef.current.play().catch(() => {
-        // Autoplay blocked by browser
+        // Autoplay handled by browser policies
       })
     }
   }, [])
@@ -45,23 +45,28 @@ export default function HeroVideo({
         style={{ backgroundImage: `url(${poster})` }}
       />
 
-      {/* OVERLAY */}
+      {/* LUXURY VIGNETTE OVERLAY */}
       <div className="hero-video__overlay" />
 
-      {/* CONTENT */}
+      {/* CONTENT WITH BLACKGOLD LOGO */}
       <div className="hero-video__content">
         <div className="container">
           <div className="hero-video__text">
-            <h1 className="hero-video__title">{title}</h1>
+            <h1 className="hero-video__title" aria-label="AVIORY & CO.">
+              <span className="hero-video__logo-text">AVIORY</span>
+              <span className="hero-video__logo-amp">&amp;</span>
+              <span className="hero-video__logo-co">CO.</span>
+            </h1>
+            
             <p className="hero-video__subtitle">{subtitle}</p>
             
-            <div className="hero-video__cta">
-              {cta && (
+            {cta && (
+              <div className="hero-video__cta">
                 <Link to={cta.href} className="btn btn-primary">
                   {cta.label}
                 </Link>
-              )}
-            </div>
+              </div>
+            )}
           </div>
         </div>
       </div>

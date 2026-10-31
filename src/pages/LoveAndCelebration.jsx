@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useEffect } from 'react'
+ï»¿import React, { useState, useMemo, useEffect } from 'react'
 import { Link, useSearchParams } from 'react-router-dom'
 import ProductCard from '../components/ProductCard'
 import { engagementRings } from '../data/products'
@@ -10,14 +10,14 @@ export default function LoveAndCelebration() {
   const [selectedStone, setSelectedStone] = useState('all')
   const [selectedShape, setSelectedShape] = useState('all')
 
-  const styles = ['all', ...new Set(engagementRings.map(r => r.style))]
-  const stoneTypes = ['all', ...new Set(engagementRings.map(r => r.stoneType))]
-  const shapes = ['all', ...new Set(engagementRings.map(r => r.shape))]
+  const styles = ['all', ...new Set(engagementRings.map(r => r.style).filter(Boolean))]
+  const stoneTypes = ['all', ...new Set(engagementRings.map(r => r.stoneType).filter(Boolean))]
+  const shapes = ['all', ...new Set(engagementRings.map(r => r.shape).filter(Boolean))]
 
   useEffect(() => {
     const styleParam = searchParams.get('style')
     const stoneParam = searchParams.get('stone')
-    const shapeParam = searchParams.get('shape')
+    const shapeParam = searchParams.get('cut') || searchParams.get('shape')
 
     if (styleParam) {
       const match = styles.find(s => s.toLowerCase() === styleParam.toLowerCase())
@@ -34,7 +34,7 @@ export default function LoveAndCelebration() {
     }
 
     if (shapeParam) {
-      const match = shapes.find(s => s.toLowerCase() === shapeParam.toLowerCase())
+      const match = shapes.find(s => s.toLowerCase().includes(shapeParam.toLowerCase()))
       if (match) setSelectedShape(match)
     } else {
       setSelectedShape('all')
@@ -45,7 +45,7 @@ export default function LoveAndCelebration() {
     return engagementRings.filter(ring => {
       if (selectedStyle !== 'all' && ring.style.toLowerCase() !== selectedStyle.toLowerCase()) return false
       if (selectedStone !== 'all' && ring.stoneType.toLowerCase() !== selectedStone.toLowerCase()) return false
-      if (selectedShape !== 'all' && ring.shape.toLowerCase() !== selectedShape.toLowerCase()) return false
+      if (selectedShape !== 'all' && !ring.shape.toLowerCase().includes(selectedShape.toLowerCase())) return false
       return true
     })
   }, [selectedStyle, selectedStone, selectedShape])
@@ -77,121 +77,133 @@ export default function LoveAndCelebration() {
     const params = new URLSearchParams(searchParams)
     if (shape === 'all') {
       params.delete('shape')
+      params.delete('cut')
     } else {
       params.set('shape', shape)
     }
     setSearchParams(params)
   }
 
+  const handleClearAll = () => {
+    setSelectedStyle('all')
+    setSelectedStone('all')
+    setSelectedShape('all')
+    setSearchParams(new URLSearchParams())
+  }
+
   return (
-    <>
-      <section style={{
-        backgroundColor: '#111111',
-        color: '#F8F4EF',
-        padding: 'var(--spacing-3xl) 0',
-        textAlign: 'center'
-      }}>
+    <div className="love-page">
+      {/* 1. HAUTE JOAILLERIE EDITORIAL HERO */}
+      <section className="love-hero">
         <div className="container">
-          <span style={{ display: 'block', fontSize: '0.72rem', letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--color-champagne)', marginBottom: '0.5rem', fontWeight: 700 }}>
-            AVIORY LOVE COLLECTION
-          </span>
-          <h1 style={{ color: '#ffffff', fontFamily: 'var(--font-serif)', fontSize: 'clamp(2.4rem, 5vw, 3.5rem)' }}>Rings for Every Love Story</h1>
-          <p style={{ fontSize: '1.05rem', marginTop: 'var(--spacing-sm)', opacity: 0.9, maxWidth: '600px', margin: '0 auto' }}>
-            We believe every love story deserves an exceptional beginning. Each piece in the AVIORY Love Collection is handcrafted to celebrate the moments that matter most—from first meetings to lifetime commitments.
+          <span className="love-hero__eyebrow">AVIORY LOVE COLLECTION</span>
+          <h1 className="love-hero__title">Rings for Every Love Story</h1>
+          <p className="love-hero__subtitle">
+            We believe every love story deserves an exceptional beginning. Each piece in the AVIORY Love Collection is handcrafted to celebrate the moments that matter most - from first meetings to lifetime commitments. Handcrafting rare unheated Ceylon sapphires and fine gemstones into heirlooms that outlast generations.
           </p>
         </div>
       </section>
 
-      <div className="container" style={{ paddingTop: 'var(--spacing-3xl)', paddingBottom: 'var(--spacing-3xl)' }}>
-        <div className="filters-section">
-          <div className="filters-header">
-            <h3>Filter by Moment, Gemstone & Shape</h3>
+      {/* 2. FILTER & CONTROLS TOOLBAR */}
+      <section className="love-filters-container">
+        <div className="container">
+          <div className="love-filters-header">
+            <h3>Filter Rings by Moment, Gemstone &amp; Cut</h3>
             <button
-              className="btn btn-small"
-              onClick={() => {
-                handleStyleChange('all')
-                handleStoneChange('all')
-                handleShapeChange('all')
-              }}
+              type="button"
+              className="love-clear-btn"
+              onClick={handleClearAll}
             >
-              Clear All
+              Reset Filters
             </button>
           </div>
 
-          <div style={{ marginBottom: 'var(--spacing-lg)' }}>
-            <h4 style={{ marginBottom: 'var(--spacing-md)', fontSize: '0.9rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Moment</h4>
-            <div className="filter-group">
+          {/* By Moment / Style */}
+          <div className="love-filter-group">
+            <span className="love-filter-subheading">Moments &amp; Style</span>
+            <div className="love-filter-pills">
               {styles.map(style => (
                 <button
                   key={style}
-                  className={`filter-option ${selectedStyle.toLowerCase() === style.toLowerCase() ? 'active' : ''}`}
+                  type="button"
+                  className={`love-filter-pill ${selectedStyle.toLowerCase() === style.toLowerCase() ? 'love-filter-pill--active' : ''}`}
                   onClick={() => handleStyleChange(style)}
                 >
-                  {style.charAt(0).toUpperCase() + style.slice(1)}
+                  {style === 'all' ? 'All Moments' : style}
                 </button>
               ))}
             </div>
           </div>
 
-          <div style={{ marginBottom: 'var(--spacing-lg)' }}>
-            <h4 style={{ marginBottom: 'var(--spacing-md)', fontSize: '0.9rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Gemstone</h4>
-            <div className="filter-group">
+          {/* By Gemstone */}
+          <div className="love-filter-group">
+            <span className="love-filter-subheading">Gemstone Variety</span>
+            <div className="love-filter-pills">
               {stoneTypes.map(stone => (
                 <button
                   key={stone}
-                  className={`filter-option ${selectedStone.toLowerCase() === stone.toLowerCase() ? 'active' : ''}`}
+                  type="button"
+                  className={`love-filter-pill ${selectedStone.toLowerCase() === stone.toLowerCase() ? 'love-filter-pill--active' : ''}`}
                   onClick={() => handleStoneChange(stone)}
                 >
-                  {stone.charAt(0).toUpperCase() + stone.slice(1)}
+                  {stone === 'all' ? 'All Gemstones' : stone}
                 </button>
               ))}
             </div>
           </div>
 
-          <div style={{ marginBottom: 'var(--spacing-lg)' }}>
-            <h4 style={{ marginBottom: 'var(--spacing-md)', fontSize: '0.9rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Gemstone Shape</h4>
-            <div className="filter-group">
+          {/* By Shape / Cut */}
+          <div className="love-filter-group">
+            <span className="love-filter-subheading">Gemstone Shape &amp; Cut</span>
+            <div className="love-filter-pills">
               {shapes.map(shape => (
                 <button
                   key={shape}
-                  className={`filter-option ${selectedShape.toLowerCase() === shape.toLowerCase() ? 'active' : ''}`}
+                  type="button"
+                  className={`love-filter-pill ${selectedShape.toLowerCase() === shape.toLowerCase() ? 'love-filter-pill--active' : ''}`}
                   onClick={() => handleShapeChange(shape)}
                 >
-                  {shape.charAt(0).toUpperCase() + shape.slice(1)}
+                  {shape === 'all' ? 'All Shapes' : shape}
                 </button>
               ))}
             </div>
           </div>
         </div>
+      </section>
 
-        <div style={{ marginBottom: 'var(--spacing-lg)' }}>
-          <p style={{ color: '#2B2B2B' }}>
-            Showing <strong>{filtered.length}</strong> rings
-          </p>
+      {/* 3. PRODUCT CATALOG */}
+      <div className="container love-catalog">
+        <div className="love-meta-bar">
+          <span className="love-count-text">
+            Showing <strong>{filtered.length}</strong> {filtered.length === 1 ? 'ring' : 'rings'} in the Love Collection
+          </span>
         </div>
 
         {filtered.length > 0 ? (
-          <div className="product-grid">
+          <div className="love-product-grid">
             {filtered.map(ring => (
               <ProductCard key={ring.id} product={ring} type="ring" />
             ))}
           </div>
         ) : (
-          <div style={{ textAlign: 'center', padding: 'var(--spacing-2xl) 0' }}>
-            <p style={{ color: '#2B2B2B', marginBottom: 'var(--spacing-lg)' }}>No rings match your filters.</p>
-            <button
-              className="btn btn-primary"
-              onClick={() => {
-                handleStyleChange('all')
-                handleStoneChange('all')
-                handleShapeChange('all')
-              }}
-            >
-              Reset Filters
-            </button>
+          <div className="love-empty-state">
+            <h3>No Rings Found</h3>
+            <p>No rings match the selected filter combination. Explore our full collection or commission a bespoke ring.</p>
+            <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center' }}>
+              <button
+                type="button"
+                className="btn btn-primary"
+                onClick={handleClearAll}
+              >
+                Clear Filters
+              </button>
+              <Link to="/bespoke" className="btn btn-outline">
+                Start Bespoke Commission
+              </Link>
+            </div>
           </div>
         )}
       </div>
-    </>
+    </div>
   )
 }

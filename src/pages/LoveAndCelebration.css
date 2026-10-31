@@ -1,1 +1,217 @@
-/* Already defined in main styles/index.css - this file left intentionally minimal */
+/* ============================================================================
+   LOVE & CELEBRATION COLLECTION - HAUTE JOAILLERIE STYLING
+   ============================================================================ */
+
+.love-page {
+  background-color: #FFFFFF;
+  min-height: 100vh;
+}
+
+/* Dark Editorial Hero */
+.love-hero {
+  background-color: #111111;
+  color: #FFFFFF;
+  padding: clamp(3.5rem, 6vw, 5rem) 0;
+  text-align: center;
+  position: relative;
+  border-bottom: 1px solid rgba(212, 175, 127, 0.25);
+}
+
+.love-hero__eyebrow {
+  display: block;
+  font-family: var(--font-sans, 'Montserrat', sans-serif);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-champagne, #D4AF7F);
+  margin-bottom: 0.75rem;
+}
+
+.love-hero__title {
+  font-family: var(--font-serif-display, 'Playfair Display', Georgia, serif);
+  font-size: clamp(2.4rem, 5vw, 3.8rem);
+  font-weight: 400;
+  color: #FFFFFF;
+  margin-bottom: 1rem;
+  line-height: 1.15;
+}
+
+.love-hero__subtitle {
+  font-family: var(--font-serif-body, 'Cormorant Garamond', Georgia, serif);
+  font-size: clamp(1.05rem, 2vw, 1.25rem);
+  line-height: 1.7;
+  color: #E0DDD7;
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+/* Controls & Filter Section */
+.love-filters-container {
+  background-color: #FAF7F2;
+  border-bottom: 1px solid var(--color-gray-light, #E8E3DC);
+  padding: 2.25rem 0;
+}
+
+.love-filters-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.75rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.love-filters-header h3 {
+  font-family: var(--font-sans, 'Montserrat', sans-serif);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #111111;
+  margin: 0;
+}
+
+.love-clear-btn {
+  background: none;
+  border: none;
+  font-family: var(--font-sans, 'Montserrat', sans-serif);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #8B7355;
+  text-decoration: underline;
+  cursor: pointer;
+  padding: 0;
+  transition: color 0.2s ease;
+}
+
+.love-clear-btn:hover {
+  color: #111111;
+}
+
+/* Filter Groups */
+.love-filter-group {
+  margin-bottom: 1.5rem;
+}
+
+.love-filter-group:last-child {
+  margin-bottom: 0;
+}
+
+/* High-contrast, bold subheadings requested by user */
+.love-filter-subheading {
+  font-family: var(--font-sans, 'Montserrat', sans-serif) !important;
+  font-size: 0.75rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.16em !important;
+  text-transform: uppercase !important;
+  color: #111111 !important;
+  margin-bottom: 0.65rem !important;
+  display: block;
+}
+
+.love-filter-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.love-filter-pill {
+  background: #FFFFFF;
+  border: 1px solid #D5CFC7;
+  padding: 0.45rem 1rem;
+  font-family: var(--font-sans, 'Montserrat', sans-serif);
+  font-size: 0.74rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #222222;
+  cursor: pointer;
+  border-radius: 0;
+  transition: all 0.25s ease;
+}
+
+.love-filter-pill:hover {
+  border-color: #111111;
+  color: #111111;
+  transform: translateY(-1px);
+}
+
+.love-filter-pill--active {
+  background-color: #111111;
+  border-color: #111111;
+  color: #FFFFFF;
+  font-weight: 600;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* Active count bar */
+.love-meta-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.5rem 0 1rem;
+}
+
+.love-count-text {
+  font-family: var(--font-sans, 'Montserrat', sans-serif);
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  color: #333333;
+}
+
+/* Product Catalog Grid */
+.love-catalog {
+  padding: 1rem 0 5rem;
+}
+
+.love-product-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2.25rem;
+}
+
+/* Empty State */
+.love-empty-state {
+  text-align: center;
+  padding: 5rem 1rem;
+  background-color: #FAF7F2;
+  border: 1px solid var(--color-gray-light);
+  margin: 2rem 0;
+}
+
+.love-empty-state h3 {
+  font-family: var(--font-serif-display, serif);
+  font-size: 1.6rem;
+  margin-bottom: 0.5rem;
+  color: #111111;
+}
+
+.love-empty-state p {
+  font-family: var(--font-body);
+  color: #66615C;
+  margin-bottom: 1.5rem;
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+  .love-product-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 900px) {
+  .love-product-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .love-product-grid {
+    grid-template-columns: 1fr;
+  }
+}
