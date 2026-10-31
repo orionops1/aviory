@@ -52,9 +52,34 @@
   justify-content: flex-start;
   text-decoration: none;
   flex: 0 0 auto;
-  width: 140px;
-  height: 40px;
+  width: auto;
+  height: auto;
   margin-right: 2rem;
+  gap: 0.3rem;
+}
+
+.tiffany-header__logo-text {
+  font-family: var(--font-primary);
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  color: var(--color-black);
+}
+
+.tiffany-header__logo-ampersand {
+  font-family: var(--font-primary);
+  font-size: 0.8rem;
+  font-weight: 400;
+  color: var(--color-black);
+  margin: 0 0.2rem;
+}
+
+.tiffany-header__logo-co {
+  font-family: var(--font-primary);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: var(--color-black);
 }
 
 /* Mobile Hamburger */
@@ -536,6 +561,14 @@
   border-bottom: 1px solid var(--color-gray-light);
 }
 
+.tiffany-mobile-drawer__logo {
+  font-family: var(--font-primary);
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  color: var(--color-black);
+}
+
 .tiffany-mobile-drawer__close {
   background: none;
   border: none;
@@ -718,9 +751,22 @@
 
   /* Compact logo on mobile */
   .tiffany-header__logo-link {
-    max-width: 100px;
-    height: 36px;
+    max-width: none;
+    width: auto;
+    height: auto;
     margin-right: 1rem;
+  }
+
+  .tiffany-header__logo-text {
+    font-size: 0.8rem;
+  }
+
+  .tiffany-header__logo-ampersand {
+    font-size: 0.7rem;
+  }
+
+  .tiffany-header__logo-co {
+    font-size: 0.65rem;
   }
 
   /* Mobile actions */

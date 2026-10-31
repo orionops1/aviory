@@ -6,7 +6,6 @@ import { contactInfo } from '../data/content'
 import { megaMenuData } from '../data/navigation'
 import LanguageSwitcher from './LanguageSwitcher'
 import CurrencySwitcher from './CurrencySwitcher'
-import AvioryLogo from './AvioryLogo'
 import CartDrawer from './CartDrawer'
 import SearchModal from './SearchModal'
 import AppointmentModal from './AppointmentModal'
@@ -169,14 +168,16 @@ export default function Header({ scrolled }) {
               <span className={`tiffany-hamburger-bar ${mobileMenuOpen ? 'open' : ''}`} />
             </button>
 
-            {/* Left-Center: Logo */}
+            {/* Left-Center: Logo (Text-based, inline) */}
             <Link 
               to="/" 
               className="tiffany-header__logo-link" 
               onClick={handleNavClick}
               aria-label="AVIORY & CO. Homepage"
             >
-              <AvioryLogo variant="compact" showSubtitle={false} />
+              <span className="tiffany-header__logo-text">AVIORY</span>
+              <span className="tiffany-header__logo-ampersand">&amp;</span>
+              <span className="tiffany-header__logo-co">CO.</span>
             </Link>
 
             {/* Center: Navigation Items (Inline) */}
@@ -326,7 +327,7 @@ export default function Header({ scrolled }) {
       {/* ─── MOBILE DRAWER NAVIGATION ─── */}
       <div className={`tiffany-mobile-drawer ${mobileMenuOpen ? 'tiffany-mobile-drawer--open' : ''}`}>
         <div className="tiffany-mobile-drawer__header">
-          <AvioryLogo variant="minimal" />
+          <span className="tiffany-mobile-drawer__logo">AVIORY &amp; CO.</span>
           <button
             type="button"
             className="tiffany-mobile-drawer__close"
