@@ -236,6 +236,12 @@ export default function Header({ scrolled }) {
                   <span className="tiffany-header__bag-badge">{itemCount}</span>
                 )}
               </button>
+
+              {/* Language & Currency Switchers */}
+              <div className="tiffany-header__locale">
+                <CurrencySwitcher variant="light" />
+                <LanguageSwitcher variant="light" />
+              </div>
             </div>
           </div>
         </div>
