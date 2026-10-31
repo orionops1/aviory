@@ -16,22 +16,22 @@ const translations = {
 }
 
 const languages = [
-  { code: 'en', name: 'English', flag: '🇬🇧' },
-  { code: 'de', name: 'Deutsch', flag: '🇩🇪' },
-  { code: 'fr', name: 'Français', flag: '🇫🇷' },
-  { code: 'it', name: 'Italiano', flag: '🇮🇹' },
-  { code: 'es', name: 'Español', flag: '🇪🇸' }
+  { code: 'en', name: 'English', label: 'EN' },
+  { code: 'fr', name: 'Français', label: 'FR' },
+  { code: 'de', name: 'Deutsch', label: 'DE' },
+  { code: 'it', name: 'Italiano', label: 'IT' },
+  { code: 'es', name: 'Español', label: 'ES' }
 ]
 
 const currencies = [
   { code: 'USD', symbol: '$', name: 'US Dollar' },
-  { code: 'LKR', symbol: '₨', name: 'Sri Lankan Rupee' },
-  { code: 'EUR', symbol: '€', name: 'Euro' }
+  { code: 'EUR', symbol: '€', name: 'Euro' },
+  { code: 'GBP', symbol: '£', name: 'British Pound' },
+  { code: 'LKR', symbol: 'Rs.', name: 'Sri Lankan Rupee' }
 ]
 
 export const LanguageProvider = ({ children }) => {
   const [language, setLanguage] = useState(() => {
-    // Get language from localStorage or default to 'en'
     if (typeof window !== 'undefined') {
       const stored = localStorage.getItem('preferred-language')
       return stored && translations[stored] ? stored : 'en'
@@ -40,7 +40,6 @@ export const LanguageProvider = ({ children }) => {
   })
 
   const [currency, setCurrency] = useState(() => {
-    // Get currency from localStorage or default to 'USD'
     if (typeof window !== 'undefined') {
       const stored = localStorage.getItem('preferred-currency')
       return stored && currencies.find(c => c.code === stored) ? stored : 'USD'
@@ -49,12 +48,10 @@ export const LanguageProvider = ({ children }) => {
   })
 
   useEffect(() => {
-    // Save language to localStorage whenever it changes
     localStorage.setItem('preferred-language', language)
   }, [language])
 
   useEffect(() => {
-    // Save currency to localStorage whenever it changes
     localStorage.setItem('preferred-currency', currency)
   }, [currency])
 
@@ -70,27 +67,44 @@ export const LanguageProvider = ({ children }) => {
     }
   }
 
-  const t = (key) => {
-    const keys = key.split('.')
-    let value = translations[language]
+  const t = (key, fallback = '') => {
+    if (!key || typeof key !== 'string') return fallback || ''
 
-    for (const k of keys) {
-      if (value && typeof value === 'object' && k in value) {
-        value = value[k]
-      } else {
-        // Fallback to English if translation not found
-        value = translations.en
-        for (const fallbackKey of keys) {
-          if (value && typeof value === 'object' && fallbackKey in value) {
-            value = value[fallbackKey]
-          } else {
-            return key // Return the key if not found
-          }
+    const getNested = (obj, path) => {
+      if (!obj) return undefined
+      const parts = path.split('.')
+      let current = obj
+      for (const p of parts) {
+        if (current && typeof current === 'object' && p in current) {
+          current = current[p]
+        } else {
+          return undefined
         }
       }
+      return typeof current === 'string' ? current : undefined
     }
 
-    return typeof value === 'string' ? value : key
+    // 1. Try selected language
+    let result = getNested(translations[language], key)
+    if (result) return result
+
+    // 2. Try lowercase key
+    const lowerKey = key.toLowerCase()
+    if (lowerKey !== key) {
+      result = getNested(translations[language], lowerKey)
+      if (result) return result
+    }
+
+    // 3. Fallback to English
+    result = getNested(translations.en, key)
+    if (result) return result
+    result = getNested(translations.en, lowerKey)
+    if (result) return result
+
+    // 4. Return fallback or humanized key
+    if (fallback) return fallback
+    const lastPart = key.split('.').pop()
+    return lastPart.replace(/([A-Z])/g, ' $1').replace(/^./, str => str.toUpperCase())
   }
 
   return (

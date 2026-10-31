@@ -33,9 +33,19 @@ export default function LanguageSwitcher({ variant = 'dark' }) {
         title="Select Language"
         aria-expanded={isOpen}
       >
-        <span className="language-flag">{currentLanguage?.flag}</span>
         <span className="language-code">{language.toUpperCase()}</span>
-        <span className="language-chevron" style={{ transform: isOpen ? 'rotate(180deg)' : 'none' }}>▾</span>
+        <svg 
+          className="language-chevron" 
+          width="10" 
+          height="6" 
+          viewBox="0 0 10 6" 
+          fill="none" 
+          stroke="currentColor" 
+          strokeWidth="1.5"
+          style={{ transform: isOpen ? 'rotate(180deg)' : 'none', transition: 'transform 0.2s ease' }}
+        >
+          <path d="M1 1L5 5L9 1" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
       </button>
 
       {isOpen && (
@@ -53,7 +63,6 @@ export default function LanguageSwitcher({ variant = 'dark' }) {
               title={lang.name}
               role="menuitem"
             >
-              <span className="option-flag">{lang.flag}</span>
               <span className="option-name">{lang.name}</span>
               <span className="option-code">{lang.code.toUpperCase()}</span>
             </button>

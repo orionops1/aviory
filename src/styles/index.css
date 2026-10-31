@@ -377,33 +377,9 @@ section {
   }
 }
 
-/* ALTERNATE SECTION BACKGROUNDS (NEW - Phase 1) */
-section:nth-child(odd) {
-  background-color: var(--color-ivory);
-}
-
-section:nth-child(even) {
-  background-color: #fdfbf8;
-}
-
-/* SECTION DIVIDER (NEW - Phase 1) */
-section::after {
-  content: "";
-  display: block;
-  height: 1px;
-  background: linear-gradient(
-    to right,
-    transparent,
-    var(--color-champagne),
-    transparent
-  );
-  width: 100px;
-  margin: var(--spacing-xl) auto;
-  opacity: 0.3;
-}
-
-section:last-child::after {
-  display: none;
+/* Harmonious Luxury Section Architecture */
+section {
+  background-color: transparent;
 }
 
 /* ============================================================================

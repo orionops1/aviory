@@ -35,7 +35,18 @@ export default function CurrencySwitcher({ variant = 'dark' }) {
       >
         <span className="currency-symbol">{currentCurrency?.symbol}</span>
         <span className="currency-code">{currency}</span>
-        <span className="currency-chevron" style={{ transform: isOpen ? 'rotate(180deg)' : 'none' }}>▾</span>
+        <svg 
+          className="currency-chevron" 
+          width="10" 
+          height="6" 
+          viewBox="0 0 10 6" 
+          fill="none" 
+          stroke="currentColor" 
+          strokeWidth="1.5"
+          style={{ transform: isOpen ? 'rotate(180deg)' : 'none', transition: 'transform 0.2s ease' }}
+        >
+          <path d="M1 1L5 5L9 1" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
       </button>
 
       {isOpen && (

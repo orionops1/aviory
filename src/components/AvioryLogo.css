@@ -43,8 +43,8 @@
 }
 
 .aviory-logo__ampersand {
-  font-family: 'BlackGold', 'Cormorant Garamond', 'Playfair Display', serif;
-  font-style: normal;
+  font-family: 'Playfair Display', 'Cormorant Garamond', Georgia, serif !important;
+  font-style: italic;
   font-weight: 400;
   font-size: 1.85rem;
   letter-spacing: 0.05em;

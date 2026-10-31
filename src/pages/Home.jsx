@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import HeroVideo from "../components/HeroVideo";
 import ProductCard from "../components/ProductCard";
-import { gemstones, journalArticles, engagementRings, fineJewellery } from "../data/products";
+import { gemstones, journalArticles, fineJewellery } from "../data/products";
 import { useLanguage } from "../hooks/useLanguage";
 import "./Home.css";
 
@@ -18,18 +18,17 @@ export default function Home() {
     setTimeout(() => setSubscribed(false), 3500);
   };
 
-  // Hero section with single looping video (Tiffany/Harry Winston style)
   const heroVideo = {
     video: "/videos/hero-luxury.mp4",
     poster: "/images/hero-banner.jpg",
-    title: t("hero.title") || "AVIORY & CO.",
-    subtitle: t("hero.subtitle") || "The Art of Natural Ceylon Gemstones & Fine Jewellery",
+    title: t("hero.title", "AVIORY & CO."),
+    subtitle: t("hero.subtitle", "The Art of Natural Ceylon Gemstones & Fine Jewellery"),
     cta: { label: "Explore The House", href: "/gemstones" }
   };
 
   return (
     <div className="aviory-homepage">
-      {/* ─── 1. HERO VIDEO / CAMPAIGN ─── */}
+      {/* 1. HERO VIDEO / CAMPAIGN */}
       <HeroVideo 
         video={heroVideo.video}
         poster={heroVideo.poster}
@@ -38,11 +37,11 @@ export default function Home() {
         cta={heroVideo.cta}
       />
 
-      {/* ─── 2. THE TWO PILLARS: LOVE COLLECTION + HIGH JEWELLERY ─── */}
+      {/* 2. THE TWO PILLARS: LOVE COLLECTION + HIGH JEWELLERY */}
       <section className="home-editorial-two-up">
         <div className="container">
           <div className="editorial-two-up-grid">
-            {/* LEFT PANEL: THE LOVE COLLECTION */}
+            {/* LEFT PILLAR: THE LOVE COLLECTION */}
             <div className="editorial-panel">
               <div 
                 className="editorial-panel-image" 
@@ -53,14 +52,16 @@ export default function Home() {
               <div className="editorial-panel-content">
                 <span className="editorial-eyebrow">THE LOVE COLLECTION</span>
                 <h3>Rings for Every Love Story</h3>
-                <p>Handcrafted engagement and promise rings set with rare, unheated Ceylon sapphires and certified fine gemstones.</p>
+                <p>
+                  She will say "Yes" to handcrafted engagement rings set with rare, unheated Ceylon sapphires and certified natural gemstones.
+                </p>
                 <Link to="/love-and-celebration" className="btn btn-primary btn-small">
-                  EXPLORE RINGS
+                  EXPLORE LOVE COLLECTION
                 </Link>
               </div>
             </div>
 
-            {/* RIGHT PANEL: FINE JEWELLERY & GEMS */}
+            {/* RIGHT PILLAR: HIGH JEWELLERY & RARE GEMS */}
             <div className="editorial-panel">
               <div 
                 className="editorial-panel-image" 
@@ -69,9 +70,11 @@ export default function Home() {
                 <div className="editorial-panel-overlay" />
               </div>
               <div className="editorial-panel-content">
-                <span className="editorial-eyebrow">HIGH JEWELLERY &amp; RARE GEMS</span>
+                <span className="editorial-eyebrow">HIGH JEWELLERY ATELIER</span>
                 <h3>Atelier Masterpieces</h3>
-                <p>One-of-a-kind statement necklaces, earrings, bracelets, and collector-grade natural gemstones.</p>
+                <p>
+                  One-of-a-kind statement necklaces, drop earrings, cuffs, and collector-grade natural gemstones hand-wrought by Ceylon goldsmiths.
+                </p>
                 <Link to="/fine-jewellery" className="btn btn-primary btn-small">
                   EXPLORE FINE JEWELLERY
                 </Link>
@@ -81,7 +84,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ─── 3. FEATURED STORY: WE DESIGN VALUE FOR EVERY LOVE STORY ─── */}
+      {/* 3. FEATURED STORY: WE DESIGN VALUE FOR EVERY LOVE STORY */}
       <section className="home-value-hero">
         <div className="home-value-hero-grid">
           <div 
@@ -94,7 +97,7 @@ export default function Home() {
             <span className="editorial-eyebrow">BESPOKE ATELIER COMMISSIONS</span>
             <h2>We Design Value for Every Love Story</h2>
             <p>
-              Personalized gemstone jewelry carries meaning that deepens with time. We believe every love story deserves an exceptional beginning—handcrafting rare natural Ceylon sapphires and gemstones into timeless heirlooms that outlast generations.
+              We believe every love story deserves an exceptional beginning. Each creation in the AVIORY Love Collection is handcrafted to celebrate the moments that matter most—from first meetings to lifetime commitments. Handcrafting rare unheated Ceylon sapphires and certified gemstones into heirloom pieces that outlast generations.
             </p>
             <div className="home-value-hero-actions">
               <Link to="/love-and-celebration" className="btn btn-primary">
@@ -108,7 +111,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ─── 4. THE ART OF GIFTING (Curated Gifts & Milestones) ─── */}
+      {/* 4. THE ART OF THE GIFT (Curated Gifts & Milestones) */}
       <section className="home-gift-section">
         <div className="home-gift-grid">
           <div 
@@ -121,7 +124,7 @@ export default function Home() {
             <span className="editorial-eyebrow">MILESTONES &amp; CELEBRATIONS</span>
             <h2>The Art of the Gift</h2>
             <p>
-              Celebrate every facet of the ones you love. From proposal moments to anniversary milestones, birthdays, and lifetime achievements, discover exceptional creations presented in our signature bespoke luxury packaging.
+              Celebrate every milestone of the ones you cherish. From proposal rings and wedding day heirlooms to anniversary milestones and birthday tributes, discover creations presented in our signature bespoke luxury packaging.
             </p>
             <Link to="/fine-jewellery" className="btn btn-primary">
               DISCOVER CURATED GIFTS
@@ -130,7 +133,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ─── 5. CEYLON SAPPHIRES: THE ISLAND OF GEMS ─── */}
+      {/* 5. CEYLON SAPPHIRES: THE ISLAND OF GEMS */}
       <section className="home-heritage-section">
         <div className="container">
           <div className="home-heritage-grid">
@@ -160,7 +163,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ─── 6. FEATURED CREATIONS (LIVE PRODUCTS & LIVE CURRENCY) ─── */}
+      {/* 6. FEATURED CREATIONS (LIVE PRODUCTS & LIVE CURRENCY) */}
       <section className="featured-products">
         <div className="container">
           <div className="section-title-wrap">
@@ -175,7 +178,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ─── 7. HAUTE JOAILLERIE SHOWCASE ─── */}
+      {/* 7. HAUTE JOAILLERIE SHOWCASE */}
       <section className="jewellery-showcase">
         <div className="container">
           <div className="section-title-wrap">
@@ -190,7 +193,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ─── 8. FROM OUR JOURNAL (Editorial Knowledge) ─── */}
+      {/* 8. FROM OUR JOURNAL (Editorial Knowledge) */}
       <section className="journal-preview">
         <div className="container">
           <div className="section-title-wrap">
@@ -206,7 +209,7 @@ export default function Home() {
                   <h3>{article.title}</h3>
                   <p>{article.excerpt}</p>
                   <div className="journal-meta">
-                    By {article.author} · {new Date(article.publishDate).toLocaleDateString()}
+                    By {article.author} &bull; {new Date(article.publishDate).toLocaleDateString()}
                   </div>
                 </div>
               </Link>
@@ -220,18 +223,18 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ─── 9. NEWSLETTER / CIRCLE OF CONNOISSEURS ─── */}
+      {/* 9. NEWSLETTER / CIRCLE OF CONNOISSEURS */}
       <section className="newsletter-section">
         <div className="container">
           <div className="newsletter-content">
             <span className="editorial-eyebrow" style={{ color: "#D4AF7F" }}>THE PRIVATE CIRCLE</span>
             <h2>Join Our Circle</h2>
             <p>Receive exclusive private access to newly acquired Ceylon gemstones, bespoke commission invitations, and editorial journal stories.</p>
-            {subscribed && <div className="alert alert-success">{t("home.subscribeSuccess")}</div>}
+            {subscribed && <div className="alert alert-success">{t("home.subscribeSuccess", "Thank you for subscribing!")}</div>}
             <form onSubmit={handleNewsletterSubmit} className="newsletter-form">
               <input
                 type="email"
-                placeholder={t("home.emailPlaceholder") || "Enter your email address"}
+                placeholder={t("home.emailPlaceholder", "Enter your email address")}
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
@@ -242,7 +245,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ─── 10. ATELIER & SALON CONSULTATION (Harry Winston Style) ─── */}
+      {/* 10. ATELIER & SALON CONSULTATION */}
       <section className="cta-section">
         <div className="container">
           <span className="editorial-eyebrow">PRIVATE SALON EXPERIENCE</span>
