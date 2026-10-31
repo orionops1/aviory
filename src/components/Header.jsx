@@ -153,9 +153,9 @@ export default function Header({ scrolled }) {
         ref={headerRef}
         className={`tiffany-header ${scrolled ? 'tiffany-header--scrolled' : ''} ${activeMega ? 'tiffany-header--mega-open' : ''}`}
       >
-        {/* ─── UNIFIED PRIMARY ROW (Tiffany Standard 2-Tier) ─── */}
-        <div className="tiffany-header__primary">
-          <div className="container tiffany-header__primary-inner">
+        {/* ─── TOP ROW: Logo (Centered) + Icons (Right) ─── */}
+        <div className="tiffany-header__top">
+          <div className="container tiffany-header__top-inner">
             {/* Left: Mobile hamburger */}
             <button
               type="button"
@@ -168,7 +168,7 @@ export default function Header({ scrolled }) {
               <span className={`tiffany-hamburger-bar ${mobileMenuOpen ? 'open' : ''}`} />
             </button>
 
-            {/* Left-Center: Logo (Text-based, inline) */}
+            {/* Center: Logo (Centered) */}
             <Link 
               to="/" 
               className="tiffany-header__logo-link" 
@@ -179,29 +179,6 @@ export default function Header({ scrolled }) {
               <span className="tiffany-header__logo-ampersand">&amp;</span>
               <span className="tiffany-header__logo-co">CO.</span>
             </Link>
-
-            {/* Center: Navigation Items (Inline) */}
-            <nav className="tiffany-header__nav-inline" aria-label="Primary Categories">
-              <ul className="tiffany-header__nav-list">
-                {menuItems.map((item) => (
-                  <li
-                    key={item.key}
-                    className={`tiffany-header__nav-item ${activeMega === item.key ? 'tiffany-header__nav-item--active' : ''}`}
-                    onMouseEnter={() => item.mega ? handleMegaEnter(item.key) : setActiveMega(null)}
-                    onMouseLeave={handleMegaLeave}
-                  >
-                    <Link 
-                      to={item.href} 
-                      className="tiffany-header__nav-link"
-                      onClick={handleNavClick}
-                    >
-                      <span>{item.label}</span>
-                      {item.mega && <ChevronDown className="tiffany-nav-chevron" />}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </nav>
 
             {/* Right: Icons Cluster */}
             <div className="tiffany-header__actions">
@@ -246,6 +223,31 @@ export default function Header({ scrolled }) {
             </div>
           </div>
         </div>
+
+        {/* ─── BOTTOM ROW: Navigation (Centered) ─── */}
+        <nav className="tiffany-header__nav" aria-label="Primary Categories">
+          <div className="container">
+            <ul className="tiffany-header__nav-list">
+              {menuItems.map((item) => (
+                <li
+                  key={item.key}
+                  className={`tiffany-header__nav-item ${activeMega === item.key ? 'tiffany-header__nav-item--active' : ''}`}
+                  onMouseEnter={() => item.mega ? handleMegaEnter(item.key) : setActiveMega(null)}
+                  onMouseLeave={handleMegaLeave}
+                >
+                  <Link 
+                    to={item.href} 
+                    className="tiffany-header__nav-link"
+                    onClick={handleNavClick}
+                  >
+                    <span>{item.label}</span>
+                    {item.mega && <ChevronDown className="tiffany-nav-chevron" />}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </nav>
       </header>
 
       {/* ─── FULL-WIDTH MEGA-MENU PANELS ─── */}
