@@ -39,8 +39,10 @@
   width: 100%;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 2rem;
+  justify-content: flex-start;
+  gap: 0;
+  max-width: 100%;
+  overflow: hidden;
 }
 
 /* Logo: Compact, Left-Aligned (NOT centered) */
@@ -50,9 +52,9 @@
   justify-content: flex-start;
   text-decoration: none;
   flex: 0 0 auto;
-  min-width: 100px;
-  max-width: 140px;
+  width: 140px;
   height: 40px;
+  margin-right: 2rem;
 }
 
 /* Mobile Hamburger */
@@ -70,6 +72,7 @@
   height: 26px;
   margin-right: 1rem;
   z-index: 10;
+  flex-shrink: 0;
 }
 
 .tiffany-hamburger-bar {
@@ -101,16 +104,20 @@
   margin: 0;
   border: none;
   background: none;
+  min-width: 0;
+  overflow: hidden;
 }
 
 .tiffany-header__nav-list {
   display: flex;
   align-items: center;
-  gap: 2.5rem;
+  gap: 2rem;
   padding: 0;
   margin: 0;
   list-style: none;
   width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
 }
 
 .tiffany-header__nav-item {
@@ -119,6 +126,7 @@
   align-items: center;
   padding: 0;
   margin: 0;
+  flex-shrink: 0;
 }
 
 .tiffany-header__nav-link {
@@ -126,7 +134,7 @@
   align-items: center;
   gap: 0.35rem;
   font-family: var(--font-ui);
-  font-size: 0.85rem;
+  font-size: 0.75rem;
   font-weight: 400;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -162,10 +170,12 @@
 .tiffany-header__actions {
   display: flex;
   align-items: center;
-  gap: 1.25rem;
+  gap: 1rem;
   flex: 0 0 auto;
   position: static;
   z-index: 10;
+  margin-left: auto;
+  flex-shrink: 0;
 }
 
 .tiffany-header__action-btn {
@@ -181,6 +191,7 @@
   min-height: 20px;
   transition: all 0.25s ease;
   position: relative;
+  flex-shrink: 0;
 }
 
 .tiffany-header__action-btn:hover {
