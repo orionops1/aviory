@@ -97,7 +97,7 @@ export default function LoveAndCelebration() {
           </span>
           <h1 style={{ color: '#ffffff', fontFamily: 'var(--font-serif)', fontSize: 'clamp(2.4rem, 5vw, 3.5rem)' }}>Rings for Every Love Story</h1>
           <p style={{ fontSize: '1.05rem', marginTop: 'var(--spacing-sm)', opacity: 0.9, maxWidth: '600px', margin: '0 auto' }}>
-            We add value to every love story. Hand-crafted rings featuring exceptional unheated Ceylon sapphires and timeless designs.
+            We believe every love story deserves an exceptional beginning. Each piece in the AVIORY Love Collection is handcrafted to celebrate the moments that matter most—from first meetings to lifetime commitments.
           </p>
         </div>
       </section>

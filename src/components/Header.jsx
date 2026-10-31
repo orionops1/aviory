@@ -341,6 +341,10 @@ export default function Header({ scrolled }) {
         </div>
 
         <div className="tiffany-mobile-drawer__body">
+        <div className="tiffany-mobile-drawer__locale-top" style={{ display: 'flex', gap: '0.75rem', padding: '0.75rem 1.5rem', borderBottom: '1px solid var(--color-gray-light)', backgroundColor: '#FAF7F2', alignItems: 'center' }}>
+          <CurrencySwitcher variant="dark" />
+          <LanguageSwitcher variant="dark" />
+        </div>
           <ul className="tiffany-mobile-drawer__list">
             {menuItems.map((item) => (
               <li key={item.key} className="tiffany-mobile-drawer__item">

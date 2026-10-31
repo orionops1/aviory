@@ -52,26 +52,27 @@
 }
 
 .tiffany-header__logo-text {
-  font-family: var(--font-primary);
-  font-size: 1.2rem;
-  font-weight: 600;
-  letter-spacing: 0.05em;
+  font-family: "BlackGold", 'Playfair Display', Georgia, serif;
+  font-size: clamp(1.8rem, 3.2vw, 2.6rem);
+  font-weight: normal;
+  letter-spacing: 0.08em;
   color: var(--color-black);
+  line-height: 1;
 }
 
 .tiffany-header__logo-ampersand {
-  font-family: var(--font-primary);
-  font-size: 1rem;
-  font-weight: 400;
+  font-family: "BlackGold", 'Playfair Display', Georgia, serif;
+  font-size: clamp(1.4rem, 2.6vw, 2.1rem);
+  font-weight: normal;
   color: var(--color-black);
-  margin: 0 0.3rem;
+  margin: 0 0.35rem;
 }
 
 .tiffany-header__logo-co {
-  font-family: var(--font-primary);
-  font-size: 0.9rem;
-  font-weight: 600;
-  letter-spacing: 0.08em;
+  font-family: "BlackGold", 'Playfair Display', Georgia, serif;
+  font-size: clamp(1.5rem, 2.8vw, 2.2rem);
+  font-weight: normal;
+  letter-spacing: 0.1em;
   color: var(--color-black);
 }
 

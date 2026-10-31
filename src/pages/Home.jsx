@@ -1,4 +1,4 @@
-Ôªøimport React, { useState } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import HeroVideo from "../components/HeroVideo";
 import ProductCard from "../components/ProductCard";
@@ -80,10 +80,10 @@ export default function Home() {
             <div className="featured-hero-overlay" />
           </div>
           <div className="featured-hero-content">
-            <h2>Gifts to Engrave</h2>
-            <p>Personalized jewelry represents an especially meaningful moment. Create timeless heirlooms with custom inscriptions that become beloved for a lifetime.</p>
-            <Link to="/bespoke/enquiry" className="btn btn-primary">
-              SHOP NOW
+            <h2>We Design Value for Every Love Story</h2>
+            <p>Personalized gemstone jewelry carries meaning that deepens with time. We believe every love story deserves an exceptional beginningóhandcrafting rare natural Ceylon sapphires and gemstones into timeless heirlooms that outlast generations.</p>
+            <Link to="/love-and-celebration" className="btn btn-primary">
+              EXPLORE THE COLLECTION
             </Link>
           </div>
         </div>
@@ -111,14 +111,14 @@ export default function Home() {
           <div className="lifestyle-content">
             <span className="lifestyle-label">AVIORY LOVE COLLECTION</span>
             <h2>Rings for Every Love Story</h2>
-            <p>We believe every love story deserves an exceptional beginning. Each piece in the AVIORY Love Collection is handcrafted to celebrate the moments that matter most‚Äîfrom first meetings to lifetime commitments.</p>
-            <Link to="/love" className="btn btn-primary">
+            <p>We believe every love story deserves an exceptional beginning. Each piece in the AVIORY Love Collection is handcrafted to celebrate the moments that matter mostófrom first meetings to lifetime commitments.</p>
+            <Link to="/love-and-celebration" className="btn btn-primary">
               Explore the Collection
             </Link>
           </div>
           <div className="lifestyle-image">
             <div className="lifestyle-placeholder" style={{ background: "linear-gradient(135deg, #241c14 0%, #3d2f21 50%, #5e4732 100%)" }}>
-              <span style={{ fontSize: "4rem", opacity: 0.3 }}>üíç</span>
+              <span style={{ fontSize: "4rem", opacity: 0.3 }}>??</span>
             </div>
           </div>
         </div>
@@ -129,7 +129,7 @@ export default function Home() {
         <div className="lifestyle-grid lifestyle-grid--2col lifestyle-grid--reverse">
           <div className="lifestyle-image">
             <div className="lifestyle-placeholder" style={{ background: "linear-gradient(135deg, #2c1810 0%, #5a3d2a 100%)" }}>
-              <span style={{ fontSize: "4rem", opacity: 0.3 }}>‚ú®</span>
+              <span style={{ fontSize: "4rem", opacity: 0.3 }}>?</span>
             </div>
           </div>
           <div className="lifestyle-content">
@@ -182,7 +182,7 @@ export default function Home() {
                   <h3>{article.title}</h3>
                   <p>{article.excerpt}</p>
                   <div className="journal-meta">
-                    By {article.author} ‚Ä¢ {new Date(article.publishDate).toLocaleDateString()}
+                    By {article.author} ï {new Date(article.publishDate).toLocaleDateString()}
                   </div>
                 </div>
               </Link>
