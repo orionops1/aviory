@@ -1,3 +1,5 @@
+@import "../styles/fonts.css";
+
 /* ============================================================================
    TIFFANY & CO. STANDARD LUXURY HEADER & NAVIGATION SYSTEM
    Two-tiered architecture: Unified Primary Row + Mega-Menu Dropdown
@@ -28,6 +30,7 @@
   padding-bottom: 1rem;
   border-bottom: 1px solid var(--color-gray-light);
   position: relative;
+  z-index: 2010;
 }
 
 .tiffany-header__top-inner {
@@ -50,30 +53,32 @@
   gap: 0.3rem;
   margin: 0 auto;
 }
-
 .tiffany-header__logo-text {
-  font-family: "BlackGold", 'Playfair Display', Georgia, serif;
-  font-size: clamp(1.8rem, 3.2vw, 2.6rem);
+  font-family: "BlackGold", "BlackGoldRegular", "AvioryLogo", serif !important;
+  font-size: clamp(2rem, 3.5vw, 2.8rem);
   font-weight: normal;
   letter-spacing: 0.08em;
   color: var(--color-black);
   line-height: 1;
+  text-transform: uppercase;
 }
 
 .tiffany-header__logo-ampersand {
-  font-family: "BlackGold", 'Playfair Display', Georgia, serif;
-  font-size: clamp(1.4rem, 2.6vw, 2.1rem);
-  font-weight: normal;
+  font-family: 'Playfair Display', 'Cormorant Garamond', Georgia, serif !important;
+  font-style: italic;
+  font-size: clamp(1.6rem, 2.8vw, 2.3rem);
+  font-weight: 400;
   color: var(--color-black);
-  margin: 0 0.35rem;
+  margin: 0 0.4rem;
 }
 
 .tiffany-header__logo-co {
-  font-family: "BlackGold", 'Playfair Display', Georgia, serif;
-  font-size: clamp(1.5rem, 2.8vw, 2.2rem);
+  font-family: "BlackGold", "BlackGoldRegular", "AvioryLogo", serif !important;
+  font-size: clamp(1.7rem, 3vw, 2.4rem);
   font-weight: normal;
   letter-spacing: 0.1em;
   color: var(--color-black);
+  text-transform: uppercase;
 }
 
 /* Mobile Hamburger (Left) */
@@ -733,18 +738,16 @@
 
   /* Compact logo on mobile */
   .tiffany-header__logo-text {
-    font-size: 1rem;
+    font-size: 1.45rem;
   }
 
   .tiffany-header__logo-ampersand {
-    font-size: 0.85rem;
+    font-size: 1.2rem;
   }
 
   .tiffany-header__logo-co {
-    font-size: 0.75rem;
+    font-size: 1.25rem;
   }
-
-  /* Mobile actions */
   .tiffany-header__actions {
     gap: 0.75rem;
   }

@@ -17,7 +17,11 @@ export default function CurrencySwitcher({ variant = 'dark' }) {
     }
 
     document.addEventListener('mousedown', handleClickOutside)
-    return () => document.removeEventListener('mousedown', handleClickOutside)
+    document.addEventListener('touchstart', handleClickOutside)
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside)
+      document.removeEventListener('touchstart', handleClickOutside)
+    }
   }, [])
 
   return (
@@ -25,17 +29,17 @@ export default function CurrencySwitcher({ variant = 'dark' }) {
       <button
         type="button"
         className="currency-toggle"
-        onClick={() => setIsOpen(!isOpen)}
+        onClick={() => setIsOpen(prev => !prev)}
         title="Select Currency"
         aria-expanded={isOpen}
       >
         <span className="currency-symbol">{currentCurrency?.symbol}</span>
         <span className="currency-code">{currency}</span>
-        <span className="currency-chevron">▾</span>
+        <span className="currency-chevron" style={{ transform: isOpen ? 'rotate(180deg)' : 'none' }}>▾</span>
       </button>
 
       {isOpen && (
-        <div className="currency-dropdown">
+        <div className="currency-dropdown" role="menu">
           <div className="currency-dropdown__header">Select Currency</div>
           {currencies.map(curr => (
             <button
@@ -47,6 +51,7 @@ export default function CurrencySwitcher({ variant = 'dark' }) {
                 setIsOpen(false)
               }}
               title={curr.name}
+              role="menuitem"
             >
               <span className="option-symbol">{curr.symbol}</span>
               <span className="option-name">{curr.name}</span>

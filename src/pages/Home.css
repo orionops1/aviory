@@ -1,902 +1,555 @@
 /* ============================================================================
-   HOME PAGE - TIFFANY-STYLE LIFESTYLE + PRODUCTS LAYOUT
+   AVIORY LUXURY HOME PAGE DESIGN SYSTEM
+   Harmonious Tiffany x Harry Winston Luxury Aesthetic
+   Unified Palette: Pure White, Atelier Ivory (#FAF7F2), Midnight (#111111), Champagne (#D4AF7F)
    ============================================================================ */
 
-/* ─── DUAL LIFESTYLE IMAGE SECTION (Tiffany Style) ─── */
-.lifestyle-dual-section {
-  background-color: var(--color-white);
-  padding: var(--spacing-3xl) 0;
-  border-bottom: 1px solid var(--color-gray-light);
+.aviory-homepage {
+  width: 100%;
+  background-color: #FFFFFF;
 }
 
-.lifestyle-dual-grid {
+/* Eyebrow Label */
+.editorial-eyebrow {
+  display: block;
+  font-family: var(--font-sans, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #B89260;
+  margin-bottom: 0.75rem;
+}
+
+/* ─── 2. TWO PILLARS: LOVE COLLECTION + HIGH JEWELLERY ─── */
+.home-editorial-two-up {
+  background-color: #FFFFFF;
+  padding: clamp(3rem, 6vw, 5.5rem) 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.editorial-two-up-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: var(--spacing-2xl);
+  gap: clamp(1.5rem, 4vw, 3rem);
 }
 
-.lifestyle-dual-card {
+.editorial-panel {
   display: flex;
   flex-direction: column;
   text-align: center;
   overflow: hidden;
-  border-radius: 4px;
 }
 
-.lifestyle-dual-image {
+.editorial-panel-image {
   position: relative;
   width: 100%;
   aspect-ratio: 4/5;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  margin-bottom: var(--spacing-lg);
-  border-radius: 4px;
+  margin-bottom: 1.75rem;
+  background-color: #FAF7F2;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.lifestyle-dual-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.15);
-  transition: background 0.3s ease;
+.editorial-panel:hover .editorial-panel-image {
+  transform: scale(1.02);
 }
 
-.lifestyle-dual-card:hover .lifestyle-dual-overlay {
-  background: rgba(0, 0, 0, 0.25);
-}
-
-.lifestyle-dual-content {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  gap: var(--spacing-md);
-}
-
-.lifestyle-dual-content h3 {
-  font-family: var(--font-serif);
-  font-size: 1.4rem;
-  font-weight: 600;
-  color: var(--color-black);
-  margin: 0;
-  line-height: 1.2;
-}
-
-.lifestyle-dual-content p {
-  font-family: var(--font-body);
-  font-size: 0.95rem;
-  color: var(--color-charcoal);
-  margin: 0;
-  line-height: 1.6;
-  max-width: 300px;
-}
-
-.btn-small {
-  padding: 0.6rem 1.2rem;
-  font-size: 0.75rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-}
-
-/* ─── FEATURED HERO - FULL WIDTH WITH TEXT OVERLAY ─── */
-.featured-hero-section {
-  background-color: var(--color-white);
-  padding: var(--spacing-3xl) 0;
-  border-bottom: 1px solid var(--color-gray-light);
-}
-
-.featured-hero-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0;
-  align-items: stretch;
-  max-width: 100%;
-  margin: 0;
-}
-
-.featured-hero-image {
-  position: relative;
-  width: 100%;
-  height: 500px;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-
-.featured-hero-overlay {
+.editorial-panel-overlay {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   background: rgba(0, 0, 0, 0.1);
+  transition: background 0.3s ease;
 }
 
-.featured-hero-content {
-  padding: var(--spacing-3xl);
+.editorial-panel:hover .editorial-panel-overlay {
+  background: rgba(0, 0, 0, 0.18);
+}
+
+.editorial-panel-content {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  background-color: var(--color-white);
+  align-items: center;
+  gap: 0.75rem;
 }
 
-.featured-hero-content h2 {
-  font-family: var(--font-serif);
-  font-size: 2rem;
-  font-weight: 600;
-  color: var(--color-black);
-  margin-bottom: var(--spacing-lg);
-  line-height: 1.2;
+.editorial-panel-content h3 {
+  font-family: var(--font-serif-display, 'Playfair Display', serif);
+  font-size: clamp(1.4rem, 2.2vw, 1.9rem);
+  font-weight: 400;
+  letter-spacing: 0.03em;
+  color: #111111;
+  margin: 0;
+  line-height: 1.25;
 }
 
-.featured-hero-content p {
-  font-family: var(--font-body);
-  font-size: 1rem;
-  line-height: 1.7;
-  color: var(--color-charcoal);
-  margin-bottom: var(--spacing-xl);
+.editorial-panel-content p {
+  font-family: var(--font-serif-body, 'Cormorant Garamond', Georgia, serif);
+  font-size: 1.05rem;
+  color: #66615C;
+  margin: 0;
+  line-height: 1.6;
+  max-width: 380px;
 }
 
-/* ─── FEATURED HERO - SPLIT LAYOUT (Reversed) ─── */
-.featured-hero-split {
-  background-color: var(--color-white);
-  padding: var(--spacing-3xl) 0;
-  border-bottom: 1px solid var(--color-gray-light);
+.btn-small {
+  margin-top: 0.75rem;
+  padding: 0.75rem 1.75rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
 }
 
-.featured-hero-split-grid {
+/* ─── 3. FEATURED STORY: WE DESIGN VALUE FOR EVERY LOVE STORY ─── */
+.home-value-hero {
+  background-color: #FAF7F2;
+  padding: 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.home-value-hero-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 0;
   align-items: stretch;
-  max-width: 100%;
-  margin: 0;
-  direction: rtl;
+  min-height: 520px;
 }
 
-.featured-hero-split-grid > * {
-  direction: ltr;
-}
-
-.featured-hero-split-image {
+.home-value-hero-image {
   position: relative;
   width: 100%;
-  height: 500px;
+  min-height: 480px;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  background-color: #EFE9E0;
 }
 
-.featured-hero-split-content {
-  padding: var(--spacing-3xl);
+.home-value-hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.08);
+}
+
+.home-value-hero-content {
+  padding: clamp(2.5rem, 6vw, 5rem);
   display: flex;
   flex-direction: column;
   justify-content: center;
-  background-color: var(--color-white);
+  background-color: #FAF7F2;
 }
 
-.featured-hero-split-content h2 {
-  font-family: var(--font-serif);
-  font-size: 2rem;
-  font-weight: 600;
-  color: var(--color-black);
-  margin-bottom: var(--spacing-lg);
+.home-value-hero-content h2 {
+  font-family: var(--font-serif-display, 'Playfair Display', serif);
+  font-size: clamp(1.9rem, 3.2vw, 2.75rem);
+  font-weight: 400;
+  color: #111111;
+  margin-bottom: 1.25rem;
   line-height: 1.2;
 }
 
-.featured-hero-split-content p {
-  font-family: var(--font-body);
-  font-size: 1rem;
-  line-height: 1.7;
-  color: var(--color-charcoal);
-  margin-bottom: var(--spacing-xl);
+.home-value-hero-content p {
+  font-family: var(--font-serif-body, 'Cormorant Garamond', Georgia, serif);
+  font-size: 1.15rem;
+  line-height: 1.8;
+  color: #55504A;
+  margin-bottom: 2rem;
+  max-width: 520px;
 }
 
-/* ─── LIFESTYLE SECTIONS (50/50 IMAGE + CONTENT) ─── */
-.lifestyle-section {
-  background-color: var(--color-white);
-  padding: var(--spacing-3xl) 0;
-  border-bottom: 1px solid var(--color-gray-light);
+.home-value-hero-actions {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
 }
 
-.lifestyle-grid {
+/* ─── 4. THE ART OF GIFTING (Split layout) ─── */
+.home-gift-section {
+  background-color: #FFFFFF;
+  padding: 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.home-gift-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: var(--spacing-3xl);
-  align-items: center;
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 0 var(--spacing-xl);
+  align-items: stretch;
+  min-height: 500px;
 }
 
-.lifestyle-grid--reverse {
-  direction: rtl;
-}
-
-.lifestyle-grid--reverse > * {
-  direction: ltr;
-}
-
-.lifestyle-image {
+.home-gift-image {
+  position: relative;
   width: 100%;
-  aspect-ratio: 4/5;
-  overflow: hidden;
-  border-radius: 4px;
-}
-
-.lifestyle-placeholder {
-  width: 100%;
-  height: 100%;
+  min-height: 460px;
   background-size: cover;
   background-position: center;
+  background-repeat: no-repeat;
+  background-color: #EFE9E0;
+  order: 2;
+}
+
+.home-gift-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.08);
+}
+
+.home-gift-content {
+  padding: clamp(2.5rem, 6vw, 5rem);
   display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: #FFFFFF;
+  order: 1;
+}
+
+.home-gift-content h2 {
+  font-family: var(--font-serif-display, 'Playfair Display', serif);
+  font-size: clamp(1.9rem, 3.2vw, 2.75rem);
+  font-weight: 400;
+  color: #111111;
+  margin-bottom: 1.25rem;
+  line-height: 1.2;
+}
+
+.home-gift-content p {
+  font-family: var(--font-serif-body, 'Cormorant Garamond', Georgia, serif);
+  font-size: 1.15rem;
+  line-height: 1.8;
+  color: #55504A;
+  margin-bottom: 2rem;
+  max-width: 520px;
+}
+
+/* ─── 5. CEYLON SAPPHIRES: THE ISLAND OF GEMS ─── */
+.home-heritage-section {
+  background-color: #FAF7F2;
+  padding: clamp(3.5rem, 7vw, 6rem) 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.home-heritage-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: clamp(2rem, 5vw, 4rem);
   align-items: center;
+}
+
+.home-heritage-content h2 {
+  font-family: var(--font-serif-display, 'Playfair Display', serif);
+  font-size: clamp(2rem, 3.5vw, 3rem);
+  font-weight: 400;
+  color: #111111;
+  margin-bottom: 1.25rem;
+  line-height: 1.2;
+}
+
+.home-heritage-content p {
+  font-family: var(--font-serif-body, 'Cormorant Garamond', Georgia, serif);
+  font-size: 1.15rem;
+  line-height: 1.85;
+  color: #55504A;
+  margin-bottom: 2rem;
+  max-width: 560px;
+}
+
+.home-heritage-actions {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.home-heritage-visual {
+  display: flex;
   justify-content: center;
 }
 
-.lifestyle-content {
-  padding: var(--spacing-xl);
-}
-
-.lifestyle-content--overlay {
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 100%;
-  max-width: 800px;
+.home-heritage-card {
+  background: #FFFFFF;
+  border: 1px solid rgba(212, 175, 127, 0.4);
+  padding: 3rem 2.5rem;
   text-align: center;
-  padding: var(--spacing-3xl) var(--spacing-xl);
-  background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
-  color: var(--color-white);
-  z-index: 10;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.04);
+  width: 100%;
+  max-width: 380px;
 }
 
-.lifestyle-label {
+.heritage-badge {
   display: inline-block;
-  font-family: var(--font-ui);
+  font-family: var(--font-sans, sans-serif);
   font-size: 0.65rem;
   font-weight: 700;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--color-champagne);
-  margin-bottom: var(--spacing-md);
+  letter-spacing: 0.2em;
+  color: #B89260;
+  border-bottom: 1px solid #D4AF7F;
+  padding-bottom: 0.25rem;
+  margin-bottom: 1.5rem;
 }
 
-.lifestyle-content h2 {
-  font-family: var(--font-serif);
-  font-size: 2.2rem;
-  font-weight: 600;
-  color: var(--color-black);
-  margin-bottom: var(--spacing-md);
-  line-height: 1.2;
+.home-heritage-card h4 {
+  font-family: var(--font-serif-display, serif);
+  font-size: 1.4rem;
+  color: #111111;
+  margin-bottom: 1rem;
 }
 
-.lifestyle-content--overlay h2 {
-  color: var(--color-white);
-}
-
-.lifestyle-content p {
-  font-family: var(--font-body);
+.home-heritage-card p {
+  font-family: var(--font-serif-body, serif);
   font-size: 1rem;
   line-height: 1.7;
-  color: var(--color-charcoal);
-  margin-bottom: var(--spacing-xl);
+  color: #66615C;
+  margin: 0;
 }
 
-.lifestyle-content--overlay p {
-  color: rgba(255, 255, 255, 0.95);
-}
-
-/* ─── DUAL PRODUCT GRID (2 COLUMNS) ─── */
-.dual-product-grid {
-  background-color: var(--color-white);
-  padding: var(--spacing-3xl) 0;
-  border-bottom: 1px solid var(--color-gray-light);
-}
-
-.grid-2col {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--spacing-2xl);
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.product-group {
-  text-align: center;
-}
-
-.product-group__image {
-  margin-bottom: var(--spacing-lg);
-  width: 100%;
-}
-
-.product-group__title {
-  font-family: var(--font-serif);
-  font-size: 1.5rem;
-  font-weight: 600;
-  color: var(--color-black);
-  margin-bottom: var(--spacing-sm);
-}
-
-.product-group__desc {
-  font-family: var(--font-body);
-  font-size: 0.95rem;
-  color: var(--color-charcoal);
-  margin-bottom: var(--spacing-lg);
-}
-
-/* ─── FEATURED PRODUCTS SHOWCASE (4 COLUMNS) ─── */
+/* ─── 6 & 7. SHOWCASE SECTIONS ─── */
 .featured-products,
 .jewellery-showcase {
-  background-color: var(--color-white);
-  padding: var(--spacing-3xl) 0;
-  border-bottom: 1px solid var(--color-gray-light);
+  background-color: #FFFFFF;
+  padding: clamp(3.5rem, 6vw, 5.5rem) 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.section-title-wrap {
+  text-align: center;
+  margin-bottom: clamp(2rem, 4vw, 3.5rem);
 }
 
 .section-heading {
-  font-family: var(--font-serif);
-  font-size: 2rem;
-  font-weight: 600;
-  text-align: center;
-  color: var(--color-black);
-  margin-bottom: var(--spacing-2xl);
+  font-family: var(--font-serif-display, 'Playfair Display', serif);
+  font-size: clamp(1.8rem, 3vw, 2.5rem);
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  color: #111111;
+  margin: 0;
+}
+
+.section-subtitle {
+  font-family: var(--font-serif-body, serif);
+  font-size: 1.1rem;
+  color: #736F6B;
+  margin-top: 0.5rem;
 }
 
 .products-showcase {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: var(--spacing-xl);
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.75rem;
 }
 
-/* ─── GIFTING SECTION (FULL-WIDTH DUAL IMAGE + OVERLAY CONTENT) ─── */
-.lifestyle-section--gifting {
-  position: relative;
-  padding: 0;
-  border-bottom: none;
+@media (max-width: 1024px) {
+  .products-showcase {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
-.lifestyle-section--gifting .lifestyle-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0;
-  padding: 0;
-  margin: 0;
+@media (max-width: 600px) {
+  .products-showcase {
+    grid-template-columns: 1fr;
+  }
 }
 
-.lifestyle-section--gifting .lifestyle-image {
-  aspect-ratio: auto;
-  height: 500px;
-  border-radius: 0;
-  margin: 0;
-}
-
-.lifestyle-section--gifting .lifestyle-content--overlay {
-  position: absolute;
-  width: 100%;
-  max-width: 100%;
-  bottom: 0;
-  left: 0;
-  transform: none;
-}
-
-.gifting-ctas {
-  display: flex;
-  gap: var(--spacing-md);
-  justify-content: center;
-  flex-wrap: wrap;
-  margin-top: var(--spacing-lg);
-}
-
-/* ─── JOURNAL PREVIEW ─── */
+/* ─── 8. JOURNAL PREVIEW ─── */
 .journal-preview {
-  background-color: var(--color-white);
-  padding: var(--spacing-3xl) 0;
-  border-bottom: 1px solid var(--color-gray-light);
-}
-
-.section-title {
-  text-align: center;
-  margin-bottom: var(--spacing-2xl);
-}
-
-.section-title h2 {
-  font-family: var(--font-serif);
-  font-size: 2rem;
-  font-weight: 600;
-  color: var(--color-black);
-  margin-bottom: var(--spacing-sm);
-}
-
-.section-subtitle {
-  font-family: var(--font-body);
-  font-size: 1rem;
-  color: var(--color-charcoal);
+  background-color: #FAF7F2;
+  padding: clamp(3.5rem, 6vw, 5.5rem) 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
 }
 
 .journal-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: var(--spacing-xl);
-  margin-bottom: var(--spacing-xl);
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+@media (max-width: 900px) {
+  .journal-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 .journal-card {
-  padding: var(--spacing-lg);
-  border: 1px solid var(--color-gray-light);
-  border-radius: 4px;
-  transition: box-shadow 0.3s ease;
+  background-color: #FFFFFF;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  padding: 2.5rem 2rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .journal-card:hover {
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transform: translateY(-4px);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.06);
+  border-color: #D4AF7F;
 }
 
 .journal-category {
-  display: inline-block;
-  font-family: var(--font-ui);
-  font-size: 0.7rem;
+  font-family: var(--font-sans, sans-serif);
+  font-size: 0.65rem;
   font-weight: 700;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--color-champagne);
-  margin-bottom: var(--spacing-md);
+  color: #B89260;
+  margin-bottom: 1rem;
 }
 
 .journal-card h3 {
-  font-family: var(--font-serif);
-  font-size: 1.3rem;
-  font-weight: 600;
-  color: var(--color-black);
-  margin-bottom: var(--spacing-md);
-  line-height: 1.3;
+  font-family: var(--font-serif-display, serif);
+  font-size: 1.35rem;
+  font-weight: 400;
+  line-height: 1.35;
+  color: #111111;
+  margin-bottom: 1rem;
 }
 
 .journal-card p {
-  font-family: var(--font-body);
-  font-size: 0.95rem;
-  line-height: 1.6;
-  color: var(--color-charcoal);
-  margin-bottom: var(--spacing-md);
+  font-family: var(--font-serif-body, serif);
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: #66615C;
+  flex-grow: 1;
+  margin-bottom: 1.5rem;
 }
 
 .journal-meta {
-  font-family: var(--font-ui);
-  font-size: 0.8rem;
-  color: var(--color-gray-medium);
+  font-family: var(--font-sans, sans-serif);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  color: #9E9992;
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
+  padding-top: 1rem;
 }
 
-/* ─── NEWSLETTER SECTION ─── */
+/* ─── 9. NEWSLETTER SECTION ─── */
 .newsletter-section {
-  background-color: var(--color-black);
-  padding: var(--spacing-3xl) 0;
-  color: var(--color-white);
+  background-color: #111111;
+  padding: clamp(4rem, 7vw, 6rem) 0;
+  color: #F8F4EF;
 }
 
 .newsletter-content {
-  max-width: 600px;
+  max-width: 620px;
   margin: 0 auto;
   text-align: center;
 }
 
 .newsletter-content h2 {
-  font-family: var(--font-serif);
-  font-size: 2rem;
-  font-weight: 600;
-  margin-bottom: var(--spacing-md);
+  font-family: var(--font-serif-display, serif);
+  font-size: clamp(2rem, 3.5vw, 2.75rem);
+  font-weight: 400;
+  color: #FFFFFF;
+  margin-bottom: 1rem;
 }
 
 .newsletter-content p {
-  font-family: var(--font-body);
-  font-size: 1rem;
-  margin-bottom: var(--spacing-xl);
-  opacity: 0.9;
+  font-family: var(--font-serif-body, serif);
+  font-size: 1.15rem;
+  line-height: 1.75;
+  color: rgba(248, 244, 239, 0.75);
+  margin-bottom: 2.25rem;
 }
 
 .newsletter-form {
   display: flex;
-  gap: var(--spacing-sm);
-  margin-bottom: var(--spacing-lg);
+  gap: 0.5rem;
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+@media (max-width: 600px) {
+  .newsletter-form {
+    flex-direction: column;
+  }
 }
 
 .newsletter-form input {
   flex: 1;
-  padding: var(--spacing-sm) var(--spacing-md);
-  border: 1px solid var(--color-champagne);
-  background-color: transparent;
-  color: var(--color-white);
-  font-family: var(--font-body);
+  padding: 0.9rem 1.25rem;
+  border: 1px solid rgba(212, 175, 127, 0.4);
+  background-color: rgba(255, 255, 255, 0.05);
+  color: #FFFFFF;
+  font-family: var(--font-sans, sans-serif);
+  font-size: 0.85rem;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+.newsletter-form input:focus {
+  border-color: #D4AF7F;
 }
 
 .newsletter-form input::placeholder {
-  color: rgba(255, 255, 255, 0.5);
+  color: rgba(255, 255, 255, 0.4);
 }
 
 .newsletter-form button {
-  padding: var(--spacing-sm) var(--spacing-lg);
+  padding: 0.9rem 1.75rem;
+  font-family: var(--font-sans, sans-serif);
+  font-size: 0.72rem;
+  letter-spacing: 0.16em;
+  font-weight: 600;
+  text-transform: uppercase;
 }
 
-.alert {
-  padding: var(--spacing-sm) var(--spacing-md);
-  border-radius: 4px;
-  margin-bottom: var(--spacing-md);
-  font-size: 0.9rem;
-}
-
-.alert-success {
-  background-color: rgba(46, 204, 113, 0.1);
-  color: #2ecc71;
-  border: 1px solid rgba(46, 204, 113, 0.3);
-}
-
-/* ─── CTA SECTION ─── */
+/* ─── 10. CTA / SALON SECTION ─── */
 .cta-section {
-  background-color: var(--color-white);
-  padding: var(--spacing-3xl) 0;
+  background-color: #FFFFFF;
+  padding: clamp(4rem, 7vw, 6rem) 0;
   text-align: center;
-  border-top: 1px solid var(--color-gray-light);
 }
 
 .cta-section h2 {
-  font-family: var(--font-serif);
-  font-size: 2rem;
-  font-weight: 600;
-  color: var(--color-black);
-  margin-bottom: var(--spacing-md);
+  font-family: var(--font-serif-display, serif);
+  font-size: clamp(2rem, 3.5vw, 2.75rem);
+  font-weight: 400;
+  color: #111111;
+  margin-bottom: 1rem;
 }
 
 .cta-section p {
-  font-family: var(--font-body);
-  font-size: 1rem;
-  color: var(--color-charcoal);
-  margin-bottom: var(--spacing-xl);
-}
-
-/* ─── MOBILE RESPONSIVE ─── */
-@media (max-width: 768px) {
-  .lifestyle-grid {
-    grid-template-columns: 1fr;
-    gap: var(--spacing-2xl);
-    padding: 0 var(--spacing-md);
-  }
-
-  .lifestyle-grid--reverse {
-    direction: ltr;
-  }
-
-  .grid-2col {
-    grid-template-columns: 1fr;
-    gap: var(--spacing-lg);
-  }
-
-  .products-showcase {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .lifestyle-section--gifting .lifestyle-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .lifestyle-section--gifting .lifestyle-image {
-    height: 300px;
-  }
-
-  .lifestyle-content h2 {
-    font-size: 1.8rem;
-  }
-
-  .section-heading {
-    font-size: 1.5rem;
-  }
-
-  .gifting-ctas {
-    flex-direction: column;
-  }
-
-  .newsletter-form {
-    flex-direction: column;
-  }
-
-  .newsletter-form input {
-    width: 100%;
-  }
-
-  /* Mobile: Dual Lifestyle Cards */
-  .lifestyle-dual-grid {
-    grid-template-columns: 1fr;
-    gap: var(--spacing-lg);
-  }
-
-  .lifestyle-dual-image {
-    aspect-ratio: 3/4;
-  }
-
-  .lifestyle-dual-content h3 {
-    font-size: 1.2rem;
-  }
-
-  .lifestyle-dual-content p {
-    font-size: 0.9rem;
-  }
-
-  /* Mobile: Featured Hero Sections */
-  .featured-hero-grid,
-  .featured-hero-split-grid {
-    grid-template-columns: 1fr;
-    gap: 0;
-    direction: ltr;
-  }
-
-  .featured-hero-image,
-  .featured-hero-split-image {
-    height: 300px;
-  }
-
-  .featured-hero-content,
-  .featured-hero-split-content {
-    padding: var(--spacing-2xl) var(--spacing-md);
-  }
-
-  .featured-hero-content h2,
-  .featured-hero-split-content h2 {
-    font-size: 1.5rem;
-  }
-
-  .featured-hero-content p,
-  .featured-hero-split-content p {
-    font-size: 0.9rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .lifestyle-section {
-    padding: var(--spacing-2xl) 0;
-  }
-
-  .products-showcase {
-    grid-template-columns: 1fr;
-  }
-
-  .lifecycle-content h2 {
-    font-size: 1.5rem;
-  }
-
-  .section-heading {
-    font-size: 1.3rem;
-  }
-
-  .lifestyle-label {
-    font-size: 0.6rem;
-  }
-}
-
-
-/* ============================================================================
-   LOVE COLLECTION MILESTONES SECTION
-   ============================================================================ */
-
-.love-milestones {
-  background-color: var(--color-ivory);
-  padding: var(--spacing-3xl) 0;
-  border-top: 1px solid var(--color-gray-light);
-  border-bottom: 1px solid var(--color-gray-light);
-}
-
-.love-milestones__header {
-  text-align: center;
-  margin-bottom: var(--spacing-2xl);
-}
-
-.love-milestones__header h2 {
-  font-family: var(--font-serif);
-  font-size: 2.2rem;
-  font-weight: 400;
-  letter-spacing: 0.02em;
-  color: var(--color-charcoal);
-  margin-bottom: var(--spacing-md);
-}
-
-.love-milestones__header p {
-  font-size: 1rem;
-  color: var(--color-gray-dark);
-  max-width: 600px;
+  font-family: var(--font-serif-body, serif);
+  font-size: 1.15rem;
+  line-height: 1.75;
+  color: #66615C;
+  max-width: 560px;
   margin: 0 auto;
-  line-height: 1.6;
 }
 
-.love-milestones__grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: var(--spacing-lg);
-}
-
-.love-milestone-card {
-  background: var(--color-white);
-  padding: var(--spacing-xl);
-  border-radius: 4px;
-  text-align: center;
-  transition: all 0.3s ease;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.love-milestone-card:hover {
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
-  transform: translateY(-2px);
-}
-
-.love-milestone-card__icon {
-  font-size: 2.5rem;
-  margin-bottom: var(--spacing-md);
-  display: block;
-}
-
-.love-milestone-card h3 {
-  font-family: var(--font-serif);
-  font-size: 1.3rem;
-  font-weight: 400;
-  letter-spacing: 0.01em;
-  color: var(--color-charcoal);
-  margin-bottom: var(--spacing-sm);
-}
-
-.love-milestone-card p {
-  font-size: 0.9rem;
-  color: var(--color-gray-dark);
-  line-height: 1.5;
-  margin-bottom: var(--spacing-md);
-  flex-grow: 1;
-}
-
-.love-milestone-card__link {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-size: 0.75rem;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--color-charcoal);
-  text-decoration: none;
-  transition: color 0.3s ease;
-}
-
-.love-milestone-card__link:hover {
-  color: var(--color-champagne);
-}
-
-.love-milestone-card__link .arrow {
-  transition: transform 0.3s ease;
-  display: inline-block;
-}
-
-.love-milestone-card:hover .love-milestone-card__link .arrow {
-  transform: translateX(4px);
-}
-
-/* ============================================================================
-   LOVE COLLECTION BENEFITS SECTION
-   ============================================================================ */
-
-.love-benefits {
-  background-color: var(--color-white);
-  padding: var(--spacing-3xl) 0;
-}
-
-.love-benefits__header {
-  text-align: center;
-  margin-bottom: var(--spacing-2xl);
-}
-
-.love-benefits__header h2 {
-  font-family: var(--font-serif);
-  font-size: 2rem;
-  font-weight: 400;
-  letter-spacing: 0.02em;
-  color: var(--color-charcoal);
-}
-
-.love-benefits__grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: var(--spacing-xl);
-}
-
-.love-benefit-card {
-  text-align: center;
-  padding: var(--spacing-lg);
-}
-
-.love-benefit-card__icon {
-  font-size: 2.8rem;
-  margin-bottom: var(--spacing-md);
-  display: block;
-}
-
-.love-benefit-card h3 {
-  font-family: var(--font-serif);
-  font-size: 1.2rem;
-  font-weight: 400;
-  letter-spacing: 0.01em;
-  color: var(--color-charcoal);
-  margin-bottom: var(--spacing-sm);
-}
-
-.love-benefit-card p {
-  font-size: 0.95rem;
-  color: var(--color-gray-dark);
-  line-height: 1.6;
-}
-
-/* ============================================================================
-   RESPONSIVE ADJUSTMENTS
-   ============================================================================ */
-
-@media (max-width: 768px) {
-  .love-milestones {
-    padding: var(--spacing-2xl) 0;
-  }
-
-  .love-milestones__header h2 {
-    font-size: 1.6rem;
-  }
-
-  .love-milestones__header p {
-    font-size: 0.9rem;
-  }
-
-  .love-milestones__grid {
+/* ─── RESPONSIVE BREAKPOINTS ─── */
+@media (max-width: 900px) {
+  .editorial-two-up-grid {
     grid-template-columns: 1fr;
-    gap: var(--spacing-md);
   }
-
-  .love-milestone-card {
-    padding: var(--spacing-lg);
-  }
-
-  .love-benefits {
-    padding: var(--spacing-2xl) 0;
-  }
-
-  .love-benefits__header h2 {
-    font-size: 1.5rem;
-  }
-
-  .love-benefits__grid {
+  
+  .home-value-hero-grid,
+  .home-gift-grid {
     grid-template-columns: 1fr;
-    gap: var(--spacing-lg);
-  }
-}
-
-@media (max-width: 480px) {
-  .love-milestone-card__icon {
-    font-size: 2rem;
   }
 
-  .love-milestone-card h3 {
-    font-size: 1.1rem;
+  .home-gift-image {
+    order: 1;
+    min-height: 340px;
   }
 
-  .love-milestone-card p {
-    font-size: 0.85rem;
+  .home-gift-content {
+    order: 2;
   }
 
-  .love-benefit-card__icon {
-    font-size: 2rem;
+  .home-value-hero-image {
+    min-height: 340px;
   }
 
-  .love-benefit-card h3 {
-    font-size: 1rem;
-  }
-
-  .love-benefit-card p {
-    font-size: 0.85rem;
+  .home-heritage-grid {
+    grid-template-columns: 1fr;
   }
 }

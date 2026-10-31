@@ -22,14 +22,14 @@ export default function Home() {
   const heroVideo = {
     video: "/videos/hero-luxury.mp4",
     poster: "/images/hero-banner.jpg",
-    title: t("hero.title"),
-    subtitle: t("hero.subtitle"),
-    cta: { label: "Discover Gemstones", href: "/gemstones" }
+    title: t("hero.title") || "AVIORY & CO.",
+    subtitle: t("hero.subtitle") || "The Art of Natural Ceylon Gemstones & Fine Jewellery",
+    cta: { label: "Explore The House", href: "/gemstones" }
   };
 
   return (
-    <>
-      {/* HERO VIDEO */}
+    <div className="aviory-homepage">
+      {/* ─── 1. HERO VIDEO / CAMPAIGN ─── */}
       <HeroVideo 
         video={heroVideo.video}
         poster={heroVideo.poster}
@@ -38,34 +38,42 @@ export default function Home() {
         cta={heroVideo.cta}
       />
 
-      {/* DUAL LIFESTYLE IMAGE SECTION (Tiffany Style) */}
-      <section className="lifestyle-dual-section">
+      {/* ─── 2. THE TWO PILLARS: LOVE COLLECTION + HIGH JEWELLERY ─── */}
+      <section className="home-editorial-two-up">
         <div className="container">
-          <div className="lifestyle-dual-grid">
-            {/* LEFT: MOST POPULAR GIFTS (NOW FIRST) */}
-            <div className="lifestyle-dual-card">
-              <div className="lifestyle-dual-image" style={{ backgroundImage: "url(/images/most-popular-gifts.jpg)" }}>
-                <div className="lifestyle-dual-overlay" />
+          <div className="editorial-two-up-grid">
+            {/* LEFT PANEL: THE LOVE COLLECTION */}
+            <div className="editorial-panel">
+              <div 
+                className="editorial-panel-image" 
+                style={{ backgroundImage: "url(/images/most-popular-gifts.jpg)" }}
+              >
+                <div className="editorial-panel-overlay" />
               </div>
-              <div className="lifestyle-dual-content">
-                <h3>Most Popular Gifts</h3>
-                <p>Timeless pieces loved by our most discerning collectors</p>
+              <div className="editorial-panel-content">
+                <span className="editorial-eyebrow">THE LOVE COLLECTION</span>
+                <h3>Rings for Every Love Story</h3>
+                <p>Handcrafted engagement and promise rings set with rare, unheated Ceylon sapphires and certified fine gemstones.</p>
+                <Link to="/love-and-celebration" className="btn btn-primary btn-small">
+                  EXPLORE RINGS
+                </Link>
+              </div>
+            </div>
+
+            {/* RIGHT PANEL: FINE JEWELLERY & GEMS */}
+            <div className="editorial-panel">
+              <div 
+                className="editorial-panel-image" 
+                style={{ backgroundImage: "url(/images/gifts-for-her.jpg)" }}
+              >
+                <div className="editorial-panel-overlay" />
+              </div>
+              <div className="editorial-panel-content">
+                <span className="editorial-eyebrow">HIGH JEWELLERY &amp; RARE GEMS</span>
+                <h3>Atelier Masterpieces</h3>
+                <p>One-of-a-kind statement necklaces, earrings, bracelets, and collector-grade natural gemstones.</p>
                 <Link to="/fine-jewellery" className="btn btn-primary btn-small">
-                  SHOP NOW
-                </Link>
-              </div>
-            </div>
-
-            {/* RIGHT: GIFTS FOR HER */}
-            <div className="lifestyle-dual-card">
-              <div className="lifestyle-dual-image" style={{ backgroundImage: "url(/images/gifts-for-her.jpg)" }}>
-                <div className="lifestyle-dual-overlay" />
-              </div>
-              <div className="lifestyle-dual-content">
-                <h3>Gifts for Her</h3>
-                <p>Discover curated collections designed for the modern woman</p>
-                <Link to="/gemstones" className="btn btn-primary btn-small">
-                  SHOP NOW
+                  EXPLORE FINE JEWELLERY
                 </Link>
               </div>
             </div>
@@ -73,80 +81,92 @@ export default function Home() {
         </div>
       </section>
 
-      {/* FEATURED HERO - FULL WIDTH WITH TEXT OVERLAY (Gifts to Engrave) */}
-      <section className="featured-hero-section">
-        <div className="featured-hero-grid">
-          <div className="featured-hero-image" style={{ backgroundImage: "url(/images/gifts-to-engrave.jpg)" }}>
-            <div className="featured-hero-overlay" />
+      {/* ─── 3. FEATURED STORY: WE DESIGN VALUE FOR EVERY LOVE STORY ─── */}
+      <section className="home-value-hero">
+        <div className="home-value-hero-grid">
+          <div 
+            className="home-value-hero-image" 
+            style={{ backgroundImage: "url(/images/gifts-to-engrave.jpg)" }}
+          >
+            <div className="home-value-hero-overlay" />
           </div>
-          <div className="featured-hero-content">
+          <div className="home-value-hero-content">
+            <span className="editorial-eyebrow">BESPOKE ATELIER COMMISSIONS</span>
             <h2>We Design Value for Every Love Story</h2>
-            <p>Personalized gemstone jewelry carries meaning that deepens with time. We believe every love story deserves an exceptional beginning�handcrafting rare natural Ceylon sapphires and gemstones into timeless heirlooms that outlast generations.</p>
-            <Link to="/love-and-celebration" className="btn btn-primary">
-              EXPLORE THE COLLECTION
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* FEATURED HERO - SPLIT LAYOUT (The Art of Gifting) */}
-      <section className="featured-hero-split">
-        <div className="featured-hero-split-grid">
-          <div className="featured-hero-split-image" style={{ backgroundImage: "url(/images/art-of-gifting.jpg)" }}>
-            <div className="featured-hero-overlay" />
-          </div>
-          <div className="featured-hero-split-content">
-            <h2>The Art of Gifting</h2>
-            <p>Celebrate every facet of the ones you love with iconic designs this holiday season. From proposal moments to anniversary milestones, find the perfect piece to express your deepest feelings.</p>
-            <Link to="/love-and-celebration" className="btn btn-primary">
-              EXPLORE COLLECTION
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* SECTION 1: AVIORY LOVE COLLECTION - LIFESTYLE + PRODUCTS (50/50) */}
-      <section className="lifestyle-section lifestyle-section--rings">
-        <div className="lifestyle-grid lifestyle-grid--2col lifestyle-grid--reverse">
-          <div className="lifestyle-content">
-            <span className="lifestyle-label">AVIORY LOVE COLLECTION</span>
-            <h2>Rings for Every Love Story</h2>
-            <p>We believe every love story deserves an exceptional beginning. Each piece in the AVIORY Love Collection is handcrafted to celebrate the moments that matter most�from first meetings to lifetime commitments.</p>
-            <Link to="/love-and-celebration" className="btn btn-primary">
-              Explore the Collection
-            </Link>
-          </div>
-          <div className="lifestyle-image">
-            <div className="lifestyle-placeholder" style={{ background: "linear-gradient(135deg, #241c14 0%, #3d2f21 50%, #5e4732 100%)" }}>
-              <span style={{ fontSize: "4rem", opacity: 0.3 }}>??</span>
+            <p>
+              Personalized gemstone jewelry carries meaning that deepens with time. We believe every love story deserves an exceptional beginning—handcrafting rare natural Ceylon sapphires and gemstones into timeless heirlooms that outlast generations.
+            </p>
+            <div className="home-value-hero-actions">
+              <Link to="/love-and-celebration" className="btn btn-primary">
+                EXPLORE LOVE COLLECTION
+              </Link>
+              <Link to="/bespoke" className="btn btn-outline">
+                START YOUR COMMISSION
+              </Link>
             </div>
           </div>
         </div>
       </section>
 
-      {/* SECTION 2: FEATURED GEMSTONES - LIFESTYLE + PRODUCTS (50/50) */}
-      <section className="lifestyle-section lifestyle-section--gemstones">
-        <div className="lifestyle-grid lifestyle-grid--2col lifestyle-grid--reverse">
-          <div className="lifestyle-image">
-            <div className="lifestyle-placeholder" style={{ background: "linear-gradient(135deg, #2c1810 0%, #5a3d2a 100%)" }}>
-              <span style={{ fontSize: "4rem", opacity: 0.3 }}>?</span>
-            </div>
+      {/* ─── 4. THE ART OF GIFTING (Curated Gifts & Milestones) ─── */}
+      <section className="home-gift-section">
+        <div className="home-gift-grid">
+          <div 
+            className="home-gift-image" 
+            style={{ backgroundImage: "url(/images/art-of-gifting.jpg)" }}
+          >
+            <div className="home-gift-overlay" />
           </div>
-          <div className="lifestyle-content">
-            <span className="lifestyle-label">RARE GEMSTONES</span>
-            <h2>Ceylon Sapphires</h2>
-            <p>Discover exceptional gemstones hand-selected from Sri Lanka''s most prestigious mines. Each stone represents generations of expertise and uncompromising quality standards.</p>
-            <Link to="/gemstones?category=blue-sapphires" className="btn btn-primary">
-              Shop Gemstones
+          <div className="home-gift-content">
+            <span className="editorial-eyebrow">MILESTONES &amp; CELEBRATIONS</span>
+            <h2>The Art of the Gift</h2>
+            <p>
+              Celebrate every facet of the ones you love. From proposal moments to anniversary milestones, birthdays, and lifetime achievements, discover exceptional creations presented in our signature bespoke luxury packaging.
+            </p>
+            <Link to="/fine-jewellery" className="btn btn-primary">
+              DISCOVER CURATED GIFTS
             </Link>
           </div>
         </div>
       </section>
 
-      {/* SECTION 3: FEATURED PRODUCTS SHOWCASE (4-COLUMN GRID) */}
+      {/* ─── 5. CEYLON SAPPHIRES: THE ISLAND OF GEMS ─── */}
+      <section className="home-heritage-section">
+        <div className="container">
+          <div className="home-heritage-grid">
+            <div className="home-heritage-content">
+              <span className="editorial-eyebrow">CEYLON HERITAGE VAULT</span>
+              <h2>Rare Natural Gemstones</h2>
+              <p>
+                For more than two millennia, Sri Lanka has yielded the most extraordinary unheated royal blue sapphires, padparadschas, and rare spinels. Each stone is ethically mined in Ratnapura and Balangoda and certified by the world's premier laboratories: GRS, GIA, and Lotus.
+              </p>
+              <div className="home-heritage-actions">
+                <Link to="/gemstones?category=blue-sapphires" className="btn btn-primary">
+                  EXPLORE SAPPHIRES
+                </Link>
+                <Link to="/our-house" className="btn btn-outline">
+                  OUR PROVENANCE
+                </Link>
+              </div>
+            </div>
+            <div className="home-heritage-visual">
+              <div className="home-heritage-card">
+                <div className="heritage-badge">100% UNHEATED &amp; CERTIFIED</div>
+                <h4>Ethical Provenance</h4>
+                <p>Direct mine-to-atelier custody ensuring authentic provenance, responsible mining, and master craftsmanship.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ─── 6. FEATURED CREATIONS (LIVE PRODUCTS & LIVE CURRENCY) ─── */}
       <section className="featured-products">
         <div className="container">
-          <h2 className="section-heading">Featured Pieces</h2>
+          <div className="section-title-wrap">
+            <span className="editorial-eyebrow">CURATED HIGHLIGHTS</span>
+            <h2 className="section-heading">Featured Creations</h2>
+          </div>
           <div className="products-showcase">
             {gemstones.slice(0, 4).map(gem => (
               <ProductCard key={gem.id} product={gem} type="gemstone" />
@@ -155,10 +175,13 @@ export default function Home() {
         </div>
       </section>
 
-      {/* SECTION 4: FINE JEWELLERY SHOWCASE */}
+      {/* ─── 7. HAUTE JOAILLERIE SHOWCASE ─── */}
       <section className="jewellery-showcase">
         <div className="container">
-          <h2 className="section-heading">Haute Joaillerie</h2>
+          <div className="section-title-wrap">
+            <span className="editorial-eyebrow">HANDCRAFTED ATELIER</span>
+            <h2 className="section-heading">Haute Joaillerie</h2>
+          </div>
           <div className="products-showcase">
             {fineJewellery.slice(0, 4).map(item => (
               <ProductCard key={item.id} product={item} type="jewellery" />
@@ -167,12 +190,13 @@ export default function Home() {
         </div>
       </section>
 
-      {/* SECTION 5: JOURNAL PREVIEW */}
+      {/* ─── 8. FROM OUR JOURNAL (Editorial Knowledge) ─── */}
       <section className="journal-preview">
         <div className="container">
-          <div className="section-title">
-            <h2>From Our Journal</h2>
-            <p className="section-subtitle">Gemstone expertise and luxury craftsmanship</p>
+          <div className="section-title-wrap">
+            <span className="editorial-eyebrow">EDITORIAL &amp; KNOWLEDGE</span>
+            <h2 className="section-heading">From Our Journal</h2>
+            <p className="section-subtitle">Gemological insights, provenance disclosures, and jewelry care</p>
           </div>
           <div className="journal-grid">
             {journalArticles.slice(0, 3).map(article => (
@@ -182,7 +206,7 @@ export default function Home() {
                   <h3>{article.title}</h3>
                   <p>{article.excerpt}</p>
                   <div className="journal-meta">
-                    By {article.author} � {new Date(article.publishDate).toLocaleDateString()}
+                    By {article.author} · {new Date(article.publishDate).toLocaleDateString()}
                   </div>
                 </div>
               </Link>
@@ -190,48 +214,50 @@ export default function Home() {
           </div>
           <div style={{ textAlign: "center", marginTop: "var(--spacing-2xl)" }}>
             <Link to="/journal" className="btn btn-outline">
-              Read All Articles
+              READ ALL ARTICLES
             </Link>
           </div>
         </div>
       </section>
 
-      {/* SECTION 6: NEWSLETTER */}
+      {/* ─── 9. NEWSLETTER / CIRCLE OF CONNOISSEURS ─── */}
       <section className="newsletter-section">
         <div className="container">
           <div className="newsletter-content">
+            <span className="editorial-eyebrow" style={{ color: "#D4AF7F" }}>THE PRIVATE CIRCLE</span>
             <h2>Join Our Circle</h2>
-            <p>Exclusive access to rare gemstones and special collections</p>
+            <p>Receive exclusive private access to newly acquired Ceylon gemstones, bespoke commission invitations, and editorial journal stories.</p>
             {subscribed && <div className="alert alert-success">{t("home.subscribeSuccess")}</div>}
             <form onSubmit={handleNewsletterSubmit} className="newsletter-form">
               <input
                 type="email"
-                placeholder={t("home.emailPlaceholder")}
+                placeholder={t("home.emailPlaceholder") || "Enter your email address"}
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
               />
-              <button type="submit" className="btn btn-primary">Subscribe</button>
+              <button type="submit" className="btn btn-primary">SUBSCRIBE</button>
             </form>
           </div>
         </div>
       </section>
 
-      {/* SECTION 7: FINAL CTA */}
+      {/* ─── 10. ATELIER & SALON CONSULTATION (Harry Winston Style) ─── */}
       <section className="cta-section">
         <div className="container">
-          <h2>Get in Touch</h2>
-          <p>Our gemologist is here to help with consultations, custom inquiries, or any questions</p>
-          <div style={{ display: "flex", gap: "var(--spacing-md)", justifyContent: "center", flexWrap: "wrap" }}>
+          <span className="editorial-eyebrow">PRIVATE SALON EXPERIENCE</span>
+          <h2>Visit Our Atelier &amp; Private Salon</h2>
+          <p>Our gemologists and master goldsmiths are available for private in-person or virtual consultations worldwide.</p>
+          <div style={{ display: "flex", gap: "var(--spacing-md)", justifyContent: "center", flexWrap: "wrap", marginTop: "1.5rem" }}>
             <Link to="/contact" className="btn btn-primary">
-              Contact Our Gemologist
+              BOOK A PRIVATE CONSULTATION
             </Link>
             <Link to="/our-house" className="btn btn-outline">
-              Visit Our Atelier
+              DISCOVER OUR HOUSE
             </Link>
           </div>
         </div>
       </section>
-    </>
+    </div>
   );
 }

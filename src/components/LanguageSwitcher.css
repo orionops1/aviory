@@ -1,85 +1,78 @@
 /* ============================================================================
-   TIFFANY-INSPIRED LUXURY LANGUAGE SWITCHER
+   TIFFANY & CO. STANDARD LUXURY LANGUAGE SWITCHER
+   Clean, robust positioning across Desktop, Mobile, and Drawer
    ============================================================================ */
 
 .language-switcher {
   position: relative;
   display: inline-flex;
   align-items: center;
-  z-index: 100;
+  z-index: 1000;
 }
 
 .language-toggle {
   display: inline-flex;
   align-items: center;
-  gap: 0.4rem;
-  padding: 0.25rem 0.6rem;
+  gap: 0.35rem;
+  padding: 0.35rem 0.6rem;
   background-color: transparent;
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  color: var(--color-white);
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  color: #111111;
   cursor: pointer;
-  font-family: var(--font-ui);
-  font-size: 0.68rem;
-  font-weight: 600;
+  font-family: var(--font-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif);
+  font-size: 0.72rem;
+  font-weight: 500;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  transition: all 0.25s ease;
+  transition: all 0.2s ease;
   line-height: 1;
 }
 
 .language-toggle:hover {
-  border-color: var(--color-champagne);
-  color: var(--color-champagne);
+  border-color: #D4AF7F;
+  color: #D4AF7F;
 }
 
 .language-flag {
-  font-size: 0.85rem;
+  font-size: 0.9rem;
   line-height: 1;
 }
 
 .language-code {
-  font-size: 0.68rem;
+  font-size: 0.72rem;
   letter-spacing: 0.1em;
 }
 
 .language-chevron {
-  font-size: 0.65rem;
-  color: var(--color-champagne);
+  font-size: 0.6rem;
+  color: #736F6B;
+  transition: transform 0.2s ease;
 }
 
-/* Light variant (used in footer or mobile) */
+.language-switcher--dark .language-toggle {
+  color: #111111;
+  border-color: rgba(0, 0, 0, 0.15);
+}
+
 .language-switcher--light .language-toggle {
-  color: var(--color-black);
-  border-color: var(--color-gray-light);
+  color: #111111;
+  border-color: rgba(0, 0, 0, 0.15);
 }
 
-.language-switcher--light .language-toggle:hover {
-  border-color: var(--color-champagne);
-  color: var(--color-champagne);
-}
-
-/* Dropdown Menu */
+/* ──────────────────────────────────────────────────────────
+   Dropdown Menu - Always absolute directly beneath the toggle
+   ────────────────────────────────────────────────────────── */
 .language-dropdown {
   position: absolute;
-  top: calc(100% + 8px);
+  top: calc(100% + 6px);
   right: 0;
   background-color: #ffffff;
-  border: 1px solid var(--color-gray-light);
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.18);
-  min-width: 170px;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.16);
+  min-width: 175px;
   z-index: 999999;
   overflow: hidden;
-  animation: langFadeIn 0.2s ease-out;
-}
-
-@media (max-width: 768px) {
-  .language-dropdown {
-    position: fixed;
-    top: auto;
-    right: 1rem;
-    left: auto;
-    max-width: calc(100vw - 2rem);
-  }
+  animation: langFadeIn 0.18s ease-out;
 }
 
 @keyframes langFadeIn {
@@ -89,14 +82,14 @@
 
 .language-dropdown__header {
   padding: 0.5rem 0.85rem;
-  background-color: var(--color-ivory);
-  font-family: var(--font-ui);
-  font-size: 0.6rem;
+  background-color: #FAF7F2;
+  font-family: var(--font-ui, sans-serif);
+  font-size: 0.62rem;
   font-weight: 700;
-  letter-spacing: 0.15em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--color-accent);
-  border-bottom: 1px solid var(--color-gray-light);
+  color: #736F6B;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
 }
 
 .language-option {
@@ -107,13 +100,13 @@
   padding: 0.65rem 0.85rem;
   background-color: transparent;
   border: none;
-  border-bottom: 1px solid #f2ede7;
-  color: var(--color-black);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  color: #111111;
   cursor: pointer;
-  font-family: var(--font-ui);
+  font-family: var(--font-ui, sans-serif);
   font-size: 0.78rem;
   text-align: left;
-  transition: all 0.2s ease;
+  transition: background 0.15s ease, color 0.15s ease;
 }
 
 .language-option:last-child {
@@ -121,19 +114,18 @@
 }
 
 .language-option:hover {
-  background-color: var(--color-ivory);
-  color: var(--color-champagne);
-  padding-left: 1rem;
+  background-color: #FAF7F2;
+  color: #B89260;
 }
 
 .language-option.active {
-  background-color: var(--color-black);
-  color: var(--color-white);
+  background-color: #111111;
+  color: #ffffff;
   font-weight: 600;
 }
 
 .language-option.active .option-code {
-  color: var(--color-champagne);
+  color: #D4AF7F;
 }
 
 .option-flag {
@@ -150,154 +142,18 @@
   opacity: 0.7;
 }
 
-/* ============================================================================
-   MOBILE RESPONSIVE
-   ============================================================================ */
-
-@media (max-width: 1024px) {
+/* ──────────────────────────────────────────────────────────
+   Mobile Adjustments
+   ────────────────────────────────────────────────────────── */
+@media (max-width: 900px) {
   .language-toggle {
-    font-size: 0.6rem;
-    padding: 0.2rem 0.5rem;
-  }
-
-  .language-flag {
-    font-size: 0.75rem;
-  }
-
-  .language-code {
-    display: none;
+    padding: 0.3rem 0.5rem;
+    font-size: 0.68rem;
   }
 
   .language-dropdown {
-    min-width: 150px;
-  }
-
-  .language-option {
-    padding: 0.5rem 0.7rem;
-    font-size: 0.7rem;
-  }
-
-  .option-flag {
-    font-size: 0.85rem;
-  }
-
-  .option-name {
-    font-size: 0.7rem;
-  }
-
-  .option-code {
-    font-size: 0.6rem;
+    right: 0;
+    left: auto;
+    min-width: 165px;
   }
 }
-
-@media (max-width: 768px) {
-  .language-switcher {
-    z-index: 110;
-  }
-
-  .language-toggle {
-    font-size: 0.55rem;
-    padding: 0.2rem 0.4rem;
-    gap: 0.3rem;
-    border: none;
-    background-color: transparent;
-    color: var(--color-black);
-  }
-
-  .language-toggle:hover {
-    color: var(--color-champagne);
-  }
-
-  .language-flag {
-    font-size: 0.9rem;
-  }
-
-  .language-code {
-    display: none;
-  }
-
-  .language-chevron {
-    font-size: 0.5rem;
-  }
-
-  .language-switcher--light .language-toggle {
-    color: var(--color-black);
-    border: none;
-  }
-
-  .language-dropdown {
-    position: fixed;
-    top: 100%;
-    bottom: auto;
-    right: auto;
-    left: 50%;
-    transform: translateX(-50%);
-    min-width: 200px;
-    max-width: 90vw;
-    max-height: 300px;
-    overflow-y: auto;
-    z-index: 999999;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
-    margin-top: 0.5rem;
-  }
-
-  .language-option {
-    padding: 0.6rem 0.8rem;
-    font-size: 0.75rem;
-  }
-
-  .option-flag {
-    font-size: 0.95rem;
-  }
-
-  .option-name {
-    font-size: 0.75rem;
-  }
-
-  .option-code {
-    font-size: 0.65rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .language-toggle {
-    font-size: 0.5rem;
-    padding: 0.15rem 0.3rem;
-  }
-
-  .language-flag {
-    font-size: 0.8rem;
-  }
-
-  .language-chevron {
-    font-size: 0.45rem;
-  }
-
-  .language-dropdown {
-    min-width: 180px;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
-  }
-
-  .language-dropdown__header {
-    padding: 0.4rem 0.6rem;
-    font-size: 0.55rem;
-  }
-
-  .language-option {
-    padding: 0.5rem 0.6rem;
-    font-size: 0.7rem;
-  }
-
-  .option-flag {
-    font-size: 0.85rem;
-  }
-
-  .option-name {
-    font-size: 0.7rem;
-  }
-
-  .option-code {
-    font-size: 0.6rem;
-  }
-}
-

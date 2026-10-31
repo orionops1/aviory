@@ -17,7 +17,11 @@ export default function LanguageSwitcher({ variant = 'dark' }) {
     }
 
     document.addEventListener('mousedown', handleClickOutside)
-    return () => document.removeEventListener('mousedown', handleClickOutside)
+    document.addEventListener('touchstart', handleClickOutside)
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside)
+      document.removeEventListener('touchstart', handleClickOutside)
+    }
   }, [])
 
   return (
@@ -25,17 +29,17 @@ export default function LanguageSwitcher({ variant = 'dark' }) {
       <button
         type="button"
         className="language-toggle"
-        onClick={() => setIsOpen(!isOpen)}
+        onClick={() => setIsOpen(prev => !prev)}
         title="Select Language"
         aria-expanded={isOpen}
       >
         <span className="language-flag">{currentLanguage?.flag}</span>
         <span className="language-code">{language.toUpperCase()}</span>
-        <span className="language-chevron">▾</span>
+        <span className="language-chevron" style={{ transform: isOpen ? 'rotate(180deg)' : 'none' }}>▾</span>
       </button>
 
       {isOpen && (
-        <div className="language-dropdown">
+        <div className="language-dropdown" role="menu">
           <div className="language-dropdown__header">Select Language</div>
           {languages.map(lang => (
             <button
@@ -47,6 +51,7 @@ export default function LanguageSwitcher({ variant = 'dark' }) {
                 setIsOpen(false)
               }}
               title={lang.name}
+              role="menuitem"
             >
               <span className="option-flag">{lang.flag}</span>
               <span className="option-name">{lang.name}</span>
