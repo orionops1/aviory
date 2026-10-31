@@ -154,47 +154,9 @@ export default function Header({ scrolled }) {
         ref={headerRef}
         className={`tiffany-header ${scrolled ? 'tiffany-header--scrolled' : ''} ${activeMega ? 'tiffany-header--mega-open' : ''}`}
       >
-        {/* ─── TIER 1: GLOBAL UTILITY BAR (Tiffany Standard) ─── */}
-        <div className="tiffany-header__utility">
-          <div className="container tiffany-header__utility-inner">
-            {/* Left: Search Trigger */}
-            <div className="tiffany-header__utility-left">
-              <button 
-                type="button" 
-                className="tiffany-header__utility-btn"
-                onClick={() => setSearchModalOpen(true)}
-              >
-                <SearchIcon />
-                <span>Search</span>
-              </button>
-            </div>
-
-            {/* Center: Prestige Trust Tag */}
-            <div className="tiffany-header__utility-center">
-              <span>Complimentary Armoured Delivery &bull; GIA Certified Gemstones</span>
-            </div>
-
-            {/* Right: Client Care, Appointments & Language Filter */}
-            <div className="tiffany-header__utility-right">
-              <Link to="/contact" className="tiffany-header__utility-link">
-                {t('common.contact')}
-              </Link>
-              <button 
-                type="button" 
-                className="tiffany-header__utility-btn tiffany-header__utility-btn--highlight"
-                onClick={() => setAppointmentModalOpen(true)}
-              >
-                {t('common.bookConsultation')}
-              </button>
-              <CurrencySwitcher variant="dark" />
-              <LanguageSwitcher variant="dark" />
-            </div>
-          </div>
-        </div>
-
-        {/* ─── TIER 2: CENTERPIECE BRAND LOGO ROW (100% Mathematically Centered) ─── */}
-        <div className="tiffany-header__brand-row">
-          <div className="container tiffany-header__brand-inner">
+        {/* ─── UNIFIED PRIMARY ROW (Tiffany Standard 2-Tier) ─── */}
+        <div className="tiffany-header__primary">
+          <div className="container tiffany-header__primary-inner">
             {/* Left: Mobile hamburger */}
             <button
               type="button"
@@ -207,21 +169,44 @@ export default function Header({ scrolled }) {
               <span className={`tiffany-hamburger-bar ${mobileMenuOpen ? 'open' : ''}`} />
             </button>
 
-            {/* Center: The Monumental AVIORY & CO. Logo (Dead Center) */}
+            {/* Left-Center: Logo */}
             <Link 
               to="/" 
               className="tiffany-header__logo-link" 
               onClick={handleNavClick}
               aria-label="AVIORY & CO. Homepage"
             >
-              <AvioryLogo variant={scrolled ? 'compact' : 'standard'} showSubtitle={!scrolled} />
+              <AvioryLogo variant="compact" showSubtitle={false} />
             </Link>
 
-            {/* Right: User Account & Slide-Out Shopping Bag Trigger */}
+            {/* Center: Navigation Items (Inline) */}
+            <nav className="tiffany-header__nav-inline" aria-label="Primary Categories">
+              <ul className="tiffany-header__nav-list">
+                {menuItems.map((item) => (
+                  <li
+                    key={item.key}
+                    className={`tiffany-header__nav-item ${activeMega === item.key ? 'tiffany-header__nav-item--active' : ''}`}
+                    onMouseEnter={() => item.mega ? handleMegaEnter(item.key) : setActiveMega(null)}
+                    onMouseLeave={handleMegaLeave}
+                  >
+                    <Link 
+                      to={item.href} 
+                      className="tiffany-header__nav-link"
+                      onClick={handleNavClick}
+                    >
+                      <span>{item.label}</span>
+                      {item.mega && <ChevronDown className="tiffany-nav-chevron" />}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+
+            {/* Right: Icons Cluster */}
             <div className="tiffany-header__actions">
               <button
                 type="button"
-                className="tiffany-header__action-btn tiffany-header__action-btn--search-mob"
+                className="tiffany-header__action-btn"
                 onClick={() => setSearchModalOpen(true)}
                 aria-label="Search"
                 title="Search"
@@ -229,9 +214,15 @@ export default function Header({ scrolled }) {
                 <SearchIcon />
               </button>
 
-              <Link to="/contact" className="tiffany-header__action-btn" aria-label="Account" title="Account">
-                <UserIcon />
-              </Link>
+              <button 
+                type="button" 
+                className="tiffany-header__action-btn"
+                onClick={() => setAppointmentModalOpen(true)}
+                aria-label="Book Consultation"
+                title="Book Consultation"
+              >
+                <span className="tiffany-header__action-text">Consult</span>
+              </button>
 
               <button
                 type="button"
@@ -247,37 +238,6 @@ export default function Header({ scrolled }) {
               </button>
             </div>
           </div>
-        </div>
-
-        {/* ─── TIER 3: REFINED NAVIGATION ROW ─── */}
-        <nav className="tiffany-header__nav" aria-label="Primary Categories">
-          <div className="container">
-            <ul className="tiffany-header__nav-list">
-              {menuItems.map((item) => (
-                <li
-                  key={item.key}
-                  className={`tiffany-header__nav-item ${activeMega === item.key ? 'tiffany-header__nav-item--active' : ''}`}
-                  onMouseEnter={() => item.mega ? handleMegaEnter(item.key) : setActiveMega(null)}
-                  onMouseLeave={handleMegaLeave}
-                >
-                  <Link 
-                    to={item.href} 
-                    className="tiffany-header__nav-link"
-                    onClick={handleNavClick}
-                  >
-                    <span>{item.label}</span>
-                    {item.mega && <ChevronDown className="tiffany-nav-chevron" />}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </nav>
-
-        {/* ─── MOBILE TOP-LEFT: LANGUAGE & CURRENCY (Mobile Only) ─── */}
-        <div className="tiffany-header__mobile-locale">
-          <CurrencySwitcher variant="light" />
-          <LanguageSwitcher variant="light" />
         </div>
       </header>
 

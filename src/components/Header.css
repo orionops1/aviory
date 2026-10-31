@@ -1,6 +1,6 @@
 /* ============================================================================
    TIFFANY & CO. STANDARD LUXURY HEADER & NAVIGATION SYSTEM
-   Three-tiered architecture: Global Utility, Monumental Centerpiece, Category Bar
+   Two-tiered architecture: Unified Primary Row + Mega-Menu Dropdown
    ============================================================================ */
 
 .tiffany-header {
@@ -19,136 +19,46 @@
 }
 
 /* ──────────────────────────────────────────────────────────
-   TIER 1: GLOBAL UTILITY BAR (Topmost thin strip)
-   Note: NO overflow: hidden so language dropdown can overflow freely
+   UNIFIED PRIMARY ROW (Tiffany Standard - Single Tier)
+   Logo | Navigation Inline | Icons Right
    ────────────────────────────────────────────────────────── */
 
-.tiffany-header__utility {
-  background-color: #0d0d0d;
-  color: var(--color-ivory);
-  font-family: var(--font-ui);
-  font-size: 0.68rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  position: relative;
-  z-index: 2100;
-}
-
-.tiffany-header--scrolled .tiffany-header__utility {
-  display: none;
-}
-
-.tiffany-header__utility-inner {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding-top: 0.45rem;
-  padding-bottom: 0.45rem;
-  gap: 1.5rem;
-  position: relative;
-}
-
-.tiffany-header__utility-left,
-.tiffany-header__utility-right {
-  display: flex;
-  align-items: center;
-  gap: 1.5rem;
-}
-
-.tiffany-header__utility-center {
-  font-size: 0.65rem;
-  letter-spacing: 0.15em;
-  color: var(--color-champagne);
-  text-align: center;
-  white-space: nowrap;
-}
-
-.tiffany-header__utility-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.45rem;
-  background: none;
-  border: none;
-  color: var(--color-ivory);
-  font-family: var(--font-ui);
-  font-size: 0.68rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  cursor: pointer;
-  padding: 0;
-  transition: color 0.25s ease;
-}
-
-.tiffany-header__utility-btn:hover,
-.tiffany-header__utility-link:hover {
-  color: var(--color-champagne);
-}
-
-.tiffany-header__utility-btn--highlight {
-  color: var(--color-champagne);
-  font-weight: 600;
-  border-bottom: 1px solid var(--color-champagne);
-  padding-bottom: 1px;
-}
-
-.tiffany-header__utility-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  color: var(--color-ivory);
-  text-decoration: none;
-  transition: color 0.25s ease;
-  white-space: nowrap;
-}
-
-/* ──────────────────────────────────────────────────────────
-   TIER 2: CENTERPIECE BRAND LOGO ROW
-   GUARANTEED 100% DEAD CENTER (Same as Tiffany)
-   ────────────────────────────────────────────────────────── */
-
-.tiffany-header__brand-row {
+.tiffany-header__primary {
   background-color: var(--color-white);
-  padding-top: 1.35rem;
-  padding-bottom: 1.35rem;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
   border-bottom: 1px solid var(--color-gray-light);
   position: relative;
   display: flex;
   align-items: center;
-  justify-content: center;
-  transition: padding 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.tiffany-header--scrolled .tiffany-header__brand-row {
-  padding-top: 0.75rem;
-  padding-bottom: 0.75rem;
-}
-
-.tiffany-header__brand-inner {
+.tiffany-header__primary-inner {
   position: relative;
   width: 100%;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
+  gap: 2rem;
 }
 
-/* Centered Logo */
+/* Logo: Compact, Left-Aligned (NOT centered) */
 .tiffany-header__logo-link {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   text-decoration: none;
-  margin: 0 auto;
-  text-align: center;
+  flex: 0 0 auto;
+  min-width: 100px;
+  max-width: 140px;
+  height: 40px;
 }
 
-/* Mobile Hamburger (Pinned to left edge) */
+/* Mobile Hamburger */
 .tiffany-header__hamburger {
   display: none;
-  position: absolute;
-  left: 0;
-  top: 50%;
-  transform: translateY(-50%);
+  position: static;
   flex-direction: column;
   justify-content: center;
   gap: 5px;
@@ -158,6 +68,7 @@
   padding: 0;
   width: 26px;
   height: 26px;
+  margin-right: 1rem;
   z-index: 10;
 }
 
@@ -172,22 +83,88 @@
 .tiffany-hamburger-bar.open:nth-child(1) {
   transform: translateY(6.5px) rotate(45deg);
 }
+
 .tiffany-hamburger-bar.open:nth-child(2) {
   opacity: 0;
 }
+
 .tiffany-hamburger-bar.open:nth-child(3) {
   transform: translateY(-6.5px) rotate(-45deg);
 }
 
-/* Right-side Action Cluster (Pinned to right edge) */
-.tiffany-header__actions {
-  position: absolute;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
+/* Inline Navigation (Tiffany Standard - Integrated in Primary Row) */
+.tiffany-header__nav-inline {
+  flex: 1 1 auto;
   display: flex;
   align-items: center;
-  gap: 1.5rem;
+  padding: 0;
+  margin: 0;
+  border: none;
+  background: none;
+}
+
+.tiffany-header__nav-list {
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  width: 100%;
+}
+
+.tiffany-header__nav-item {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+}
+
+.tiffany-header__nav-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-family: var(--font-ui);
+  font-size: 0.85rem;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-black);
+  text-decoration: none;
+  white-space: nowrap;
+  transition: all 0.25s ease;
+  border-bottom: 2px solid transparent;
+  padding-bottom: 2px;
+}
+
+.tiffany-header__nav-link:hover {
+  color: var(--color-accent);
+  border-bottom-color: var(--color-accent);
+}
+
+.tiffany-header__nav-item--active .tiffany-header__nav-link {
+  color: var(--color-accent);
+  border-bottom-color: var(--color-accent);
+  font-weight: 600;
+}
+
+/* Chevron Icon */
+.tiffany-nav-chevron {
+  transition: transform 0.25s ease;
+}
+
+.tiffany-header__nav-item--active .tiffany-nav-chevron {
+  transform: rotate(180deg);
+}
+
+/* Right-side Icon Cluster (Compact, Grouped) */
+.tiffany-header__actions {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  flex: 0 0 auto;
+  position: static;
   z-index: 10;
 }
 
@@ -200,29 +177,32 @@
   color: var(--color-black);
   cursor: pointer;
   padding: 0;
-  transition: color 0.25s ease, transform 0.25s ease;
+  min-width: 20px;
+  min-height: 20px;
+  transition: all 0.25s ease;
   position: relative;
-  text-decoration: none;
 }
 
 .tiffany-header__action-btn:hover {
-  color: var(--color-champagne);
-  transform: translateY(-1px);
+  color: var(--color-accent);
+  transform: scale(1.1);
 }
 
-.tiffany-header__action-btn--search-mob {
+.tiffany-header__action-text {
+  font-family: var(--font-ui);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
   display: none;
 }
 
-.tiffany-header__action-btn--bag {
-  position: relative;
-}
-
+/* Cart Badge */
 .tiffany-header__bag-badge {
   position: absolute;
-  top: -7px;
-  right: -9px;
-  background-color: var(--color-black);
+  top: -6px;
+  right: -6px;
+  background-color: var(--color-accent);
   color: var(--color-white);
   font-family: var(--font-ui);
   font-size: 0.6rem;
@@ -233,80 +213,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid var(--color-champagne);
-}
-
-/* ──────────────────────────────────────────────────────────
-   TIER 3: CATEGORY NAVIGATION ROW
-   ────────────────────────────────────────────────────────── */
-
-.tiffany-header__nav {
-  background-color: var(--color-white);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-  position: relative;
-  z-index: 2005;
-}
-
-.tiffany-header__nav-list {
-  display: flex;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  justify-content: center;
-  gap: 3.25rem;
-}
-
-.tiffany-header__nav-item {
-  position: relative;
-}
-
-.tiffany-header__nav-link {
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
-  padding: 0.95rem 0;
-  font-family: var(--font-ui);
-  font-size: 0.74rem;
-  font-weight: 600;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--color-charcoal);
-  text-decoration: none;
-  white-space: nowrap;
-  transition: color 0.25s ease;
-  position: relative;
-  cursor: pointer;
-}
-
-.tiffany-header__nav-link::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 0;
-  height: 2px;
-  background-color: var(--color-champagne);
-  transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.tiffany-header__nav-link:hover,
-.tiffany-header__nav-item--active .tiffany-header__nav-link {
-  color: var(--color-black);
-}
-
-.tiffany-header__nav-link:hover::after,
-.tiffany-header__nav-item--active .tiffany-header__nav-link::after {
-  width: 100%;
-}
-
-.tiffany-nav-chevron {
-  opacity: 0.6;
-  transition: transform 0.25s ease;
-}
-
-.tiffany-header__nav-item--active .tiffany-nav-chevron {
-  transform: rotate(180deg);
-  opacity: 1;
+  border: 1px solid var(--color-white);
 }
 
 /* ──────────────────────────────────────────────────────────
@@ -334,7 +241,7 @@
   visibility: visible;
   transform: translateY(0);
   pointer-events: auto;
-  margin-top: 140px;
+  margin-top: 65px;
 }
 
 .tiffany-mega__inner {
@@ -360,7 +267,7 @@
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.18em;
-  color: var(--color-champagne);
+  color: var(--color-accent);
   margin-bottom: 1.25rem;
   padding-bottom: 0.75rem;
   border-bottom: 1px solid var(--color-gray-light);
@@ -382,13 +289,13 @@
   font-family: var(--font-ui);
   font-size: 0.8rem;
   font-weight: 400;
-  color: var(--color-charcoal);
+  color: var(--color-black);
   text-decoration: none;
   transition: color 0.2s ease, transform 0.2s ease;
 }
 
 .tiffany-mega__link:hover {
-  color: var(--color-champagne);
+  color: var(--color-accent);
   transform: translateX(4px);
 }
 
@@ -424,50 +331,52 @@
 }
 
 .tiffany-mega__feature--rose {
-  background: linear-gradient(135deg, #241419 0%, #3d2029 50%, #5e303e 100%);
+  background: linear-gradient(135deg, #3d1a1a 0%, #5e2a2a 50%, #7d3a3a 100%);
 }
 
-.tiffany-mega__feature--champagne {
-  background: linear-gradient(135deg, #1f1b13 0%, #3b3221 50%, #574930 100%);
+.tiffany-mega__feature--platinum {
+  background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 50%, #4d4d4d 100%);
 }
 
 .tiffany-mega__feature-title {
-  font-family: var(--font-serif);
-  font-size: 1.4rem;
+  font-family: var(--font-primary);
+  font-size: 1.25rem;
   font-weight: 600;
-  margin-bottom: 0.65rem;
-  color: var(--color-white);
-  line-height: 1.25;
+  margin-bottom: 0.5rem;
+  line-height: 1.3;
 }
 
 .tiffany-mega__feature-sub {
-  font-family: var(--font-body);
-  font-size: 0.82rem;
-  line-height: 1.6;
-  opacity: 0.88;
+  font-family: var(--font-ui);
+  font-size: 0.75rem;
+  font-weight: 400;
+  opacity: 0.95;
   margin-bottom: 1.5rem;
-  color: var(--color-ivory);
+  line-height: 1.5;
 }
 
 .tiffany-mega__feature-cta {
   display: inline-flex;
   align-items: center;
-  gap: 0.4rem;
+  gap: 0.5rem;
   font-family: var(--font-ui);
-  font-size: 0.72rem;
+  font-size: 0.75rem;
   font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.14em;
-  color: var(--color-champagne);
+  letter-spacing: 0.08em;
+  color: var(--color-white);
   text-decoration: none;
-  transition: gap 0.25s ease;
+  border-bottom: 2px solid transparent;
+  padding-bottom: 2px;
+  transition: all 0.25s ease;
+  width: fit-content;
 }
 
 .tiffany-mega__feature-cta:hover {
-  gap: 0.65rem;
+  border-bottom-color: var(--color-white);
+  transform: translateX(2px);
 }
 
-/* Mega Backdrop */
 .tiffany-mega-backdrop {
   position: fixed;
   top: 0;
@@ -475,8 +384,7 @@
   right: 0;
   bottom: 0;
   z-index: 1998;
-  background-color: rgba(0, 0, 0, 0.4);
-  backdrop-filter: blur(2px);
+  background-color: rgba(0, 0, 0, 0.15);
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.3s ease, visibility 0.3s ease;
@@ -490,247 +398,8 @@
 }
 
 /* ──────────────────────────────────────────────────────────
-   MOBILE DRAWER NAVIGATION
+   FEATURED COLLECTIONS GRID
    ────────────────────────────────────────────────────────── */
-
-.tiffany-mobile-drawer {
-  position: fixed;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  max-width: 400px;
-  background-color: var(--color-white);
-  z-index: 3000;
-  transform: translateX(-100%);
-  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-  display: flex;
-  flex-direction: column;
-  box-shadow: 10px 0 30px rgba(0, 0, 0, 0.15);
-}
-
-.tiffany-mobile-drawer--open {
-  transform: translateX(0);
-}
-
-.tiffany-mobile-drawer__header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 1.25rem 1.5rem;
-  border-bottom: 1px solid var(--color-gray-light);
-}
-
-.tiffany-mobile-drawer__close {
-  background: none;
-  border: none;
-  font-size: 1.2rem;
-  cursor: pointer;
-  color: var(--color-black);
-}
-
-.tiffany-mobile-drawer__body {
-  flex: 1;
-  overflow-y: auto;
-}
-
-.tiffany-mobile-drawer__list {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-.tiffany-mobile-drawer__item {
-  border-bottom: 1px solid var(--color-gray-light);
-}
-
-.tiffany-mobile-drawer__item-bar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.tiffany-mobile-drawer__link {
-  display: block;
-  flex: 1;
-  padding: 1.15rem 1.5rem;
-  font-family: var(--font-ui);
-  font-size: 0.85rem;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--color-black);
-  text-decoration: none;
-}
-
-.tiffany-mobile-drawer__toggle {
-  width: 50px;
-  height: 50px;
-  background: none;
-  border: none;
-  border-left: 1px solid var(--color-gray-light);
-  cursor: pointer;
-}
-
-.tiffany-mobile-drawer__toggle svg.open {
-  transform: rotate(180deg);
-}
-
-.tiffany-mobile-drawer__sub {
-  background-color: var(--color-ivory);
-  padding: 0.5rem 1.5rem 1rem;
-}
-
-.tiffany-mobile-sub-heading {
-  display: block;
-  font-family: var(--font-ui);
-  font-size: 0.65rem;
-  font-weight: 700;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  color: var(--color-champagne);
-  margin-top: 0.75rem;
-  margin-bottom: 0.4rem;
-}
-
-.tiffany-mobile-sub-link {
-  display: block;
-  padding: 0.35rem 0;
-  font-family: var(--font-ui);
-  font-size: 0.8rem;
-  color: var(--color-charcoal);
-  text-decoration: none;
-}
-
-.tiffany-mobile-drawer__footer {
-  padding: 1.5rem;
-  border-top: 1px solid var(--color-gray-light);
-  background-color: var(--color-ivory);
-}
-
-.tiffany-mobile-backdrop {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, 0.45);
-  z-index: 2999;
-}
-
-/* ──────────────────────────────────────────────────────────
-   RESPONSIVE DESIGN
-   ────────────────────────────────────────────────────────── */
-
-.tiffany-header__mobile-locale {
-  display: none;
-}
-
-@media (max-width: 1200px) {
-  .tiffany-header__nav-list {
-    gap: 2rem;
-  }
-  .tiffany-header__utility-center {
-    display: none;
-  }
-}
-
-@media (max-width: 1024px) {
-  .tiffany-header__nav-list {
-    gap: 1.5rem;
-  }
-  .tiffany-header__nav-link {
-    font-size: 0.68rem;
-  }
-  .tiffany-mega__inner {
-    gap: 2rem;
-  }
-  .tiffany-mega__columns {
-    gap: 2rem;
-  }
-  .tiffany-mega__feature {
-    width: 250px;
-    padding: 1.75rem 1.25rem;
-  }
-}
-
-@media (max-width: 768px) {
-  .tiffany-header__utility {
-    display: none;
-  }
-  .tiffany-header__nav {
-    display: none;
-  }
-  .tiffany-header__hamburger {
-    display: flex;
-  }
-  .tiffany-header__action-btn--search-mob {
-    display: flex;
-  }
-  .tiffany-mega,
-  .tiffany-mega-backdrop {
-    display: none !important;
-  }
-  .tiffany-header__brand-row {
-    padding-top: 0.85rem;
-    padding-bottom: 0.85rem;
-  }
-  .tiffany-header__actions {
-    gap: 1rem;
-  }
-
-  /* Mobile Locale Switcher - Top Left */
-  .tiffany-header__mobile-locale {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    padding: 0.6rem 1rem;
-    background-color: var(--color-white);
-    border-bottom: 1px solid var(--color-gray-light);
-    border-top: 1px solid var(--color-gray-light);
-    justify-content: flex-start;
-  }
-
-  .tiffany-header__mobile-locale .currency-switcher,
-  .tiffany-header__mobile-locale .language-switcher {
-    display: flex;
-  }
-
-  .tiffany-header__mobile-locale .currency-toggle,
-  .tiffany-header__mobile-locale .language-toggle {
-    font-size: 0.6rem;
-  }
-
-  .tiffany-header__mobile-locale .currency-code,
-  .tiffany-header__mobile-locale .language-code {
-    display: inline;
-  }
-}
-
-
-/* ============================================================================
-   MOBILE LANGUAGE SWITCHER FIX
-   ============================================================================ */
-
-@media (max-width: 768px) {
-  .header-actions .language-switcher {
-    z-index: 110;
-  }
-
-  .header-actions .language-switcher .language-dropdown {
-    position: fixed;
-    top: auto;
-    right: auto;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 999999;
-  }
-}
-
-
-/* ============================================================================
-   FEATURED COLLECTIONS GRID (Option A - Tiffany Style)
-   ============================================================================ */
 
 .tiffany-mega__featured-grid {
   display: grid;
@@ -750,11 +419,11 @@
   border-radius: 4px;
   text-decoration: none;
   transition: all 0.3s ease;
-  background-color: rgba(212, 175, 127, 0.04);
+  background-color: rgba(168, 141, 110, 0.04);
 }
 
 .tiffany-mega__featured-card:hover {
-  background-color: rgba(212, 175, 127, 0.1);
+  background-color: rgba(168, 141, 110, 0.1);
   transform: translateY(-2px);
 }
 
@@ -770,7 +439,7 @@
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--color-charcoal);
+  color: var(--color-black);
   margin-bottom: 0.3rem;
   line-height: 1.3;
 }
@@ -778,13 +447,244 @@
 .tiffany-mega__featured-desc {
   font-family: var(--font-body);
   font-size: 0.7rem;
-  color: var(--color-gray-dark);
+  color: var(--color-text-secondary);
   line-height: 1.4;
   opacity: 0.8;
 }
 
 .tiffany-mega__featured-card:hover .tiffany-mega__featured-desc {
   opacity: 1;
-  color: var(--color-charcoal);
+  color: var(--color-black);
 }
 
+/* ──────────────────────────────────────────────────────────
+   MOBILE DRAWER NAVIGATION
+   ────────────────────────────────────────────────────────── */
+
+.tiffany-mobile-drawer {
+  position: fixed;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  max-width: 360px;
+  height: 100vh;
+  background-color: var(--color-white);
+  z-index: 2050;
+  transition: left 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.tiffany-mobile-drawer--open {
+  left: 0;
+}
+
+.tiffany-mobile-drawer__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+  border-bottom: 1px solid var(--color-gray-light);
+}
+
+.tiffany-mobile-drawer__close {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-black);
+}
+
+.tiffany-mobile-drawer__body {
+  flex: 1 1 auto;
+  overflow-y: auto;
+  padding: 0;
+}
+
+.tiffany-mobile-drawer__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.tiffany-mobile-drawer__item {
+  border-bottom: 1px solid var(--color-gray-light);
+}
+
+.tiffany-mobile-drawer__item-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+  gap: 1rem;
+}
+
+.tiffany-mobile-drawer__link {
+  flex: 1;
+  font-family: var(--font-ui);
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-black);
+  text-decoration: none;
+  transition: color 0.25s ease;
+}
+
+.tiffany-mobile-drawer__link:hover {
+  color: var(--color-accent);
+}
+
+.tiffany-mobile-drawer__toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-black);
+  transition: transform 0.3s ease;
+}
+
+.tiffany-mobile-drawer__toggle.open {
+  transform: rotate(180deg);
+}
+
+.tiffany-mobile-drawer__sub {
+  background-color: var(--color-background-secondary);
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.tiffany-mobile-sub-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.tiffany-mobile-sub-heading {
+  font-family: var(--font-ui);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--color-gray-light);
+}
+
+.tiffany-mobile-sub-link {
+  font-family: var(--font-ui);
+  font-size: 0.85rem;
+  color: var(--color-black);
+  text-decoration: none;
+  padding: 0.35rem 0;
+  transition: color 0.25s ease;
+}
+
+.tiffany-mobile-sub-link:hover {
+  color: var(--color-accent);
+}
+
+.tiffany-mobile-drawer__footer {
+  padding: 1.5rem;
+  border-top: 1px solid var(--color-gray-light);
+  background-color: var(--color-white);
+}
+
+.tiffany-mobile-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.3);
+  z-index: 2040;
+  display: none;
+}
+
+.tiffany-mobile-drawer--open + .tiffany-mobile-backdrop {
+  display: block;
+}
+
+/* ──────────────────────────────────────────────────────────
+   RESPONSIVE BREAKPOINTS
+   ────────────────────────────────────────────────────────── */
+
+@media (max-width: 1200px) {
+  .tiffany-header__nav-list {
+    gap: 2rem;
+  }
+}
+
+@media (max-width: 1024px) {
+  .tiffany-header__nav-list {
+    gap: 1.5rem;
+  }
+  .tiffany-header__nav-link {
+    font-size: 0.78rem;
+  }
+  .tiffany-mega__inner {
+    gap: 2rem;
+  }
+  .tiffany-mega__columns {
+    gap: 2rem;
+  }
+  .tiffany-mega__feature {
+    width: 250px;
+    padding: 1.75rem 1.25rem;
+  }
+}
+
+@media (max-width: 768px) {
+  /* Hide inline nav and mega-menu on mobile */
+  .tiffany-header__nav-inline {
+    display: none;
+  }
+  .tiffany-mega,
+  .tiffany-mega-backdrop {
+    display: none !important;
+  }
+
+  /* Show hamburger */
+  .tiffany-header__hamburger {
+    display: flex;
+  }
+
+  /* Adjust primary row for mobile */
+  .tiffany-header__primary {
+    padding-top: 0.65rem;
+    padding-bottom: 0.65rem;
+  }
+
+  .tiffany-header__primary-inner {
+    gap: 1rem;
+  }
+
+  /* Compact logo on mobile */
+  .tiffany-header__logo-link {
+    max-width: 100px;
+    height: 36px;
+  }
+
+  /* Mobile actions */
+  .tiffany-header__actions {
+    gap: 1rem;
+  }
+
+  .tiffany-header__action-text {
+    display: none;
+  }
+
+  /* Mobile drawer */
+  .tiffany-mobile-drawer {
+    display: flex;
+  }
+}
