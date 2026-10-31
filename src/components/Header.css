@@ -116,8 +116,6 @@
   margin: 0;
   list-style: none;
   width: 100%;
-  overflow-x: auto;
-  overflow-y: hidden;
 }
 
 .tiffany-header__nav-item {
